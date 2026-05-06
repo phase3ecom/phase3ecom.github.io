@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FenceStay Strategy Update — Week 11 | Phase 3 Ecom</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Cabin', sans-serif;
+    background: #f0f2f5;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+
+  .page-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    background: #100828;
+    padding: 72px 64px 56px;
+    position: relative;
+    border-bottom: 4px solid #a3d01d;
+  }
+
+  .cover-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #a3d01d;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cover-chip {
+    display: inline-block;
+    background: #a3d01d;
+    color: #100828;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+
+  .cover-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Cabin', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #a3d01d;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    border-top: 1px solid rgba(163,208,29,0.25);
+    padding-top: 28px;
+  }
+
+  .cover-meta-item label {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item span {
+    font-family: 'Cabin', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  /* ─── TABLE OF CONTENTS ─── */
+  .toc {
+    background: #100828;
+    padding: 32px 64px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .toc-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .toc-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(163,208,29,0.2);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .toc-item-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #a3d01d;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .toc-item-label {
+    font-family: 'Cabin', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ─── CONTENT AREA ─── */
+  .content {
+    padding: 56px 64px;
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #f0f2f5;
+  }
+
+  .section-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    color: #ffffff;
+    background: #100828;
+    padding: 6px 12px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #100828;
+    letter-spacing: 0.5px;
+  }
+
+  .section-divider {
+    margin: 56px 0;
+    border: none;
+    border-top: 2px solid #f0f2f5;
+  }
+
+  /* ─── SUBSECTION HEADERS ─── */
+  .subsection-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #100828;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
+
+  .subsection-title:first-child { margin-top: 0; }
+
+  /* ─── STATUS BADGES ─── */
+  .badge {
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .badge-complete    { background: #2e7d32; color: #ffffff; }
+  .badge-live        { background: #a3d01d; color: #100828; }
+  .badge-ready       { background: #1565c0; color: #ffffff; }
+  .badge-in-progress { background: #e65100; color: #ffffff; }
+  .badge-blocked     { background: #c62828; color: #ffffff; }
+  .badge-upcoming    { background: #757575; color: #ffffff; }
+  .badge-needs-update{ background: #bf360c; color: #ffffff; }
+  .badge-on-brand    { background: #2e7d32; color: #ffffff; }
+  .badge-high        { background: #c62828; color: #ffffff; }
+  .badge-medium      { background: #e65100; color: #ffffff; }
+  .badge-low         { background: #616161; color: #ffffff; }
+  .badge-tbc         { background: #9e9e9e; color: #ffffff; }
+
+  .badge-note {
+    display: block;
+    font-family: 'Cabin', sans-serif;
+    font-size: 10px;
+    color: #888;
+    font-style: italic;
+    margin-top: 3px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* ─── CALLOUT BOXES ─── */
+  .callout {
+    border-left: 4px solid #a3d01d;
+    background: #f7fde8;
+    padding: 20px 24px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 28px;
+  }
+
+  .callout p {
+    font-size: 14px;
+    color: #1a1a1a;
+    line-height: 1.7;
+  }
+
+  .callout-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #a3d01d;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .callout-note {
+    border-left: 4px solid #757575;
+    background: #f8f8f8;
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 24px;
+  }
+
+  .callout-note p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .callout-lime-box {
+    background: #a3d01d;
+    color: #100828;
+    padding: 18px 24px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  /* ─── ACTIVATION CHECKLIST ─── */
+  .checklist {
+    list-style: none;
+    margin: 16px 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    background: #f7fde8;
+    border: 1px solid #d4e87a;
+    padding: 10px 14px;
+    border-radius: 6px;
+  }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    background: #2e7d32;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: white;
+  }
+
+  /* ─── PHASE CARDS ─── */
+  .phase-card {
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    margin-bottom: 28px;
+    overflow: hidden;
+    border-left: 5px solid #ccc;
+  }
+
+  .phase-card.phase-1 { border-left-color: #2e7d32; }
+  .phase-card.phase-2 { border-left-color: #1565c0; }
+  .phase-card.phase-3 { border-left-color: #e65100; }
+  .phase-card.phase-4 { border-left-color: #a3d01d; }
+
+  .phase-card-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid #f0f2f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .phase-card-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #100828;
+    text-transform: uppercase;
+  }
+
+  .phase-card-weeks {
+    font-family: 'Cabin', sans-serif;
+    font-size: 12px;
+    color: #888;
+    font-weight: 600;
+  }
+
+  .phase-card-intro {
+    padding: 14px 24px 4px;
+    font-size: 13px;
+    color: #555;
+    font-style: italic;
+  }
+
+  /* ─── TABLES ─── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .data-table th {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+    padding: 10px 16px;
+    text-align: left;
+    background: #f8f9fa;
+    border-bottom: 2px solid #f0f2f5;
+  }
+
+  .data-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid #f4f4f4;
+    color: #1a1a1a;
+    vertical-align: middle;
+  }
+
+  .data-table tr:last-child td { border-bottom: none; }
+
+  .data-table tr:hover td { background: #fafbfc; }
+
+  .phase-card .data-table th { background: transparent; padding-top: 14px; }
+  .phase-card .data-table { padding: 0 0 8px; }
+
+  /* ─── GROWTH MODEL TABLE ─── */
+  .growth-table tr.scale-row td {
+    background: #f7fde8;
+    font-weight: 700;
+  }
+
+  .growth-table .target-col {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #100828;
+    background: #a3d01d !important;
+  }
+
+  .growth-table tr.scale-row .target-col {
+    background: #8ab515 !important;
+  }
+
+  /* ─── KPI CARDS ─── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .kpi-card {
+    background: #ffffff;
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    padding: 20px 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kpi-card::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: #a3d01d;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .kpi-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #100828;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+
+  .kpi-label {
+    font-family: 'Cabin', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* ─── FORMULA BLOCK ─── */
+  .formula-block {
+    background: #100828;
+    color: #a3d01d;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 20px 28px;
+    border-radius: 8px;
+    margin: 20px 0;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  /* ─── REVENUE BADGES ─── */
+  .rev-badge {
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .rev-badge-high   { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+  .rev-badge-medium { background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; }
+  .rev-badge-tbc    { background: #f5f5f5; color: #757575; border: 1px solid #e0e0e0; }
+
+  /* ─── CRO PROGRESS BAR ─── */
+  .cvr-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cvr-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #100828;
+    min-width: 48px;
+  }
+
+  .progress-track {
+    flex: 1;
+    height: 8px;
+    background: #e8e8e8;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: #a3d01d;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  /* ─── PERSONA CARDS ─── */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .persona-card {
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+
+  .persona-card-header {
+    background: #100828;
+    padding: 14px 18px;
+  }
+
+  .persona-card-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: rgba(163,208,29,0.6);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .persona-card-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #a3d01d;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .persona-card-body {
+    padding: 16px 18px;
+  }
+
+  .persona-meta {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .persona-detail {
+    font-size: 12px;
+    color: #444;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+
+  .persona-detail strong {
+    color: #100828;
+    font-weight: 700;
+  }
+
+  .persona-cta {
+    display: inline-block;
+    margin-top: 10px;
+    background: #a3d01d;
+    color: #100828;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ─── BRAND PILLAR CARDS ─── */
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .pillar-card {
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-left: 4px solid #a3d01d;
+    border-radius: 0 8px 8px 0;
+    padding: 20px 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+
+  .pillar-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: #a3d01d;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .pillar-title {
+    font-family: 'Cabin', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #100828;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .pillar-desc {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* ─── CORE MESSAGE ─── */
+  .core-message {
+    background: #100828;
+    padding: 40px 48px;
+    text-align: center;
+    margin: 28px 0;
+    border-radius: 10px;
+  }
+
+  .core-message-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: rgba(163,208,29,0.6);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .core-message-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .core-message-text span {
+    color: #a3d01d;
+  }
+
+  /* ─── COLOUR SWATCHES ─── */
+  .swatch-group-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #888;
+    text-transform: uppercase;
+    margin: 16px 0 10px;
+  }
+
+  .swatches {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .swatch {
+    text-align: center;
+    width: 80px;
+  }
+
+  .swatch-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+    border: 2px solid rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .swatch-name {
+    font-size: 10px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+
+  .swatch-hex {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    color: #888;
+  }
+
+  /* ─── GAP CARDS ─── */
+  .gap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .gap-card {
+    background: #fff8f8;
+    border: 1px solid #ffd0d0;
+    border-radius: 8px;
+    padding: 16px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .gap-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #c62828;
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 28px;
+  }
+
+  .gap-title {
+    font-family: 'Cabin', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #c62828;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .gap-desc {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  /* ─── TONE BOX ─── */
+  .tone-box {
+    background: #f8f8f8;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    border: 1px solid #e8e8e8;
+  }
+
+  .tone-box-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .tone-box-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #100828;
+    line-height: 1.6;
+  }
+
+  /* ─── INTL PREREQUISITES ─── */
+  .prereq-list {
+    list-style: none;
+    margin: 12px 0 20px;
+  }
+
+  .prereq-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #1a1a1a;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-weight: 500;
+  }
+
+  .prereq-list li:last-child { border-bottom: none; }
+
+  .prereq-checkbox {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intl-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  .intl-step {
+    background: #f0f2f5;
+    border-radius: 8px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .intl-step-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #a3d01d;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .intl-step-label {
+    font-family: 'Cabin', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #100828;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .intl-step-desc {
+    font-size: 12px;
+    color: #666;
+  }
+
+  /* ─── BULLET LIST ─── */
+  .bullet-list {
+    list-style: none;
+    margin: 12px 0 20px;
+  }
+
+  .bullet-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #444;
+    padding: 6px 0;
+    line-height: 1.5;
+  }
+
+  .bullet-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #a3d01d;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ─── PRIORITY TABLE NUMBERING ─── */
+  .priority-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    color: #a3d01d;
+  }
+
+  /* ─── NEXT STEPS ─── */
+  .next-steps-table .data-table td:first-child {
+    font-weight: 700;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: #100828;
+    padding: 24px 64px;
+    text-align: center;
+    border-top: 4px solid #a3d01d;
+  }
+
+  .footer-text {
+    font-family: 'Cabin', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.5px;
+  }
+
+  .footer-text span {
+    color: #a3d01d;
+  }
+
+  /* ─── CARD WRAPPER ─── */
+  .card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+
+  .card-body {
+    padding: 24px;
+  }
+
+  /* ─── HIGHLIGHT ROW ─── */
+  .highlight-row td {
+    background: #f7fde8 !important;
+    font-weight: 600;
+  }
+
+  /* ─── INLINE METRIC ─── */
+  .proof-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 8px;
+  }
+
+  .proof-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #a3d01d;
+    flex-shrink: 0;
+  }
+
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- ═══════════════════════════════════════════════
+       COVER
+  ══════════════════════════════════════════════════ -->
+  <div class="cover">
+    <div class="cover-brand">Phase 3 Ecom</div>
+    <div class="cover-chip">Week 11 — Strategy Update</div>
+    <h1 class="cover-title">FenceStay<br>Strategy Update</h1>
+    <div class="cover-subtitle">Roadmap, Brand Strategy &amp; Growth Targets</div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <label>Prepared by</label>
+        <span>Phase 3 Ecom</span>
+      </div>
+      <div class="cover-meta-item">
+        <label>Date</label>
+        <span>06/05/2026</span>
+      </div>
+      <div class="cover-meta-item">
+        <label>Prepared for</label>
+        <span>Steven Casamento</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       TABLE OF CONTENTS
+  ══════════════════════════════════════════════════ -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <div class="toc-grid">
+      <div class="toc-item">
+        <div class="toc-item-num">01</div>
+        <div class="toc-item-label">Roadmap</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-item-num">02</div>
+        <div class="toc-item-label">Brand Strategy</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-item-num">03</div>
+        <div class="toc-item-label">KPIs &amp; Growth</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-item-num">04</div>
+        <div class="toc-item-label">Next Steps</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       CONTENT
+  ══════════════════════════════════════════════════ -->
+  <div class="content">
+
+    <!-- ─────────────────────────────────────────────
+         SECTION 01: ROADMAP
+    ──────────────────────────────────────────────── -->
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Roadmap</h2>
+    </div>
+
+    <!-- Week 11 Status -->
+    <div class="callout">
+      <div class="callout-title">Week 11 — Status</div>
+      <p>We are 11 weeks into the 12-month program. The foundation phase is complete. The new website has been built, reviewed, and approved. Campaigns are built and waiting to launch. The primary blocker holding everything back is the site going live.</p>
+    </div>
+
+    <!-- Activation Checklist -->
+    <div class="subsection-title">Activation Checklist — When Site Goes Live</div>
+    <ul class="checklist">
+      <li><div class="check-icon">✓</div>Google Shopping campaign activates immediately</li>
+      <li><div class="check-icon">✓</div>Meta Catalogue campaign activates immediately</li>
+      <li><div class="check-icon">✓</div>Klaviyo flows switch on (welcome + abandon checkout)</li>
+      <li><div class="check-icon">✓</div>High priority CRO actions begin — Week 1 post-launch</li>
+    </ul>
+
+    <!-- PHASE 1 -->
+    <div class="phase-card phase-1">
+      <div class="phase-card-header">
+        <div class="phase-card-title">Phase 1: Foundation — Complete</div>
+        <div class="phase-card-weeks">Weeks 1–10</div>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th style="width:160px;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Brand strategy developed</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>New Shopify store built (Empire theme)</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>Site migration from old store</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>Homepage, product + collection pages</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>Compliance + education pages</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>Fence Calculator integrated with Add to Cart</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>Navigation redesigned</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>Product image optimisation</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>CRO &amp; SEO foundation checks</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>Google Ads Search campaign rebuilt</td><td><span class="badge badge-live">Live</span></td></tr>
+          <tr><td>Google Business Profile connected</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>Meta catalogue connected to website</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>Creative asset audit + messaging framework</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>Marketing strategy developed</td><td><span class="badge badge-complete">Complete</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase-card phase-2">
+      <div class="phase-card-header">
+        <div class="phase-card-title">Phase 2: Launch Ready — In Progress</div>
+        <div class="phase-card-weeks">Weeks 8–11</div>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th style="width:180px;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Google Shopping campaign</td>
+            <td>
+              <span class="badge badge-ready">Ready</span>
+              <span class="badge-note">Blocked on launch</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Meta Catalogue campaign</td>
+            <td>
+              <span class="badge badge-ready">Ready</span>
+              <span class="badge-note">Blocked on launch</span>
+            </td>
+          </tr>
+          <tr><td>Klaviyo subscription pages</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          <tr><td>Advertiser verification</td><td><span class="badge badge-in-progress">In Progress</span></td></tr>
+          <tr><td>Google Merchant Centre connection</td><td><span class="badge badge-needs-update">Needs Update</span></td></tr>
+          <tr><td>Offer development (Week 11)</td><td><span class="badge badge-upcoming">Upcoming</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase-card phase-3">
+      <div class="phase-card-header">
+        <div class="phase-card-title">Phase 3: Post-Launch Activation</div>
+        <div class="phase-card-weeks">Weeks 11–14</div>
+      </div>
+      <div class="phase-card-intro">These activities are planned and ready. They activate as soon as the site is live.</div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Activity</th>
+            <th style="width:200px;">Timing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Google Shopping + Meta Catalogue go live</td><td style="font-weight:700; color:#e65100;">Immediately at launch</td></tr>
+          <tr><td>High priority CRO actions</td><td>Week 1 post-launch</td></tr>
+          <tr><td>Klaviyo welcome + abandon checkout flows</td><td>Week 1 post-launch</td></tr>
+          <tr><td>Abandon cart flow</td><td>Week 2 post-launch</td></tr>
+          <tr><td>Offer development + Hero campaign brief</td><td>Weeks 11–12</td></tr>
+          <tr><td>Hero campaign (major push — Google + Meta)</td><td>Week 13</td></tr>
+          <tr><td>Hero campaign retargeting</td><td>Week 14</td></tr>
+          <tr><td>FGC brief + kit</td><td>Post-launch</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="phase-card phase-4">
+      <div class="phase-card-header">
+        <div class="phase-card-title">Phase 4: Growth Roadmap — To Be Added</div>
+        <div class="phase-card-weeks">Months 4–12</div>
+      </div>
+      <div class="phase-card-intro">Planned but not yet tasked. Add to roadmap.</div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Activity</th>
+            <th style="width:120px;">Priority</th>
+            <th style="width:140px;">Timeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Audience-specific landing pages (3 personas)</td><td><span class="badge badge-high">High</span></td><td>Month 2–3</td></tr>
+          <tr><td>Shop by Job navigation + collection pages</td><td><span class="badge badge-high">High</span></td><td>Month 2–3</td></tr>
+          <tr><td>How It Works standalone landing page</td><td><span class="badge badge-high">High</span></td><td>Month 2–3</td></tr>
+          <tr><td>SEO strategy + content plan</td><td><span class="badge badge-medium">Medium</span></td><td>Month 3–4</td></tr>
+          <tr><td>Post-purchase email flow</td><td><span class="badge badge-medium">Medium</span></td><td>Month 3</td></tr>
+          <tr><td>Winback / lapsed customer flow</td><td><span class="badge badge-medium">Medium</span></td><td>Month 4</td></tr>
+          <tr><td>Special events + seasonal campaigns calendar</td><td><span class="badge badge-medium">Medium</span></td><td>Month 3</td></tr>
+          <tr><td>Social media profile review + optimisation</td><td><span class="badge badge-low">Low</span></td><td>Month 2</td></tr>
+          <tr><td>Influencer content review</td><td><span class="badge badge-low">Low</span></td><td>Month 4–5</td></tr>
+          <tr><td>International expansion research</td><td><span class="badge badge-medium">Medium</span></td><td>Month 8–10</td></tr>
+          <tr><td>Marketplace testing (eBay AU, Amazon AU)</td><td><span class="badge badge-medium">Medium</span></td><td>Month 9–10</td></tr>
+          <tr><td>New product launch campaign</td><td><span class="badge badge-tbc">TBC</span></td><td>When product ready</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- ─────────────────────────────────────────────
+         SECTION 02: BRAND STRATEGY
+    ──────────────────────────────────────────────── -->
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Brand Strategy</h2>
+    </div>
+
+    <!-- BRAND FOUNDATIONS -->
+    <div class="subsection-title">Brand Foundations</div>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">1</div>
+        <div class="pillar-title">The Job Feels Easier Already</div>
+        <p class="pillar-desc">Reduce the mental load and uncertainty customers feel before purchase. When the product feels easier to understand, transport, and install, the customer believes the whole job will be easier.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">2</div>
+        <div class="pillar-title">Buy the Right Setup the First Time</div>
+        <p class="pillar-desc">Guided decision-making replaces open-ended browsing. Move customers from "I'm not sure what to buy" to "I know exactly what I need to order."</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">3</div>
+        <div class="pillar-title">Faster, Smarter, Proven in Real Conditions</div>
+        <p class="pillar-desc">Faster installation, reduced labour, simpler transport, real Australian conditions. Built for people who work the land.</p>
+      </div>
+    </div>
+
+    <!-- Core Message -->
+    <div class="core-message">
+      <div class="core-message-label">Core Message</div>
+      <div class="core-message-text">Build it faster. <span>Without the hassle.</span></div>
+    </div>
+
+    <!-- COLOUR PALETTE -->
+    <div class="subsection-title">FenceStay Colour Palette</div>
+    <div class="swatch-group-title">Primary</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-circle" style="background:#F5F3EE;"></div>
+        <div class="swatch-name">Dust White</div>
+        <div class="swatch-hex">#F5F3EE</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background:#2E2E2E;"></div>
+        <div class="swatch-name">Charcoal</div>
+        <div class="swatch-hex">#2E2E2E</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background:#556B4F;"></div>
+        <div class="swatch-name">Deep Olive</div>
+        <div class="swatch-hex">#556B4F</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background:#8A5A3C;"></div>
+        <div class="swatch-name">Earth Brown</div>
+        <div class="swatch-hex">#8A5A3C</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background:#2F5BA6;"></div>
+        <div class="swatch-name">Dark Blue</div>
+        <div class="swatch-hex">#2F5BA6</div>
+      </div>
+    </div>
+    <div class="swatch-group-title">Secondary</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-circle" style="background:#6F6F6A;"></div>
+        <div class="swatch-name">Field Grey</div>
+        <div class="swatch-hex">#6F6F6A</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background:#A8B0A1;"></div>
+        <div class="swatch-name">Sage Grey</div>
+        <div class="swatch-hex">#A8B0A1</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background:#D8D0C4;"></div>
+        <div class="swatch-name">Clay Beige</div>
+        <div class="swatch-hex">#D8D0C4</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background:#B9B9B4;"></div>
+        <div class="swatch-name">Steel Grey</div>
+        <div class="swatch-hex">#B9B9B4</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-circle" style="background:#6E90AD;"></div>
+        <div class="swatch-name">Grey Azure</div>
+        <div class="swatch-hex">#6E90AD</div>
+      </div>
+    </div>
+
+    <!-- Tone of Voice -->
+    <div class="tone-box" style="margin-top:24px;">
+      <div class="tone-box-label">Tone of Voice</div>
+      <div class="tone-box-text">Straight talking, practical, plain English. Outcome-led, not feature-led.</div>
+    </div>
+
+    <!-- WEBSITE AUDIT — WHAT ALIGNS -->
+    <div class="subsection-title">Website Audit — What Aligns</div>
+    <div class="card">
+      <div class="card-body" style="padding:0;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Element</th>
+              <th style="width:140px;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Hero headline "Build It Faster. Without The Hassle."</td><td><span class="badge badge-on-brand">✓ On Brand</span></td></tr>
+            <tr><td>Four brand benefit pillars</td><td><span class="badge badge-on-brand">✓ On Brand</span></td></tr>
+            <tr><td>Fence Calculator featured prominently</td><td><span class="badge badge-on-brand">✓ On Brand</span></td></tr>
+            <tr><td>Who It's For: 4 audience segments</td><td><span class="badge badge-on-brand">✓ On Brand</span></td></tr>
+            <tr><td>How It Works section with video</td><td><span class="badge badge-on-brand">✓ On Brand</span></td></tr>
+            <tr><td>Customer reviews + social proof</td><td><span class="badge badge-on-brand">✓ On Brand</span></td></tr>
+            <tr><td>FAQ section</td><td><span class="badge badge-on-brand">✓ On Brand</span></td></tr>
+            <tr><td>Kits &amp; Bundles section</td><td><span class="badge badge-on-brand">✓ On Brand</span></td></tr>
+            <tr><td>Overall tone of copy</td><td><span class="badge badge-on-brand">✓ On Brand</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- WEBSITE AUDIT — GAPS -->
+    <div class="subsection-title">Website Audit — Gaps to Address</div>
+    <div class="gap-grid">
+      <div class="gap-card">
+        <div class="gap-num">1</div>
+        <div>
+          <div class="gap-title">Shop by Job — Missing</div>
+          <div class="gap-desc">Primary nav item and key homepage section absent.</div>
+        </div>
+      </div>
+      <div class="gap-card">
+        <div class="gap-num">2</div>
+        <div>
+          <div class="gap-title">Trade / Bulk Pathway — Missing</div>
+          <div class="gap-desc">Contractor persona has no dedicated entry point.</div>
+        </div>
+      </div>
+      <div class="gap-card">
+        <div class="gap-num">3</div>
+        <div>
+          <div class="gap-title">Hero CTA Routing — Incorrect</div>
+          <div class="gap-desc">Current: "Shop Kits &amp; Bundles." Should be: "Shop by Job."</div>
+        </div>
+      </div>
+      <div class="gap-card">
+        <div class="gap-num">4</div>
+        <div>
+          <div class="gap-title">Intent Segmentation Block — Missing</div>
+          <div class="gap-desc">"Shop Your Way" 4-way segment block absent from homepage.</div>
+        </div>
+      </div>
+      <div class="gap-card">
+        <div class="gap-num">5</div>
+        <div>
+          <div class="gap-title">Earthy Colour Palette — Under-Applied</div>
+          <div class="gap-desc">Deep Olive + Earth Brown absent. Site feels corporate, not agricultural.</div>
+        </div>
+      </div>
+      <div class="gap-card">
+        <div class="gap-num">6</div>
+        <div>
+          <div class="gap-title">Audience-Specific Landing Pages — Do Not Exist</div>
+          <div class="gap-desc">All ad traffic lands on homepage. No persona-matched entry points.</div>
+        </div>
+      </div>
+      <div class="gap-card" style="grid-column: 1 / -1;">
+        <div class="gap-num">7</div>
+        <div>
+          <div class="gap-title">How It Works — Homepage Section Only</div>
+          <div class="gap-desc">Needs a standalone landing page for paid search + awareness traffic.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUDIENCE STRATEGY — PERSONA CARDS -->
+    <div class="subsection-title">Audience Strategy — 3 Personas</div>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-card-header">
+          <div class="persona-card-num">Persona 01</div>
+          <div class="persona-card-name">The Primary Producer</div>
+        </div>
+        <div class="persona-card-body">
+          <div class="persona-meta">Farmers | Age: 35–65 | Ready to buy</div>
+          <div class="persona-detail"><strong>Converts on:</strong> Installation videos, bulk packs, time-saved messaging</div>
+          <div class="persona-detail"><strong>LP focus:</strong> "Built for real Australian conditions"</div>
+          <div class="persona-cta">Shop Bulk Packs / Calculator</div>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-card-header">
+          <div class="persona-card-num">Persona 02</div>
+          <div class="persona-card-name">The Small Acreage DIY Buyer</div>
+        </div>
+        <div class="persona-card-body">
+          <div class="persona-meta">Age: 28–55 | Uncertain, high hesitation</div>
+          <div class="persona-detail"><strong>Converts on:</strong> Fence Calculator, Shop by Job, plain English guidance</div>
+          <div class="persona-detail"><strong>LP focus:</strong> "Not sure what you need? Start here."</div>
+          <div class="persona-cta">Use the Fence Calculator</div>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-card-header">
+          <div class="persona-card-num">Persona 03</div>
+          <div class="persona-card-name">The Contractor / Trade Buyer</div>
+        </div>
+        <div class="persona-card-body">
+          <div class="persona-meta">Age: 30–60 | Solution-aware, repeat buyer</div>
+          <div class="persona-detail"><strong>Converts on:</strong> Bulk packs, trade pricing, fast reorder</div>
+          <div class="persona-detail"><strong>LP focus:</strong> "Built for tradespeople who need the job done fast."</div>
+          <div class="persona-cta">Shop Trade &amp; Bulk Packs</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIORITY ACTION LIST -->
+    <div class="subsection-title">Priority Action List</div>
+    <div class="card">
+      <div class="card-body" style="padding:0;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width:40px;">#</th>
+              <th>Action</th>
+              <th style="width:220px;">Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="priority-num">1</span></td><td>Add "Shop by Job" to nav + build collection page</td><td style="color:#666; font-size:12px;">Core conversion pathway</td></tr>
+            <tr><td><span class="priority-num">2</span></td><td>Add "Trade / Bulk" to navigation</td><td style="color:#666; font-size:12px;">Contractor has no entry point</td></tr>
+            <tr><td><span class="priority-num">3</span></td><td>Fix hero CTA: "Calculator | Shop by Job"</td><td style="color:#666; font-size:12px;">Routes to correct pathway</td></tr>
+            <tr><td><span class="priority-num">4</span></td><td>Build "Shop Your Way" intent block</td><td style="color:#666; font-size:12px;">Reduces post-hero friction</td></tr>
+            <tr><td><span class="priority-num">5</span></td><td>Build LP: Primary Producer (Farmers)</td><td style="color:#666; font-size:12px;">Ad traffic needs persona landing page</td></tr>
+            <tr><td><span class="priority-num">6</span></td><td>Build LP: Small Acreage / DIY Buyer</td><td style="color:#666; font-size:12px;">Calculator-led LP</td></tr>
+            <tr><td><span class="priority-num">7</span></td><td>Build LP: Contractor / Trade Buyer</td><td style="color:#666; font-size:12px;">Trade-specific conversion path</td></tr>
+            <tr><td><span class="priority-num">8</span></td><td>Build standalone How It Works LP</td><td style="color:#666; font-size:12px;">Required for search + awareness traffic</td></tr>
+            <tr><td><span class="priority-num">9</span></td><td>Apply Deep Olive + Earth Brown to homepage</td><td style="color:#666; font-size:12px;">Brand earthy identity</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- ─────────────────────────────────────────────
+         SECTION 03: KPIs & GROWTH TARGETS
+    ──────────────────────────────────────────────── -->
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">KPIs &amp; Growth Targets</h2>
+    </div>
+
+    <!-- APRIL 2026 BASELINE -->
+    <div class="subsection-title">April 2026 — Baseline</div>
+    <div class="callout-note">
+      <p>Baseline reflects old website + Google Search only. New site + full campaign suite expected to improve all metrics from day of launch.</p>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">$36,327</div>
+        <div class="kpi-label">Gross Revenue</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">$29,864</div>
+        <div class="kpi-label">Net Revenue</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">26</div>
+        <div class="kpi-label">Orders</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">$1,397</div>
+        <div class="kpi-label">Avg Order Value</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">2,994</div>
+        <div class="kpi-label">Sessions</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">2,211</div>
+        <div class="kpi-label">Users</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">0.87%</div>
+        <div class="kpi-label">Conversion Rate</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">$12.13</div>
+        <div class="kpi-label">Revenue / Session</div>
+      </div>
+    </div>
+
+    <!-- WHAT NEEDS TO MOVE -->
+    <div class="subsection-title">What Needs to Move — $100K/Month</div>
+
+    <div class="formula-block">Revenue = Sessions × CVR × AOV</div>
+
+    <div class="card" style="margin-top:20px;">
+      <div class="card-body" style="padding:0;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Current</th>
+              <th>Target</th>
+              <th>Lift</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:600;">Monthly Sessions</td>
+              <td style="font-family:'Orbitron',sans-serif; font-size:13px; font-weight:700;">2,994</td>
+              <td style="font-family:'Orbitron',sans-serif; font-size:13px; font-weight:700; color:#a3d01d;">4,500</td>
+              <td><span class="badge badge-in-progress">+50%</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Conversion Rate</td>
+              <td style="font-family:'Orbitron',sans-serif; font-size:13px; font-weight:700;">0.87%</td>
+              <td style="font-family:'Orbitron',sans-serif; font-size:13px; font-weight:700; color:#a3d01d;">1.50%</td>
+              <td><span class="badge badge-in-progress">+72%</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Average Order Value</td>
+              <td style="font-family:'Orbitron',sans-serif; font-size:13px; font-weight:700;">$1,397</td>
+              <td style="font-family:'Orbitron',sans-serif; font-size:13px; font-weight:700; color:#a3d01d;">$1,500</td>
+              <td><span class="badge badge-in-progress">+7%</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout-lime-box">4,500 × 1.50% × $1,500 = <strong>$101,250/mo</strong></div>
+
+    <ul class="bullet-list">
+      <li><div class="bullet-dot"></div><strong>Traffic:</strong> Google Shopping, Meta Catalogue, Hero campaigns, SEO</li>
+      <li><div class="bullet-dot"></div><strong>CVR:</strong> CRO actions, audience LPs, Klaviyo flows</li>
+      <li><div class="bullet-dot"></div><strong>AOV:</strong> Bundles, kits, trade pricing, upsells</li>
+    </ul>
+
+    <!-- 12-MONTH GROWTH MODEL -->
+    <div class="subsection-title">12-Month Growth Model</div>
+    <div class="card">
+      <div class="card-body" style="padding:0;">
+        <table class="data-table growth-table">
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Period</th>
+              <th>Sessions</th>
+              <th>CVR</th>
+              <th>AOV</th>
+              <th style="background:#f7fde8;">Monthly Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:700;">Phase 1 — Launch</td>
+              <td style="color:#666;">May–Jul 2026</td>
+              <td>3,200–3,800</td>
+              <td>0.95–1.0%</td>
+              <td>$1,400</td>
+              <td class="target-col">$43k–$53k/mo</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;">Phase 2 — Activate</td>
+              <td style="color:#666;">Aug–Sep 2026</td>
+              <td>3,800–4,200</td>
+              <td>1.1–1.2%</td>
+              <td>$1,430</td>
+              <td class="target-col">$60k–$72k/mo</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;">Phase 3 — Optimise</td>
+              <td style="color:#666;">Oct–Dec 2026</td>
+              <td>4,200–4,500</td>
+              <td>1.3–1.4%</td>
+              <td>$1,470</td>
+              <td class="target-col">$80k–$93k/mo</td>
+            </tr>
+            <tr class="scale-row">
+              <td style="font-weight:800; color:#100828;">Phase 4 — Scale</td>
+              <td style="font-weight:700; color:#100828;">Jan–Apr 2027</td>
+              <td style="font-weight:700;">4,500–5,000</td>
+              <td style="font-weight:700;">1.5%</td>
+              <td style="font-weight:700;">$1,500</td>
+              <td class="target-col">$101k+/mo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout-note" style="margin-top:-12px; margin-bottom:24px;">
+      <p>International expansion trigger: $100,000/month sustained for 2 consecutive months.</p>
+    </div>
+
+    <!-- MILESTONES THAT DRIVE GROWTH -->
+    <div class="subsection-title">Milestones That Drive Growth</div>
+    <div class="card">
+      <div class="card-body" style="padding:0;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Milestone</th>
+              <th style="width:120px;">Phase</th>
+              <th style="width:160px;">Revenue Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>New site live + Google Shopping + Meta Catalogue</td>
+              <td style="font-weight:600; color:#2e7d32;">Phase 1</td>
+              <td><span class="rev-badge rev-badge-high">+$6–10k/mo</span></td>
+            </tr>
+            <tr>
+              <td>High priority CRO actions complete</td>
+              <td style="font-weight:600; color:#2e7d32;">Phase 1</td>
+              <td><span class="rev-badge rev-badge-high">+$4–8k/mo</span></td>
+            </tr>
+            <tr>
+              <td>Klaviyo abandon checkout + welcome flows</td>
+              <td style="font-weight:600; color:#2e7d32;">Phase 1</td>
+              <td><span class="rev-badge rev-badge-medium">+$3–5k/mo</span></td>
+            </tr>
+            <tr>
+              <td>Hero campaign (Week 13)</td>
+              <td style="font-weight:600; color:#1565c0;">Phase 2</td>
+              <td><span class="rev-badge rev-badge-high">+$10–15k/mo</span></td>
+            </tr>
+            <tr>
+              <td>Audience-specific LPs live (3 personas)</td>
+              <td style="font-weight:600; color:#1565c0;">Phase 2</td>
+              <td><span class="rev-badge rev-badge-high">+$5–8k/mo</span></td>
+            </tr>
+            <tr>
+              <td>Abandon cart + post-purchase flows</td>
+              <td style="font-weight:600; color:#1565c0;">Phase 2–3</td>
+              <td><span class="rev-badge rev-badge-medium">+$4–6k/mo</span></td>
+            </tr>
+            <tr>
+              <td>Shop by Job nav + collection pages</td>
+              <td style="font-weight:600; color:#e65100;">Phase 3</td>
+              <td><span class="rev-badge rev-badge-medium">+$3–5k/mo</span></td>
+            </tr>
+            <tr>
+              <td>FGC content in active ad rotation</td>
+              <td style="font-weight:600; color:#1565c0;">Phase 2–3</td>
+              <td><span class="rev-badge rev-badge-high">+$5–10k/mo</span></td>
+            </tr>
+            <tr>
+              <td>Medium + low priority CRO</td>
+              <td style="font-weight:600; color:#e65100;">Phase 3</td>
+              <td><span class="rev-badge rev-badge-medium">+$3–5k/mo</span></td>
+            </tr>
+            <tr>
+              <td>Seasonal / special events campaigns</td>
+              <td style="font-weight:600; color:#a3d01d;">Phase 3–4</td>
+              <td><span class="rev-badge rev-badge-tbc">TBC</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CRO LIFT TARGETS -->
+    <div class="subsection-title">CRO Lift Targets</div>
+    <div class="card">
+      <div class="card-body" style="padding:0;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th style="width:300px;">CVR</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:600;">Pre-launch baseline</td>
+              <td>
+                <div class="cvr-cell">
+                  <span class="cvr-value">0.87%</span>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width:58%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td style="color:#888; font-size:12px;">Old site</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Post-launch (new site)</td>
+              <td>
+                <div class="cvr-cell">
+                  <span class="cvr-value">1.0%</span>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width:67%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td style="color:#888; font-size:12px;">UX improvement only</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">High priority CRO 1+2</td>
+              <td>
+                <div class="cvr-cell">
+                  <span class="cvr-value">1.1–1.2%</span>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width:80%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td style="color:#888; font-size:12px;">PDP, checkout, upsells</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Audience LPs + Shop by Job</td>
+              <td>
+                <div class="cvr-cell">
+                  <span class="cvr-value">1.3–1.4%</span>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width:93%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td style="color:#888; font-size:12px;">Persona entry points</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Medium priority CRO</td>
+              <td>
+                <div class="cvr-cell">
+                  <span class="cvr-value">1.4–1.5%</span>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width:97%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td style="color:#888; font-size:12px;">Flows, cross-sell</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Full optimisation</td>
+              <td>
+                <div class="cvr-cell">
+                  <span class="cvr-value">1.5%+</span>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width:100%;"></div>
+                  </div>
+                </div>
+              </td>
+              <td style="color:#888; font-size:12px;">Full retention suite</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- INTERNATIONAL EXPANSION -->
+    <div class="subsection-title">International Expansion</div>
+
+    <ul class="prereq-list">
+      <li><div class="prereq-checkbox"></div>$100k/mo sustained for 2 consecutive months</li>
+      <li><div class="prereq-checkbox"></div>Audience LPs and messaging validated</li>
+      <li><div class="prereq-checkbox"></div>Bundles and kits structure locked</li>
+      <li><div class="prereq-checkbox"></div>Email flows fully operational</li>
+      <li><div class="prereq-checkbox"></div>Creative asset library built (FGC + UGC)</li>
+      <li><div class="prereq-checkbox"></div>AU marketplace exploration complete</li>
+    </ul>
+
+    <div class="intl-steps">
+      <div class="intl-step">
+        <div class="intl-step-num">1</div>
+        <div class="intl-step-label">Research</div>
+        <div class="intl-step-desc">NZ → UK market analysis before any spend</div>
+      </div>
+      <div class="intl-step">
+        <div class="intl-step-num">2</div>
+        <div class="intl-step-label">Test</div>
+        <div class="intl-step-desc">Marketplace-first (eBay / Amazon) before dedicated store</div>
+      </div>
+      <div class="intl-step">
+        <div class="intl-step-num">3</div>
+        <div class="intl-step-label">Expand</div>
+        <div class="intl-step-desc">Dedicated store only after marketplace validation</div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- ─────────────────────────────────────────────
+         SECTION 04: NEXT STEPS
+    ──────────────────────────────────────────────── -->
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Next Steps</h2>
+    </div>
+
+    <div class="card next-steps-table">
+      <div class="card-body" style="padding:0;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th style="width:180px;">Owner</th>
+              <th style="width:160px;">Timing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:700;">Confirm site launch date</td>
+              <td>Steven + Phase 3</td>
+              <td><span class="badge badge-high">This week</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;">Resolve Google Merchant Centre connection</td>
+              <td>Phase 3 Ecom</td>
+              <td><span class="badge badge-in-progress">Pre-launch</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;">Complete advertiser verification</td>
+              <td>Phase 3 Ecom</td>
+              <td><span class="badge badge-in-progress">Pre-launch</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;">Add audience LPs + Shop by Job to roadmap</td>
+              <td>Phase 3 Ecom</td>
+              <td><span class="badge badge-upcoming">Post-launch brief</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;">Offer development call (Week 11)</td>
+              <td>Both</td>
+              <td><span class="badge badge-live">Scheduled</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:700;">Approve this document</td>
+              <td>Steven</td>
+              <td><span class="badge badge-high">This week</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════ -->
+  <div class="footer">
+    <div class="footer-text">
+      Prepared by <span>Phase 3 Ecom</span> &nbsp;|&nbsp; will@phase3ecom.com &nbsp;|&nbsp; 06/05/2026
+    </div>
+  </div>
+
+</div><!-- /page-wrapper -->
+</body>
+</html>
