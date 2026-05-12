@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategy Brief — TX Marketplace Accelerator v2 — Phase 3 Ecom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --lime: #a3d01d;
+    --dark: #100828;
+    --white: #ffffff;
+    --off-white: #f8f8f6;
+    --mid-grey: #4a4a4a;
+    --light-grey: #e8e8e8;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cabin', sans-serif;
+    background: #f0ede8;
+    color: #1a1a1a;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* COVER */
+  .cover {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px;
+  }
+  .cover-top-line { position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: var(--lime); }
+  .cover-corner {
+    position: absolute;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: var(--lime);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .cover-corner.tl { top: 28px; left: 32px; }
+  .cover-corner.tr { top: 28px; right: 32px; }
+  .cover-inner {
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cover-brand-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--lime);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .cover-accent-line { width: 80px; height: 3px; background: var(--lime); margin: 0 auto 36px; }
+  .cover-accent-line.bottom { margin: 36px auto 0; }
+  .cover-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+  .cover-subtitle {
+    font-family: 'Cabin', sans-serif;
+    font-size: 1rem;
+    color: var(--lime);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cover-meta-item { text-align: center; }
+  .cover-meta-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .cover-meta-value {
+    font-family: 'Cabin', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+  .cover-meta-divider { width: 1px; background: rgba(163,208,29,0.3); align-self: stretch; }
+  .cover-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); font-size: 1.4rem; color: var(--lime); opacity: 0.7; }
+
+  /* NAV */
+  .nav-toc {
+    background: var(--white);
+    border-bottom: 3px solid var(--lime);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    overflow-x: auto;
+  }
+  .nav-toc-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+  }
+  .nav-toc-item {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--dark);
+    text-decoration: none;
+    padding: 18px 28px 18px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-toc-item:hover { color: var(--lime); }
+  .nav-toc-num { color: var(--lime); font-weight: 900; }
+
+  /* LAYOUT */
+  .page-wrap { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+  .section-block { padding: 90px 0 0; }
+  .section-header {
+    background: var(--dark);
+    width: 100vw;
+    position: relative;
+    left: 50%; right: 50%;
+    margin-left: -50vw; margin-right: -50vw;
+    padding: 48px 0;
+    margin-bottom: 72px;
+    overflow: hidden;
+  }
+  .section-header-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+  }
+  .section-bg-num {
+    position: absolute;
+    right: 32px; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .section-num-accent {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+  .section-title-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 900;
+    color: var(--lime);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .section-end-spacer { height: 60px; }
+
+  /* CARDS */
+  .card {
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+    padding: 36px 40px;
+    margin-bottom: 24px;
+  }
+  .card-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    color: var(--lime);
+  }
+  .card-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+  .card p { font-size: 0.95rem; color: #333; line-height: 1.7; margin-bottom: 10px; }
+  .card p:last-child { margin-bottom: 0; }
+
+  /* PERSONA GRID */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .persona-card {
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+  }
+  .persona-header {
+    background: var(--dark);
+    border-bottom: 3px solid var(--lime);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .persona-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--lime);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .persona-badge {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+  .persona-badge.primary { background: var(--lime); color: var(--dark); }
+  .persona-badge.secondary { background: rgba(163,208,29,0.18); color: var(--lime); }
+  .persona-badge.upsell { background: #1565c0; color: #fff; }
+  .persona-body { padding: 24px 28px; }
+  .persona-revenue {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+  .persona-desc { font-size: 0.9rem; color: #444; line-height: 1.65; margin-bottom: 14px; }
+  .persona-pain {
+    font-size: 0.85rem;
+    color: #555;
+    background: #f8f8f6;
+    border-left: 3px solid var(--lime);
+    padding: 10px 14px;
+    line-height: 1.55;
+  }
+  .persona-pain-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(163,208,29,0.8);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .persona-wide {
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .persona-wide .persona-body { display: flex; gap: 32px; align-items: flex-start; }
+  .persona-wide .persona-desc { flex: 1; margin-bottom: 0; }
+  .persona-wide .persona-pain { flex: 1; }
+
+  /* POSITIONING */
+  .positioning-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .pos-card {
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+    padding: 32px 36px;
+    border-top: 4px solid;
+  }
+  .pos-card.is { border-color: var(--lime); }
+  .pos-card.not { border-color: #c62828; }
+  .pos-card-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .pos-card.is .pos-card-label { color: var(--lime); }
+  .pos-card.not .pos-card-label { color: #c62828; }
+  .pos-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.6;
+  }
+  .pos-item:last-child { margin-bottom: 0; }
+  .pos-icon { font-weight: 700; font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+  .pos-card.is .pos-icon { color: var(--lime); }
+  .pos-card.not .pos-icon { color: #c62828; }
+
+  /* USP */
+  .usp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .usp-card {
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+    padding: 32px 28px;
+    border-bottom: 3px solid var(--lime);
+    display: flex;
+    flex-direction: column;
+  }
+  .usp-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--lime);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .usp-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 14px;
+  }
+  .usp-desc { font-size: 0.9rem; color: #555; line-height: 1.65; flex: 1; }
+
+  /* AUDIENCE ANGLES */
+  .angle-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    margin-bottom: 40px;
+    font-size: 0.9rem;
+  }
+  .angle-table thead { background: var(--dark); }
+  .angle-table thead th {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--lime);
+    text-transform: uppercase;
+    padding: 16px 20px;
+    text-align: left;
+  }
+  .angle-table tbody tr:nth-child(even) { background: #f8fbee; }
+  .angle-table tbody td { padding: 16px 20px; color: #333; line-height: 1.55; vertical-align: top; border-bottom: 1px solid #eee; }
+  .angle-table tbody tr:last-child td { border-bottom: none; }
+  .angle-name { font-weight: 600; color: var(--dark); }
+
+  /* GUARANTEE */
+  .guarantee-hero {
+    background: var(--dark);
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+    padding: 56px 48px;
+    text-align: center;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .guarantee-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 80%, rgba(163,208,29,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .guarantee-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: rgba(163,208,29,0.7);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .guarantee-statement {
+    font-family: 'Cabin', sans-serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.45;
+    max-width: 700px;
+    margin: 0 auto 28px;
+  }
+  .guarantee-statement em {
+    font-style: normal;
+    color: var(--lime);
+  }
+  .guarantee-sub {
+    font-family: 'Cabin', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .guarantee-rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .guarantee-rule-card {
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+    padding: 28px 32px;
+    border-left: 4px solid;
+  }
+  .guarantee-rule-card.do { border-color: var(--lime); }
+  .guarantee-rule-card.dont { border-color: #c62828; }
+  .guarantee-rule-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .guarantee-rule-card.do .guarantee-rule-label { color: var(--lime); }
+  .guarantee-rule-card.dont .guarantee-rule-label { color: #c62828; }
+  .guarantee-rule-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .guarantee-rule-card ul li { font-size: 0.9rem; color: #333; line-height: 1.6; display: flex; gap: 10px; align-items: flex-start; }
+  .guarantee-rule-card.do ul li::before { content: '✓'; color: var(--lime); font-weight: 700; flex-shrink: 0; }
+  .guarantee-rule-card.dont ul li::before { content: '✗'; color: #c62828; font-weight: 700; flex-shrink: 0; }
+
+  /* SECTION DIVIDER */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(163,208,29,0.2);
+    margin: 0 0 40px;
+  }
+  .subsection-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--dark);
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--lime);
+    padding-bottom: 10px;
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  /* PAGE NAV + FOOTER */
+  .page-nav {
+    background: var(--dark);
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 3px solid var(--lime);
+    margin-top: 80px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .page-nav a {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--lime);
+    text-decoration: none;
+    padding: 12px 24px;
+    border: 1px solid rgba(163,208,29,0.4);
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .page-nav a:hover { background: rgba(163,208,29,0.1); }
+  .page-nav-pos {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.4);
+  }
+  .doc-footer { width: 100%; background: var(--dark); padding: 56px 32px; text-align: center; }
+  .footer-line { width: 100%; height: 1px; background: var(--lime); margin-bottom: 40px; opacity: 0.4; }
+  .footer-brand { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 900; color: var(--lime); letter-spacing: 0.2em; margin-bottom: 16px; }
+  .footer-meta { font-family: 'Cabin', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; }
+
+  @media (max-width: 760px) {
+    .persona-grid { grid-template-columns: 1fr; }
+    .positioning-grid { grid-template-columns: 1fr; }
+    .usp-grid { grid-template-columns: 1fr; }
+    .guarantee-rules { grid-template-columns: 1fr; }
+    .persona-wide .persona-body { flex-direction: column; }
+    .cover-meta-divider { display: none; }
+    .cover-meta { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top-line"></div>
+  <span class="cover-corner tl">[</span>
+  <span class="cover-corner tr">]</span>
+  <div class="cover-inner">
+    <div class="cover-brand-label">TX Marketplace Accelerator — v2</div>
+    <div class="cover-accent-line"></div>
+    <h1 class="cover-title">Strategy Brief</h1>
+    <div class="cover-subtitle">Audiences &middot; Positioning &middot; USP &middot; Guarantee</div>
+    <div class="cover-accent-line bottom"></div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Date</div>
+        <div class="cover-meta-value">12/05/2026</div>
+      </div>
+      <div class="cover-meta-divider"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Offer</div>
+        <div class="cover-meta-value">TX Marketplace Accelerator</div>
+      </div>
+      <div class="cover-meta-divider"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Market</div>
+        <div class="cover-meta-value">AU</div>
+      </div>
+      <div class="cover-meta-divider"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Prepared By</div>
+        <div class="cover-meta-value">Phase 3 Ecom</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-scroll">&#9660;</div>
+</div>
+
+<!-- NAV -->
+<nav class="nav-toc">
+  <div class="nav-toc-inner">
+    <a href="#section-01" class="nav-toc-item"><span class="nav-toc-num">01</span> Audiences</a>
+    <a href="#section-02" class="nav-toc-item"><span class="nav-toc-num">02</span> Positioning</a>
+    <a href="#section-03" class="nav-toc-item"><span class="nav-toc-num">03</span> USP</a>
+    <a href="#section-04" class="nav-toc-item"><span class="nav-toc-num">04</span> Guarantee</a>
+  </div>
+</nav>
+
+<!-- SECTION 01 — AUDIENCES -->
+<div id="section-01" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">01</div>
+        <div class="section-title-text">Audiences</div>
+      </div>
+      <div class="section-bg-num">01</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <span class="subsection-label">Primary Targets</span>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-name">Mid-Tier Shopify Owner</div>
+          <div class="persona-badge primary">Primary</div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-revenue">$200k &ndash; $500k / yr</div>
+          <div class="persona-desc">Already decided Amazon is worth doing. Hasn&rsquo;t started. Time-poor, margin-anxious. Every month of inaction is a month of compounding disadvantage. The decision is made &mdash; the execution hasn&rsquo;t happened.</div>
+          <div class="persona-pain">
+            <div class="persona-pain-label">Primary objection</div>
+            &ldquo;I&rsquo;ll do it myself when I have time.&rdquo; Never has time. Underestimates the real cost.
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-name">Growth Shopify Owner</div>
+          <div class="persona-badge primary">Primary</div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-revenue">$500k &ndash; $2M / yr</div>
+          <div class="persona-desc">Scaling mindset. May be building toward exit in 3&ndash;5 years. Sees Amazon as a revenue channel, not a threat. Wants systematic growth, not education. Time is the constraint, not budget.</div>
+          <div class="persona-pain">
+            <div class="persona-pain-label">Primary objection</div>
+            &ldquo;I need someone who can own this, not teach me how.&rdquo; Bandwidth, not conviction.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <span class="subsection-label">Secondary Targets</span>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-name">Amazon Seller (No PPC)</div>
+          <div class="persona-badge secondary">Secondary</div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-revenue">Already on Amazon &mdash; flat sales</div>
+          <div class="persona-desc">On the platform but not growing. Burned by a past PPC attempt. Knows their listings aren&rsquo;t optimised but doesn&rsquo;t know what to fix. The "invisible within Amazon" angle lands here &mdash; not just invisible on Amazon vs. Google.</div>
+          <div class="persona-pain">
+            <div class="persona-pain-label">Key message shift</div>
+            Lead with reviews + ranking optimisation, not launch speed. Already launched.
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-header">
+          <div class="persona-name">Existing Phase 3 Client</div>
+          <div class="persona-badge upsell">Upsell</div>
+        </div>
+        <div class="persona-body">
+          <div class="persona-revenue">Existing retainer client</div>
+          <div class="persona-desc">Already trusts Phase 3. Easiest conversion. Offer as a natural channel expansion to their existing programme &mdash; not a new product, an additional revenue stream. No credibility barrier.</div>
+          <div class="persona-pain">
+            <div class="persona-pain-label">Approach</div>
+            Direct conversation, not paid acquisition. Reference their existing store performance.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="persona-wide">
+      <div class="persona-header">
+        <div class="persona-name">Sceptical DTC Purist</div>
+        <div class="persona-badge secondary">Do Not Target (Paid)</div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-desc">Loves brand story. Fears Amazon commoditises or cannibalises DTC. Hasn&rsquo;t made the decision yet. Requires conviction-building content, not execution pitch. Expensive to convert via paid media.</div>
+        <div class="persona-pain">
+          <div class="persona-pain-label">Verdict</div>
+          Exclude from paid targeting. Can be reached via organic/blog content. Do not use Identity Gap or $6,700 angle &mdash; neither addresses the core objection (brand erosion). Requires a separate &ldquo;Amazon doesn&rsquo;t dilute your brand&rdquo; content piece.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Audience Rule</div>
+      <p>Target the <strong>&ldquo;already decided&rdquo; buyer</strong> — they&rsquo;ve made the decision, just haven&rsquo;t executed. Do not spend paid budget trying to convince fence-sitters. The primary campaign assumes Amazon conviction exists; it sells TX Marketplace Accelerator as the fastest, lowest-risk vehicle to execute on a decision already made.</p>
+    </div>
+
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+<!-- SECTION 02 — POSITIONING -->
+<div id="section-02" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">02</div>
+        <div class="section-title-text">Positioning</div>
+      </div>
+      <div class="section-bg-num">02</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="card" style="border-top: 4px solid var(--lime); margin-bottom: 40px;">
+      <div class="card-label">Core Statement</div>
+      <p style="font-size: 1.2rem; font-weight: 700; color: var(--dark); line-height: 1.5; font-family: 'Cabin', sans-serif;">TX Marketplace Accelerator is a done-for-you Amazon launch service for Australian Shopify brands. Not a course. Not an agency retainer. A fixed-scope, fixed-price, 30-day delivery.</p>
+    </div>
+
+    <div class="positioning-grid">
+      <div class="pos-card is">
+        <div class="pos-card-label">&#10003; What It Is</div>
+        <div class="pos-item"><span class="pos-icon">✓</span><span>Done-for-you Amazon launch — Phase 3 owns the execution</span></div>
+        <div class="pos-item"><span class="pos-icon">✓</span><span>Complementary to Shopify — not a replacement, a second channel</span></div>
+        <div class="pos-item"><span class="pos-icon">✓</span><span>Fixed price ($1,500 setup) with a delivery guarantee</span></div>
+        <div class="pos-item"><span class="pos-icon">✓</span><span>Ongoing management available post-launch ($1,000/month retainer)</span></div>
+        <div class="pos-item"><span class="pos-icon">✓</span><span>Australian agency — local compliance, GST, AU market knowledge</span></div>
+        <div class="pos-item"><span class="pos-icon">✓</span><span>Fastest path from &ldquo;not on Amazon&rdquo; to &ldquo;live on Amazon&rdquo;</span></div>
+      </div>
+      <div class="pos-card not">
+        <div class="pos-card-label">✗ What It Is Not</div>
+        <div class="pos-item"><span class="pos-icon">✗</span><span>Not a course or coaching programme (done-for-you, not taught-to-you)</span></div>
+        <div class="pos-item"><span class="pos-icon">✗</span><span>Not a traditional agency (fixed scope, not open-ended retainer from day one)</span></div>
+        <div class="pos-item"><span class="pos-icon">✗</span><span>Not a sales guarantee &mdash; we guarantee listing delivery, not revenue outcome</span></div>
+        <div class="pos-item"><span class="pos-icon">✗</span><span>Not a replacement for an existing Shopify strategy</span></div>
+        <div class="pos-item"><span class="pos-icon">✗</span><span>Not for brands that haven&rsquo;t decided Amazon is worth pursuing</span></div>
+        <div class="pos-item"><span class="pos-icon">✗</span><span>Not a DIY tool or software platform</span></div>
+      </div>
+    </div>
+
+    <span class="subsection-label">Competitive Frame</span>
+
+    <table class="angle-table">
+      <thead>
+        <tr>
+          <th>Alternative</th>
+          <th>Why It Falls Short</th>
+          <th>TX Marketplace Accelerator Advantage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="angle-name">DIY</span></td>
+          <td>Average cost: $6,700 before first dollar. 8&ndash;12 hours catalogue build alone. No prior channel knowledge.</td>
+          <td>$1,500 flat. 30-day delivery. Phase 3 absorbs the learning curve.</td>
+        </tr>
+        <tr>
+          <td><span class="angle-name">Amazon Agency (offshore)</span></td>
+          <td>Long retainers, unclear scope, no delivery guarantee, no AU compliance knowledge.</td>
+          <td>Fixed scope. Fixed price. Delivery guarantee. AU-based.</td>
+        </tr>
+        <tr>
+          <td><span class="angle-name">Amazon Course</span></td>
+          <td>Adds to the learning burden. Doesn&rsquo;t execute. Time cost is significant.</td>
+          <td>No learning required. Phase 3 executes. Brand owner keeps running their store.</td>
+        </tr>
+        <tr>
+          <td><span class="angle-name">Wait and do it later</span></td>
+          <td>Competitors compound reviews. First-mover advantage grows each month.</td>
+          <td>Every month delayed = more reviews to close vs. competitors already ranking.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+<!-- SECTION 03 — USP -->
+<div id="section-03" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">03</div>
+        <div class="section-title-text">USP</div>
+      </div>
+      <div class="section-bg-num">03</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="usp-grid">
+      <div class="usp-card">
+        <div class="usp-number">$1,500</div>
+        <div class="usp-label">Fixed Setup Price</div>
+        <div class="usp-desc">vs. $6,700 average DIY cost. Includes account setup, full catalogue build, listing copy, photography reformatting, and FBA/FBM configuration. No scope creep, no hourly billing.</div>
+      </div>
+      <div class="usp-card">
+        <div class="usp-number">30</div>
+        <div class="usp-label">Day Delivery Guarantee</div>
+        <div class="usp-desc">Products live on Amazon within 30 days of kickoff or the setup fee is fully refunded. Not a performance guarantee &mdash; a delivery guarantee. Phase 3 carries the execution risk, not the client.</div>
+      </div>
+      <div class="usp-card">
+        <div class="usp-number">DFY</div>
+        <div class="usp-label">Done For You</div>
+        <div class="usp-desc">Brand owner sends the products. Phase 3 does everything else: compliance mapping, GTIN sourcing, category setup, listing copy written to Amazon SEO standards, image spec reformatting, account verification.</div>
+      </div>
+      <div class="usp-card">
+        <div class="usp-number">AU</div>
+        <div class="usp-label">Local Market Expertise</div>
+        <div class="usp-desc">Australian compliance knowledge: ARTG requirements for health/beauty, AU-specific category rules, GST treatment, local FBA fulfilment centre logistics. Not a templated offshore service.</div>
+      </div>
+      <div class="usp-card">
+        <div class="usp-number">30%</div>
+        <div class="usp-label">Invisible Market Capture</div>
+        <div class="usp-desc">30% of Australian product searches start on Amazon, not Google. Shopify-only brands are invisible to this segment. TX Marketplace Accelerator captures that audience without replacing the existing store.</div>
+      </div>
+      <div class="usp-card">
+        <div class="usp-number">3×</div>
+        <div class="usp-label">Phase Growth Model</div>
+        <div class="usp-desc">Launch (Month 1: products live) → Grow (Months 2&ndash;3: reviews, pricing, first ad spend) → Compound (Month 4+: rank improvement, catalogue expansion, eBay AU, Catch). Not a setup-and-leave service.</div>
+      </div>
+    </div>
+
+    <span class="subsection-label">Anchor Message by Channel</span>
+
+    <table class="angle-table">
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <th>Lead Angle</th>
+          <th>Why It Works Here</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="angle-name">Landing Page Hero</span></td>
+          <td>Invisible Customer &mdash; 30% stat</td>
+          <td>Creates urgency without being aggressive. Factual. Defines the gap before pitching the solution.</td>
+        </tr>
+        <tr>
+          <td><span class="angle-name">Meta Ad Script 1 (cold)</span></td>
+          <td>$6,700 DIY Math</td>
+          <td>Kills self-serve objection with a number before it forms. Rational, not emotional.</td>
+        </tr>
+        <tr>
+          <td><span class="angle-name">Meta Ad Script 2 (cold-warm)</span></td>
+          <td>Reviews Compound</td>
+          <td>Makes procrastination cost visible. Non-obvious framing &mdash; stops the scroll.</td>
+        </tr>
+        <tr>
+          <td><span class="angle-name">Meta Ad Script 3 (retargeting)</span></td>
+          <td>Identity Gap</td>
+          <td>Reframes Amazon as additive, not competitive. Triggers comparison. Requires prior brand awareness.</td>
+        </tr>
+        <tr>
+          <td><span class="angle-name">Blog / SEO</span></td>
+          <td>Cost of Not Being on Amazon</td>
+          <td>Combines $6,700 + review compounding into a single article. Targets &ldquo;Amazon AU&rdquo; search intent.</td>
+        </tr>
+        <tr>
+          <td><span class="angle-name">LinkedIn</span></td>
+          <td>Invisible Customer (Post 1), Reviews Compound (Post 3)</td>
+          <td>Educational tone performs on LinkedIn. Analytical audience. No hard sell.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+<!-- SECTION 04 — GUARANTEE -->
+<div id="section-04" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">04</div>
+        <div class="section-title-text">Guarantee</div>
+      </div>
+      <div class="section-bg-num">04</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="guarantee-hero">
+      <div class="guarantee-label">Current Guarantee — v2 (Marketplace Offer)</div>
+      <div class="guarantee-statement">&ldquo;We guarantee to have your products <em>live on Amazon within 30 days</em> of kickoff, or your $1,500 setup fee is fully refunded.&rdquo;</div>
+      <div class="guarantee-sub">Short form: &ldquo;We guarantee to have your products live within 30 days, or your money back.&rdquo;</div>
+    </div>
+
+    <div class="guarantee-rules">
+      <div class="guarantee-rule-card do">
+        <div class="guarantee-rule-label">&#10003; Use</div>
+        <ul>
+          <li>State once, near the end of any script or page section</li>
+          <li>Deliver as a matter of fact &mdash; not as salesmanship</li>
+          <li>Frame as proof of confidence: &ldquo;Because we&rsquo;ve done this enough times to know how it ends.&rdquo;</li>
+          <li>Use short form in ad scripts; long form in landing page and blog</li>
+          <li>Pair with a specific dollar figure ($1,500) when space allows</li>
+        </ul>
+      </div>
+      <div class="guarantee-rule-card dont">
+        <div class="guarantee-rule-label">✗ Never Do</div>
+        <ul>
+          <li>Lead with the guarantee &mdash; it&rsquo;s a trust closer, not a hook</li>
+          <li>Use desperate framing: &ldquo;We&rsquo;re so confident we GUARANTEE...&rdquo;</li>
+          <li>Imply a sales or revenue guarantee &mdash; this guarantees listing delivery only</li>
+          <li>Use old v1 language: &ldquo;guarantee to double your sales in 90 days&rdquo;</li>
+          <li>Use &ldquo;work for free&rdquo; framing &mdash; the refund language is the v2 standard</li>
+        </ul>
+      </div>
+    </div>
+
+    <span class="subsection-label">What The Guarantee Covers</span>
+
+    <div class="card">
+      <div class="card-label">Scope of Guarantee</div>
+      <p>The guarantee covers <strong>listing delivery</strong> &mdash; products live and visible on Amazon AU within 30 days of kickoff. It does not cover sales velocity, ad performance, review count, or organic ranking. This is intentional: Phase 3 controls delivery. Phase 3 does not control buyer behaviour, Amazon&rsquo;s algorithm, or market demand.</p>
+      <p>The refund is the $1,500 setup fee. Ongoing retainer fees (Month 2+) are not covered by the launch guarantee &mdash; they are tied to ongoing management performance, not initial delivery.</p>
+    </div>
+
+    <span class="subsection-label">Strategic Role of the Guarantee</span>
+
+    <div class="card">
+      <div class="card-label">Why It Works</div>
+      <p>The guarantee does not reduce risk for the buyer &mdash; it signals expertise. A team that guarantees 30-day delivery has done this enough times to know the failure modes. The willingness to refund is not desperation; it&rsquo;s confidence made concrete.</p>
+      <p>Position it last in every piece of content, after the audience has seen the problem (invisible customers), the cost of inaction (review compounding), and the solution (TX Marketplace Accelerator). The guarantee is the final proof point, not the opening argument.</p>
+    </div>
+
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+<!-- PAGE NAV -->
+<div class="page-nav">
+  <a href="marketplaces-v2-research.html">&larr; Research Suite</a>
+  <div class="page-nav-pos">STRATEGY BRIEF</div>
+  <a href="marketplaces-v2-landing-page.html">Landing Page &rarr;</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="doc-footer">
+  <div class="footer-line"></div>
+  <div class="footer-brand">PHASE 3 ECOM</div>
+  <div class="footer-meta">TX Marketplace Accelerator v2 &nbsp;|&nbsp; Strategy Brief &nbsp;|&nbsp; will@phase3ecom.com &nbsp;|&nbsp; 12/05/2026</div>
+</footer>
+
+</body>
+</html>
