@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Video Ad Scripts — TX Marketplace Accelerator v2 — Phase 3 Ecom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --lime: #a3d01d;
+    --dark: #100828;
+    --white: #ffffff;
+    --off-white: #f8f8f6;
+    --mid-grey: #4a4a4a;
+    --light-grey: #e8e8e8;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cabin', sans-serif;
+    background: #f0ede8;
+    color: #1a1a1a;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* COVER */
+  .cover {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px;
+  }
+  .cover-top-line {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 1px;
+    background: var(--lime);
+  }
+  .cover-corner {
+    position: absolute;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: var(--lime);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .cover-corner.tl { top: 28px; left: 32px; }
+  .cover-corner.tr { top: 28px; right: 32px; }
+  .cover-inner {
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cover-brand-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--lime);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .cover-accent-line {
+    width: 80px; height: 3px;
+    background: var(--lime);
+    margin: 0 auto 36px;
+  }
+  .cover-accent-line.bottom { margin: 36px auto 0; }
+  .cover-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+  .cover-subtitle {
+    font-family: 'Cabin', sans-serif;
+    font-size: 1rem;
+    color: var(--lime);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .cover-status-badge {
+    margin-top: 36px;
+    display: inline-block;
+    background: #c62828;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 2px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cover-meta-item { text-align: center; }
+  .cover-meta-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .cover-meta-value {
+    font-family: 'Cabin', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+  .cover-meta-divider {
+    width: 1px;
+    background: rgba(163,208,29,0.3);
+    align-self: stretch;
+  }
+  .cover-scroll {
+    position: absolute;
+    bottom: 32px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+    color: var(--lime);
+    opacity: 0.7;
+  }
+
+  /* NAV */
+  .nav-toc {
+    background: var(--white);
+    border-bottom: 3px solid var(--lime);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    overflow-x: auto;
+  }
+  .nav-toc-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+  }
+  .nav-toc-item {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--dark);
+    text-decoration: none;
+    padding: 18px 28px 18px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-toc-item:hover { color: var(--lime); }
+  .nav-toc-num { color: var(--lime); font-weight: 900; }
+
+  /* LAYOUT */
+  .page-wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .section-block { padding: 90px 0 0; }
+  .section-header {
+    background: var(--dark);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 48px 0;
+    margin-bottom: 72px;
+    overflow: hidden;
+  }
+  .section-header-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+  }
+  .section-bg-num {
+    position: absolute;
+    right: 32px; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .section-num-accent {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+  .section-title-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 900;
+    color: var(--lime);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .subsection-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--lime);
+    margin-bottom: 40px;
+    margin-top: 64px;
+    display: block;
+  }
+  .section-end-spacer { height: 40px; }
+
+  /* WARNING CALLOUT */
+  .warning-callout {
+    border-left: 4px solid #e65100;
+    background: #fff7f0;
+    padding: 28px 36px;
+    border-radius: 0 4px 4px 0;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 48px;
+  }
+  .warning-callout-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: #e65100;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .warning-callout ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .warning-callout ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.6;
+  }
+  .warning-callout ul li::before {
+    content: '→';
+    color: #e65100;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* SCRIPT BLOCK */
+  .script-card {
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 56px;
+    overflow: hidden;
+  }
+  .script-card-header {
+    background: var(--dark);
+    border-bottom: 3px solid var(--lime);
+    padding: 24px 32px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .script-card-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--lime);
+    letter-spacing: 0.1em;
+  }
+  .script-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+  }
+  .script-meta-item {
+    font-family: 'Cabin', sans-serif;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+  }
+  .script-meta-item strong {
+    color: rgba(163,208,29,0.8);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+  }
+
+  .script-meta-table {
+    padding: 20px 32px;
+    background: #f8fbee;
+    border-bottom: 1px solid var(--light-grey);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 32px;
+  }
+  .script-meta-row {
+    display: flex;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #333;
+    align-items: baseline;
+  }
+  .script-meta-row-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--lime);
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .script-body {
+    background: var(--dark);
+    border-left: 4px solid var(--lime);
+    margin: 32px;
+    border-radius: 0 4px 4px 0;
+    padding: 32px 36px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.8;
+    white-space: pre-line;
+  }
+  .script-direction {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    color: rgba(163,208,29,0.7);
+    font-style: italic;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .script-production {
+    margin: 0 32px 32px;
+    padding: 24px 28px;
+    background: #f0f4fc;
+    border-left: 4px solid #1565c0;
+    border-radius: 0 4px 4px 0;
+  }
+  .script-production-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #1565c0;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .script-production ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .script-production ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.55;
+  }
+  .script-production ul li::before {
+    content: '—';
+    color: #1565c0;
+    flex-shrink: 0;
+  }
+
+  /* DO NOT DO */
+  .donot-card {
+    background: #fff3f3;
+    border-left: 4px solid #c62828;
+    border-radius: 0 4px 4px 0;
+    padding: 20px 28px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .donot-icon {
+    color: #c62828;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* PAGE NAV */
+  .page-nav {
+    background: var(--dark);
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 3px solid var(--lime);
+    margin-top: 80px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .page-nav a {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--lime);
+    text-decoration: none;
+    padding: 12px 24px;
+    border: 1px solid rgba(163,208,29,0.4);
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .page-nav a:hover { background: rgba(163,208,29,0.1); }
+  .page-nav-pos {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    width: 100%;
+    background: var(--dark);
+    padding: 56px 32px;
+    text-align: center;
+  }
+  .footer-line { width: 100%; height: 1px; background: var(--lime); margin-bottom: 40px; opacity: 0.4; }
+  .footer-brand { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 900; color: var(--lime); letter-spacing: 0.2em; margin-bottom: 16px; }
+  .footer-meta { font-family: 'Cabin', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; }
+
+  @media (max-width: 760px) {
+    .script-meta-table { grid-template-columns: 1fr; }
+    .script-body { margin: 16px; padding: 20px 20px; }
+    .script-production { margin: 0 16px 16px; }
+    .nav-toc-item { padding: 14px 16px 14px 0; font-size: 0.58rem; }
+    .cover-meta { gap: 24px; }
+    .cover-meta-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top-line"></div>
+  <span class="cover-corner tl">[</span>
+  <span class="cover-corner tr">]</span>
+
+  <div class="cover-inner">
+    <div class="cover-brand-label">TX Marketplace Accelerator — v2 Draft</div>
+    <div class="cover-accent-line"></div>
+    <h1 class="cover-title">Meta Video Ad Scripts</h1>
+    <div class="cover-subtitle">TX Marketplace Accelerator &mdash; v2 Draft &middot; 3 Scripts</div>
+    <div class="cover-accent-line bottom"></div>
+    <div class="cover-status-badge">DRAFT &mdash; DO NOT PUBLISH WITHOUT APPROVAL</div>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Date</div>
+        <div class="cover-meta-value">12/05/2026</div>
+      </div>
+      <div class="cover-meta-divider"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Scripts</div>
+        <div class="cover-meta-value">3</div>
+      </div>
+      <div class="cover-meta-divider"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Status</div>
+        <div class="cover-meta-value">Draft</div>
+      </div>
+      <div class="cover-meta-divider"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Prepared By</div>
+        <div class="cover-meta-value">Phase 3 Ecom</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-scroll">&#9660;</div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav-toc">
+  <div class="nav-toc-inner">
+    <a href="#section-01" class="nav-toc-item"><span class="nav-toc-num">01</span> Usage Notes</a>
+    <a href="#section-02" class="nav-toc-item"><span class="nav-toc-num">02</span> Script 1 — $6,700 Math</a>
+    <a href="#section-03" class="nav-toc-item"><span class="nav-toc-num">03</span> Script 2 — Reviews Compound</a>
+    <a href="#section-04" class="nav-toc-item"><span class="nav-toc-num">04</span> Script 3 — Identity Gap</a>
+    <a href="#section-05" class="nav-toc-item"><span class="nav-toc-num">05</span> Do Not Do</a>
+  </div>
+</nav>
+
+<!-- SECTION 01 — USAGE NOTES -->
+<div id="section-01" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">01</div>
+        <div class="section-title-text">Usage Notes</div>
+      </div>
+      <div class="section-bg-num">01</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="warning-callout">
+      <div class="warning-callout-label">&#9888; Before Running These Scripts — Read First</div>
+      <ul>
+        <li>Scripts 1 and 2: cold-to-warm audiences (no prior brand exposure)</li>
+        <li>Script 3: warm/retargeting audiences (have seen landing page or prior content)</li>
+        <li>Do NOT run retargeting copy to cold audiences &mdash; suppresses conversion and misleads CPL data</li>
+        <li>Separate ad sets, separate creative, separate KPIs for each script</li>
+        <li>Publish Script 1 first. Test spend before running all three simultaneously.</li>
+      </ul>
+    </div>
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+<!-- SECTION 02 — SCRIPT 1 -->
+<div id="section-02" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">02</div>
+        <div class="section-title-text">Script 1 &mdash; The $6,700 Math</div>
+      </div>
+      <div class="section-bg-num">02</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="script-card">
+      <div class="script-card-header">
+        <div>
+          <div class="script-card-title">Script 1 &mdash; The $6,700 Math</div>
+        </div>
+        <div class="script-card-meta">
+          <div class="script-meta-item"><strong>Angle:</strong> Cost comparison (Angle A)</div>
+          <div class="script-meta-item"><strong>Objective:</strong> Kill the &ldquo;I&rsquo;ll do it myself&rdquo; objection</div>
+        </div>
+      </div>
+      <div class="script-meta-table">
+        <div class="script-meta-row"><span class="script-meta-row-label">Audience</span> Shopify brand owners, AU, $500k&ndash;$2M revenue, cold</div>
+        <div class="script-meta-row"><span class="script-meta-row-label">Format</span> 30 sec &middot; Direct to camera &middot; No logo intro &middot; No music</div>
+        <div class="script-meta-row"><span class="script-meta-row-label">Placement</span> Works in story + feed</div>
+        <div class="script-meta-row"><span class="script-meta-row-label">Objective</span> Kill the &ldquo;I&rsquo;ll do it myself&rdquo; objection before it forms</div>
+      </div>
+      <div class="script-body"><span class="script-direction">[Direct to camera, founder-style, no logo intro]</span>
+&ldquo;If you&rsquo;re thinking about launching on Amazon yourself &mdash; here&rsquo;s what that actually costs.
+
+Account setup: $200 and 3 hours. Catalogue build: 8&ndash;12 hours of your time. Product copy: $400&ndash;$600 per SKU if you outsource it. Photography reformatting: $200. And then there&rsquo;s the first 90 days of figuring out what you got wrong.
+
+Total? Most brands spend $6,700 before they make a dollar.
+
+We charge $1,500 and a 30-day guarantee. Your products are live or your money back.
+
+Link in bio.&rdquo;</div>
+      <div class="script-production">
+        <div class="script-production-label">Production Notes</div>
+        <ul>
+          <li>No B-roll required</li>
+          <li>Can use simple cost breakdown graphic as lower-third or cut-in</li>
+          <li>Founder-style delivery preferred (not polished presenter)</li>
+          <li>End card: &ldquo;30-day launch. $1,500. Refund guarantee. Apply at [URL]&rdquo;</li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+<!-- SECTION 03 — SCRIPT 2 -->
+<div id="section-03" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">03</div>
+        <div class="section-title-text">Script 2 &mdash; Reviews Compound</div>
+      </div>
+      <div class="section-bg-num">03</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="script-card">
+      <div class="script-card-header">
+        <div>
+          <div class="script-card-title">Script 2 &mdash; Reviews Compound</div>
+        </div>
+        <div class="script-card-meta">
+          <div class="script-meta-item"><strong>Angle:</strong> Reviews compound like interest (Angle B)</div>
+          <div class="script-meta-item"><strong>Objective:</strong> Make procrastination cost visible and urgent</div>
+        </div>
+      </div>
+      <div class="script-meta-table">
+        <div class="script-meta-row"><span class="script-meta-row-label">Audience</span> Shopify brand owners, AU, already running ads, growth mindset, cold-to-warm</div>
+        <div class="script-meta-row"><span class="script-meta-row-label">Format</span> 35 sec &middot; Hook frame + VO or direct to camera &middot; Can use B-roll</div>
+        <div class="script-meta-row"><span class="script-meta-row-label">Placement</span> Feed preferred</div>
+        <div class="script-meta-row"><span class="script-meta-row-label">Objective</span> Make procrastination cost visible and urgent</div>
+      </div>
+      <div class="script-body"><span class="script-direction">[Hook frame: static text overlay &mdash; &ldquo;Your competitor has 200 Amazon reviews. You have zero.&rdquo;]</span>
+<span class="script-direction">[VO or direct to camera:]</span>
+&ldquo;Amazon&rsquo;s algorithm is a flywheel. Reviews drive ranking. Ranking drives visibility. Visibility drives sales, which drive more reviews.
+
+Every month you&rsquo;re not on Amazon, that flywheel spins for your competitor, not you.
+
+The brand that gets there first isn&rsquo;t just ahead &mdash; they&rsquo;re compounding. That gap doesn&rsquo;t close easily.
+
+We launch you on Amazon in 30 days. The flywheel starts turning. Link in bio.&rdquo;</div>
+      <div class="script-production">
+        <div class="script-production-label">Production Notes</div>
+        <ul>
+          <li>Can use competitor review count screenshots as B-roll if available</li>
+          <li>Hook frame is critical &mdash; must hold for at least 2 seconds</li>
+          <li>End card: &ldquo;30-day launch. $1,500. Refund guarantee. Apply at [URL]&rdquo;</li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+<!-- SECTION 04 — SCRIPT 3 -->
+<div id="section-04" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">04</div>
+        <div class="section-title-text">Script 3 &mdash; Identity Gap</div>
+      </div>
+      <div class="section-bg-num">04</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="script-card">
+      <div class="script-card-header">
+        <div>
+          <div class="script-card-title">Script 3 &mdash; Identity Gap</div>
+        </div>
+        <div class="script-card-meta">
+          <div class="script-meta-item"><strong>Angle:</strong> Identity gap (Angle E)</div>
+          <div class="script-meta-item"><strong>Audience:</strong> WARM / retargeting only</div>
+        </div>
+      </div>
+      <div class="script-meta-table">
+        <div class="script-meta-row"><span class="script-meta-row-label">Audience</span> Shopify brand owners, AU, warm/retargeting (assume some brand awareness)</div>
+        <div class="script-meta-row"><span class="script-meta-row-label">Format</span> 40 sec &middot; Direct to camera &middot; Hook frame</div>
+        <div class="script-meta-row"><span class="script-meta-row-label">Placement</span> Feed + stories</div>
+        <div class="script-meta-row"><span class="script-meta-row-label">Objective</span> Reframe Amazon as complementary channel, not competitor; broad reach</div>
+      </div>
+      <div class="script-body"><span class="script-direction">[Hook frame: &ldquo;You sell on Shopify. Your competitor sells on Shopify and Amazon.&rdquo;]</span>
+<span class="script-direction">[Direct to camera:]</span>
+&ldquo;I&rsquo;m not saying Amazon is better than Shopify. I&rsquo;m saying they&rsquo;re not competing with each other.
+
+Amazon is where people go when they know what they want and they want it now. Shopify is where your brand lives.
+
+If you&rsquo;re only on Shopify, you&rsquo;re invisible to every buyer who starts their search on Amazon. That&rsquo;s about 30% of all product searches in AU.
+
+You don&rsquo;t have to choose. You just have to show up.
+
+30-day launch. $1,500. Refund guarantee. Link in bio.&rdquo;</div>
+      <div class="script-production">
+        <div class="script-production-label">Production Notes</div>
+        <ul>
+          <li>Works for retargeting &mdash; assumes some prior brand awareness</li>
+          <li>Keep hook frame visible for 2&ndash;3 seconds before cutting to camera</li>
+          <li>End card: &ldquo;30-day launch. $1,500. Refund guarantee. Apply at [URL]&rdquo;</li>
+          <li>Debate-triggering angle &mdash; expect comment engagement; do not respond defensively</li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+<!-- SECTION 05 — DO NOT DO -->
+<div id="section-05" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">05</div>
+        <div class="section-title-text">Do Not Do</div>
+      </div>
+      <div class="section-bg-num">05</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="donot-card">
+      <span class="donot-icon">✗</span>
+      <span>Do not lead any script with the guarantee &mdash; it&rsquo;s a trust closer, not a hook</span>
+    </div>
+    <div class="donot-card">
+      <span class="donot-icon">✗</span>
+      <span>Do not mention &ldquo;other marketplaces&rdquo; without naming them (eBay AU, Catch)</span>
+    </div>
+    <div class="donot-card">
+      <span class="donot-icon">✗</span>
+      <span>Do not run Script 3 to cold audiences &mdash; requires prior brand awareness to land</span>
+    </div>
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+<!-- PAGE NAV -->
+<div class="page-nav">
+  <a href="marketplaces-v2-landing-page.html">&larr; Landing Page</a>
+  <a href="marketplaces-v2-research.html" style="border-color:rgba(163,208,29,0.2); color:rgba(163,208,29,0.6);">&larr; Research Suite</a>
+  <div class="page-nav-pos">AD SCRIPTS &mdash; 2 OF 4</div>
+  <a href="marketplaces-v2-blog-post.html">Blog Post &rarr;</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="doc-footer">
+  <div class="footer-line"></div>
+  <div class="footer-brand">PHASE 3 ECOM</div>
+  <div class="footer-meta">TX Marketplace Accelerator v2 &nbsp;|&nbsp; Meta Video Ad Scripts &nbsp;|&nbsp; will@phase3ecom.com &nbsp;|&nbsp; 12/05/2026</div>
+</footer>
+
+</body>
+</html>

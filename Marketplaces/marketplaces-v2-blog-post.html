@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Post Draft — TX Marketplace Accelerator v2 — Phase 3 Ecom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --lime: #a3d01d;
+    --dark: #100828;
+    --white: #ffffff;
+    --off-white: #f8f8f6;
+    --mid-grey: #4a4a4a;
+    --light-grey: #e8e8e8;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cabin', sans-serif;
+    background: #f0ede8;
+    color: #1a1a1a;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* COVER */
+  .cover {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px;
+  }
+  .cover-top-line {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 1px;
+    background: var(--lime);
+  }
+  .cover-corner {
+    position: absolute;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: var(--lime);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .cover-corner.tl { top: 28px; left: 32px; }
+  .cover-corner.tr { top: 28px; right: 32px; }
+  .cover-inner {
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cover-brand-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--lime);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .cover-accent-line {
+    width: 80px; height: 3px;
+    background: var(--lime);
+    margin: 0 auto 36px;
+  }
+  .cover-accent-line.bottom { margin: 36px auto 0; }
+  .cover-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+  .cover-subtitle {
+    font-family: 'Cabin', sans-serif;
+    font-size: 1rem;
+    color: var(--lime);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .cover-status-badge {
+    margin-top: 36px;
+    display: inline-block;
+    background: #c62828;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 2px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cover-meta-item { text-align: center; }
+  .cover-meta-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .cover-meta-value {
+    font-family: 'Cabin', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+  .cover-meta-divider {
+    width: 1px;
+    background: rgba(163,208,29,0.3);
+    align-self: stretch;
+  }
+  .cover-scroll {
+    position: absolute;
+    bottom: 32px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+    color: var(--lime);
+    opacity: 0.7;
+  }
+
+  /* NAV */
+  .nav-toc {
+    background: var(--white);
+    border-bottom: 3px solid var(--lime);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    overflow-x: auto;
+  }
+  .nav-toc-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+  }
+  .nav-toc-item {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--dark);
+    text-decoration: none;
+    padding: 18px 28px 18px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-toc-item:hover { color: var(--lime); }
+  .nav-toc-num { color: var(--lime); font-weight: 900; }
+
+  /* LAYOUT */
+  .page-wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .section-block { padding: 90px 0 0; }
+  .section-header {
+    background: var(--dark);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 48px 0;
+    margin-bottom: 72px;
+    overflow: hidden;
+  }
+  .section-header-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+  }
+  .section-bg-num {
+    position: absolute;
+    right: 32px; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .section-num-accent {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+  .section-title-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 900;
+    color: var(--lime);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .subsection-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--lime);
+    margin-bottom: 40px;
+    margin-top: 64px;
+    display: block;
+  }
+  .section-end-spacer { height: 40px; }
+
+  /* META TABLE */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.93rem;
+  }
+  .data-table th {
+    background: var(--dark);
+    color: var(--lime);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 16px 20px;
+    text-align: left;
+  }
+  .data-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #ebebeb;
+    color: #2a2a2a;
+    vertical-align: top;
+  }
+  .data-table tr:nth-child(even) td { background: #fafafa; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: #f5fbe8; }
+  .data-table tr.highlight-row td { background: #f0f8d4; font-weight: 700; }
+  .table-wrap {
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+
+  /* ARTICLE */
+  .article-wrap {
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: var(--card-shadow);
+    padding: 56px 64px;
+    margin-bottom: 48px;
+  }
+  .article-title {
+    font-family: 'Cabin', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .article-date {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: #aaa;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    display: block;
+  }
+  .article-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--lime);
+    margin-bottom: 40px;
+  }
+  .article-body p {
+    font-size: 1.02rem;
+    color: #2a2a2a;
+    line-height: 1.8;
+    margin-bottom: 22px;
+  }
+  .article-body h2 {
+    font-family: 'Cabin', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-top: 48px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--light-grey);
+  }
+  .article-body .article-table-wrap {
+    background: #f8f8f6;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 28px 0 32px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+  .article-footnote {
+    font-size: 0.82rem;
+    font-style: italic;
+    color: #888;
+    margin-top: 8px;
+    margin-bottom: 28px;
+  }
+
+  /* CTA BLOCK */
+  .cta-block {
+    background: var(--dark);
+    border-radius: 4px;
+    padding: 48px 56px;
+    border-top: 3px solid var(--lime);
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-block-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: rgba(163,208,29,0.6);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .cta-block-text {
+    font-family: 'Cabin', sans-serif;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 680px;
+  }
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--lime);
+    color: var(--dark);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+  }
+  .cta-block-footnote {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 24px;
+    font-style: italic;
+  }
+
+  /* PAGE NAV */
+  .page-nav {
+    background: var(--dark);
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 3px solid var(--lime);
+    margin-top: 80px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .page-nav a {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--lime);
+    text-decoration: none;
+    padding: 12px 24px;
+    border: 1px solid rgba(163,208,29,0.4);
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .page-nav a:hover { background: rgba(163,208,29,0.1); }
+  .page-nav-pos {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    width: 100%;
+    background: var(--dark);
+    padding: 56px 32px;
+    text-align: center;
+  }
+  .footer-line { width: 100%; height: 1px; background: var(--lime); margin-bottom: 40px; opacity: 0.4; }
+  .footer-brand { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 900; color: var(--lime); letter-spacing: 0.2em; margin-bottom: 16px; }
+  .footer-meta { font-family: 'Cabin', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; }
+
+  @media (max-width: 760px) {
+    .article-wrap { padding: 32px 24px; }
+    .cta-block { padding: 32px 28px; }
+    .nav-toc-item { padding: 14px 16px 14px 0; font-size: 0.58rem; }
+    .cover-meta { gap: 24px; }
+    .cover-meta-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top-line"></div>
+  <span class="cover-corner tl">[</span>
+  <span class="cover-corner tr">]</span>
+
+  <div class="cover-inner">
+    <div class="cover-brand-label">TX Marketplace Accelerator — v2 Draft</div>
+    <div class="cover-accent-line"></div>
+    <h1 class="cover-title">Blog Post Draft</h1>
+    <div class="cover-subtitle">TX Marketplace Accelerator &mdash; SEO Content</div>
+    <div class="cover-accent-line bottom"></div>
+    <div class="cover-status-badge">DRAFT &mdash; DO NOT PUBLISH WITHOUT APPROVAL</div>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Date</div>
+        <div class="cover-meta-value">12/05/2026</div>
+      </div>
+      <div class="cover-meta-divider"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Target Words</div>
+        <div class="cover-meta-value">800&ndash;1,000</div>
+      </div>
+      <div class="cover-meta-divider"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Status</div>
+        <div class="cover-meta-value">Draft</div>
+      </div>
+      <div class="cover-meta-divider"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Prepared By</div>
+        <div class="cover-meta-value">Phase 3 Ecom</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-scroll">&#9660;</div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav-toc">
+  <div class="nav-toc-inner">
+    <a href="#section-01" class="nav-toc-item"><span class="nav-toc-num">01</span> Meta Info</a>
+    <a href="#section-02" class="nav-toc-item"><span class="nav-toc-num">02</span> Article</a>
+    <a href="#section-03" class="nav-toc-item"><span class="nav-toc-num">03</span> CTA Block</a>
+  </div>
+</nav>
+
+<!-- SECTION 01 — META INFO -->
+<div id="section-01" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">01</div>
+        <div class="section-title-text">Meta Info</div>
+      </div>
+      <div class="section-bg-num">01</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width:30%">Field</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Target Keywords</strong></td>
+            <td>Amazon Australia for Shopify brands &nbsp;/&nbsp; Amazon seller Australia &nbsp;/&nbsp; list products on Amazon Australia</td>
+          </tr>
+          <tr>
+            <td><strong>Target Word Count</strong></td>
+            <td>800&ndash;1,000 words</td>
+          </tr>
+          <tr>
+            <td><strong>SEO Notes</strong></td>
+            <td>AU spelling throughout. Meta description leads with 30% stat. Internal link from any existing Shopify-related content.</td>
+          </tr>
+          <tr>
+            <td><strong>Status</strong></td>
+            <td>DRAFT &mdash; do not publish without approval</td>
+          </tr>
+          <tr>
+            <td><strong>Date</strong></td>
+            <td>12/05/2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+<!-- SECTION 02 — ARTICLE -->
+<div id="section-02" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">02</div>
+        <div class="section-title-text">Article</div>
+      </div>
+      <div class="section-bg-num">02</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="article-wrap">
+      <h1 class="article-title">The real cost of not being on Amazon: what Australian Shopify brands are losing every month</h1>
+      <span class="article-date">12/05/2026 &nbsp;&middot;&nbsp; Phase 3 Ecom</span>
+      <div class="article-divider"></div>
+
+      <div class="article-body">
+        <p>Most Australian Shopify brands know they should be on Amazon. They&rsquo;ve thought about it. They&rsquo;ve maybe started the seller account setup. They haven&rsquo;t finished.</p>
+        <p>This post isn&rsquo;t going to argue that Amazon is worth it. That decision is usually already made. Instead, it&rsquo;s going to put a number on what the delay actually costs &mdash; because most brand owners underestimate it significantly.</p>
+
+        <h2>The 30% you&rsquo;ve never counted</h2>
+        <p>Start with this: 30% of Australian product searches start on Amazon, not Google.</p>
+        <p>Not Instagram. Not a comparison site. Amazon.</p>
+        <p>These aren&rsquo;t people who chose another brand over yours after visiting your store. They never made it to your store. They opened Amazon, typed what they wanted, and bought from whoever showed up.</p>
+        <p>If your brand isn&rsquo;t on Amazon, you don&rsquo;t exist for this group. They&rsquo;re not your bounced traffic or your abandoned carts. They&rsquo;re an entirely invisible segment &mdash; buyers who have no awareness of you because you have no presence where they shop.</p>
+        <p>The Australian market leans further into this than many founders expect. Amazon AU had 60% buyer penetration in 2025. Two in three Amazon AU shoppers are Prime members &mdash; meaning they&rsquo;ve pre-committed to buying from the platform. They pay for the privilege of buying from Amazon. If you&rsquo;re not there, you&rsquo;re not even in the conversation.</p>
+
+        <h2>Section 1: The $6,700 myth</h2>
+        <p>Most Shopify brands that haven&rsquo;t launched on Amazon cite the same reason: &ldquo;I&rsquo;ll do it myself when I have time.&rdquo;</p>
+        <p>Here&rsquo;s what that project actually looks like when you break it down.</p>
+
+        <div class="article-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>What &ldquo;doing it yourself&rdquo; involves</th>
+                <th>Time / Out-of-pocket cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Seller account setup and verification</td>
+                <td>$200 + 3 hours</td>
+              </tr>
+              <tr>
+                <td>Catalogue build (GTIN sourcing, compliance mapping, category setup)</td>
+                <td>8&ndash;12 hours</td>
+              </tr>
+              <tr>
+                <td>Listing copy &mdash; written to Amazon&rsquo;s SEO standards (per SKU, outsourced)</td>
+                <td>$400&ndash;$600 per SKU</td>
+              </tr>
+              <tr>
+                <td>Photography reformatting to Amazon&rsquo;s image specifications</td>
+                <td>$200</td>
+              </tr>
+              <tr>
+                <td>First 90 days of trial, error, PPC learning, and rework</td>
+                <td>$1,500&ndash;$3,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Total: most brands land between $5,000 and $8,000 before making their first dollar. The $6,700 midpoint is not a scare figure &mdash; it&rsquo;s what the average Shopify brand spends when they go in without a roadmap.</p>
+        <p>And that assumes you don&rsquo;t make common mistakes that set you back further: listing under the wrong category, missing ARTG compliance requirements if you&rsquo;re in health or beauty, or getting your account flagged during the verification process.</p>
+        <p>The time cost is the one that usually surprises people. Most brand owners aren&rsquo;t Amazon experts. The learning curve for a channel you&rsquo;ve never operated is real, and it comes out of time that would otherwise go into running the business you already have.</p>
+
+        <h2>Section 2: The review compounding problem</h2>
+        <p>The real cost of delay isn&rsquo;t just the DIY overhead. It&rsquo;s the reviews you&rsquo;re not building.</p>
+        <p>Amazon&rsquo;s algorithm is a compounding flywheel. Reviews drive ranking. Ranking drives visibility. Visibility drives sales, which drive more reviews. The brands sitting in the top 3 positions in your category didn&rsquo;t get there because they had better products &mdash; they got there because they started earlier.</p>
+        <p>Consider two brands in the same category:</p>
+
+        <div class="article-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Brand A</th>
+                <th>Brand B</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Launch date</strong></td>
+                <td>January 2024</td>
+                <td>January 2026</td>
+              </tr>
+              <tr>
+                <td><strong>Reviews by January 2026</strong></td>
+                <td>180&ndash;220</td>
+                <td>8&ndash;15</td>
+              </tr>
+              <tr>
+                <td><strong>Organic ranking (typical)</strong></td>
+                <td>Top 3</td>
+                <td>Page 2&ndash;3</td>
+              </tr>
+              <tr>
+                <td><strong>PPC cost per click</strong></td>
+                <td>Lower (quality score)</td>
+                <td>Higher (no history)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Brand A&rsquo;s advantage isn&rsquo;t permanent &mdash; Brand B can close the gap &mdash; but it takes 12&ndash;18 months of consistent volume to do it. Every month of delay extends that recovery timeline.</p>
+        <p>The compounding effect is why launch timing matters more on Amazon than on most channels. A day-one advantage compounds forward. A two-year delay compounds backward.</p>
+
+        <h2>Section 3: What &ldquo;managed launch&rdquo; actually means</h2>
+        <p>There&rsquo;s a reason most Shopify brands that go it alone don&rsquo;t get past the account setup. The Amazon ecosystem &mdash; FBA logistics, listing compliance, review strategy, PPC mechanics &mdash; is a separate skill set from running a Shopify store. It&rsquo;s not complicated, but it requires time, repetition, and channel-specific knowledge.</p>
+        <p>A managed launch collapses that learning curve. Here&rsquo;s what the three phases look like in practice:</p>
+
+        <div class="article-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Phase</th>
+                <th>Months</th>
+                <th>What&rsquo;s happening</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Launch</strong></td>
+                <td>Month 1</td>
+                <td>Account setup, catalogue build, listings live, FBA or FBM configured</td>
+              </tr>
+              <tr>
+                <td><strong>Grow</strong></td>
+                <td>Months 2&ndash;3</td>
+                <td>Review velocity strategy, pricing optimisation, first ad spend</td>
+              </tr>
+              <tr>
+                <td><strong>Compound</strong></td>
+                <td>Month 4+</td>
+                <td>Search rank improvement, catalogue expansion, cross-marketplace (eBay AU, Catch)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Month 1 is delivery. Month 2 onward is compounding. The distinction matters because brands who treat Amazon as a setup task &mdash; list it and leave it &mdash; consistently underperform brands who treat it as a managed channel.</p>
+        <p>The reviews don&rsquo;t arrive automatically. The ranking doesn&rsquo;t improve without optimisation. The catalogue doesn&rsquo;t expand itself. This is what ongoing management buys: the work that converts a live listing into a profitable channel.</p>
+      </div>
+    </div>
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+<!-- SECTION 03 — CTA BLOCK -->
+<div id="section-03" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">03</div>
+        <div class="section-title-text">Article CTA Block</div>
+      </div>
+      <div class="section-bg-num">03</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="cta-block">
+      <div class="cta-block-label">Article Call to Action &mdash; Bottom of Post</div>
+      <div class="cta-block-text">
+        <p style="margin-bottom:16px;">If you&rsquo;ve been meaning to launch on Amazon for six months, the cost of that delay is now visible: it&rsquo;s the reviews you haven&rsquo;t built, the segment you&rsquo;re invisible to, and the DIY project that costs more than the managed alternative.</p>
+        <p style="margin-bottom:16px;">The question isn&rsquo;t whether to be on Amazon. For most product-based Shopify brands in Australia, the answer is already yes. The question is whether to own the complexity or hand it to someone who&rsquo;s done it before.</p>
+        <p>Phase 3 Ecom launches Shopify brands on Amazon AU in 30 days. $1,500 setup. If we miss the deadline, your setup fee is fully refunded.</p>
+      </div>
+      <a href="#" class="cta-button">Apply for your launch &rarr;</a>
+      <div class="cta-block-footnote">
+        <em>Phase 3 Ecom is a done-for-you ecommerce growth programme for Australian brands. We handle setup, management, and optimisation across Shopify, Amazon, and other marketplaces.</em>
+      </div>
+    </div>
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+<!-- PAGE NAV -->
+<div class="page-nav">
+  <a href="marketplaces-v2-ad-scripts.html">&larr; Ad Scripts</a>
+  <a href="marketplaces-v2-research.html" style="border-color:rgba(163,208,29,0.2); color:rgba(163,208,29,0.6);">&larr; Research Suite</a>
+  <div class="page-nav-pos">BLOG POST &mdash; 3 OF 4</div>
+  <a href="marketplaces-v2-social-posts.html">Social Posts &rarr;</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="doc-footer">
+  <div class="footer-line"></div>
+  <div class="footer-brand">PHASE 3 ECOM</div>
+  <div class="footer-meta">TX Marketplace Accelerator v2 &nbsp;|&nbsp; Blog Post Draft &nbsp;|&nbsp; will@phase3ecom.com &nbsp;|&nbsp; 12/05/2026</div>
+</footer>
+
+</body>
+</html>
