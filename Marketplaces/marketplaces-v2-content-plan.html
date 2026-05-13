@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Plan — TX Marketplace Accelerator v2 — Phase 3 Ecom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --lime: #a3d01d;
+    --dark: #100828;
+    --white: #ffffff;
+    --off-white: #f0ede8;
+    --mid-grey: #4a4a4a;
+    --light-grey: #e8e8e8;
+    --shadow: 0 4px 24px rgba(0,0,0,0.10);
+    --stage-awareness: #1565c0;
+    --stage-consideration: #6a1b9a;
+    --stage-decision: #c62828;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Cabin', sans-serif; background: var(--off-white); color: #1a1a1a; font-size: 16px; line-height: 1.6; }
+
+  /* COVER */
+  .cover { width:100%; min-height:100vh; background:var(--dark); display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden; padding:60px 40px; }
+  .cover-top-line { position:absolute; top:0; left:0; width:100%; height:1px; background:var(--lime); }
+  .cover-corner { position:absolute; font-family:'Orbitron',sans-serif; font-size:2.5rem; color:var(--lime); font-weight:700; line-height:1; }
+  .cover-corner.tl { top:28px; left:32px; }
+  .cover-corner.tr { top:28px; right:32px; }
+  .cover-inner { text-align:center; max-width:900px; width:100%; display:flex; flex-direction:column; align-items:center; }
+  .cover-brand-label { font-family:'Orbitron',sans-serif; font-size:0.75rem; font-weight:600; color:var(--lime); letter-spacing:0.35em; text-transform:uppercase; margin-bottom:28px; }
+  .cover-accent-line { width:80px; height:3px; background:var(--lime); margin:0 auto 36px; }
+  .cover-accent-line.bottom { margin:36px auto 0; }
+  .cover-title { font-family:'Orbitron',sans-serif; font-size:clamp(2.4rem,5vw,4.2rem); font-weight:900; color:var(--white); letter-spacing:0.02em; line-height:1.1; margin-bottom:28px; }
+  .cover-subtitle { font-family:'Cabin',sans-serif; font-size:1rem; color:var(--lime); letter-spacing:0.22em; text-transform:uppercase; font-weight:600; }
+  .cover-meta { display:flex; gap:48px; margin-top:64px; flex-wrap:wrap; justify-content:center; }
+  .cover-meta-item { text-align:center; }
+  .cover-meta-label { font-family:'Orbitron',sans-serif; font-size:0.6rem; font-weight:600; letter-spacing:0.25em; color:rgba(255,255,255,0.4); text-transform:uppercase; margin-bottom:6px; }
+  .cover-meta-value { font-family:'Cabin',sans-serif; font-size:0.95rem; color:rgba(255,255,255,0.85); font-weight:500; }
+  .cover-meta-divider { width:1px; background:rgba(163,208,29,0.3); align-self:stretch; }
+  .cover-scroll { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); font-size:1.4rem; color:var(--lime); opacity:0.7; }
+
+  /* NAV */
+  .nav-toc { background:var(--white); border-bottom:3px solid var(--lime); position:sticky; top:0; z-index:100; box-shadow:0 2px 16px rgba(0,0,0,0.08); overflow-x:auto; }
+  .nav-toc-inner { max-width:1040px; margin:0 auto; padding:0 32px; display:flex; }
+  .nav-toc-item { font-family:'Orbitron',sans-serif; font-size:0.62rem; font-weight:700; letter-spacing:0.15em; color:var(--dark); text-decoration:none; padding:18px 24px 18px 0; display:flex; align-items:center; gap:8px; transition:color 0.2s; white-space:nowrap; }
+  .nav-toc-item:hover { color:var(--lime); }
+  .nav-toc-num { color:var(--lime); font-weight:900; }
+
+  /* LAYOUT */
+  .page-wrap { max-width:1040px; margin:0 auto; padding:0 32px; }
+  .section-block { padding:80px 0 0; }
+  .section-header { background:var(--dark); width:100vw; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; padding:48px 0; margin-bottom:64px; overflow:hidden; }
+  .section-header-inner { max-width:1040px; margin:0 auto; padding:0 32px; display:flex; align-items:center; gap:32px; position:relative; }
+  .section-bg-num { position:absolute; right:32px; top:50%; transform:translateY(-50%); font-family:'Orbitron',sans-serif; font-size:8rem; font-weight:900; color:rgba(255,255,255,0.06); line-height:1; pointer-events:none; user-select:none; }
+  .section-num-accent { font-family:'Orbitron',sans-serif; font-size:1rem; font-weight:700; color:rgba(255,255,255,0.3); letter-spacing:0.1em; }
+  .section-title-text { font-family:'Orbitron',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem); font-weight:900; color:var(--lime); letter-spacing:0.06em; text-transform:uppercase; }
+  .section-end-spacer { height:56px; }
+
+  /* BUYING CYCLE INTRO */
+  .cycle-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:48px; }
+  .cycle-card { background:var(--white); border-radius:4px; box-shadow:var(--shadow); padding:28px 24px; border-top:4px solid; }
+  .cycle-card.awareness { border-color:var(--stage-awareness); }
+  .cycle-card.consideration { border-color:var(--stage-consideration); }
+  .cycle-card.decision { border-color:var(--stage-decision); }
+  .cycle-label { font-family:'Orbitron',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:10px; }
+  .cycle-card.awareness .cycle-label { color:var(--stage-awareness); }
+  .cycle-card.consideration .cycle-label { color:var(--stage-consideration); }
+  .cycle-card.decision .cycle-label { color:var(--stage-decision); }
+  .cycle-title { font-family:'Orbitron',sans-serif; font-size:0.9rem; font-weight:700; color:var(--dark); margin-bottom:10px; }
+  .cycle-desc { font-size:0.88rem; color:#555; line-height:1.6; margin-bottom:14px; }
+  .cycle-posts { font-family:'Orbitron',sans-serif; font-size:0.58rem; font-weight:700; letter-spacing:0.12em; color:rgba(255,255,255,0.8); padding:6px 12px; border-radius:2px; display:inline-block; }
+  .cycle-card.awareness .cycle-posts { background:var(--stage-awareness); }
+  .cycle-card.consideration .cycle-posts { background:var(--stage-consideration); }
+  .cycle-card.decision .cycle-posts { background:var(--stage-decision); }
+
+  /* PERSONA LEGEND */
+  .persona-legend { background:var(--white); border-radius:4px; box-shadow:var(--shadow); padding:28px 32px; margin-bottom:48px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .persona-item { display:flex; gap:10px; align-items:flex-start; }
+  .persona-code { font-family:'Orbitron',sans-serif; font-size:0.65rem; font-weight:700; color:var(--dark); background:rgba(163,208,29,0.15); border:1px solid rgba(163,208,29,0.35); border-radius:3px; padding:3px 9px; white-space:nowrap; flex-shrink:0; }
+  .persona-text { font-size:0.85rem; color:#444; line-height:1.5; }
+
+  /* CONTENT CARD */
+  .content-card { background:var(--white); border-radius:4px; box-shadow:var(--shadow); margin-bottom:40px; overflow:hidden; }
+  .content-card-header { padding:20px 28px 18px; display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:12px; border-bottom:3px solid; }
+  .content-card.awareness .content-card-header { border-bottom-color:var(--stage-awareness); background:rgba(21,101,192,0.04); }
+  .content-card.consideration .content-card-header { border-bottom-color:var(--stage-consideration); background:rgba(106,27,154,0.04); }
+  .content-card.decision .content-card-header { border-bottom-color:var(--stage-decision); background:rgba(198,40,40,0.04); }
+  .content-card-num { font-family:'Orbitron',sans-serif; font-size:1.8rem; font-weight:900; line-height:1; }
+  .content-card.awareness .content-card-num { color:var(--stage-awareness); }
+  .content-card.consideration .content-card-num { color:var(--stage-consideration); }
+  .content-card.decision .content-card-num { color:var(--stage-decision); }
+  .content-card-title { font-family:'Orbitron',sans-serif; font-size:1rem; font-weight:700; color:var(--dark); letter-spacing:0.06em; line-height:1.3; flex:1; margin:4px 0 0 16px; }
+  .content-card-badges { display:flex; flex-direction:column; gap:5px; align-items:flex-end; flex-shrink:0; }
+  .badge { font-family:'Orbitron',sans-serif; font-size:0.55rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:4px 10px; border-radius:2px; white-space:nowrap; }
+  .badge-stage-awareness { background:var(--stage-awareness); color:#fff; }
+  .badge-stage-consideration { background:var(--stage-consideration); color:#fff; }
+  .badge-stage-decision { background:var(--stage-decision); color:#fff; }
+  .badge-persona { background:rgba(163,208,29,0.18); color:var(--dark); border:1px solid rgba(163,208,29,0.4); }
+  .badge-angle { background:rgba(16,8,40,0.08); color:var(--dark); }
+
+  .content-card-body { padding:28px; display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+
+  .card-section-label { font-family:'Orbitron',sans-serif; font-size:0.58rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--lime); border-bottom:2px solid var(--lime); padding-bottom:8px; margin-bottom:14px; display:block; }
+
+  .card-section-title { font-family:'Orbitron',sans-serif; font-size:0.75rem; font-weight:700; color:var(--dark); margin-bottom:10px; }
+  .card-section-body { font-size:0.88rem; color:#444; line-height:1.65; }
+  .card-section-body p { margin-bottom:8px; }
+  .card-section-body p:last-child { margin-bottom:0; }
+  .card-section-body strong { color:var(--dark); font-weight:600; }
+
+  .rationale-box { background:#f8fbee; border-left:3px solid var(--lime); padding:14px 16px; margin-bottom:16px; border-radius:0 4px 4px 0; }
+  .rationale-label { font-family:'Orbitron',sans-serif; font-size:0.52rem; font-weight:700; letter-spacing:0.18em; color:rgba(163,208,29,0.8); text-transform:uppercase; margin-bottom:6px; }
+  .rationale-text { font-size:0.85rem; color:#444; line-height:1.6; font-style:italic; }
+
+  /* Platform row */
+  .platform-row { padding:18px 28px; background:#f8f8f6; border-top:1px solid var(--light-grey); display:flex; gap:12px; flex-wrap:wrap; }
+  .platform-pill { font-family:'Orbitron',sans-serif; font-size:0.55rem; font-weight:700; letter-spacing:0.12em; padding:6px 14px; border-radius:2px; display:flex; flex-direction:column; gap:2px; }
+  .platform-pill span:first-child { font-size:0.65rem; text-transform:uppercase; }
+  .platform-pill span:last-child { font-size:0.75rem; font-family:'Cabin',sans-serif; font-weight:600; letter-spacing:0; text-transform:none; color:rgba(0,0,0,0.65); }
+  .platform-instagram { background:#fcefff; color:#6a1b9a; border:1px solid rgba(106,27,154,0.25); }
+  .platform-facebook { background:#eff3ff; color:#1565c0; border:1px solid rgba(21,101,192,0.25); }
+  .platform-linkedin { background:#e8f4fd; color:#0a66c2; border:1px solid rgba(10,102,194,0.25); }
+  .platform-tiktok { background:#fff0f2; color:#c62828; border:1px solid rgba(198,40,40,0.25); }
+
+  /* SEQUENCE TABLE */
+  .seq-table { width:100%; border-collapse:collapse; background:var(--white); border-radius:4px; box-shadow:var(--shadow); overflow:hidden; margin-bottom:40px; }
+  .seq-table thead { background:var(--dark); }
+  .seq-table thead th { font-family:'Orbitron',sans-serif; font-size:0.58rem; font-weight:700; letter-spacing:0.18em; color:var(--lime); text-transform:uppercase; padding:16px 20px; text-align:left; }
+  .seq-table tbody tr:nth-child(even) { background:#f8fbee; }
+  .seq-table tbody td { padding:16px 20px; font-size:0.9rem; color:#333; line-height:1.55; vertical-align:top; border-bottom:1px solid #eee; }
+  .seq-table tbody tr:last-child td { border-bottom:none; }
+  .seq-num { font-family:'Orbitron',sans-serif; font-size:0.75rem; font-weight:700; color:var(--lime); }
+  .seq-stage-dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+  .seq-stage-dot.awareness { background:var(--stage-awareness); }
+  .seq-stage-dot.consideration { background:var(--stage-consideration); }
+  .seq-stage-dot.decision { background:var(--stage-decision); }
+
+  /* PAGE NAV + FOOTER */
+  .page-nav { background:var(--dark); padding:32px; display:flex; align-items:center; justify-content:space-between; border-top:3px solid var(--lime); margin-top:80px; flex-wrap:wrap; gap:16px; }
+  .page-nav a { font-family:'Orbitron',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:0.15em; color:var(--lime); text-decoration:none; padding:12px 24px; border:1px solid rgba(163,208,29,0.4); border-radius:2px; transition:background 0.2s; }
+  .page-nav a:hover { background:rgba(163,208,29,0.1); }
+  .page-nav-pos { font-family:'Orbitron',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.25em; color:rgba(255,255,255,0.4); }
+  .doc-footer { width:100%; background:var(--dark); padding:56px 32px; text-align:center; }
+  .footer-line { width:100%; height:1px; background:var(--lime); margin-bottom:40px; opacity:0.4; }
+  .footer-brand { font-family:'Orbitron',sans-serif; font-size:1.1rem; font-weight:900; color:var(--lime); letter-spacing:0.2em; margin-bottom:16px; }
+  .footer-meta { font-family:'Cabin',sans-serif; font-size:0.85rem; color:rgba(255,255,255,0.45); letter-spacing:0.06em; }
+
+  @media (max-width:760px) {
+    .cycle-grid { grid-template-columns:1fr; }
+    .persona-legend { grid-template-columns:1fr; }
+    .content-card-body { grid-template-columns:1fr; }
+    .cover-meta-divider { display:none; }
+    .cover-meta { gap:24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top-line"></div>
+  <span class="cover-corner tl">[</span>
+  <span class="cover-corner tr">]</span>
+  <div class="cover-inner">
+    <div class="cover-brand-label">TX Marketplace Accelerator — v2</div>
+    <div class="cover-accent-line"></div>
+    <h1 class="cover-title">Content Plan</h1>
+    <div class="cover-subtitle">10 Blog Posts &middot; 10 Videos &middot; Instagram &middot; Facebook &middot; LinkedIn &middot; TikTok</div>
+    <div class="cover-accent-line bottom"></div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Date</div>
+        <div class="cover-meta-value">13/05/2026</div>
+      </div>
+      <div class="cover-meta-divider"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Posts</div>
+        <div class="cover-meta-value">10</div>
+      </div>
+      <div class="cover-meta-divider"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Platforms</div>
+        <div class="cover-meta-value">4</div>
+      </div>
+      <div class="cover-meta-divider"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Prepared By</div>
+        <div class="cover-meta-value">Phase 3 Ecom</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-scroll">&#9660;</div>
+</div>
+
+<!-- NAV -->
+<nav class="nav-toc">
+  <div class="nav-toc-inner">
+    <a href="#section-01" class="nav-toc-item"><span class="nav-toc-num">01</span> Rationale</a>
+    <a href="#section-02" class="nav-toc-item"><span class="nav-toc-num">02</span> Posts 1–3 (Awareness)</a>
+    <a href="#section-03" class="nav-toc-item"><span class="nav-toc-num">03</span> Posts 4–7 (Consideration)</a>
+    <a href="#section-04" class="nav-toc-item"><span class="nav-toc-num">04</span> Posts 8–10 (Decision)</a>
+    <a href="#section-05" class="nav-toc-item"><span class="nav-toc-num">05</span> Publish Sequence</a>
+  </div>
+</nav>
+
+
+<!-- SECTION 01 — RATIONALE -->
+<div id="section-01" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">01</div>
+        <div class="section-title-text">Rationale &amp; Approach</div>
+      </div>
+      <div class="section-bg-num">01</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="cycle-grid">
+      <div class="cycle-card awareness">
+        <div class="cycle-label">Stage 1</div>
+        <div class="cycle-title">Awareness</div>
+        <div class="cycle-desc">Audience has a Shopify store but hasn't diagnosed the Amazon visibility gap. Content plants the problem. No pitch yet. Goal: create the "why didn't I know this" moment before any sales message lands.</div>
+        <span class="cycle-posts">Posts 1, 2, 3</span>
+      </div>
+      <div class="cycle-card consideration">
+        <div class="cycle-label">Stage 2</div>
+        <div class="cycle-title">Consideration</div>
+        <div class="cycle-desc">Audience knows Amazon is worth exploring but has active objections: fees, complexity, brand risk, failed past attempts. Content dismantles each objection with specifics. Goal: reframe the decision.</div>
+        <span class="cycle-posts">Posts 4, 5, 6, 7</span>
+      </div>
+      <div class="cycle-card decision">
+        <div class="cycle-label">Stage 3</div>
+        <div class="cycle-title">Decision</div>
+        <div class="cycle-desc">Audience has decided Amazon is worth it but hasn't acted. Research identifies this as the highest-conversion segment. Content addresses "can I trust someone else to do this right" — not "should I be on Amazon."</div>
+        <span class="cycle-posts">Posts 8, 9, 10</span>
+      </div>
+    </div>
+
+    <span style="font-family:'Orbitron',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.25em;color:var(--dark);text-transform:uppercase;border-bottom:2px solid var(--lime);padding-bottom:10px;margin-bottom:24px;display:block;">Persona Key</span>
+    <div class="persona-legend">
+      <div class="persona-item"><span class="persona-code">P1</span><span class="persona-text">Mid-tier Shopify owner ($200k–$500k). Time-poor, margin-anxious. Decided on Amazon, hasn't started. Core objection: setup effort with no guaranteed return.</span></div>
+      <div class="persona-item"><span class="persona-code">P2</span><span class="persona-text">Growth Shopify owner ($500k–$2M). Scaling mindset, possible exit horizon. Wants revenue diversification and long-term asset value, not just cost savings.</span></div>
+      <div class="persona-item"><span class="persona-code">P3</span><span class="persona-text">Amazon seller not running PPC. Already on the platform but flat. Burned by a bad PPC attempt. Needs optimisation, not launch.</span></div>
+      <div class="persona-item"><span class="persona-code">P4</span><span class="persona-text">Sceptical DTC purist. Brand-first, fears Amazon commoditises. On the fence. No single angle converts cold — needs separate content strategy.</span></div>
+      <div class="persona-item"><span class="persona-code">P5</span><span class="persona-text">Existing Phase 3 client. Already trusts the team. Upsell to current retainer. Fastest conversion path, personalised to their store data.</span></div>
+      <div class="persona-item" style="align-items:center;"><span style="font-size:0.85rem;color:#888;font-style:italic;">Primary paid target: P1 + P2. Organic/SEO reaches P4. P3 needs angle pivot. P5 = direct conversation, not content.</span></div>
+    </div>
+
+    <span style="font-family:'Orbitron',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.25em;color:var(--dark);text-transform:uppercase;border-bottom:2px solid var(--lime);padding-bottom:10px;margin-bottom:24px;display:block;">Research-Derived Angle Map</span>
+
+    <table class="seq-table" style="margin-bottom:48px;">
+      <thead>
+        <tr>
+          <th>Angle</th>
+          <th>Description</th>
+          <th>Strongest Persona</th>
+          <th>Best Channels</th>
+          <th>Key Risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>A — DIY Math</strong></td>
+          <td>$6,700 DIY vs $1,500 managed. Cost comparison kills self-serve objection.</td>
+          <td>P1</td>
+          <td>Ads, landing page, blog</td>
+          <td>Needs itemised breakdown to be credible — can't just assert the number</td>
+        </tr>
+        <tr>
+          <td><strong>B — Reviews Compound</strong></td>
+          <td>Review gap grows every month. First-mover advantage on Amazon is measurable and durable.</td>
+          <td>P2</td>
+          <td>All channels, especially growth/exit audience</td>
+          <td>Assumes reader wants to compete on Amazon. Backfires on P4.</td>
+        </tr>
+        <tr>
+          <td><strong>C — Invisible Customer</strong></td>
+          <td>Globally 6 in 10 product searches start on Amazon. Shopify brands don't exist for these buyers.</td>
+          <td>P1, P2, P4 (partial)</td>
+          <td>Landing page hero, all organic content</td>
+          <td>Global stat — must frame as global with AU growth context (Pattern AU, 2025)</td>
+        </tr>
+        <tr>
+          <td><strong>D — Guarantee as Confidence</strong></td>
+          <td>"Not because we're desperate — because we've done this enough times to know how it ends."</td>
+          <td>P1, P2, P5</td>
+          <td>Supporting section only — trust closer, not hook</td>
+          <td>Leading with guarantee signals anxiety. Always second, never first.</td>
+        </tr>
+        <tr>
+          <td><strong>E — Identity Gap</strong></td>
+          <td>"You sell on Shopify. Your competitor sells on Shopify and Amazon."</td>
+          <td>P2, P5</td>
+          <td>Social hook, warm retargeting</td>
+          <td>Actively backfires on P4. Cold audience needs context first.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="background:var(--white);border-radius:4px;box-shadow:var(--shadow);padding:32px 36px;margin-bottom:48px;border-left:4px solid var(--lime);">
+      <span style="font-family:'Orbitron',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.22em;color:var(--lime);text-transform:uppercase;display:block;margin-bottom:14px;">Video Format — Gary Voice Rules</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:0.9rem;color:#444;line-height:1.65;">
+        <div><strong style="color:var(--dark);">Format:</strong> Direct to camera, founder-style. No logo intro, no polished presenter energy. Short declarative hook or conditional address ("If you're..."). Validate before you pitch. Named product: TX Marketplace Accelerator — never "our service."<br><br><strong style="color:var(--dark);">Structure:</strong> Hook → Validate → Reframe → Product → Guarantee (near end) → CTA: "Click the link and book a call."</div>
+        <div><strong style="color:var(--dark);">Platform lengths:</strong><br>
+        Instagram Reels: 30–60 sec<br>
+        Facebook: 45–90 sec<br>
+        LinkedIn: 60–90 sec (longer works here)<br>
+        TikTok: 30–60 sec, hook must land in first 3 sec<br><br>
+        <strong style="color:var(--dark);">Never:</strong> Start with guarantee. Use "just", "leverage", "unlock", "scale". Vague "other marketplaces." Generic social proof. Passive voice.</div>
+      </div>
+    </div>
+
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+
+<!-- SECTION 02 — POSTS 1–3 (AWARENESS) -->
+<div id="section-02" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">02</div>
+        <div class="section-title-text">Posts 1–3 &mdash; Awareness</div>
+      </div>
+      <div class="section-bg-num">02</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- POST 1 -->
+    <div class="content-card awareness">
+      <div class="content-card-header">
+        <div style="display:flex;align-items:flex-start;flex:1;">
+          <div class="content-card-num">01</div>
+          <div class="content-card-title">The Invisible Customer: Why Your Shopify Buyers Can&rsquo;t Find You on Amazon</div>
+        </div>
+        <div class="content-card-badges">
+          <span class="badge badge-stage-awareness">Awareness</span>
+          <span class="badge badge-persona">P1 &middot; P2</span>
+          <span class="badge badge-angle">Angle C</span>
+        </div>
+      </div>
+      <div class="content-card-body">
+        <div>
+          <span class="card-section-label">Blog Brief</span>
+          <div class="rationale-box">
+            <div class="rationale-label">Research Rationale</div>
+            <div class="rationale-text">Angle C has the broadest consensus across all personas. &ldquo;Invisible&rdquo; is the single best word in the offer framework — it combines guilt, urgency, and simplicity without feeling like a sales pitch. Council research: P1 says &ldquo;it feels like someone telling me something I should have known.&rdquo; P4 engages rather than rejects — the only angle that works on every persona. This is the category-defining post. Runs first.</div>
+          </div>
+          <div class="card-section-title">Title</div>
+          <div class="card-section-body"><p>&ldquo;Millions of Amazon shoppers will never find your Shopify store — here&rsquo;s why&rdquo;</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Target keywords</div>
+          <div class="card-section-body"><p>Amazon search Australia / Amazon vs Google product search / Shopify Amazon Australia</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Structure (800 words)</div>
+          <div class="card-section-body">
+            <p><strong>Open:</strong> The global stat (6 in 10 product searches start on Amazon, NIQ 2024). In Australia, that share is growing faster than anywhere else. Frame as a visibility gap, not a platform debate.</p>
+            <p><strong>Section 1:</strong> How Amazon buyers search differently — intent-first, not discovery-first. They know what they want and go straight to Amazon. They don&rsquo;t pass through Google on the way.</p>
+            <p><strong>Section 2:</strong> What this means for a Shopify-only brand. These aren&rsquo;t bounced visitors or cart abandoners. They&rsquo;re a completely separate segment you have no presence with.</p>
+            <p><strong>Section 3:</strong> The 48% stat — shoppers who discover a brand on Amazon visit their website afterwards. Amazon is not competing with Shopify; it&rsquo;s a customer acquisition channel for it.</p>
+            <p><strong>Close:</strong> Soft CTA. TX Marketplace Accelerator. 30-day delivery guarantee.</p>
+          </div>
+        </div>
+        <div>
+          <span class="card-section-label">Video Brief</span>
+          <div class="card-section-body">
+            <p><strong>Hook (3 sec):</strong> &ldquo;If you run a Shopify store in Australia, here&rsquo;s something nobody&rsquo;s told you yet.&rdquo;</p>
+            <p><strong>Validate:</strong> &ldquo;You&rsquo;re running ads, you&rsquo;re doing SEO, your store looks great. And you&rsquo;re still missing buyers. Not because your marketing isn&rsquo;t working. Because they never came to Google first.&rdquo;</p>
+            <p><strong>Reframe:</strong> &ldquo;Globally, more than 6 in 10 product searches start on Amazon. These buyers skip Google entirely. And right now, your brand doesn&rsquo;t exist for them.&rdquo;</p>
+            <p><strong>Product:</strong> &ldquo;Our TX Marketplace Accelerator gets your products live on Amazon in 30 days. We handle everything — listings, compliance, the whole setup.&rdquo;</p>
+            <p><strong>Guarantee + CTA:</strong> &ldquo;We guarantee it or your money back. Click the link and book a call.&rdquo;</p>
+            <p style="margin-top:10px;"><strong>Length:</strong> 45 sec</p>
+          </div>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-pill platform-instagram"><span>Instagram</span><span>Reel 45 sec · Hook frame: "6 in 10 searches skip Google"</span></div>
+        <div class="platform-pill platform-facebook"><span>Facebook</span><span>Same video, boost to Shopify owner interest targeting</span></div>
+        <div class="platform-pill platform-linkedin"><span>LinkedIn</span><span>Post body = blog opening para. No pitch until final 2 lines. Link to blog.</span></div>
+        <div class="platform-pill platform-tiktok"><span>TikTok</span><span>Cut to 30 sec. First 3 sec: hold on "6 in 10 searches" text overlay</span></div>
+      </div>
+    </div>
+
+    <!-- POST 2 -->
+    <div class="content-card awareness">
+      <div class="content-card-header">
+        <div style="display:flex;align-items:flex-start;flex:1;">
+          <div class="content-card-num">02</div>
+          <div class="content-card-title">Is Amazon Worth It for Australian Shopify Brands in 2026?</div>
+        </div>
+        <div class="content-card-badges">
+          <span class="badge badge-stage-awareness">Awareness</span>
+          <span class="badge badge-persona">P1 &middot; P4</span>
+          <span class="badge badge-angle">Angle C + Data</span>
+        </div>
+      </div>
+      <div class="content-card-body">
+        <div>
+          <span class="card-section-label">Blog Brief</span>
+          <div class="rationale-box">
+            <div class="rationale-label">Research Rationale</div>
+            <div class="rationale-text">Audience research shows the top-of-funnel question is still &ldquo;is Amazon even worth it?&rdquo; even among brands who have half-decided. This post captures high-intent SEO traffic from brands who haven&rsquo;t yet committed. It&rsquo;s also the entry point for P4 (DTC purist) — it answers the &ldquo;is this the right channel for my brand?&rdquo; question with data before the sales pitch. Critically: answers honestly. If it&rsquo;s not right for certain brands, say so. That builds trust.</div>
+          </div>
+          <div class="card-section-title">Title</div>
+          <div class="card-section-body"><p>&ldquo;Is Amazon worth it for Australian Shopify brands in 2026? The honest answer.&rdquo;</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Target keywords</div>
+          <div class="card-section-body"><p>Amazon Australia worth it / sell on Amazon Australia Shopify / Amazon AU for small business 2026</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Structure (900 words)</div>
+          <div class="card-section-body">
+            <p><strong>Open:</strong> The honest framing — &ldquo;Most content on this topic is written by people trying to sell you an Amazon service. So is this. Here&rsquo;s what we&rsquo;d tell you if we weren&rsquo;t.&rdquo; Builds trust by acknowledging the conflict of interest.</p>
+            <p><strong>Section 1:</strong> The AU market data. 8.8 million Australians shop on Amazon (Roy Morgan, 2025). Amazon now holds ~10% of AU online shopping. Projected to double by 2026. These aren&rsquo;t numbers to dispute — they&rsquo;re structural facts about where the market is going.</p>
+            <p><strong>Section 2:</strong> Who it IS right for. Brands with 5+ SKUs, clear product photos, $300k+ revenue, products that don&rsquo;t require in-person experience (clothing sizing, fragrance, etc.). Products that answer a clear search intent.</p>
+            <p><strong>Section 3:</strong> Who it is NOT right for. Highly bespoke/luxury brands where price anchoring on Amazon damages brand equity. Brands with fewer than 5 SKUs. Brands in restricted categories without prior compliance work.</p>
+            <p><strong>Close:</strong> CTA to book a call — &ldquo;If you&rsquo;re not sure whether your category works, that&rsquo;s exactly what the call is for.&rdquo;</p>
+          </div>
+        </div>
+        <div>
+          <span class="card-section-label">Video Brief</span>
+          <div class="card-section-body">
+            <p><strong>Hook (3 sec):</strong> &ldquo;Is Amazon actually worth it for Australian brands right now? Honest answer.&rdquo;</p>
+            <p><strong>Validate:</strong> &ldquo;I get why you&rsquo;re asking. You&rsquo;ve seen it pitched a hundred times. You don&rsquo;t know if it&rsquo;s right for your brand.&rdquo;</p>
+            <p><strong>Reframe:</strong> &ldquo;8.8 million Australians bought on Amazon last year. That&rsquo;s 40% of adults. Whether that&rsquo;s your customer or not depends on your category. And that&rsquo;s the conversation worth having.&rdquo;</p>
+            <p><strong>Honest qualification:</strong> &ldquo;It&rsquo;s not right for every brand. But if you&rsquo;re a product brand with a clear search intent — there are buyers looking for you right now that can&rsquo;t find you.&rdquo;</p>
+            <p><strong>CTA:</strong> &ldquo;Click the link and book a call. We&rsquo;ll tell you upfront if your category works.&rdquo;</p>
+            <p style="margin-top:10px;"><strong>Length:</strong> 50 sec &mdash; LinkedIn performs slightly longer here given analytical audience</p>
+          </div>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-pill platform-instagram"><span>Instagram</span><span>Reel 40 sec · Text overlay: "8.8M Australians bought on Amazon last year"</span></div>
+        <div class="platform-pill platform-facebook"><span>Facebook</span><span>Full video · Target: Shopify AU + ecommerce owners</span></div>
+        <div class="platform-pill platform-linkedin"><span>LinkedIn</span><span>Long-form post version. Lay out the "right for / not right for" as bullet pairs. High engagement format for the analytical audience.</span></div>
+        <div class="platform-pill platform-tiktok"><span>TikTok</span><span>30 sec. Lead with "hot take: Amazon isn't right for every brand" — controversy drives watch time on this platform</span></div>
+      </div>
+    </div>
+
+    <!-- POST 3 -->
+    <div class="content-card awareness">
+      <div class="content-card-header">
+        <div style="display:flex;align-items:flex-start;flex:1;">
+          <div class="content-card-num">03</div>
+          <div class="content-card-title">Your Competitor Just Launched on Amazon. Here&rsquo;s What That Means for You.</div>
+        </div>
+        <div class="content-card-badges">
+          <span class="badge badge-stage-awareness">Awareness</span>
+          <span class="badge badge-persona">P1 &middot; P2</span>
+          <span class="badge badge-angle">Angle E + B</span>
+        </div>
+      </div>
+      <div class="content-card-body">
+        <div>
+          <span class="card-section-label">Blog Brief</span>
+          <div class="rationale-box">
+            <div class="rationale-label">Research Rationale</div>
+            <div class="rationale-text">Angle E (Identity Gap) performs best in social because it baits engagement. Used in blog format with Angle B (Reviews Compound) as the mechanism, it becomes more powerful — the competitor isn&rsquo;t just ahead, they&rsquo;re compounding. Council: P2 says &ldquo;I want to know my competitor&rsquo;s Amazon review count and revenue split.&rdquo; This post makes that concrete. Important note from council: do NOT run this at cold audiences who haven&rsquo;t established the Shopify-only identity first. Run Post 1 before this one.</div>
+          </div>
+          <div class="card-section-title">Title</div>
+          <div class="card-section-body"><p>&ldquo;Your competitor just launched on Amazon. Here&rsquo;s what happens to you over the next 12 months.&rdquo;</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Target keywords</div>
+          <div class="card-section-body"><p>Amazon competitor Australia / Amazon search ranking Australia / Amazon reviews compounding</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Structure (800 words)</div>
+          <div class="card-section-body">
+            <p><strong>Open:</strong> Concrete scenario — &ldquo;Brand A and Brand B sell the same category of product. Brand A launched on Amazon in January 2024. Brand B didn&rsquo;t. Here&rsquo;s where they both are in January 2026.&rdquo;</p>
+            <p><strong>Section 1:</strong> The review flywheel. Reviews drive ranking. Ranking drives visibility. Visibility drives sales. More sales drives more reviews. By Month 12 Brand A has 150–200 reviews. Brand B, launching today, starts with zero.</p>
+            <p><strong>Section 2:</strong> The gap doesn&rsquo;t just exist — it widens. Table showing: Brand A at 12 months vs Brand B at launch. PPC cost differential (more review history = lower effective CPC). Organic rank differential.</p>
+            <p><strong>Section 3:</strong> How long it takes to close a 12-month review gap. Honest answer: 12–18 months of consistent volume. You can&rsquo;t skip it. You can start now or start later — those are the only options.</p>
+            <p><strong>Close:</strong> CTA to TX Marketplace Accelerator. &ldquo;Every month of delay is a month Brand A&rsquo;s lead compounds. That starts somewhere. Today is the least expensive day to start.&rdquo;</p>
+          </div>
+        </div>
+        <div>
+          <span class="card-section-label">Video Brief</span>
+          <div class="card-section-body">
+            <p><strong>Hook (3 sec):</strong> Text overlay: &ldquo;Your competitor has 200 Amazon reviews. You have zero.&rdquo;</p>
+            <p><strong>Gary VO:</strong> &ldquo;If you&rsquo;ve been putting off Amazon, here&rsquo;s something your competitors already know. Amazon rewards the sellers who already have reviews. More reviews means better ranking. Better ranking means more visibility. More visibility means more sales. And more sales means more reviews.&rdquo;</p>
+            <p><strong>Reframe:</strong> &ldquo;The sellers sitting at the top of your category right now? They didn&rsquo;t get there last week. They got there because they started earlier. Every month you wait, that gap gets wider.&rdquo;</p>
+            <p><strong>Product + Guarantee + CTA:</strong> &ldquo;Our TX Marketplace Accelerator gets you live in 30 days. We guarantee it or your money back. Click the link and book a call.&rdquo;</p>
+            <p style="margin-top:10px;"><strong>Length:</strong> 45 sec &mdash; can use competitor review screenshots as B-roll if available</p>
+          </div>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-pill platform-instagram"><span>Instagram</span><span>Open with text overlay of review count gap. Hold for 2 sec before Gary on camera.</span></div>
+        <div class="platform-pill platform-facebook"><span>Facebook</span><span>Full 45 sec. Target: ecommerce owners, AU. Separate ad set from Post 1.</span></div>
+        <div class="platform-pill platform-linkedin"><span>LinkedIn</span><span>Post using the Brand A / Brand B table as body. Analytical. No emotion — let the numbers make the argument.</span></div>
+        <div class="platform-pill platform-tiktok"><span>TikTok</span><span>30 sec cut. Start with "this is what happens when your competitor launches on Amazon and you don't" — specific and confrontational</span></div>
+      </div>
+    </div>
+
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+
+<!-- SECTION 03 — POSTS 4–7 (CONSIDERATION) -->
+<div id="section-03" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">03</div>
+        <div class="section-title-text">Posts 4–7 &mdash; Consideration</div>
+      </div>
+      <div class="section-bg-num">03</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- POST 4 -->
+    <div class="content-card consideration">
+      <div class="content-card-header">
+        <div style="display:flex;align-items:flex-start;flex:1;">
+          <div class="content-card-num">04</div>
+          <div class="content-card-title">What It Actually Costs to Launch on Amazon Yourself in 2026</div>
+        </div>
+        <div class="content-card-badges">
+          <span class="badge badge-stage-consideration">Consideration</span>
+          <span class="badge badge-persona">P1</span>
+          <span class="badge badge-angle">Angle A</span>
+        </div>
+      </div>
+      <div class="content-card-body">
+        <div>
+          <span class="card-section-label">Blog Brief</span>
+          <div class="rationale-box">
+            <div class="rationale-label">Research Rationale</div>
+            <div class="rationale-text">Council research: &ldquo;For the mid-tier Shopify owner who has wanted to try Amazon but couldn&rsquo;t get past the setup complexity and hidden costs, this is the best opening line in the offer.&rdquo; The $6,700 figure must be itemised to be credible — it cannot stand as a bare assertion. Audience research confirms: &ldquo;I got lost in Seller Central and gave up&rdquo; and &ldquo;I don&rsquo;t know what it would actually cost me.&rdquo; This post makes the invisible cost visible and sets up the managed service as the rational choice.</div>
+          </div>
+          <div class="card-section-title">Title</div>
+          <div class="card-section-body"><p>&ldquo;What it actually costs to launch on Amazon yourself in 2026: a line-by-line breakdown&rdquo;</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Target keywords</div>
+          <div class="card-section-body"><p>Amazon seller account setup cost Australia / how much does it cost to sell on Amazon Australia / Amazon launch cost Shopify</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Structure (900 words)</div>
+          <div class="card-section-body">
+            <p><strong>Open:</strong> &ldquo;Most guides to launching on Amazon don&rsquo;t tell you what it actually costs. They focus on the easy numbers — the Professional Seller subscription ($49.95/month), the referral fees (8–15%). They don&rsquo;t tell you about the hours.&rdquo;</p>
+            <p><strong>Section 1:</strong> Full cost breakdown table — account setup + verification time, catalogue build (GTIN sourcing, compliance, category mapping), listing copy per SKU (outsourced rates), photography reformatting, first 90 days of trial-and-error ad spend. Honest midpoint: $4,000–$8,000 for a single-SKU launch, excluding inventory.</p>
+            <p><strong>Section 2:</strong> The time cost breakdown. 8–12 hours on catalogue build alone. 3 hours on account verification. These aren&rsquo;t billable hours — they&rsquo;re founder hours at the cost of what you were going to do with them.</p>
+            <p><strong>Section 3:</strong> The hidden cost of getting it wrong. Listing suppressed for wrong category. Account flagged during verification. ARTG compliance missed for health/beauty. These aren&rsquo;t edge cases — they&rsquo;re common first-timer mistakes.</p>
+            <p><strong>Close:</strong> TX Marketplace Accelerator. $1,500. &ldquo;For context, that&rsquo;s what most brands spend on catalogue build alone.&rdquo; Guarantee. CTA.</p>
+          </div>
+        </div>
+        <div>
+          <span class="card-section-label">Video Brief</span>
+          <div class="card-section-body">
+            <p><strong>Hook (3 sec):</strong> &ldquo;Ecommerce store owners — if you&rsquo;re thinking about listing your products on Amazon yourself, here&rsquo;s what that actually costs you.&rdquo;</p>
+            <p><strong>Itemise:</strong> Run through the cost table out loud. Seller account setup: $200 and 3 hours. Catalogue build: 8 to 12 hours. Product copy: $400 to $600 per SKU. Photography reformatting: $200. First 90 days of working out what you got wrong: $1,500 to $3,000.</p>
+            <p><strong>Anchor:</strong> &ldquo;Total? Most brands spend around $6,700 before they make their first dollar on Amazon.&rdquo;</p>
+            <p><strong>Product + Guarantee + CTA:</strong> &ldquo;Our TX Marketplace Accelerator does all of that for $1,500. We guarantee your products live within 30 days or your money back. Click the link and book a call.&rdquo;</p>
+            <p style="margin-top:10px;"><strong>Length:</strong> 40 sec &mdash; can use cost breakdown graphic as lower-third</p>
+          </div>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-pill platform-instagram"><span>Instagram</span><span>Reel 40 sec · Can cut in cost table graphic as visual overlay</span></div>
+        <div class="platform-pill platform-facebook"><span>Facebook</span><span>Full video. High-performing format for business owner audiences on Facebook.</span></div>
+        <div class="platform-pill platform-linkedin"><span>LinkedIn</span><span>Post with the full itemised table as body text. &ldquo;$6,700 before your first dollar&rdquo; as the hook line. Link to blog post.</span></div>
+        <div class="platform-pill platform-tiktok"><span>TikTok</span><span>30 sec. Rapid-fire cost list delivery — one item per second, total at the end. Text overlay each number as Gary speaks it.</span></div>
+      </div>
+    </div>
+
+    <!-- POST 5 -->
+    <div class="content-card consideration">
+      <div class="content-card-header">
+        <div style="display:flex;align-items:flex-start;flex:1;">
+          <div class="content-card-num">05</div>
+          <div class="content-card-title">Does Amazon Cannibalise Your DTC Brand? What the Data Actually Shows.</div>
+        </div>
+        <div class="content-card-badges">
+          <span class="badge badge-stage-consideration">Consideration</span>
+          <span class="badge badge-persona">P4 &middot; P1</span>
+          <span class="badge badge-angle">P4 Strategy</span>
+        </div>
+      </div>
+      <div class="content-card-body">
+        <div>
+          <span class="card-section-label">Blog Brief</span>
+          <div class="rationale-box">
+            <div class="rationale-label">Research Rationale</div>
+            <div class="rationale-text">Council research explicitly states: &ldquo;P4 (DTC purist) requires a separate strategy. No single angle from the main set converts P4 cleanly.&rdquo; The recommendation is a dedicated piece: &ldquo;Can you launch on Amazon without destroying your DTC brand?&rdquo; — using case studies of premium brands that expanded without brand dilution. This is a 90-day warm content play, not a direct response. Also addresses the research finding that 48% of Amazon shoppers visit a brand&rsquo;s own website after discovering them on Amazon — Amazon is a customer acquisition channel, not a competitor.</div>
+          </div>
+          <div class="card-section-title">Title</div>
+          <div class="card-section-body"><p>&ldquo;Does Amazon cannibalise your DTC brand? What the data shows — and what actually damages brand equity&rdquo;</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Target keywords</div>
+          <div class="card-section-body"><p>Amazon DTC brand Australia / Amazon brand equity / should premium brand sell on Amazon</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Structure (1,000 words)</div>
+          <div class="card-section-body">
+            <p><strong>Open:</strong> Acknowledge the legitimate concern without dismissing it. &ldquo;If you&rsquo;ve built a premium DTC brand, the fear that Amazon turns you into a commodity is not irrational. Here&rsquo;s when it&rsquo;s true, and when it isn&rsquo;t.&rdquo;</p>
+            <p><strong>Section 1:</strong> The 48% data point. Amazon shoppers who discover a brand visit their website after. Amazon functions as a top-of-funnel discovery channel, not a replacement for the DTC purchase. Include the unauthorised reseller risk: if you&rsquo;re not on Amazon, someone else may already be selling your products — without your control over pricing, imagery, or brand tone.</p>
+            <p><strong>Section 2:</strong> What does damage brand equity. Race-to-the-bottom pricing on Amazon (avoidable with MAP enforcement). Poor-quality listing photos (avoidable with your own listing). Listing in the wrong category (avoidable with proper setup).</p>
+            <p><strong>Section 3:</strong> What doesn&rsquo;t damage brand equity. A well-constructed listing with brand story, high-quality images, and controlled pricing that reinforces the brand, not undercuts it.</p>
+            <p><strong>Close:</strong> Honest qualifier. &ldquo;Amazon isn&rsquo;t right for every DTC brand. If your brand&rsquo;s differentiation is entirely experiential (unboxing, in-store, handwritten notes), Amazon probably doesn&rsquo;t serve you. If your product can stand on its own — quality, reviews, photography — Amazon extends your reach without diluting what you&rsquo;ve built.&rdquo;</p>
+          </div>
+        </div>
+        <div>
+          <span class="card-section-label">Video Brief</span>
+          <div class="card-section-body">
+            <p><strong>Hook (3 sec):</strong> &ldquo;If you&rsquo;ve built a premium Shopify brand, here&rsquo;s the Amazon question nobody gives you a straight answer to.&rdquo;</p>
+            <p><strong>Validate the fear:</strong> &ldquo;The worry that Amazon turns your brand into a commodity — I get it. It&rsquo;s a legitimate question. And the honest answer isn&rsquo;t &lsquo;Amazon is always great.&rsquo;&rdquo;</p>
+            <p><strong>Reframe:</strong> &ldquo;Here&rsquo;s what the data shows. 48% of people who find a brand on Amazon visit their website afterwards. Amazon isn&rsquo;t replacing your store — it&rsquo;s sending people to it. And here&rsquo;s the thing nobody tells you: if your products are already being sold on Amazon by a third-party reseller — with wrong photos, wrong pricing, wrong positioning — you don&rsquo;t have a brand protection strategy. You have a gap.&rdquo;</p>
+            <p><strong>CTA:</strong> &ldquo;Click the link and book a call. We&rsquo;ll tell you if your category works before you commit to anything.&rdquo;</p>
+            <p style="margin-top:10px;"><strong>Length:</strong> 55 sec &mdash; this one earns the extra time; the nuance matters for P4</p>
+          </div>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-pill platform-instagram"><span>Instagram</span><span>Strong Reel — this topic gets saved and shared. Subhead: "The truth about Amazon and premium brands"</span></div>
+        <div class="platform-pill platform-facebook"><span>Facebook</span><span>Full video. Boost to brand owner + DTC business audiences.</span></div>
+        <div class="platform-pill platform-linkedin"><span>LinkedIn</span><span>Best platform for this post. Analytical, brand-strategy tone resonates with LinkedIn&rsquo;s ecommerce audience. Write as a column piece.</span></div>
+        <div class="platform-pill platform-tiktok"><span>TikTok</span><span>Frame as "things nobody tells you about Amazon and your brand" — gets saves and reposts on TikTok</span></div>
+      </div>
+    </div>
+
+    <!-- POST 6 -->
+    <div class="content-card consideration">
+      <div class="content-card-header">
+        <div style="display:flex;align-items:flex-start;flex:1;">
+          <div class="content-card-num">06</div>
+          <div class="content-card-title">Amazon FBA Fees in Australia: What Your Margins Actually Look Like</div>
+        </div>
+        <div class="content-card-badges">
+          <span class="badge badge-stage-consideration">Consideration</span>
+          <span class="badge badge-persona">P1 &middot; P2</span>
+          <span class="badge badge-angle">Objection: Margins</span>
+        </div>
+      </div>
+      <div class="content-card-body">
+        <div>
+          <span class="card-section-label">Blog Brief</span>
+          <div class="rationale-box">
+            <div class="rationale-label">Research Rationale</div>
+            <div class="rationale-text">Audience research lists &ldquo;fees kill your margins — 10–15% referral fee on top of FBA&rdquo; as the second most common objection after complexity. Cross-audience copy trigger from research: &ldquo;We model your margins before we start. If it doesn&rsquo;t stack up for your category, we&rsquo;ll tell you upfront.&rdquo; This post makes the fee structure transparent and positions Phase 3 as a credible advisor, not just a seller. Brands that understand the real margin picture convert at higher rates — this content does the qualification work before the sales call.</div>
+          </div>
+          <div class="card-section-title">Title</div>
+          <div class="card-section-body"><p>&ldquo;Amazon FBA fees in Australia: what your margins actually look like category by category&rdquo;</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Target keywords</div>
+          <div class="card-section-body"><p>Amazon FBA fees Australia / Amazon referral fee Australia / Amazon margins Australia Shopify</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Structure (900 words)</div>
+          <div class="card-section-body">
+            <p><strong>Open:</strong> &ldquo;The most common objection to Amazon is margin. It&rsquo;s also the one that&rsquo;s most misunderstood. Here&rsquo;s how the fee structure actually works — and the categories where it makes sense.&rdquo;</p>
+            <p><strong>Section 1:</strong> How Amazon AU fees actually work. Referral fee (category-specific: 8% for electronics, 15% for most categories, 20% for luxury). FBA fees (weight and size-based). Monthly storage. Show real numbers with a worked example: a $59 skincare product going through FBA.</p>
+            <p><strong>Section 2:</strong> The margin model by category. Table: gross margin required to be profitable on Amazon by category. Which categories work well (high-margin consumables, supplements, homeware). Which need careful analysis (low-margin electronics, fashion).</p>
+            <p><strong>Section 3:</strong> The margin modelling conversation. &ldquo;Before we take on any client, we run this model for their specific product set. If the numbers don&rsquo;t work, we say so. We&rsquo;re not interested in clients for whom Amazon isn&rsquo;t a profitable channel.&rdquo;</p>
+            <p><strong>Close:</strong> CTA to call — &ldquo;We&rsquo;ll model your specific category margins in the first conversation. No commitment.&rdquo;</p>
+          </div>
+        </div>
+        <div>
+          <span class="card-section-label">Video Brief</span>
+          <div class="card-section-body">
+            <p><strong>Hook (3 sec):</strong> &ldquo;The number one reason Shopify brands don&rsquo;t launch on Amazon is margins. Here&rsquo;s what the numbers actually look like.&rdquo;</p>
+            <p><strong>Validate:</strong> &ldquo;The fees are real. 15% referral fee in most categories, on top of FBA. For some products, that eats your margin completely. I&rsquo;m not going to pretend otherwise.&rdquo;</p>
+            <p><strong>Reframe:</strong> &ldquo;But here&rsquo;s what gets missed. Those fees replace your ad spend. When a customer finds your product through Amazon&rsquo;s algorithm, you paid 15% in referral fees — not $8 in Google CPC plus 15% ad agency fees. The maths often looks different once you run the full model.&rdquo;</p>
+            <p><strong>Product:</strong> &ldquo;Before we take on any client through our TX Marketplace Accelerator, we model their margins. If it doesn&rsquo;t stack up, we tell them. We&rsquo;re not interested in clients for whom this doesn&rsquo;t make sense.&rdquo;</p>
+            <p><strong>CTA:</strong> &ldquo;Click the link and book a call. We&rsquo;ll run the numbers for your category before you commit to anything.&rdquo;</p>
+            <p style="margin-top:10px;"><strong>Length:</strong> 50 sec</p>
+          </div>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-pill platform-instagram"><span>Instagram</span><span>Worked margin example as graphic overlay. Numbers make this visual.</span></div>
+        <div class="platform-pill platform-facebook"><span>Facebook</span><span>Full video. Comment bait: "what category are you in?" drives engagement.</span></div>
+        <div class="platform-pill platform-linkedin"><span>LinkedIn</span><span>Table-led post. The margin model by category as the body. Highly shareable with ecommerce owners.</span></div>
+        <div class="platform-pill platform-tiktok"><span>TikTok</span><span>Frame as "Amazon fee myth vs reality" — this format performs well on TikTok for business content</span></div>
+      </div>
+    </div>
+
+    <!-- POST 7 -->
+    <div class="content-card consideration">
+      <div class="content-card-header">
+        <div style="display:flex;align-items:flex-start;flex:1;">
+          <div class="content-card-num">07</div>
+          <div class="content-card-title">Is Someone Already Selling Your Products on Amazon Without Your Permission?</div>
+        </div>
+        <div class="content-card-badges">
+          <span class="badge badge-stage-consideration">Consideration</span>
+          <span class="badge badge-persona">P1 &middot; P2 &middot; P4</span>
+          <span class="badge badge-angle">Unauthorised Resellers</span>
+        </div>
+      </div>
+      <div class="content-card-body">
+        <div>
+          <span class="card-section-label">Blog Brief</span>
+          <div class="rationale-box">
+            <div class="rationale-label">Research Rationale</div>
+            <div class="rationale-text">Audience research explicitly identifies this as a blind spot: &ldquo;Unauthorised third-party resellers may already be selling their products on Amazon — without their control over pricing, listing quality, or brand rep.&rdquo; This is a pain point brands don&rsquo;t know they have. It creates urgency from a completely different angle — not &ldquo;you&rsquo;re missing revenue&rdquo; but &ldquo;someone else is taking your revenue and damaging your brand while doing it.&rdquo; Especially potent for P4 (DTC purist) whose brand protection instincts are already heightened. Works across all personas who haven&rsquo;t checked.</div>
+          </div>
+          <div class="card-section-title">Title</div>
+          <div class="card-section-body"><p>&ldquo;Is someone else selling your products on Amazon without your permission? Here&rsquo;s how to check.&rdquo;</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Target keywords</div>
+          <div class="card-section-body"><p>Amazon unauthorised sellers Australia / Amazon Brand Registry Australia / protect brand on Amazon</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Structure (800 words)</div>
+          <div class="card-section-body">
+            <p><strong>Open:</strong> &ldquo;Search your brand name on Amazon.com.au right now. If you haven&rsquo;t done this recently, you may not like what you find.&rdquo;</p>
+            <p><strong>Section 1:</strong> What unauthorised reselling looks like. Third parties buy your products through retail channels (or grey markets) and list them on Amazon — often with wrong photos, outdated descriptions, or below your MAP pricing. You don&rsquo;t control the listing, the pricing, or the customer experience. Every 1-star review they collect lives on a page connected to your brand.</p>
+            <p><strong>Section 2:</strong> Why this is a bigger problem than it looks. Amazon&rsquo;s A10 algorithm doesn&rsquo;t distinguish between your listing and a reseller&rsquo;s. If a reseller&rsquo;s poor-quality listing is the first result for your brand name, that&rsquo;s the first impression every new buyer gets.</p>
+            <p><strong>Section 3:</strong> How to address it. Amazon Brand Registry (requires trademark). Having your own listing as the primary result. Controlling the narrative before someone else does.</p>
+            <p><strong>Close:</strong> &ldquo;The fastest way to protect your brand on Amazon is to be there first, with your own listing, your own photos, and your own pricing. That&rsquo;s the only protection that actually works.&rdquo; CTA to TX Marketplace Accelerator.</p>
+          </div>
+        </div>
+        <div>
+          <span class="card-section-label">Video Brief</span>
+          <div class="card-section-body">
+            <p><strong>Hook (3 sec):</strong> &ldquo;Search your brand name on Amazon right now. I&rsquo;ll wait.&rdquo;</p>
+            <p><strong>Validate + Reframe:</strong> &ldquo;A lot of Shopify brand owners have never done that. And when they do, they find someone else is already selling their products. Wrong photos. Wrong pricing. Maybe even a 2-star review — on a listing they didn&rsquo;t create and can&rsquo;t control.&rdquo;</p>
+            <p><strong>Deepen:</strong> &ldquo;Here&rsquo;s the problem. That listing is the first thing every new customer sees when they search your brand name. You didn&rsquo;t build it. You can&rsquo;t fix it. And it&rsquo;s representing your brand.&rdquo;</p>
+            <p><strong>Solution:</strong> &ldquo;The only way to control your brand on Amazon is to have your own listing. Brand Registry, your photos, your copy, your price. Once you own the listing, you own the brand story.&rdquo;</p>
+            <p><strong>CTA:</strong> &ldquo;Our TX Marketplace Accelerator sets all of that up in 30 days. Click the link and book a call.&rdquo;</p>
+            <p style="margin-top:10px;"><strong>Length:</strong> 55 sec &mdash; the "search your brand name" hook creates immediate engagement</p>
+          </div>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-pill platform-instagram"><span>Instagram</span><span>High save/share potential. Practical tip format works well. "Search your brand name" is interactive.</span></div>
+        <div class="platform-pill platform-facebook"><span>Facebook</span><span>Strong comment driver — "I just searched and found [x]" reactions. Boost to brand owners.</span></div>
+        <div class="platform-pill platform-linkedin"><span>LinkedIn</span><span>Post: "If you haven&rsquo;t searched your brand name on Amazon recently, do it now." Short setup, then the reseller explanation. High engagement.</span></div>
+        <div class="platform-pill platform-tiktok"><span>TikTok</span><span>"POV: you search your brand on Amazon for the first time" — this format drives duets and responses on TikTok</span></div>
+      </div>
+    </div>
+
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+
+<!-- SECTION 04 — POSTS 8–10 (DECISION) -->
+<div id="section-04" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">04</div>
+        <div class="section-title-text">Posts 8–10 &mdash; Decision</div>
+      </div>
+      <div class="section-bg-num">04</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- POST 8 -->
+    <div class="content-card decision">
+      <div class="content-card-header">
+        <div style="display:flex;align-items:flex-start;flex:1;">
+          <div class="content-card-num">08</div>
+          <div class="content-card-title">Why Most Shopify Brands Fail Their First 90 Days on Amazon (And How to Avoid It)</div>
+        </div>
+        <div class="content-card-badges">
+          <span class="badge badge-stage-decision">Decision</span>
+          <span class="badge badge-persona">P1 &middot; P2 &middot; P3</span>
+          <span class="badge badge-angle">DIY Risk</span>
+        </div>
+      </div>
+      <div class="content-card-body">
+        <div>
+          <span class="card-section-label">Blog Brief</span>
+          <div class="rationale-box">
+            <div class="rationale-label">Research Rationale</div>
+            <div class="rationale-text">Recommendation research (Pass 2): &ldquo;A brand that gets listed in 30 days and sees zero sales by day 60 will feel misled.&rdquo; This post addresses that directly — it explains why the first 90 days on Amazon fail when done without a structured approach, and positions managed launch as the way to survive that period. Also relevant for P3 (Amazon seller, no PPC) who has &ldquo;been there, done that, it didn&rsquo;t work.&rdquo; Their first 90 days failed because they went in without strategy — this post names that experience and reframes it.</div>
+          </div>
+          <div class="card-section-title">Title</div>
+          <div class="card-section-body"><p>&ldquo;Why most Shopify brands fail their first 90 days on Amazon — and the three mistakes that cause it&rdquo;</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Target keywords</div>
+          <div class="card-section-body"><p>Amazon seller Australia failing / Amazon first 90 days / Amazon launch mistakes Australia</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Structure (900 words)</div>
+          <div class="card-section-body">
+            <p><strong>Open:</strong> &ldquo;Most Amazon launch failures happen before the first sale. Here are the three things that kill them.&rdquo;</p>
+            <p><strong>Mistake 1:</strong> Listed in the wrong category. Amazon&rsquo;s category structure is not intuitive. A product listed in the wrong category gets seen by the wrong buyers, triggers the wrong compliance requirements, and ranks against irrelevant competitors. Common and preventable — but only if you know Amazon&rsquo;s category logic before you list.</p>
+            <p><strong>Mistake 2:</strong> Listing copy written for humans, not Amazon&rsquo;s algorithm. Amazon has specific title, bullet point, and backend keyword structures. Listing copy that works on a Shopify PDP does not work on Amazon. The algorithm won&rsquo;t rank it; the buyer won&rsquo;t convert from it.</p>
+            <p><strong>Mistake 3:</strong> Treating month 1 as the finish line. Getting listed is the start, not the end. Reviews, pricing optimisation, and early PPC are what convert a listing into a revenue channel. Brands who list and leave almost universally plateau within 90 days.</p>
+            <p><strong>Close:</strong> &ldquo;These aren&rsquo;t unusual. They&rsquo;re predictable. Which is why a managed launch that accounts for all three — from the first day — produces a different outcome than doing it yourself.&rdquo; CTA to TX Marketplace Accelerator.</p>
+          </div>
+        </div>
+        <div>
+          <span class="card-section-label">Video Brief</span>
+          <div class="card-section-body">
+            <p><strong>Hook (3 sec):</strong> &ldquo;Most brands that try to launch on Amazon themselves fail in the first 90 days. Here&rsquo;s why.&rdquo;</p>
+            <p><strong>Validate:</strong> &ldquo;And listen — you&rsquo;re not stupid if it didn&rsquo;t work the first time. Ecommerce is simple. It&rsquo;s just not easy. And Amazon has enough moving parts that getting one thing wrong on day one sets you back months.&rdquo;</p>
+            <p><strong>Three mistakes:</strong> Run through them quickly — wrong category, listing copy written for humans not the algorithm, treating month 1 as the finish line.</p>
+            <p><strong>Reframe:</strong> &ldquo;These are predictable failures. Which means they&rsquo;re preventable — but only if someone who has seen them before is running the setup.&rdquo;</p>
+            <p><strong>Product + Guarantee + CTA:</strong> &ldquo;That&rsquo;s what our TX Marketplace Accelerator is built around. 30 days to live. Guarantee if we miss it. Click the link and book a call.&rdquo;</p>
+            <p style="margin-top:10px;"><strong>Length:</strong> 50 sec &mdash; &ldquo;ecommerce is simple, it&rsquo;s just not easy&rdquo; is a Gary signature — use it verbatim</p>
+          </div>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-pill platform-instagram"><span>Instagram</span><span>Strong Reel — "3 reasons" format reliably drives saves on Instagram</span></div>
+        <div class="platform-pill platform-facebook"><span>Facebook</span><span>High resonance with P3 (already on Amazon, flat sales). Target: existing Amazon sellers AU.</span></div>
+        <div class="platform-pill platform-linkedin"><span>LinkedIn</span><span>Post: list format of the 3 mistakes. Clean, analytical. No emotion. The "ecommerce is simple, not easy" line earns the most engagement on this platform.</span></div>
+        <div class="platform-pill platform-tiktok"><span>TikTok</span><span>"3 Amazon launch mistakes nobody warns you about" — specific number + practical advice = high completion rate on TikTok</span></div>
+      </div>
+    </div>
+
+    <!-- POST 9 -->
+    <div class="content-card decision">
+      <div class="content-card-header">
+        <div style="display:flex;align-items:flex-start;flex:1;">
+          <div class="content-card-num">09</div>
+          <div class="content-card-title">What a Done-for-You Amazon Launch Actually Includes: Month-by-Month</div>
+        </div>
+        <div class="content-card-badges">
+          <span class="badge badge-stage-decision">Decision</span>
+          <span class="badge badge-persona">P1 &middot; P2</span>
+          <span class="badge badge-angle">Category Definition</span>
+        </div>
+      </div>
+      <div class="content-card-body">
+        <div>
+          <span class="card-section-label">Blog Brief</span>
+          <div class="rationale-box">
+            <div class="rationale-label">Research Rationale</div>
+            <div class="rationale-text">Recommendation research (Pass 3) identifies the root problem: &ldquo;The page needs a three-sentence category definition before the angles do their work... the prospect has never bought this before.&rdquo; This post is that category definition, in long-form. It answers the question &ldquo;what am I actually buying?&rdquo; — which the recommendation notes is the unspoken blocker for every almost-sold prospect. The Phase 1/2/3 roadmap (Launch / Grow / Compound) must appear here, not just in the landing page.</div>
+          </div>
+          <div class="card-section-title">Title</div>
+          <div class="card-section-body"><p>&ldquo;What a done-for-you Amazon launch actually includes: the month-by-month breakdown&rdquo;</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Target keywords</div>
+          <div class="card-section-body"><p>done for you Amazon Australia / Amazon launch service Australia / managed Amazon seller Australia</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Structure (1,000 words)</div>
+          <div class="card-section-body">
+            <p><strong>Open:</strong> &ldquo;One of the most common questions we get: &lsquo;So what are you actually doing for $1,500?&rsquo; It&rsquo;s a fair question. Here&rsquo;s the full answer.&rdquo;</p>
+            <p><strong>Month 1 (Launch):</strong> Account setup and verification. GTIN sourcing and compliance mapping. Category selection. Full catalogue build. Listing copy written to Amazon SEO standards. Photography audit and reformatting. FBA or FBM configuration. Shipment coordination. Listings live. Launch report.</p>
+            <p><strong>Months 2–3 (Grow):</strong> Review velocity strategy. Pricing and Buy Box monitoring. First PPC campaigns (ad budget separate). Ongoing listing optimisation based on search term data.</p>
+            <p><strong>Month 4+ (Compound):</strong> Search rank improvement. Catalogue expansion. eBay AU and Catch (optional). Monthly performance reports.</p>
+            <p><strong>What you don&rsquo;t do:</strong> You send us the products. We handle everything else.</p>
+            <p><strong>Close:</strong> &ldquo;Month 1 is delivery. Month 2 onward is compounding. The distinction matters because brands who treat Amazon as a setup task — list it and leave it — consistently underperform brands who treat it as a managed channel.&rdquo; CTA.</p>
+          </div>
+        </div>
+        <div>
+          <span class="card-section-label">Video Brief</span>
+          <div class="card-section-body">
+            <p><strong>Hook (3 sec):</strong> &ldquo;If you&rsquo;ve been wondering what a done-for-you Amazon launch actually involves — here&rsquo;s everything.&rdquo;</p>
+            <p><strong>Month 1:</strong> Walk through the launch checklist — account, catalogue, listings, FBA setup. &ldquo;Your products are live. That&rsquo;s Month 1 done.&rdquo;</p>
+            <p><strong>Month 2–3:</strong> &ldquo;Month 2 is where the work that actually drives revenue starts. Review strategy, pricing, first ad spend. The listing is live — now we make it convert.&rdquo;</p>
+            <p><strong>Month 4+:</strong> &ldquo;Month 4 onward is expansion. Better rankings, broader catalogue, other marketplaces if you want them. This is where the compounding kicks in.&rdquo;</p>
+            <p><strong>Product:</strong> &ldquo;Your job in all of this? Send us the products. We handle everything else.&rdquo;</p>
+            <p><strong>Guarantee + CTA:</strong> &ldquo;TX Marketplace Accelerator. $1,500 setup. 30-day guarantee. Click the link and book a call.&rdquo;</p>
+            <p style="margin-top:10px;"><strong>Length:</strong> 60 sec &mdash; LinkedIn audience earns the longer format; cut to 40 sec for TikTok/Instagram</p>
+          </div>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-pill platform-instagram"><span>Instagram</span><span>40 sec cut. Month 1/2/3 graphic overlay works well as visual structure.</span></div>
+        <div class="platform-pill platform-facebook"><span>Facebook</span><span>Full 60 sec. Boost to warm audiences who have seen earlier content.</span></div>
+        <div class="platform-pill platform-linkedin"><span>LinkedIn</span><span>Full breakdown post. The three-phase table as body. &ldquo;Your job: send us the products&rdquo; as the closing line — high save rate.</span></div>
+        <div class="platform-pill platform-tiktok"><span>TikTok</span><span>35 sec cut. Use Month 1/2/3 as three rapid sections — visual transitions between each phase keep watch time up.</span></div>
+      </div>
+    </div>
+
+    <!-- POST 10 -->
+    <div class="content-card decision">
+      <div class="content-card-header">
+        <div style="display:flex;align-items:flex-start;flex:1;">
+          <div class="content-card-num">10</div>
+          <div class="content-card-title">If You&rsquo;ve Been Meaning to Launch on Amazon for Six Months — This One&rsquo;s for You</div>
+        </div>
+        <div class="content-card-badges">
+          <span class="badge badge-stage-decision">Decision</span>
+          <span class="badge badge-persona">P1 (Almost-sold)</span>
+          <span class="badge badge-angle">Almost-Sold</span>
+        </div>
+      </div>
+      <div class="content-card-body">
+        <div>
+          <span class="card-section-label">Blog Brief</span>
+          <div class="rationale-box">
+            <div class="rationale-label">Research Rationale</div>
+            <div class="rationale-text">Recommendation research (Pass 2) explicitly identifies this as the highest-conversion segment being completely ignored: &ldquo;Owners who nearly pulled the trigger on Amazon six months ago are not cold prospects. Their objection is different: it&rsquo;s not &lsquo;should I be on Amazon&rsquo; but &lsquo;can I trust someone else to do this right.&rsquo;&rdquo; This content should run last — after the retargeting pool exists from earlier content. It should not run cold. It speaks directly to the procrastination pattern, names the specific friction points (account setup abandoned halfway), and closes on trust, not urgency.</div>
+          </div>
+          <div class="card-section-title">Title</div>
+          <div class="card-section-body"><p>&ldquo;If you&rsquo;ve been meaning to launch on Amazon for the last six months — this one&rsquo;s for you&rdquo;</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Target keywords</div>
+          <div class="card-section-body"><p>how to finally launch on Amazon Australia / Amazon seller account Australia stuck / Amazon Australia getting started</p></div>
+          <div class="card-section-title" style="margin-top:14px;">Structure (800 words)</div>
+          <div class="card-section-body">
+            <p><strong>Open:</strong> &ldquo;You already know you should be on Amazon. You&rsquo;ve looked into it. You&rsquo;ve probably started the seller account setup at least once and stopped halfway through.&rdquo; Name the specific friction points — the identity verification, the bank details, the business documentation. The friction is real.</p>
+            <p><strong>Section 1:</strong> Why the procrastination makes complete sense. The setup process is genuinely complicated. The compliance requirements are not obvious. A first-time seller without a roadmap will hit walls that look like they take days to get through.</p>
+            <p><strong>Section 2:</strong> What the cost of another six months looks like. Review compounding (brief — this audience has seen it). Competitor&rsquo;s lead growing (brief). Not emotional — just the maths of delay.</p>
+            <p><strong>Section 3:</strong> What happens when you hand it to someone who has done it before. No weeks navigating Seller Central. No category mapping guesswork. No compliance surprises. Products live in 30 days.</p>
+            <p><strong>Close:</strong> Direct. &ldquo;You&rsquo;ve already made the decision. The bit that&rsquo;s stopping you is the execution. That&rsquo;s exactly what we&rsquo;re here for.&rdquo; Guarantee. CTA.</p>
+          </div>
+        </div>
+        <div>
+          <span class="card-section-label">Video Brief</span>
+          <div class="card-section-body">
+            <p><strong>Hook (3 sec):</strong> &ldquo;If you&rsquo;ve been meaning to get on Amazon for the last six months — this one&rsquo;s for you.&rdquo;</p>
+            <p><strong>Validate:</strong> &ldquo;You already know you should be there. You&rsquo;ve probably looked into it. You might have got halfway through the seller account setup and stopped. The friction is real. Account setup, catalogue requirements, compliance rules, photography specs. I&rsquo;m not going to tell you it&rsquo;s simple. It&rsquo;s not.&rdquo;</p>
+            <p><strong>Reframe:</strong> &ldquo;But here&rsquo;s the thing. You&rsquo;ve already made the decision. The thing that&rsquo;s stopping you isn&rsquo;t the decision — it&rsquo;s the execution. And that&rsquo;s exactly what we handle.&rdquo;</p>
+            <p><strong>Product:</strong> &ldquo;You send us the products. We set up the account, build the catalogue, write the listings, handle the compliance, and get your products live.&rdquo;</p>
+            <p><strong>Guarantee + CTA:</strong> &ldquo;30 days. $1,500. We guarantee your products are live or your money back. Click the link and book a call.&rdquo;</p>
+            <p style="margin-top:10px;"><strong>Length:</strong> 50 sec &mdash; run as retargeting only. Do NOT run cold.</p>
+          </div>
+        </div>
+      </div>
+      <div class="platform-row">
+        <div class="platform-pill platform-instagram"><span>Instagram</span><span>Retargeting only. Audience: visited landing page or watched &gt;50% of Posts 1–3.</span></div>
+        <div class="platform-pill platform-facebook"><span>Facebook</span><span>Retargeting only. Warm audience: website visitors + video viewers from Posts 1–4.</span></div>
+        <div class="platform-pill platform-linkedin"><span>LinkedIn</span><span>Publish last — after paid traffic and earlier content have run. Direct, empathetic. No stats — just the procrastination pattern.</span></div>
+        <div class="platform-pill platform-tiktok"><span>TikTok</span><span>35 sec cut. "POV: you've been meaning to launch on Amazon for 6 months" — this framing performs on TikTok for this audience</span></div>
+      </div>
+    </div>
+
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+
+<!-- SECTION 05 — PUBLISH SEQUENCE -->
+<div id="section-05" class="section-block">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <div>
+        <div class="section-num-accent">05</div>
+        <div class="section-title-text">Publish Sequence</div>
+      </div>
+      <div class="section-bg-num">05</div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <div style="background:var(--white);border-radius:4px;box-shadow:var(--shadow);padding:28px 32px;margin-bottom:32px;border-left:4px solid var(--lime);">
+      <span style="font-family:'Orbitron',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.22em;color:var(--lime);text-transform:uppercase;display:block;margin-bottom:12px;">Critical Rules</span>
+      <div style="font-size:0.9rem;color:#444;line-height:1.7;">
+        <strong style="color:var(--dark);">1.</strong> Do not run Post 10 (almost-sold) to cold audiences. It requires a warm retargeting pool to exist first. Publish last.<br>
+        <strong style="color:var(--dark);">2.</strong> Do not run Angle E (Post 3, Identity Gap) before Posts 1–2 have established the awareness frame. Cold audiences feel called out, not motivated.<br>
+        <strong style="color:var(--dark);">3.</strong> Landing page must be live before any paid traffic runs. The funnel breaks at the page, not the ad.<br>
+        <strong style="color:var(--dark);">4.</strong> Blog posts go live before social/paid. They provide a credibility asset to link from social, and begin accumulating SEO value from day one.
+      </div>
+    </div>
+
+    <table class="seq-table">
+      <thead>
+        <tr>
+          <th>Order</th>
+          <th>Post</th>
+          <th>Stage</th>
+          <th>Channel Priority</th>
+          <th>Why This Position</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="seq-num">01</span></td>
+          <td><strong>Post 1</strong> — The Invisible Customer</td>
+          <td><span class="seq-stage-dot awareness"></span>Awareness</td>
+          <td>Blog + LinkedIn organic first</td>
+          <td>Category-defining post. Plants the core problem. Every subsequent post assumes this frame is established.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">02</span></td>
+          <td><strong>Post 2</strong> — Is Amazon Worth It?</td>
+          <td><span class="seq-stage-dot awareness"></span>Awareness</td>
+          <td>Blog + organic, all platforms</td>
+          <td>Captures top-of-funnel SEO. Answers the first question. Also the entry point for P4 (DTC purist) who won&rsquo;t engage with harder angles cold.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">03</span></td>
+          <td><strong>Post 4</strong> — DIY Cost Breakdown</td>
+          <td><span class="seq-stage-dot consideration"></span>Consideration</td>
+          <td>Blog + paid ads (Meta Script 1)</td>
+          <td>Strongest cold conversion angle for P1. Run as paid ad once Posts 1–2 have established audience. Itemised breakdown makes the $6,700 credible.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">04</span></td>
+          <td><strong>Post 7</strong> — Unauthorised Resellers</td>
+          <td><span class="seq-stage-dot consideration"></span>Consideration</td>
+          <td>Organic + social (high share value)</td>
+          <td>Highest organic share potential of all posts. Creates urgency from brand protection angle — different emotional register from economics posts. Strong with P4.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">05</span></td>
+          <td><strong>Post 3</strong> — Competitor on Amazon</td>
+          <td><span class="seq-stage-dot awareness"></span>Awareness</td>
+          <td>Social first, then blog</td>
+          <td>Identity Gap + compounding. Run after Posts 1–2 have established the awareness frame — now the competitive contrast lands without feeling like a cold call-out.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">06</span></td>
+          <td><strong>Post 5</strong> — DTC Brand Fear</td>
+          <td><span class="seq-stage-dot consideration"></span>Consideration</td>
+          <td>LinkedIn primary</td>
+          <td>Specifically for P4 (DTC purist) — warm them up with Posts 1 and 2 first. LinkedIn is the right platform; brand-strategy tone resonates there.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">07</span></td>
+          <td><strong>Post 6</strong> — Margin Reality</td>
+          <td><span class="seq-stage-dot consideration"></span>Consideration</td>
+          <td>All platforms, paid retargeting</td>
+          <td>Objection-handling post. Run to warm audiences who have engaged with Posts 1–4. The margin conversation belongs mid-funnel, not at the top.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">08</span></td>
+          <td><strong>Post 8</strong> — First 90 Days Failure</td>
+          <td><span class="seq-stage-dot decision"></span>Decision</td>
+          <td>All platforms</td>
+          <td>Bridges consideration to decision. &ldquo;Ecommerce is simple, it&rsquo;s just not easy&rdquo; — validates past failure and opens the door to managed service.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">09</span></td>
+          <td><strong>Post 9</strong> — What DFY Includes</td>
+          <td><span class="seq-stage-dot decision"></span>Decision</td>
+          <td>All platforms, retargeting</td>
+          <td>Category definition content. Must be seen by anyone close to converting. Defines what they&rsquo;re buying before the sales call. Prevents Month 2 churn.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">10</span></td>
+          <td><strong>Post 10</strong> — Six Months of Meaning To</td>
+          <td><span class="seq-stage-dot decision"></span>Decision</td>
+          <td>Retargeting ONLY (warm)</td>
+          <td>Almost-sold segment. Highest conversion potential. Runs last — requires retargeting pool built from all prior content. Do not run cold under any circumstance.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-end-spacer"></div>
+  </div>
+</div>
+
+
+<!-- PAGE NAV -->
+<div class="page-nav">
+  <a href="marketplaces-v2-strategy-brief.html">&larr; Strategy Brief</a>
+  <div class="page-nav-pos">CONTENT PLAN</div>
+  <a href="marketplaces-v2-landing-page.html">Landing Page &rarr;</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="doc-footer">
+  <div class="footer-line"></div>
+  <div class="footer-brand">PHASE 3 ECOM</div>
+  <div class="footer-meta">TX Marketplace Accelerator v2 &nbsp;|&nbsp; Content Plan &nbsp;|&nbsp; will@phase3ecom.com &nbsp;|&nbsp; 13/05/2026</div>
+</footer>
+
+</body>
+</html>
