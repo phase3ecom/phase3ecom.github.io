@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offer Alternatives — TX Marketplace Accelerator — Phase 3 Ecom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Cabin:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --lime: #a3d01d;
+  --dark: #100828;
+  --white: #ffffff;
+  --bg: #fafafa;
+  --text: #1a1a2e;
+  --muted: #6b6b7a;
+  --border: #e2e2e6;
+  --lime-light: rgba(163,208,29,0.12);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Cabin', sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; }
+
+/* ─── COVER ─────────────────────────────── */
+.cover {
+  width: 100%; min-height: 100vh; background: var(--dark);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 80px 40px; position: relative;
+}
+.cover-top { position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--lime); }
+.cover-inner { text-align: center; max-width: 680px; }
+.cover-eyebrow {
+  font-family: 'Cabin', sans-serif; font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--lime);
+  margin-bottom: 32px;
+}
+.cover-title {
+  font-family: 'Orbitron', sans-serif; font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 24px;
+}
+.cover-title span { color: var(--lime); }
+.cover-divider { width: 48px; height: 2px; background: var(--lime); margin: 0 auto 24px; }
+.cover-desc { font-size: 1rem; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto; }
+.cover-meta {
+  display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+  margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.cover-meta-item { text-align: center; }
+.cover-meta-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 4px; }
+.cover-meta-value { font-size: 0.9rem; color: rgba(255,255,255,0.7); font-weight: 600; }
+
+/* ─── NAV ─────────────────────────────── */
+.nav {
+  background: var(--white); border-bottom: 2px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 1px 12px rgba(0,0,0,0.06); overflow-x: auto;
+}
+.nav-inner { max-width: 960px; margin: 0 auto; padding: 0 32px; display: flex; gap: 0; }
+.nav-link {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none; padding: 16px 20px; white-space: nowrap;
+  border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s;
+}
+.nav-link:hover { color: var(--dark); border-bottom-color: var(--lime); }
+
+/* ─── PAGE LAYOUT ─────────────────────────────── */
+.page { max-width: 960px; margin: 0 auto; padding: 0 32px 120px; }
+
+/* ─── SECTION ─────────────────────────────── */
+.section { padding-top: 72px; }
+.section-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--lime); margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Cabin', sans-serif; font-size: 1.6rem; font-weight: 700;
+  color: var(--dark); margin-bottom: 12px; padding-bottom: 16px;
+  border-bottom: 2px solid var(--border);
+}
+.section-desc { font-size: 0.95rem; color: var(--muted); margin-bottom: 36px; }
+
+/* ─── CURRENT OFFER BOX ─────────────────────────────── */
+.current-offer {
+  background: var(--dark); border-radius: 8px; padding: 32px 36px;
+  margin-top: 48px; margin-bottom: 0; display: flex; flex-direction: column; gap: 16px;
+}
+.current-offer-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--lime);
+}
+.current-offer-text { font-size: 1.05rem; color: rgba(255,255,255,0.9); font-weight: 600; }
+.current-offer-detail { font-size: 0.88rem; color: rgba(255,255,255,0.5); }
+
+/* ─── OFFER CARDS ─────────────────────────────── */
+.offer-grid { display: flex; flex-direction: column; gap: 20px; }
+
+.offer-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-left: 3px solid var(--lime); border-radius: 6px;
+  padding: 28px 32px; display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px; align-items: start;
+}
+.offer-card-name {
+  font-size: 0.95rem; font-weight: 700; color: var(--dark);
+  margin-bottom: 6px;
+}
+.offer-card-mechanic { font-size: 0.88rem; color: var(--muted); }
+.offer-col-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--lime); margin-bottom: 6px;
+}
+.offer-col-text { font-size: 0.88rem; color: var(--text); }
+.risk-text { font-size: 0.88rem; color: #b45309; }
+
+@media (max-width: 760px) {
+  .offer-card { grid-template-columns: 1fr; }
+}
+
+/* ─── SEQUENCE TABLE ─────────────────────────────── */
+.seq-table { width: 100%; border-collapse: collapse; }
+.seq-table th {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); text-align: left; padding: 10px 16px; background: var(--bg);
+  border-bottom: 2px solid var(--border);
+}
+.seq-table td {
+  padding: 14px 16px; border-bottom: 1px solid var(--border);
+  font-size: 0.9rem; vertical-align: top;
+}
+.seq-table tr:last-child td { border-bottom: none; }
+.seq-table tr:hover td { background: var(--lime-light); }
+.seq-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--dark); color: var(--lime);
+  font-size: 0.7rem; font-weight: 700; font-family: 'Orbitron', sans-serif;
+}
+
+/* ─── CAUTION NOTE ─────────────────────────────── */
+.caution {
+  background: #fffbeb; border: 1px solid #fcd34d; border-left: 3px solid #f59e0b;
+  border-radius: 6px; padding: 16px 20px; font-size: 0.88rem; color: #92400e;
+  margin-top: 24px;
+}
+.caution strong { font-weight: 700; }
+
+/* ─── FOOTER ─────────────────────────────── */
+.footer {
+  margin-top: 96px; padding: 32px 0; border-top: 2px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-brand { font-family: 'Orbitron', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; color: var(--muted); }
+.footer-nav { display: flex; gap: 24px; }
+.footer-nav a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-nav a:hover { color: var(--lime); }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top"></div>
+  <div class="cover-inner">
+    <div class="cover-eyebrow">TX Marketplace Accelerator · Phase 3 Ecom</div>
+    <h1 class="cover-title">Offer <span>Alternatives</span></h1>
+    <div class="cover-divider"></div>
+    <p class="cover-desc">Alternative and supplementary offer structures to test in future campaigns. Maps to each audience segment and campaign phase.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Document</div>
+        <div class="cover-meta-value">Offer Architecture</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Version</div>
+        <div class="cover-meta-value">v2 · May 2026</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Status</div>
+        <div class="cover-meta-value">Working Draft</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-link" href="#current">Current Offer</a>
+    <a class="nav-link" href="#risk">Risk-Reversal</a>
+    <a class="nav-link" href="#acquisition">Acquisition</a>
+    <a class="nav-link" href="#pricing">Pricing</a>
+    <a class="nav-link" href="#value">Value-Add</a>
+    <a class="nav-link" href="#sequence">Sequencing</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- CURRENT OFFER -->
+  <div class="section" id="current">
+    <div class="section-label">Baseline</div>
+    <h2 class="section-title">Current Offer</h2>
+    <p class="section-desc">The live offer all alternatives are measured against.</p>
+    <div class="current-offer">
+      <div class="current-offer-label">Active — Launch 1 June 2026</div>
+      <div class="current-offer-text">"Live on Amazon in 30 days or your setup fee is fully refunded."</div>
+      <div class="current-offer-detail">$1,500 setup (account, GS1/GTINs, listings, FBA) + $1,000/month retainer (PPC + listing management). Guarantee covers listing delivery — not sales.</div>
+    </div>
+  </div>
+
+  <!-- RISK-REVERSAL -->
+  <div class="section" id="risk">
+    <div class="section-label">Category 1</div>
+    <h2 class="section-title">Risk-Reversal Offers</h2>
+    <p class="section-desc">Alternatives to the 30-day delivery guarantee. Replace or layer on top of the current offer.</p>
+    <div class="offer-grid">
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">First Month Free</div>
+          <div class="offer-card-mechanic">Pay $1,500 setup only. Retainer starts Month 2.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Removes "paying before I see results" objection. Lower upfront commitment. Client sees value before cash outlay.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Acquires lower-intent buyers. Month 2 churn risk if onboarding not tight.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">90-Day Results Pilot</div>
+          <div class="offer-card-mechanic">Fixed 90-day engagement. KPIs defined at kickoff (live listings, indexed, first reviews). Miss KPIs — Month 3 is free.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Replaces open-ended retainer with a structured trial. Reduces "how do I exit?" anxiety for margin-anxious buyers.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">KPI definition requires care — set too easy or too hard. Needs internal SLA documentation.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">Full Refund — Setup + Month 1</div>
+          <div class="offer-card-mechanic">Full $2,500 refund if not live and ranked within 60 days.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Stronger confidence signal than delivery guarantee alone. Elevates positioning above any competitor with a weaker guarantee.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Higher financial exposure. Needs tight internal SLA. Not viable until consistent 30-day delivery is confirmed.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">We Cover the GTINs</div>
+          <div class="offer-card-mechanic">Phase 3 Ecom pays for GS1 barcode registration (~$175). Deducted from setup if client stays 3+ months.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Removes a known friction point in the setup process. Small dollar amount, high perceived value — feels like we own the process.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Upfront cost absorbed by agency. Needs to be factored into unit economics from Day 1.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ACQUISITION -->
+  <div class="section" id="acquisition">
+    <div class="section-label">Category 2</div>
+    <h2 class="section-title">Acquisition Offers</h2>
+    <p class="section-desc">Low-barrier entry points designed to start the relationship before the setup fee conversation.</p>
+    <div class="offer-grid">
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">Free Amazon Brand Audit</div>
+          <div class="offer-card-mechanic">1–2 hr review: competitor listings, search visibility gaps, ASIN opportunities, estimated revenue uplift. No charge.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Prospect sees their own specific gap in real time — no persuasion required. Converts to proposal from a warm, informed position.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Time-intensive. Must be templated to scale. Best suited for existing Phase 3 clients first.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">Free First Listing</div>
+          <div class="offer-card-mechanic">We list one hero product at no charge. Setup fee applies from Product 2 onward.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Proof of execution before commitment. Removes "I don't know what I'm paying for" objection with a tangible deliverable.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Labour cost on speculative work. First listing quality must be excellent — sets the expectation for everything that follows.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">Founding Client Rate Lock</div>
+          <div class="offer-card-mechanic">First 10 clients lock the $1,500/$1,000 rate permanently. Price rises after launch.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Creates urgency without discount. Rewards early adopters. Price rise framing positions the agency as growing in demand.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Rate lock must be honoured indefinitely — model risk if operational costs rise. Define exact terms in writing.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">Free Competitor Analysis</div>
+          <div class="offer-card-mechanic">PDF report showing exactly what the prospect's top 3 competitors are doing on Amazon: listing quality, reviews, pricing, keywords.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Threat framing — prospect sees what they're losing without having to imagine it. Works well with Identity Gap and Invisible Customer angles.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Commodity risk if competitors copy the format. Template carefully and brand it distinctly.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="section" id="pricing">
+    <div class="section-label">Category 3</div>
+    <h2 class="section-title">Pricing Structure Alternatives</h2>
+    <p class="section-desc">Different ways to package the same service. Some expand the addressable market; others change the risk profile.</p>
+    <div class="offer-grid">
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">No Setup Fee</div>
+          <div class="offer-card-mechanic">$0 setup. Retainer starts at $1,500/month for the first 3 months, then drops to $1,000.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Eliminates upfront cost objection entirely. Smooths cash flow for time-poor clients who resist large single payments.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Higher total cost to client — needs clear communication upfront. Total 3-month spend is $4,500 vs $3,500 current.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">Setup Only (No Retainer)</div>
+          <div class="offer-card-mechanic">$2,500 flat. Full setup, no ongoing management. Structured handoff doc included.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Captures the DIY segment. Lower LTV but larger addressable market — especially Audience 1 who are self-sufficient.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Poorly managed Amazon account post-handoff can reflect on agency. Needs a clean exit process and clear scope of responsibility.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">Revenue Share</div>
+          <div class="offer-card-mechanic">$500 setup + 10–15% of Amazon revenue monthly. No fixed retainer.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Aligns incentives entirely. Eliminates "paying $1k/month and nothing's happening" churn trigger. Strongest confidence signal of all options.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Requires revenue reporting access. Hard to audit without Shopify/Amazon data integration. Not viable without 6+ months of client data to model risk.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">Tiered Retainer</div>
+          <div class="offer-card-mechanic">Month 1–3: $1,500/month (setup + PPC launch). Month 4–6: $1,000/month (optimisation). Month 7+: $750/month (maintenance).</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Maps price to value phase. Easier to justify at each stage — client understands they're paying more when the work is heaviest.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">More complex to communicate and invoice. Month 7+ rate may undervalue ongoing management if PPC spend grows.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">Product-Volume Pricing</div>
+          <div class="offer-card-mechanic">$1,500 setup covers up to 10 SKUs. $500 per additional 10 SKUs.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Fair for large catalogues. Increases setup revenue from complex accounts without punishing small-catalogue clients.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Requires clear SKU count definition upfront. Scope creep risk if "SKU" means different things to client vs agency.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VALUE-ADD -->
+  <div class="section" id="value">
+    <div class="section-label">Category 4</div>
+    <h2 class="section-title">Value-Add Offers</h2>
+    <p class="section-desc">Same price point, more perceived value. Layer onto the current offer without changing the fee structure.</p>
+    <div class="offer-grid">
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">Amazon Ads Credit Match</div>
+          <div class="offer-card-mechanic">Phase 3 Ecom matches the client's first $200 of Amazon ad spend.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Removes "what's my ad budget on top of the retainer?" friction. A concrete dollar value that feels like partnership, not just service delivery.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">~$200 cost per acquisition. Small at current volume; material at scale. Needs to be built into pricing model.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">90-Day Review Roadmap</div>
+          <div class="offer-card-mechanic">Structured post-launch plan delivered at kickoff: Week 1–4 setup milestones, Days 30/60/90 check-ins with metrics review.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Reduces post-purchase anxiety. Client knows exactly what happens next — critical for Audience 1 (time-poor, margin-anxious).</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Creates accountability — roadmap must be delivered as specified. Build the template before selling it.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">Marketplace Expansion Included</div>
+          <div class="offer-card-mechanic">Setup includes Amazon + one additional marketplace (eBay AU, Catch, or Kogan).</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Broadens the value proposition beyond Amazon. Differentiates from Amazon-only competitors. Maps directly to the "40% of AU sales on marketplaces" stat.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Adds operational complexity. Only viable once Amazon setup process is fully templated and consistent.</div>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div>
+          <div class="offer-card-name">Dedicated Slack Channel</div>
+          <div class="offer-card-mechanic">Client gets a shared Slack channel with direct async access to the team during setup and first 90 days.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Why it works</div>
+          <div class="offer-col-text">Perceived intimacy and responsiveness. Reduces support emails. Especially valuable for Audience 1 who are anxious about handing over control.</div>
+        </div>
+        <div>
+          <div class="offer-col-label">Risk</div>
+          <div class="risk-text">Low direct cost. Primary risk is scope creep in channel conversations. Define the channel's purpose clearly at kickoff.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEQUENCING -->
+  <div class="section" id="sequence">
+    <div class="section-label">Recommendation</div>
+    <h2 class="section-title">Sequencing by Audience</h2>
+    <p class="section-desc">Which offer to use with each audience segment and campaign phase. Do not skip warm-up sequence.</p>
+
+    <table class="seq-table">
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>Audience</th>
+          <th>Offer</th>
+          <th>Rationale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="seq-num">1</span></td>
+          <td>13 existing Phase 3 Ecom clients</td>
+          <td><strong>Free Brand Audit</strong></td>
+          <td>No ad spend required. Converts audit → setup from a trust baseline. Builds first 2 case studies.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">2</span></td>
+          <td>Cold Meta — Audience 1 (Shopify/WooCommerce)</td>
+          <td><strong>Current 30-day guarantee</strong> or <strong>Free Competitor Analysis</strong> as lead magnet</td>
+          <td>Guarantee runs in primary ad. Competitor analysis as retargeting lead magnet after 3+ day no-action.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">3</span></td>
+          <td>Cold Meta — Audience 2 (Amazon, no PPC)</td>
+          <td><strong>Free Brand Audit</strong> + <strong>90-Day Pilot</strong> framing</td>
+          <td>Audience 2 is already burned by past attempts. Audit proves specific gap; pilot reduces commitment anxiety.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">4</span></td>
+          <td>Cold email list (~700 leads) — post case studies only</td>
+          <td><strong>Founding Client Rate Lock</strong></td>
+          <td>One-shot asset needs urgency mechanism. Rate lock creates scarcity without a discount. Do NOT deploy before 2 case studies exist.</td>
+        </tr>
+        <tr>
+          <td><span class="seq-num">5</span></td>
+          <td>Month 4+ — scaling</td>
+          <td><strong>Tiered Retainer</strong> or <strong>Marketplace Expansion Included</strong></td>
+          <td>Once delivery is proven and templated, expand the offer to capture larger accounts and multi-marketplace demand.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caution">
+      <strong>Do not activate revenue share or no-retainer pricing</strong> until 6+ months of data on operational cost-per-client exists. Both structures require validated unit economics to avoid margin exposure at scale.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">Phase 3 Ecom · TX Marketplace Accelerator · v2</div>
+    <nav class="footer-nav">
+      <a href="marketplaces-v2-landing-page.html">Landing Page</a>
+      <a href="marketplaces-v2-ad-scripts.html">Ad Scripts</a>
+      <a href="marketplaces-v2-strategy-brief.html">Strategy Brief</a>
+      <a href="marketplaces-v2-content-plan.html">Content Plan</a>
+    </nav>
+  </div>
+
+</div>
+</body>
+</html>
