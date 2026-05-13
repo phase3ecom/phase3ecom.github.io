@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Done-for-you Amazon Launch | Phase 3 Ecom — v4</title>
+<meta name="description" content="6 in 10 product searches start on Amazon globally — and AU is the fastest-growing market. We'll have your products live on Amazon within 30 days or your $1,500 setup fee is fully refunded.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ─── Reset & Tokens ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --lime:       #a3d01d;
+  --lime-dark:  #8ab518;
+  --dark:       #100828;
+  --dark-card:  #1a0f38;
+  --white:      #ffffff;
+  --off-white:  #f8f8f4;
+  --mid-grey:   #4a4566;
+  --light-grey: #e8e5f0;
+  --danger:     #d97706;
+  --danger-bg:  #fef3c7;
+  --shadow-sm:  0 2px 12px rgba(16,8,40,0.10);
+  --shadow-md:  0 6px 32px rgba(16,8,40,0.14);
+  --shadow-lg:  0 16px 64px rgba(16,8,40,0.20);
+  --radius:     8px;
+  --radius-lg:  16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cabin', sans-serif;
+  background: var(--off-white);
+  color: #1a1a2e;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Typography helpers ─────────────────────────────────────── */
+.orbitron { font-family: 'Orbitron', sans-serif; }
+.cabin    { font-family: 'Cabin', sans-serif; }
+
+/* ─── Animations ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(163,208,29,0); }
+  50%       { box-shadow: 0 0 0 8px rgba(163,208,29,0.15); }
+}
+@keyframes gridShimmer {
+  0%   { opacity: 0.04; }
+  50%  { opacity: 0.09; }
+  100% { opacity: 0.04; }
+}
+
+.anim-fade-up   { animation: fadeUp 0.7s ease both; }
+.anim-fade-in   { animation: fadeIn 0.6s ease both; }
+.anim-slide-r   { animation: slideRight 0.6s ease both; }
+
+/* Scroll-reveal — JS-free: uses :has() + CSS counter trick via Intersection Observer polyfill */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Layout ─────────────────────────────────────────────────── */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.container--narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Sticky Nav ─────────────────────────────────────────────── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--dark);
+  border-bottom: 1.5px solid var(--lime);
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+.nav-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.nav-links a {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.btn-nav {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: var(--lime);
+  color: var(--dark);
+  border: none;
+  border-radius: 4px;
+  padding: 9px 18px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.btn-nav:hover { background: var(--lime-dark); transform: translateY(-1px); }
+
+/* ─── CTA Buttons ────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: var(--lime);
+  color: var(--dark);
+  border: none;
+  border-radius: 6px;
+  padding: 18px 38px;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  animation: pulseGlow 3s ease infinite;
+}
+.btn-primary:hover {
+  background: var(--lime-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(163,208,29,0.30);
+}
+.btn-primary--sm {
+  padding: 13px 28px;
+  font-size: 13px;
+}
+
+/* ─── Labels / Pills ─────────────────────────────────────────── */
+.label {
+  display: inline-block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lime);
+  background: rgba(163,208,29,0.10);
+  border: 1px solid rgba(163,208,29,0.30);
+  border-radius: 4px;
+  padding: 5px 14px;
+  margin-bottom: 20px;
+}
+.label--dark {
+  color: var(--dark);
+  background: rgba(163,208,29,0.15);
+  border-color: rgba(163,208,29,0.40);
+}
+
+/* ─── Placeholder warning ────────────────────────────────────── */
+.placeholder-warning {
+  background: var(--danger-bg);
+  border: 2px solid var(--danger);
+  border-radius: 6px;
+  padding: 10px 16px;
+  color: #92400e;
+  font-family: 'Cabin', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.placeholder-warning::before { content: "⚠"; font-size: 16px; }
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════════════ */
+.hero {
+  background: var(--dark);
+  background-image:
+    linear-gradient(rgba(16,8,40,0.80), rgba(16,8,40,0.92)),
+    url('https://images.unsplash.com/photo-eveI7MOcSmw?auto=format&fit=crop&w=1920&q=80');
+  background-size: 100% 100%, cover;
+  background-position: center, center top;
+  background-repeat: no-repeat, no-repeat;
+  padding: 120px 0 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Geometric grid overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(163,208,29,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(163,208,29,0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridShimmer 6s ease infinite;
+  pointer-events: none;
+}
+
+/* Radial vignette over grid */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 50% 40%, transparent 30%, var(--dark) 80%);
+  pointer-events: none;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.hero__badge {
+  animation: fadeIn 0.5s ease 0.1s both;
+}
+
+.hero__headline {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  font-weight: 900;
+  color: var(--white);
+  max-width: 660px;
+  margin: 0 auto 12px;
+  line-height: 1.15;
+  animation: fadeUp 0.7s ease 0.2s both;
+}
+
+.hero__subhead {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--lime);
+  max-width: 660px;
+  margin: 0 auto 24px;
+  line-height: 1.2;
+  animation: fadeUp 0.7s ease 0.35s both;
+}
+
+.hero__body {
+  font-family: 'Cabin', sans-serif;
+  font-size: 18px;
+  color: rgba(255,255,255,0.80);
+  max-width: 540px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  animation: fadeUp 0.7s ease 0.5s both;
+}
+
+.hero__cta {
+  animation: fadeUp 0.7s ease 0.65s both;
+}
+
+.hero__guarantee-note {
+  display: block;
+  margin-top: 14px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+  animation: fadeIn 0.6s ease 0.85s both;
+}
+
+/* Stats row */
+.hero__stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 68px;
+  border-top: 1px solid rgba(163,208,29,0.18);
+  padding-top: 48px;
+  animation: fadeUp 0.7s ease 1.0s both;
+}
+
+.hero__stat {
+  flex: 1;
+  min-width: 140px;
+  max-width: 200px;
+  padding: 0 28px;
+  position: relative;
+}
+.hero__stat + .hero__stat::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: rgba(163,208,29,0.25);
+}
+
+.stat-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--lime);
+  display: block;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-family: 'Cabin', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.50);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PROBLEM SECTION
+═══════════════════════════════════════════════════════════════ */
+.problem {
+  background: var(--white);
+  padding: 100px 0;
+  text-align: center;
+}
+
+.problem__headline {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 900;
+  color: var(--dark);
+  max-width: 720px;
+  margin: 0 auto 10px;
+  line-height: 1.2;
+}
+
+.problem__subhead {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--mid-grey);
+  margin-bottom: 24px;
+}
+
+.problem__body {
+  font-size: 18px;
+  color: var(--mid-grey);
+  max-width: 660px;
+  margin: 0 auto 60px;
+  line-height: 1.75;
+}
+
+/* Search engine comparison visual */
+.search-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.search-mock {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.search-mock__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+}
+
+.search-mock--google .search-mock__header {
+  background: #1e293b;
+  color: #93c5fd;
+}
+.search-mock--amazon .search-mock__header {
+  background: #1c0505;
+  color: #fca5a5;
+}
+
+.search-mock__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.search-mock--google .search-mock__dot { background: #3b82f6; }
+.search-mock--amazon .search-mock__dot { background: #ef4444; }
+
+.search-mock__body {
+  background: #0f172a;
+  padding: 16px;
+}
+
+.search-bar {
+  background: #1e293b;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.60);
+  border: 1px solid rgba(255,255,255,0.10);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.search-bar::before { content: "🔍"; font-size: 12px; }
+
+.search-result {
+  background: #1e293b;
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.search-result__brand {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.search-result__url {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 4px;
+}
+.search-result__snippet {
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.5;
+}
+
+/* Google — brand appears */
+.search-mock--google .search-result__brand { color: #86efac; }
+.found-badge {
+  display: inline-block;
+  background: rgba(134,239,172,0.15);
+  color: #86efac;
+  border: 1px solid rgba(134,239,172,0.35);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.1em;
+  margin-left: 8px;
+}
+
+/* Amazon — brand absent */
+.search-mock--amazon .search-result {
+  opacity: 0.35;
+  filter: grayscale(0.5);
+}
+.search-mock--amazon .search-result__brand { color: #fca5a5; }
+.absent-overlay {
+  position: relative;
+  background: rgba(239,68,68,0.08);
+  border: 1px dashed rgba(239,68,68,0.35);
+  border-radius: 6px;
+  padding: 12px 14px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.absent-overlay .absent-text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(239,68,68,0.75);
+  letter-spacing: 0.10em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ANCHOR PRICING SECTION
+═══════════════════════════════════════════════════════════════ */
+.anchor {
+  background: var(--dark);
+  background-image:
+    linear-gradient(rgba(16,8,40,0.76), rgba(16,8,40,0.88)),
+    url('https://images.unsplash.com/photo-a85IYeAXgxU?auto=format&fit=crop&w=1920&q=80');
+  background-size: 100% 100%, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.anchor::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(163,208,29,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(163,208,29,0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+
+.anchor__inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.anchor__header {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.anchor__headline {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.15;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Cost table */
+.cost-table-card {
+  background: var(--dark-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(163,208,29,0.12);
+}
+
+.cost-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cost-table thead tr {
+  background: var(--lime);
+}
+.cost-table thead th {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  color: var(--dark);
+  text-align: left;
+  padding: 14px 20px;
+}
+.cost-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.15s;
+}
+.cost-table tbody tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+.cost-table tbody td {
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  padding: 14px 20px;
+  vertical-align: middle;
+  line-height: 1.4;
+}
+.cost-table tbody td:last-child {
+  text-align: right;
+  font-weight: 600;
+  white-space: nowrap;
+  color: rgba(255,255,255,0.60);
+}
+.cost-table tfoot tr {
+  background: rgba(163,208,29,0.12);
+  border-top: 2px solid var(--lime);
+}
+.cost-table tfoot td {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--lime);
+  padding: 16px 20px;
+}
+.cost-table tfoot td:last-child {
+  text-align: right;
+  font-size: 15px;
+}
+
+/* Right panel */
+.anchor__right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 32px;
+  background: var(--dark-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(163,208,29,0.18);
+  box-shadow: var(--shadow-lg);
+}
+
+.anchor__price {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 5.5rem;
+  font-weight: 900;
+  color: var(--lime);
+  line-height: 1;
+  margin-bottom: 12px;
+  text-shadow: 0 0 60px rgba(163,208,29,0.25);
+}
+
+.anchor__price-label {
+  font-family: 'Cabin', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.70);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PROCESS SECTION
+═══════════════════════════════════════════════════════════════ */
+.process {
+  background: var(--off-white);
+  padding: 100px 0;
+  text-align: center;
+}
+
+.process__headline {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  font-weight: 900;
+  color: var(--dark);
+  max-width: 700px;
+  margin: 0 auto 56px;
+  line-height: 1.2;
+}
+
+.phases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 1060px;
+  margin: 0 auto 48px;
+  position: relative;
+}
+
+/* Connector line between cards */
+.phases::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: calc(33.33% - 1px);
+  right: calc(33.33% - 1px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--lime), rgba(163,208,29,0.30));
+  z-index: 1;
+}
+
+.phase-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  margin: 0 10px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.phase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.phase-card--launch  { border-left: 4px solid #22c55e; }
+.phase-card--grow    { border-left: 4px solid #3b82f6; }
+.phase-card--compound { border-left: 4px solid var(--lime); }
+
+.phase-card__num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(16,8,40,0.35);
+  margin-bottom: 8px;
+}
+.phase-card__title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+.phase-card__period {
+  font-family: 'Cabin', sans-serif;
+  font-size: 12px;
+  color: var(--mid-grey);
+  font-style: italic;
+  margin-bottom: 14px;
+}
+.phase-card__body {
+  font-family: 'Cabin', sans-serif;
+  font-size: 15px;
+  color: var(--mid-grey);
+  line-height: 1.6;
+}
+
+.process__footnote {
+  font-family: 'Cabin', sans-serif;
+  font-size: 16px;
+  color: var(--mid-grey);
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.70;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GUARANTEE SECTION
+═══════════════════════════════════════════════════════════════ */
+.guarantee {
+  background: var(--dark);
+  background-image:
+    linear-gradient(rgba(16,8,40,0.82), rgba(16,8,40,0.90)),
+    url('https://images.unsplash.com/photo-vWchRczcQwM?auto=format&fit=crop&w=1920&q=80');
+  background-size: 100% 100%, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  padding: 100px 0;
+  text-align: center;
+  border-top: 2px solid rgba(163,208,29,0.30);
+  border-bottom: 2px solid rgba(163,208,29,0.30);
+  position: relative;
+  overflow: hidden;
+}
+.guarantee::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(163,208,29,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.guarantee__inner { position: relative; z-index: 2; }
+
+.guarantee__quote {
+  font-family: 'Cabin', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-style: italic;
+  color: var(--white);
+  max-width: 780px;
+  margin: 0 auto 28px;
+  line-height: 1.70;
+  position: relative;
+  padding: 0 40px;
+}
+.guarantee__quote::before {
+  content: '\201C';
+  position: absolute;
+  left: 0;
+  top: -12px;
+  font-size: 5rem;
+  color: rgba(163,208,29,0.25);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+.guarantee__quote::after {
+  content: '\201D';
+  position: absolute;
+  right: 0;
+  bottom: -36px;
+  font-size: 5rem;
+  color: rgba(163,208,29,0.25);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.guarantee__sub {
+  font-family: 'Cabin', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  max-width: 620px;
+  margin: 48px auto 40px;
+  line-height: 1.70;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PROOF / SOCIAL PROOF SECTION
+═══════════════════════════════════════════════════════════════ */
+.proof {
+  background: var(--white);
+  padding: 100px 0;
+  text-align: center;
+}
+
+.proof__headline {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 900;
+  color: var(--dark);
+  margin-bottom: 48px;
+  line-height: 1.2;
+}
+
+.proof-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto 24px;
+}
+
+.proof-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--light-grey);
+  border-top: 3px solid var(--lime);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  transition: box-shadow 0.2s;
+}
+.proof-card:hover { box-shadow: var(--shadow-md); }
+
+.proof-card__placeholder {
+  /* inherits from .placeholder-warning */
+}
+.proof-card__content {
+  font-family: 'Cabin', sans-serif;
+  font-size: 15px;
+  color: var(--mid-grey);
+  font-style: italic;
+  line-height: 1.65;
+  margin-top: 10px;
+}
+
+.proof__note {
+  font-family: 'Cabin', sans-serif;
+  font-size: 13px;
+  color: rgba(74,69,102,0.55);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PRICING / OFFER SUMMARY
+═══════════════════════════════════════════════════════════════ */
+.pricing {
+  background: var(--off-white);
+  padding: 100px 0;
+}
+
+.pricing__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.pricing__headline {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  font-weight: 900;
+  color: var(--dark);
+  line-height: 1.2;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  max-width: 900px;
+  margin: 0 auto 32px;
+}
+
+.pricing-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.pricing-card--setup   { border-top: 4px solid var(--lime); }
+.pricing-card--monthly { border-top: 4px solid var(--dark); }
+
+.pricing-card__head {
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid var(--light-grey);
+}
+.pricing-card__tag {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--mid-grey);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.pricing-card__name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--dark);
+  margin-bottom: 2px;
+}
+.pricing-card__price {
+  font-family: 'Cabin', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dark);
+}
+.pricing-card__price span {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--mid-grey);
+}
+
+.pricing-card__body {
+  padding: 24px 28px;
+}
+.pricing-card__body ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pricing-card__body li {
+  font-family: 'Cabin', sans-serif;
+  font-size: 15px;
+  color: var(--mid-grey);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+.pricing-card__body li::before {
+  content: '✓';
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  background: rgba(163,208,29,0.15);
+  color: var(--lime-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.pricing__notes {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.pricing__not-included {
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  color: var(--mid-grey);
+  flex: 1;
+  min-width: 260px;
+  line-height: 1.6;
+}
+.pricing__not-included strong {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.pricing__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--dark);
+  background: rgba(163,208,29,0.20);
+  border: 1.5px solid rgba(163,208,29,0.45);
+  border-radius: 4px;
+  padding: 8px 16px;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════════════════════════ */
+.faq {
+  background: var(--white);
+  padding: 100px 0;
+}
+
+.faq__header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+.faq__headline {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 900;
+  color: var(--dark);
+}
+
+.faq-list {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+details.faq-item {
+  border-bottom: 1px solid var(--light-grey);
+}
+details.faq-item:first-of-type {
+  border-top: 1px solid var(--light-grey);
+}
+
+details.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+details.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-q {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.faq-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--off-white);
+  border: 1.5px solid var(--light-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--lime-dark);
+  font-weight: 300;
+  transition: background 0.2s, transform 0.3s;
+  line-height: 1;
+}
+
+details[open] .faq-icon {
+  background: var(--lime);
+  color: var(--dark);
+  transform: rotate(45deg);
+  border-color: var(--lime);
+}
+
+.faq-a {
+  font-family: 'Cabin', sans-serif;
+  font-size: 16px;
+  color: var(--mid-grey);
+  line-height: 1.70;
+  padding: 0 0 22px;
+  max-width: 620px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FINAL CTA
+═══════════════════════════════════════════════════════════════ */
+.final-cta {
+  background: var(--dark);
+  background-image:
+    linear-gradient(rgba(16,8,40,0.74), rgba(16,8,40,0.92)),
+    url('https://images.unsplash.com/photo-scKZFa9oW_Q?auto=format&fit=crop&w=1920&q=80');
+  background-size: 100% 100%, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  padding: 140px 0 120px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(163,208,29,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(163,208,29,0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+.final-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 65% 65% at 50% 50%, transparent 25%, var(--dark) 75%);
+  pointer-events: none;
+}
+
+.final-cta__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.final-cta__headline {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--white);
+  max-width: 720px;
+  margin: 0 auto 18px;
+  line-height: 1.15;
+}
+
+.final-cta__sub {
+  font-family: 'Cabin', sans-serif;
+  font-size: 18px;
+  color: rgba(255,255,255,0.60);
+  margin-bottom: 44px;
+  line-height: 1.6;
+}
+
+.final-cta__email {
+  display: block;
+  margin-top: 20px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.40);
+}
+.final-cta__email a {
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.20);
+  transition: color 0.2s, border-color 0.2s;
+}
+.final-cta__email a:hover {
+  color: var(--lime);
+  border-color: var(--lime);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════════ */
+footer {
+  background: var(--dark);
+  border-top: 1.5px solid rgba(163,208,29,0.20);
+  padding: 24px 0;
+}
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-brand {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.60);
+}
+.footer-url {
+  font-family: 'Cabin', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+}
+.footer-url:hover { color: rgba(255,255,255,0.60); }
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+@media (max-width: 760px) {
+  .nav-links a { display: none; }
+  .btn-nav { padding: 8px 14px; font-size: 10px; }
+
+  .hero { padding: 80px 0 70px; }
+  .hero__stats { gap: 0; }
+  .hero__stat { min-width: 100px; padding: 0 16px; }
+  .stat-value { font-size: 1.5rem; }
+
+  .search-compare { grid-template-columns: 1fr; }
+
+  .anchor__inner { grid-template-columns: 1fr; }
+  .anchor__price { font-size: 3.8rem; }
+
+  .phases { grid-template-columns: 1fr; }
+  .phases::before { display: none; }
+  .phase-card { margin: 0 0 12px; }
+
+  .proof-cards { grid-template-columns: 1fr; }
+
+  .pricing-grid { grid-template-columns: 1fr; }
+
+  .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .hero__stats { flex-direction: column; align-items: center; }
+  .hero__stat + .hero__stat::before { display: none; }
+  .hero__stat { padding: 8px 0; }
+  .btn-primary { padding: 15px 28px; font-size: 13px; }
+  .anchor__price { font-size: 3rem; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STICKY NAV
+════════════════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">PHASE 3 ECOM</a>
+    <div class="nav-links">
+      <a href="#process">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#apply" class="btn-nav">Apply for your launch</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container hero__inner">
+
+    <div class="hero__badge">
+      <span class="label">TX Marketplace Accelerator</span>
+    </div>
+
+    <h1 class="hero__headline">
+      6 in 10 product searches start on Amazon.
+    </h1>
+
+    <p class="hero__subhead">In Australia, that share is growing faster than anywhere else. If you're not listed, you don't exist.</p>
+
+    <p class="hero__body">
+      We'll have your products live on Amazon within 30 days. If we don't, your $1,500 setup fee is fully refunded. No caveats.
+    </p>
+
+    <div class="hero__cta">
+      <a href="#apply" class="btn-primary">Apply for your launch →</a>
+      <span class="hero__guarantee-note">No lock-in contracts &nbsp;·&nbsp; Australian agency &nbsp;·&nbsp; 30-day refund guarantee</span>
+    </div>
+
+    <div class="hero__stats">
+      <div class="hero__stat">
+        <span class="stat-value">8.8M</span>
+        <span class="stat-label">Australians shop on Amazon — Roy Morgan, 2025</span>
+      </div>
+      <div class="hero__stat">
+        <span class="stat-value">6 in 10</span>
+        <span class="stat-label">product searches start on Amazon globally (NIQ, 2024)</span>
+      </div>
+      <div class="hero__stat">
+        <span class="stat-value">$1,500</span>
+        <span class="stat-label">one-time setup fee</span>
+      </div>
+      <div class="hero__stat">
+        <span class="stat-value">30 days</span>
+        <span class="stat-label">or your money back</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROBLEM
+════════════════════════════════════════════════════════════ -->
+<section class="problem">
+  <div class="container--narrow reveal">
+
+    <span class="label label--dark">The Invisible Customer Problem</span>
+
+    <h2 class="problem__headline">Amazon receives over 82 million visits every day.</h2>
+    <p class="problem__subhead">None of them find your Shopify store.</p>
+
+    <p class="problem__body">
+      These aren't people who chose another brand over yours after visiting your store. They never made it to your store. They opened Amazon, typed what they wanted, and bought from whoever showed up. If your brand isn't on Amazon, you don't exist for this group.
+    </p>
+
+    <!-- Search engine comparison visual -->
+    <div class="search-compare">
+
+      <!-- Google: brand appears -->
+      <div class="search-mock search-mock--google">
+        <div class="search-mock__header">
+          <span class="search-mock__dot"></span>
+          GOOGLE SEARCH
+        </div>
+        <div class="search-mock__body">
+          <div class="search-bar">organic skincare australia</div>
+          <div class="search-result">
+            <div class="search-result__brand">
+              Your Brand
+              <span class="found-badge">FOUND</span>
+            </div>
+            <div class="search-result__url">yourbrand.com.au/collections/skincare</div>
+            <div class="search-result__snippet">Premium organic skincare, made in Australia. Free shipping over $80.</div>
+          </div>
+          <div class="search-result" style="opacity:0.5">
+            <div class="search-result__brand" style="color:rgba(255,255,255,0.4)">Competitor A</div>
+            <div class="search-result__url">competitor.com.au</div>
+          </div>
+          <div class="search-result" style="opacity:0.3">
+            <div class="search-result__brand" style="color:rgba(255,255,255,0.3)">Competitor B</div>
+            <div class="search-result__url">another.com.au</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amazon: brand absent -->
+      <div class="search-mock search-mock--amazon">
+        <div class="search-mock__header">
+          <span class="search-mock__dot"></span>
+          AMAZON SEARCH
+        </div>
+        <div class="search-mock__body">
+          <div class="search-bar">organic skincare australia</div>
+          <div class="absent-overlay">
+            <div class="absent-text">YOUR BRAND — NOT FOUND</div>
+          </div>
+          <div class="search-result">
+            <div class="search-result__brand" style="color:rgba(255,255,255,0.4)">Competitor A</div>
+            <div class="search-result__url">amazon.com.au</div>
+            <div class="search-result__snippet">★★★★☆ (847 reviews)</div>
+          </div>
+          <div class="search-result">
+            <div class="search-result__brand" style="color:rgba(255,255,255,0.4)">Competitor B</div>
+            <div class="search-result__url">amazon.com.au</div>
+            <div class="search-result__snippet">★★★★★ (2,103 reviews)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     ANCHOR PRICING
+════════════════════════════════════════════════════════════ -->
+<section class="anchor" id="pricing-anchor">
+  <div class="container reveal">
+
+    <div class="anchor__header">
+      <span class="label">The DIY Reality</span>
+      <h2 class="anchor__headline">DIY Amazon launch costs $6,700.<br>We charge $1,500.</h2>
+    </div>
+
+    <div class="anchor__inner">
+
+      <!-- Cost table -->
+      <div class="cost-table-card">
+        <table class="cost-table">
+          <thead>
+            <tr>
+              <th>What you'd do yourself</th>
+              <th>Time / Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Seller account setup and verification</td>
+              <td>$200 + 3 hrs</td>
+            </tr>
+            <tr>
+              <td>Catalogue build (GTIN, compliance, category mapping)</td>
+              <td>8–12 hours</td>
+            </tr>
+            <tr>
+              <td>Listing copy (per SKU, outsourced)</td>
+              <td>$400–$600 per SKU</td>
+            </tr>
+            <tr>
+              <td>Photography reformatting to Amazon specs</td>
+              <td>$200</td>
+            </tr>
+            <tr>
+              <td>First 90 days of trial, error, and rework</td>
+              <td>$1,500–$3,000</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Total before your first sale</td>
+              <td>~$6,700</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Right contrast panel -->
+      <div class="anchor__right">
+        <div class="anchor__price">$1,500</div>
+        <p class="anchor__price-label">flat fee · with a 30-day refund guarantee</p>
+        <a href="#apply" class="btn-primary">Apply for your launch →</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROCESS / HOW IT WORKS
+════════════════════════════════════════════════════════════ -->
+<section class="process" id="process">
+  <div class="container reveal">
+
+    <span class="label label--dark">The Programme</span>
+    <h2 class="process__headline">This isn't a one-time setup.<br>It's a launch and grow programme.</h2>
+
+    <div class="phases">
+
+      <div class="phase-card phase-card--launch">
+        <div class="phase-card__num">PHASE 01</div>
+        <div class="phase-card__title">LAUNCH</div>
+        <div class="phase-card__period">Month 1</div>
+        <div class="phase-card__body">Account setup, catalogue build, listings live, FBA or FBM configured.</div>
+      </div>
+
+      <div class="phase-card phase-card--grow">
+        <div class="phase-card__num">PHASE 02</div>
+        <div class="phase-card__title">GROW</div>
+        <div class="phase-card__period">Months 2–3</div>
+        <div class="phase-card__body">Review velocity strategy, pricing optimisation, first ad spend (if applicable).</div>
+      </div>
+
+      <div class="phase-card phase-card--compound">
+        <div class="phase-card__num">PHASE 03</div>
+        <div class="phase-card__title">COMPOUND</div>
+        <div class="phase-card__period">Month 4+</div>
+        <div class="phase-card__body">Search rank improvement, catalogue expansion, eBay AU and Catch.</div>
+      </div>
+
+    </div>
+
+    <p class="process__footnote">
+      Most brands see meaningful traction by Month 3. The brands that started two years ago now have 200+ reviews and hold top-3 positions in their category. That compounding started somewhere.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     GUARANTEE
+════════════════════════════════════════════════════════════ -->
+<section class="guarantee">
+  <div class="container--narrow guarantee__inner reveal">
+
+    <span class="label">The Guarantee</span>
+
+    <blockquote class="guarantee__quote">
+      We'll have your products live on Amazon Australia within 30 days of kickoff, or your $1,500 setup fee is fully refunded. No partial credit. No conditions. If we miss the deadline, you get your money back.
+    </blockquote>
+
+    <p class="guarantee__sub">
+      We offer this guarantee not because we're nervous about the outcome — because we've done this enough times to know exactly how it ends.
+    </p>
+
+    <a href="#apply" class="btn-primary">Apply for your launch →</a>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROOF
+════════════════════════════════════════════════════════════ -->
+<section class="proof">
+  <div class="container reveal">
+
+    <span class="label label--dark">What Launch Looks Like</span>
+    <h2 class="proof__headline">Real results from Australian brands</h2>
+
+    <div class="proof-cards">
+
+      <div class="proof-card">
+        <div class="placeholder-warning">Placeholder — replace before launch</div>
+        <div class="proof-card__content">
+          [Brand name/category], Sydney — [RESULT: e.g., went from zero Amazon presence to 47 orders in first 60 days]
+        </div>
+      </div>
+
+      <div class="proof-card">
+        <div class="placeholder-warning">Placeholder — replace before launch</div>
+        <div class="proof-card__content">
+          [Brand name/category], Melbourne — [RESULT]
+        </div>
+      </div>
+
+      <div class="proof-card">
+        <div class="placeholder-warning">Placeholder — replace before launch</div>
+        <div class="proof-card__content">
+          [Brand name/category], Brisbane — [RESULT]
+        </div>
+      </div>
+
+    </div>
+
+    <p class="proof__note">Results verified before this page goes live. No fabricated metrics.</p>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRICING / OFFER SUMMARY
+════════════════════════════════════════════════════════════ -->
+<section class="pricing" id="pricing">
+  <div class="container reveal">
+
+    <div class="pricing__header">
+      <span class="label label--dark">What's Included</span>
+      <h2 class="pricing__headline">Transparent pricing. No surprises.</h2>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Setup card -->
+      <div class="pricing-card pricing-card--setup">
+        <div class="pricing-card__head">
+          <div class="pricing-card__tag">One-time</div>
+          <div class="pricing-card__name">SETUP</div>
+          <div class="pricing-card__price">$1,500 <span>AUD</span></div>
+        </div>
+        <div class="pricing-card__body">
+          <ul>
+            <li>Amazon AU seller account setup (or audit if existing)</li>
+            <li>Full catalogue build — GTIN sourcing, compliance, category mapping</li>
+            <li>Listing copy written to Amazon SEO standards</li>
+            <li>Photography audit and reformatting to Amazon specs</li>
+            <li>FBA or FBM configuration and first shipment coordination</li>
+            <li>Month 1 launch report</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Monthly card -->
+      <div class="pricing-card pricing-card--monthly">
+        <div class="pricing-card__head">
+          <div class="pricing-card__tag">Ongoing management</div>
+          <div class="pricing-card__name">MONTHLY</div>
+          <div class="pricing-card__price">$1,000 <span>/month</span></div>
+        </div>
+        <div class="pricing-card__body">
+          <ul>
+            <li>Review velocity strategy</li>
+            <li>Pricing and Buy Box monitoring</li>
+            <li>PPC setup and optimisation (ad budget separate)</li>
+            <li>Monthly performance report</li>
+            <li>Expansion to eBay AU and Catch from Month 4 (optional)</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pricing__notes">
+      <p class="pricing__not-included">
+        <strong>What's not included:</strong> PPC ad spend (your budget, managed by us). Custom photography — we reformat what you have; new shoots are additional.
+      </p>
+      <span class="pricing__badge">
+        Minimum: 3 months post-setup
+      </span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════════════════════ -->
+<section class="faq">
+  <div class="container reveal">
+
+    <div class="faq__header">
+      <span class="label label--dark">FAQ</span>
+      <h2 class="faq__headline">Common questions</h2>
+    </div>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>
+          <span class="faq-q">Is this right for my brand?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <p class="faq-a">Best fit: Shopify or WooCommerce brands with at least 5 SKUs and $300k+ annual revenue. Products must be suitable for Amazon AU's category requirements — we'll confirm this in your application.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="faq-q">What if I already have an Amazon account?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <p class="faq-a">We audit and rebuild from there. Existing sellers with flat sales are a common intake — we assess what's blocking growth before we touch anything.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="faq-q">What happens after Month 1?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <p class="faq-a">Month 1 is your launch. Month 2 onward is the growth phase — review strategy, pricing, early ads. Month 4+ is when catalogue expansion and cross-marketplace work begins. You're buying a programme, not a task.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="faq-q">Can you add eBay AU?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <p class="faq-a">Yes, from Month 4 as part of the Compound phase. We scope it separately so there's no confusion about what the initial retainer covers.</p>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINAL CTA
+════════════════════════════════════════════════════════════ -->
+<section class="final-cta" id="apply">
+  <div class="container final-cta__inner reveal">
+
+    <span class="label">Ready?</span>
+
+    <h2 class="final-cta__headline">Ready to stop being invisible on Amazon?</h2>
+
+    <p class="final-cta__sub">30-day launch. $1,500 setup. Refund guarantee. Australian agency.</p>
+
+    <a href="#apply" class="btn-primary">Apply for your launch →</a>
+
+    <span class="final-cta__email">
+      Questions? Email <a href="mailto:will@phase3ecom.com">will@phase3ecom.com</a>
+    </span>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">PHASE 3 ECOM</span>
+    <a href="https://phase3ecom.com" class="footer-url">phase3ecom.com</a>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCROLL REVEAL (lightweight, no deps)
+════════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  els.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>
