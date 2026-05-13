@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Brand Launch — Full Program Breakdown — Phase 3 Ecom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Cabin:ital,wght@0,400;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #100828;
+  --lime: #a3d01d;
+  --violet: #6B4FA0;
+  --violet-light: #EDE8F7;
+  --white: #ffffff;
+  --canvas: #F6F6F2;
+  --grey-100: #F0EFF4;
+  --grey-200: #E2E1E9;
+  --grey-400: #9896A8;
+  --grey-700: #3D3C4E;
+  --text: #1C1B28;
+  --text-muted: #6B6A7A;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cabin', sans-serif;
+  background: var(--canvas);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* ─── STICKY NAV ──────────────────────────────────────── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  border-bottom: 2px solid var(--lime);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 56px;
+}
+.nav-brand {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--lime);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Cabin', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--lime); }
+.nav-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ─── TITLE BLOCK ─────────────────────────────────────── */
+.title-block {
+  background: var(--white);
+  border-bottom: 1px solid var(--grey-200);
+  padding: 56px 80px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: end;
+}
+.title-eyebrow {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--lime);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.title-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: var(--lime);
+}
+.title-main {
+  font-family: 'Cabin', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.title-sub {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  max-width: 520px;
+}
+.title-meta {
+  text-align: right;
+}
+.title-source-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--grey-400);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+.title-source-tag {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--lime);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 6px 14px;
+  border-radius: 3px;
+}
+.title-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--grey-400);
+  margin-top: 10px;
+}
+
+/* ─── HERO STATS ──────────────────────────────────────── */
+.stats-strip {
+  background: var(--navy);
+  padding: 0 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+.stat-cell {
+  padding: 28px 24px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.stat-cell::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--lime);
+  transition: width 0.4s ease;
+}
+.stat-cell:hover::after { width: 100%; }
+.stat-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--lime);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ─── MAIN LAYOUT ─────────────────────────────────────── */
+.main-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 0;
+  background: var(--white);
+  min-height: 100vh;
+}
+
+/* ─── SIDEBAR ─────────────────────────────────────────── */
+.sidebar {
+  background: var(--white);
+  border-right: 1px solid var(--grey-200);
+  padding: 40px 0;
+  position: sticky;
+  top: 56px;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+}
+.sidebar-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--grey-400);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0 24px 16px;
+  border-bottom: 1px solid var(--grey-200);
+  margin-bottom: 8px;
+}
+.sidebar-nav { list-style: none; }
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 24px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: all 0.15s;
+  line-height: 1.3;
+}
+.sidebar-nav a:hover {
+  color: var(--navy);
+  border-left-color: var(--lime);
+  background: var(--canvas);
+}
+.sidebar-nav .s-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--grey-400);
+  min-width: 18px;
+}
+.sidebar-nav .s-emoji { font-size: 0.85rem; }
+
+/* ─── CONTENT ─────────────────────────────────────────── */
+.content { padding: 0; }
+
+/* ─── SECTION ─────────────────────────────────────────── */
+.section {
+  padding: 56px 64px;
+  border-bottom: 1px solid var(--grey-200);
+  position: relative;
+}
+.section:nth-child(even) { background: var(--canvas); }
+.section:nth-child(odd) { background: var(--white); }
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+.section-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--navy);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  position: relative;
+}
+.section-icon::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  background: var(--lime);
+  border-radius: 3px;
+}
+.section-title-group {}
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--grey-400);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.section-title {
+  font-family: 'Cabin', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+/* ─── TYPOGRAPHY ──────────────────────────────────────── */
+.section p { margin-bottom: 16px; color: var(--grey-700); }
+.section p:last-child { margin-bottom: 0; }
+.section h3 {
+  font-family: 'Cabin', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 28px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section h3::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 14px;
+  background: var(--lime);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ─── CALLOUT ─────────────────────────────────────────── */
+.callout {
+  background: var(--violet-light);
+  border-left: 3px solid var(--violet);
+  padding: 18px 22px;
+  border-radius: 0 8px 8px 0;
+  margin: 20px 0;
+  font-size: 0.92rem;
+  color: var(--grey-700);
+}
+.callout strong { color: var(--navy); }
+.callout.lime {
+  background: #f4fae8;
+  border-left-color: var(--lime);
+}
+.callout.dark {
+  background: var(--navy);
+  border-left-color: var(--lime);
+  color: rgba(255,255,255,0.75);
+}
+.callout.dark strong { color: var(--lime); }
+
+/* ─── INSIGHT BOX ─────────────────────────────────────── */
+.insight {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 24px 0;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.insight-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+.insight-text { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.6; }
+.insight-text strong { color: var(--lime); }
+
+/* ─── PRIORITY CHAIN ──────────────────────────────────── */
+.priority-chain {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.priority-item {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Cabin', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  letter-spacing: 0.05em;
+  position: relative;
+}
+.priority-item.active {
+  background: var(--lime);
+  color: var(--navy);
+}
+.priority-arrow {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 14px solid var(--navy);
+  flex-shrink: 0;
+}
+.priority-arrow.active { border-left-color: var(--lime); }
+
+/* ─── HOOK FORMULA CARDS ──────────────────────────────── */
+.hook-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 20px 0;
+}
+.hook-card {
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-top: 3px solid var(--violet);
+  border-radius: 0 0 8px 8px;
+  padding: 18px 20px;
+  transition: box-shadow 0.2s;
+}
+.hook-card:hover { box-shadow: 0 4px 20px rgba(16,8,40,0.08); }
+.hook-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--violet);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.hook-formula {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--navy);
+  font-style: italic;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.hook-why {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.hook-arrow { color: var(--lime); font-weight: 700; }
+
+/* ─── 3-LAYER HOOK ────────────────────────────────────── */
+.hook-layers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+.hook-layer {
+  text-align: center;
+  padding: 24px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--grey-200);
+  position: relative;
+  background: var(--white);
+}
+.hook-layer.primary {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+.hook-layer-emoji { font-size: 2rem; display: block; margin-bottom: 10px; }
+.hook-layer-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey-400);
+  margin-bottom: 6px;
+}
+.hook-layer.primary .hook-layer-label { color: var(--lime); }
+.hook-layer-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--navy);
+}
+.hook-layer.primary .hook-layer-title { color: var(--white); }
+.hook-layer-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+.hook-layer.primary .hook-layer-desc { color: rgba(255,255,255,0.55); }
+.weight-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--lime);
+  color: var(--navy);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* ─── FORMAT CARDS ────────────────────────────────────── */
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 20px 0;
+}
+.format-card {
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-radius: 10px;
+  padding: 20px 22px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.format-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--grey-200);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 32px;
+}
+.format-body {}
+.format-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.format-best {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--violet);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.format-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+/* ─── TABLE ───────────────────────────────────────────── */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.88rem;
+}
+.styled-table th {
+  background: var(--navy);
+  color: var(--lime);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+}
+.styled-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--grey-200);
+  color: var(--grey-700);
+  vertical-align: top;
+}
+.styled-table tr:last-child td { border-bottom: none; }
+.styled-table tr:hover td { background: var(--canvas); }
+.styled-table td:first-child { font-weight: 700; color: var(--navy); }
+.td-pill {
+  display: inline-block;
+  background: var(--lime);
+  color: var(--navy);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+.td-pill.violet {
+  background: var(--violet-light);
+  color: var(--violet);
+}
+
+/* ─── SCRIPT ARC ──────────────────────────────────────── */
+.arc-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 20px 0;
+  border: 1px solid var(--grey-200);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.arc-step {
+  padding: 24px 20px;
+  border-right: 1px solid var(--grey-200);
+  position: relative;
+}
+.arc-step:last-child { border-right: none; }
+.arc-step-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--grey-200);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.arc-step-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.arc-step-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--lime);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.arc-step-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+/* ─── FUNNEL ──────────────────────────────────────────── */
+.funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 20px 0;
+  max-width: 500px;
+}
+.funnel-step {
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-left: 4px solid var(--violet);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.88rem;
+}
+.funnel-step.final {
+  border-left-color: var(--lime);
+  background: #f4fae8;
+}
+.funnel-emoji { font-size: 1.1rem; flex-shrink: 0; }
+.funnel-text { color: var(--grey-700); }
+.funnel-text strong { color: var(--navy); }
+.funnel-arrow {
+  text-align: center;
+  color: var(--grey-400);
+  font-size: 0.8rem;
+  padding: 2px 0;
+}
+
+/* ─── PLATFORM CARDS ──────────────────────────────────── */
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+.platform-card {
+  border: 1px solid var(--grey-200);
+  border-radius: 10px;
+  padding: 20px 16px;
+  text-align: center;
+  background: var(--white);
+}
+.platform-card.primary { background: var(--navy); border-color: var(--navy); }
+.platform-emoji { font-size: 1.8rem; display: block; margin-bottom: 10px; }
+.platform-name {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.platform-card.primary .platform-name { color: var(--lime); }
+.platform-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--violet);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.platform-card.primary .platform-role { color: rgba(255,255,255,0.4); }
+.platform-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.4; }
+.platform-card.primary .platform-desc { color: rgba(255,255,255,0.55); }
+
+/* ─── MISTAKE TABLE ───────────────────────────────────── */
+.mistake-list { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+.mistake-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--grey-200);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.85rem;
+}
+.mistake-cell {
+  padding: 14px 16px;
+  border-right: 1px solid var(--grey-200);
+}
+.mistake-cell:last-child { border-right: none; }
+.mistake-cell.bad { background: #FFF0F0; }
+.mistake-cell.why { background: var(--white); color: var(--text-muted); }
+.mistake-cell.fix { background: #f4fae8; }
+.mistake-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey-400);
+  margin-bottom: 5px;
+}
+.mistake-label.bad-label { color: #E05252; }
+.mistake-label.fix-label { color: #6B9E1A; }
+
+/* ─── 7-DAY PLAN ──────────────────────────────────────── */
+.day-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+.day-card {
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-top: 3px solid var(--violet);
+  border-radius: 0 0 8px 8px;
+  padding: 18px 16px;
+}
+.day-card.highlight { border-top-color: var(--lime); }
+.day-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--violet);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.day-card.highlight .day-label { color: var(--lime); }
+.day-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.day-items { list-style: none; }
+.day-items li {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  padding: 4px 0;
+  border-bottom: 1px solid var(--grey-100);
+  display: flex;
+  gap: 6px;
+  line-height: 1.4;
+}
+.day-items li::before { content: '·'; color: var(--lime); font-weight: 700; flex-shrink: 0; }
+.day-items li:last-child { border-bottom: none; }
+
+/* ─── METRIC HIGHLIGHT ROW ────────────────────────────── */
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 20px 0;
+}
+.metric-card {
+  background: var(--navy);
+  border-radius: 10px;
+  padding: 22px 18px;
+  text-align: center;
+}
+.metric-val {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--lime);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.metric-name {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ─── EDITING RULES ───────────────────────────────────── */
+.edit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+.edit-card {
+  border: 1px solid var(--grey-200);
+  border-radius: 8px;
+  padding: 16px 18px;
+  background: var(--white);
+}
+.edit-emoji { font-size: 1.3rem; margin-bottom: 8px; display: block; }
+.edit-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.edit-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+/* ─── META STRATEGY BANNER ────────────────────────────── */
+.meta-banner {
+  background: var(--navy);
+  border-radius: 14px;
+  padding: 36px 40px;
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.meta-col-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--grey-400);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.meta-col-text {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+}
+.meta-col-text strong { color: var(--lime); }
+
+/* ─── TOOL LIST ───────────────────────────────────────── */
+.tool-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+.tool-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: 16px;
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-radius: 8px;
+  padding: 12px 18px;
+}
+.tool-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tool-name span { font-size: 1rem; }
+.tool-desc { font-size: 0.82rem; color: var(--text-muted); }
+
+/* ─── FOOTER ──────────────────────────────────────────── */
+.footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.4);
+  padding: 32px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+}
+.footer-brand {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--lime);
+  letter-spacing: 0.3em;
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 960px) {
+  .main-wrap { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .title-block { padding: 40px 32px 36px; grid-template-columns: 1fr; }
+  .stats-strip { padding: 0 32px; }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  .section { padding: 40px 32px; }
+  .hook-grid, .format-grid, .metric-row { grid-template-columns: 1fr; }
+  .hook-layers, .arc-flow, .platform-grid { grid-template-columns: 1fr; }
+  .edit-grid, .day-grid { grid-template-columns: repeat(2, 1fr); }
+  .meta-banner { grid-template-columns: 1fr; gap: 20px; }
+  .footer { padding: 28px 32px; flex-direction: column; gap: 10px; text-align: center; }
+}
+
+/* ─── ANIMATIONS ──────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.section { animation: fadeUp 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">Phase 3 Ecom</div>
+  <ul class="nav-links">
+    <li><a href="#s1">Story</a></li>
+    <li><a href="#s4">Research</a></li>
+    <li><a href="#s5">Hooks</a></li>
+    <li><a href="#s6">Scripts</a></li>
+    <li><a href="#s7">Formats</a></li>
+    <li><a href="#s8">Editing</a></li>
+    <li><a href="#s10">Funnel</a></li>
+    <li><a href="#s14">7-Day</a></li>
+    <li><a href="#s18">Meta</a></li>
+  </ul>
+  <div class="nav-tag">v2 · Minimal</div>
+</nav>
+
+<!-- TITLE BLOCK -->
+<div style="background:var(--white); border-bottom: 1px solid var(--grey-200);">
+  <div class="title-block">
+    <div>
+      <div class="title-eyebrow">Research Intelligence</div>
+      <h1 class="title-main">Personal Brand Launch<br>Full Program Breakdown</h1>
+      <p class="title-sub">Reverse-engineered from Ava Yuergens / pblaunch.com. Applied to Gary Weis / Phase 3 Ecom content strategy.</p>
+    </div>
+    <div class="title-meta">
+      <div class="title-source-label">Source</div>
+      <div class="title-source-tag">@PERSONALBRANDLAUNCH</div>
+      <div class="title-date">Compiled 14/05/2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div style="background:var(--navy);">
+  <div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="stat-num">1M</div>
+        <div class="stat-label">@personalbrandlaunch followers</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">350–400</div>
+        <div class="stat-label">Active retainers</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">$700k</div>
+        <div class="stat-label">Monthly revenue (Mar 2025)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">7.9M</div>
+        <div class="stat-label">Views from single reel</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">13k</div>
+        <div class="stat-label">Leads from one video</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="main-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-label">Contents</div>
+    <ul class="sidebar-nav">
+      <li><a href="#s1"><span class="s-num">01</span><span class="s-emoji">🧠</span> The Brand Story</a></li>
+      <li><a href="#s2"><span class="s-num">02</span><span class="s-emoji">💼</span> The Service</a></li>
+      <li><a href="#s3"><span class="s-num">03</span><span class="s-emoji">💡</span> Core Philosophy</a></li>
+      <li><a href="#s4"><span class="s-num">04</span><span class="s-emoji">🔬</span> Research System</a></li>
+      <li><a href="#s5"><span class="s-num">05</span><span class="s-emoji">🪝</span> Hook Engineering</a></li>
+      <li><a href="#s6"><span class="s-num">06</span><span class="s-emoji">✍️</span> Script Framework</a></li>
+      <li><a href="#s7"><span class="s-num">07</span><span class="s-emoji">🎬</span> Content Formats</a></li>
+      <li><a href="#s8"><span class="s-num">08</span><span class="s-emoji">✂️</span> Editing Style</a></li>
+      <li><a href="#s9"><span class="s-num">09</span><span class="s-emoji">📲</span> Stories Strategy</a></li>
+      <li><a href="#s10"><span class="s-num">10</span><span class="s-emoji">⚡</span> ManyChat Funnel</a></li>
+      <li><a href="#s11"><span class="s-num">11</span><span class="s-emoji">🌐</span> Platform Strategy</a></li>
+      <li><a href="#s12"><span class="s-num">12</span><span class="s-emoji">📅</span> Posting Cadence</a></li>
+      <li><a href="#s13"><span class="s-num">13</span><span class="s-emoji">⏱️</span> 4-Hour Framework</a></li>
+      <li><a href="#s14"><span class="s-num">14</span><span class="s-emoji">🗓️</span> 7-Day Plan</a></li>
+      <li><a href="#s15"><span class="s-num">15</span><span class="s-emoji">⛔</span> Mistakes to Avoid</a></li>
+      <li><a href="#s16"><span class="s-num">16</span><span class="s-emoji">📦</span> Content Template</a></li>
+      <li><a href="#s17"><span class="s-num">17</span><span class="s-emoji">📊</span> Key Benchmarks</a></li>
+      <li><a href="#s18"><span class="s-num">18</span><span class="s-emoji">🎯</span> The Meta-Strategy</a></li>
+    </ul>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- S1: Brand Story -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-icon">🧠</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 01</div>
+          <h2 class="section-title">Who Ava Is — The Brand Story</h2>
+        </div>
+      </div>
+      <p>Ava Yuergens started a real estate investing company at age 15, acquired $900k in residential real estate before finishing high school. After building her own personal brand on Instagram and generating leads and revenue from it, she pivoted to helping other business owners do the same.</p>
+      <div class="callout dark">
+        <strong>The core insight:</strong> She does not separate her personal brand from her business. Her content IS her marketing. Her growth IS her sales pitch. She is the living proof of concept for the service she sells.
+      </div>
+      <p>At 20 years old (March 2025): ~$700k/month revenue. 350–400 active retainers. 100+ employees (grew from 30 post-viral). $2–4.5k/month per client. 1M followers on @personalbrandlaunch. 529K on @avayuergens.</p>
+      <div class="metric-row">
+        <div class="metric-card"><div class="metric-val">1M</div><div class="metric-name">Followers</div></div>
+        <div class="metric-card"><div class="metric-val">$700k</div><div class="metric-name">Monthly revenue</div></div>
+        <div class="metric-card"><div class="metric-val">100+</div><div class="metric-name">Employees</div></div>
+        <div class="metric-card"><div class="metric-val">20</div><div class="metric-name">Years old</div></div>
+      </div>
+    </section>
+
+    <!-- S2: Service -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-icon">💼</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 02</div>
+          <h2 class="section-title">The Service — What Personal Brand Launch Sells</h2>
+        </div>
+      </div>
+      <p><strong>Core offer:</strong> Done-for-you social media management. Client shows up on camera. PBL does everything else — strategy, research, scripting, editing, uploading, reporting.</p>
+      <table class="styled-table">
+        <thead><tr><th>Package</th><th>Reels/Month</th><th>Stories/Month</th><th>Price (USD)</th></tr></thead>
+        <tbody>
+          <tr><td>🌱 GROW</td><td>15</td><td>7</td><td>$2,995</td></tr>
+          <tr><td>📈 SCALE</td><td>20</td><td>10</td><td>$3,495</td></tr>
+          <tr><td>⚡ DOMINATE</td><td>30</td><td>15</td><td>$4,495</td></tr>
+        </tbody>
+      </table>
+      <h3>All packages include</h3>
+      <p>Onboarding call · Monthly outlier research · Full month of scripts · Professional editing · Uploading + scheduling · Profile optimisation checklist · Monthly performance report · Weekday email support</p>
+      <div class="callout lime">
+        <strong>⏱️ Client time commitment: ~4 hours/month filming.</strong> Setup timeline: 3 weeks from sign-on to first post. Platforms: Instagram, TikTok, Facebook Reels, YouTube Shorts, LinkedIn.
+      </div>
+    </section>
+
+    <!-- S3: Philosophy -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-icon">💡</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 03</div>
+          <h2 class="section-title">Core Philosophy</h2>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>"We help business owners grow their personal brands on social media and turn it into real business results. You show up on camera and we take care of strategy, content creation, and posting."</strong>
+      </div>
+      <p>Personal brands convert better than business brands. A face builds trust faster than a logo. Buyers follow people, not companies.</p>
+      <p><strong>Proof used in sales:</strong> Kylie Jenner, Ryan Reynolds, The Rock — personal brand as a business multiplier. Ava's own account IS the proof. She doesn't need to show client results — she IS the result.</p>
+    </section>
+
+    <!-- S4: Research -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-icon">🔬</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 04</div>
+          <h2 class="section-title">Research System — How PBL Finds What Works</h2>
+        </div>
+      </div>
+      <p>Most creators skip research. PBL treats it as the foundation of everything.</p>
+      <div class="insight">
+        <div class="insight-icon">📏</div>
+        <div class="insight-text"><strong>The 5x Rule:</strong> An outlier video = one that gets at least <strong>5× more views than the account's total follower count</strong>. This is the only metric that matters for identifying what content to model. Ignore vanity metrics.</div>
+      </div>
+      <h3>Daily vs. Per-Client Research</h3>
+      <table class="styled-table">
+        <thead><tr><th>Activity</th><th>Frequency</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Intentional feed scrolling</td><td>20 mins daily</td><td>Pattern recognition — hooks, formats, topics performing now</td></tr>
+          <tr><td>Outlier mining per client</td><td>10–12 hrs/month</td><td>Identify 5x content in client's niche. Baked into every package.</td></tr>
+        </tbody>
+      </table>
+      <h3>Tools Stack</h3>
+      <div class="tool-list">
+        <div class="tool-row">
+          <div class="tool-name"><span>🔧</span> Sort Feed</div>
+          <div class="tool-desc">Chrome extension. Sorts any Instagram profile's Reels by view count. Rank competitor content by performance instantly.</div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-name"><span>📊</span> ViewStats</div>
+          <div class="tool-desc">YouTube analytics tool. Mine standout thumbnails and titles, port visual hooks into short-form openings.</div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-name"><span>✏️</span> Hemingway Editor</div>
+          <div class="tool-desc">Tests script readability. Target: 5th grade reading level or below.</div>
+        </div>
+      </div>
+      <h3>What to Log</h3>
+      <p>When mining outliers, record: <span class="td-pill">Hook text</span> <span class="td-pill">View count</span> <span class="td-pill">Topic</span> <span class="td-pill">Format type</span> <span class="td-pill">CTA used</span></p>
+    </section>
+
+    <!-- S5: Hooks -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-icon">🪝</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 05</div>
+          <h2 class="section-title">Hook Engineering — The Most Important Skill</h2>
+        </div>
+      </div>
+      <h3>Priority Order — Every Piece of Content</h3>
+      <div class="priority-chain">
+        <div class="priority-item active">🪝 Hook</div>
+        <div class="priority-arrow active"></div>
+        <div class="priority-item">📝 Script</div>
+        <div class="priority-arrow"></div>
+        <div class="priority-item">🎬 Format</div>
+        <div class="priority-arrow"></div>
+        <div class="priority-item">✂️ Editing</div>
+      </div>
+      <p style="margin-top:12px;">If the hook doesn't work, nothing else matters.</p>
+      <h3>The 3-Layer Hook (First 3 Seconds)</h3>
+      <div class="hook-layers">
+        <div class="hook-layer primary">
+          <div class="weight-badge">HIGHEST WEIGHT</div>
+          <span class="hook-layer-emoji">👁️</span>
+          <div class="hook-layer-label">Layer 1</div>
+          <div class="hook-layer-title">Visual</div>
+          <div class="hook-layer-desc">Something to SEE — movement, graphic, text reveal, physical action</div>
+        </div>
+        <div class="hook-layer">
+          <span class="hook-layer-emoji">📄</span>
+          <div class="hook-layer-label">Layer 2</div>
+          <div class="hook-layer-title">Text Overlay</div>
+          <div class="hook-layer-desc">Something to READ — the hook as on-screen text before Gary speaks</div>
+        </div>
+        <div class="hook-layer">
+          <span class="hook-layer-emoji">🔊</span>
+          <div class="hook-layer-label">Layer 3</div>
+          <div class="hook-layer-title">Audio / Verbal</div>
+          <div class="hook-layer-desc">Something to HEAR — Gary's voice delivering the hook out loud</div>
+        </div>
+      </div>
+      <div class="callout lime">⚠️ <strong>Visual carries the most weight.</strong> If forced to drop one layer, drop audio before visual. Never drop text overlay.</div>
+      <h3>Hook Formulas That Work</h3>
+      <div class="hook-grid">
+        <div class="hook-card">
+          <div class="hook-type">Regret / Hindsight</div>
+          <div class="hook-formula">"What I wish I knew about [X] at [age] instead of [later]"</div>
+          <div class="hook-why"><span class="hook-arrow">→</span> Taps reflection, positions speaker as someone who learned the hard way</div>
+        </div>
+        <div class="hook-card">
+          <div class="hook-type">Contrast</div>
+          <div class="hook-formula">"This is what happens when [unexpected condition]"</div>
+          <div class="hook-why"><span class="hook-arrow">→</span> Creates curiosity, implies a reveal the viewer stays to see</div>
+        </div>
+        <div class="hook-card">
+          <div class="hook-type">Metric-Based</div>
+          <div class="hook-formula">"I reviewed [number] [thing]. Here's what I found."</div>
+          <div class="hook-why"><span class="hook-arrow">→</span> Authority + specificity + implies valuable data ahead</div>
+        </div>
+        <div class="hook-card">
+          <div class="hook-type">Direct Challenge</div>
+          <div class="hook-formula">"You're [doing X wrong / leaving $X on table / missing Y]"</div>
+          <div class="hook-why"><span class="hook-arrow">→</span> Pattern interrupt, mild discomfort, viewer stays to resolve</div>
+        </div>
+        <div class="hook-card">
+          <div class="hook-type">Story Opener</div>
+          <div class="hook-formula">"Last [week], a [client] told me [surprising thing]"</div>
+          <div class="hook-why"><span class="hook-arrow">→</span> Narrative pull — reader wants the resolution</div>
+        </div>
+        <div class="hook-card">
+          <div class="hook-type">Affordability / Access</div>
+          <div class="hook-formula">"How to [valuable outcome] for [surprisingly low cost/time]"</div>
+          <div class="hook-why"><span class="hook-arrow">→</span> Removes objection before viewer raises it</div>
+        </div>
+      </div>
+      <h3>What to Avoid</h3>
+      <div class="callout">
+        🚫 Don't niche your hook like an ad — broad openers hold more viewers, niche the CTA not the hook.<br>
+        🚫 Don't copy competitor value propositions — steal format and structure, add your own expertise.<br>
+        🚫 Don't use AI to write the final hook — use AI for research and drafts, refine with human voice.
+      </div>
+    </section>
+
+    <!-- S6: Scripts -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-icon">✍️</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 06</div>
+          <h2 class="section-title">Script Writing Framework</h2>
+        </div>
+      </div>
+      <h3>The 4-Part Script Document</h3>
+      <table class="styled-table">
+        <thead><tr><th>#</th><th>Section</th><th>What it contains</th></tr></thead>
+        <tbody>
+          <tr><td>1️⃣</td><td>Format & Filming Notes</td><td>Camera angle, location, props, talking head vs b-roll, key visual instructions</td></tr>
+          <tr><td>2️⃣</td><td>Bulleted Delivery Lines</td><td>Not word-for-word. Bullet points Gary delivers in his own words — prevents stiff delivery</td></tr>
+          <tr><td>3️⃣</td><td>Caption</td><td>Core value in plain text. Searchable. Includes keywords. Optimised for SEO/AEO</td></tr>
+          <tr><td>4️⃣</td><td>Subtitle Specification</td><td>Key lines to text-overlay on screen during edit. Same font as hook text.</td></tr>
+        </tbody>
+      </table>
+      <h3>The Narrative Arc — Every Script</h3>
+      <div class="arc-flow">
+        <div class="arc-step">
+          <div class="arc-step-num">01</div>
+          <div class="arc-step-label">Broad Opener</div>
+          <div class="arc-step-name">Maximum Watch Time</div>
+          <div class="arc-step-desc">Relatable problem anyone might have. Holds as many viewers as possible in the first 5–10 seconds.</div>
+        </div>
+        <div class="arc-step">
+          <div class="arc-step-num">02</div>
+          <div class="arc-step-label">Narrow Value</div>
+          <div class="arc-step-name">Serve the Ideal Client</div>
+          <div class="arc-step-desc">Specific insight only an ecom store owner would care about. Naturally filters to the right audience.</div>
+        </div>
+        <div class="arc-step">
+          <div class="arc-step-num">03</div>
+          <div class="arc-step-label">Niche CTA</div>
+          <div class="arc-step-name">Qualify the Lead</div>
+          <div class="arc-step-desc">Highly specific action only the ideal client responds to. Qualifies before they DM or comment.</div>
+        </div>
+      </div>
+      <div class="callout lime">📖 <strong>Readability rule:</strong> Use Hemingway Editor. Target 5th grade reading level. Most audiences process short-form content passively — if it requires effort, they scroll. 15–30 seconds is the ideal Reel length for completion + rewatch.</div>
+    </section>
+
+    <!-- S7: Formats -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-icon">🎬</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 07</div>
+          <h2 class="section-title">Content Formats — The 4 Templates</h2>
+        </div>
+      </div>
+      <p>PBL uses four interchangeable format templates. When a script succeeds, re-film it across multiple formats to extract maximum reach from one idea.</p>
+      <div class="format-grid">
+        <div class="format-card">
+          <div class="format-num">01</div>
+          <div class="format-body">
+            <div class="format-best">Best for: authority, contrarian takes, personal story</div>
+            <div class="format-name">🎤 Talking Head</div>
+            <div class="format-desc">Gary on camera, speaking directly to lens. No props, minimal movement. Highest perceived credibility. Most trust-building format. Edit with bold subtitle overlays, cut on rhythm, slight zoom for emphasis.</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-num">02</div>
+          <div class="format-body">
+            <div class="format-best">Best for: frameworks, step-by-step, comparisons</div>
+            <div class="format-name">📋 Whiteboard / Text Reveal</div>
+            <div class="format-desc">Screen with a list, diagram, or text appearing progressively. Physical whiteboard or digital reveal in CapCut/Premiere. Gary may or may not appear. Timed text reveals synced to voiceover.</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-num">03</div>
+          <div class="format-body">
+            <div class="format-best">Best for: Q&A, myth-busting, client walk-throughs</div>
+            <div class="format-name">🤝 Two-Person Dialogue</div>
+            <div class="format-desc">Gary with another person (team member, client, collaborator) in conversation. High engagement from natural back-and-forth. Edit with split-screen or alternating cuts, reaction shots.</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-num">04</div>
+          <div class="format-body">
+            <div class="format-best">Best for: behind-the-scenes, process, location</div>
+            <div class="format-name">🎵 Audio B-Roll</div>
+            <div class="format-desc">Voiceover or music over B-roll footage. Gary does not appear. Easiest to batch — capture footage, voice over later. Text overlays carry the hook, footage supports the narrative.</div>
+          </div>
+        </div>
+      </div>
+      <div class="insight">
+        <div class="insight-icon">♻️</div>
+        <div class="insight-text"><strong>Cloning Rule:</strong> When a script hits the 5x Rule, re-film across all 4 formats, swapping nouns (brand names, numbers, locations). <strong>One idea → 4+ pieces of content.</strong></div>
+      </div>
+    </section>
+
+    <!-- S8: Editing -->
+    <section class="section" id="s8">
+      <div class="section-header">
+        <div class="section-icon">✂️</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 08</div>
+          <h2 class="section-title">Video Editing Style</h2>
+        </div>
+      </div>
+      <div class="callout">Editing is <strong>4th in priority</strong>. An average edit of a great hook outperforms a great edit of a bad hook every time. Don't let editing become the excuse for not posting.</div>
+      <h3>Editing Stack</h3>
+      <p><span class="td-pill">Premiere Pro</span> &nbsp;<span class="td-pill violet">DaVinci Resolve</span> &nbsp;<span class="td-pill violet">CapCut (mobile DIY)</span></p>
+      <h3>Key Editing Rules</h3>
+      <div class="edit-grid">
+        <div class="edit-card">
+          <span class="edit-emoji">📝</span>
+          <div class="edit-title">Text Overlays</div>
+          <div class="edit-desc">Bold, high-contrast text. Appears in first frame before Gary speaks. Minimum 3 seconds on screen. Centre 80% safe zone. Animated effects (fade, typewriter, slide) increase watch time.</div>
+        </div>
+        <div class="edit-card">
+          <span class="edit-emoji">💬</span>
+          <div class="edit-title">Subtitles</div>
+          <div class="edit-desc">Always include — majority watch without sound. Match timing to speech precisely. Same font/style as text overlays for brand consistency.</div>
+        </div>
+        <div class="edit-card">
+          <span class="edit-emoji">⚡</span>
+          <div class="edit-title">Pacing</div>
+          <div class="edit-desc">Cut on rhythm. Remove all pauses, filler words (um, uh, like). Slight zoom on key delivery lines. Hook must land in first 3 seconds — no slow intros.</div>
+        </div>
+        <div class="edit-card">
+          <span class="edit-emoji">🎞️</span>
+          <div class="edit-title">B-Roll</div>
+          <div class="edit-desc">Layer over talking head when Gary references something visual. 2–3 second clips, not long pans. Supports narrative, doesn't compete with it.</div>
+        </div>
+        <div class="edit-card">
+          <span class="edit-emoji">🎵</span>
+          <div class="edit-title">Music / Audio</div>
+          <div class="edit-desc">Trending audio = discoverability boost. Use IG's native audio library. Duck music to 10–20% under voiceover. No copyrighted music.</div>
+        </div>
+        <div class="edit-card">
+          <span class="edit-emoji">🎨</span>
+          <div class="edit-title">Visual Consistency</div>
+          <div class="edit-desc">Consistent colour grade across all videos = faster brand recognition. Clean, well-lit shot preferred over heavy filter. 9:16 vertical always — never landscape.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S9: Stories -->
+    <section class="section" id="s9">
+      <div class="section-header">
+        <div class="section-icon">📲</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 09</div>
+          <h2 class="section-title">Stories Strategy — The Daily Cash Register</h2>
+        </div>
+      </div>
+      <div class="callout dark"><strong>Stories are not optional.</strong> Reels build the audience. Stories convert it. Skipping Stories leaves the most qualified, warm leads untouched.</div>
+      <h3>Daily Story Structure (3–5 Frames)</h3>
+      <table class="styled-table">
+        <thead><tr><th>Frame</th><th>Content</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>🖼️ Frame 1</td><td>Before / After image (real photo, not text overlay)</td><td>Visual proof. Builds desire. Most engaging frame type.</td></tr>
+          <tr><td>💭 Frame 2</td><td>One tip or insight (short, single idea)</td><td>Value delivery. Keeps the audience engaged daily.</td></tr>
+          <tr><td>👉 Frame 3</td><td>CTA — link, keyword (DM me AUDIT), or poll</td><td>Lead capture. This is where the click or DM comes from.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout lime">📊 <strong>Performance benchmark at scale (529K–1M followers):</strong> ~500 clicks/day from Stories alone. This pipeline runs independently of Reel performance.</div>
+      <h3>Story Rules</h3>
+      <p>Before/after images outperform text-only Stories significantly. Always include a link or keyword trigger in at least one daily Story. Behind-the-scenes builds intimacy — show the work, the process. Don't overthink — Stories disappear in 24 hours. Volume beats polish here.</p>
+    </section>
+
+    <!-- S10: Funnel -->
+    <section class="section" id="s10">
+      <div class="section-header">
+        <div class="section-icon">⚡</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 10</div>
+          <h2 class="section-title">The Conversion Funnel — ManyChat System</h2>
+        </div>
+      </div>
+      <h3>Full Funnel Flow</h3>
+      <div class="funnel">
+        <div class="funnel-step"><div class="funnel-emoji">🎬</div><div class="funnel-text"><strong>Reel posted</strong> — viewer watches content</div></div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step"><div class="funnel-emoji">💬</div><div class="funnel-text"><strong>Comment keyword triggered</strong> — viewer comments "AUDIT" or "FREE"</div></div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step"><div class="funnel-emoji">📩</div><div class="funnel-text"><strong>ManyChat auto-DM</strong> — instant reply with landing page link</div></div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step"><div class="funnel-emoji">🏆</div><div class="funnel-text"><strong>Proof-heavy landing page</strong> — testimonials, results, before/afters</div></div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step"><div class="funnel-emoji">🎥</div><div class="funnel-text"><strong>Video Sales Letter (VSL)</strong> — plays before calendar booking link appears</div></div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-step final"><div class="funnel-emoji">📞</div><div class="funnel-text"><strong>Discovery / sales call booked</strong> → client signs</div></div>
+      </div>
+      <h3>ManyChat Setup Notes</h3>
+      <div class="callout">
+        Set a <strong>comment keyword</strong> in each Reel caption: "Comment AUDIT below and I'll send you the link." When anyone comments that keyword, ManyChat auto-DMs them instantly.<br><br>
+        <strong>Follower-gating option:</strong> Require follow before unlocking the DM. ManyChat shows a "Just followed" button — confirmation → delivers resource. Adds follower count alongside leads.
+      </div>
+      <h3>Lead Magnet Strategy</h3>
+      <p>High-quality lead magnet signals service quality. Gate behind email collection — builds an email list independent of the algorithm. Ava's "1,000 hooks" freebie took ~300 hours to build. Quality of free content reflects quality of paid service.</p>
+    </section>
+
+    <!-- S11: Platforms -->
+    <section class="section" id="s11">
+      <div class="section-header">
+        <div class="section-icon">🌐</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 11</div>
+          <h2 class="section-title">Platform Strategy</h2>
+        </div>
+      </div>
+      <div class="platform-grid">
+        <div class="platform-card primary">
+          <span class="platform-emoji">📸</span>
+          <div class="platform-name">Instagram</div>
+          <div class="platform-role">Primary — growth + conversion</div>
+          <div class="platform-desc">Superior follower loyalty. Stories + DM infrastructure integrates with ManyChat. Best for building a loyal, convertible audience.</div>
+        </div>
+        <div class="platform-card">
+          <span class="platform-emoji">🎵</span>
+          <div class="platform-name">TikTok</div>
+          <div class="platform-role">Distribution — awareness</div>
+          <div class="platform-desc">Repurpose same Reels — no additional filming. Wider organic reach. Audience less sticky, harder to convert vs IG followers.</div>
+        </div>
+        <div class="platform-card">
+          <span class="platform-emoji">▶️</span>
+          <div class="platform-name">YouTube Shorts</div>
+          <div class="platform-role">Long-game SEO</div>
+          <div class="platform-desc">Search-discoverable over time. Only use if aligned with long-form strategy — misaligned audience can damage channel health.</div>
+        </div>
+        <div class="platform-card">
+          <span class="platform-emoji">💼</span>
+          <div class="platform-name">LinkedIn</div>
+          <div class="platform-role">B2B reach</div>
+          <div class="platform-desc">Same hook, longer caption. 3×/week. Direct access to business owners. Professional framing. Lower frequency needed.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S12: Cadence -->
+    <section class="section" id="s12">
+      <div class="section-header">
+        <div class="section-icon">📅</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 12</div>
+          <h2 class="section-title">Posting Cadence</h2>
+        </div>
+      </div>
+      <table class="styled-table">
+        <thead><tr><th>Platform</th><th>Frequency</th><th>Format</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>📸 Instagram Reels</td><td>5–7/week</td><td>Short-form video</td><td>Primary growth channel</td></tr>
+          <tr><td>📲 Instagram Stories</td><td>Daily (3–5 frames)</td><td>Images + text</td><td>Non-negotiable — conversion layer</td></tr>
+          <tr><td>🎵 TikTok</td><td>5–7/week</td><td>Same Reels repurposed</td><td>No extra filming needed</td></tr>
+          <tr><td>▶️ YouTube Shorts</td><td>5/week</td><td>Same Reels repurposed</td><td>No extra filming needed</td></tr>
+          <tr><td>💼 LinkedIn</td><td>3/week</td><td>Hook + longer caption</td><td>Slightly longer, more professional framing</td></tr>
+        </tbody>
+      </table>
+      <div class="callout lime">⏱️ <strong>Total filming commitment: 4 hours/month</strong> (1–2 batch sessions). Meta's native scheduler performs equally to manual posting — re-test quarterly. Best AU posting times: <strong>7–9am and 7–9pm AEST</strong>.</div>
+    </section>
+
+    <!-- S13: 4 Hours -->
+    <section class="section" id="s13">
+      <div class="section-header">
+        <div class="section-icon">⏱️</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 13</div>
+          <h2 class="section-title">Viral Content in 4 Hours Framework</h2>
+        </div>
+      </div>
+      <p>Don't create from scratch. Reverse-engineer what already works, then add your expertise on top.</p>
+      <table class="styled-table">
+        <thead><tr><th>Step</th><th>Time</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td>🔬 Research</td><td>1 hour</td><td>Use Sort Feed on top 5 creators in niche. Pull 100+ million-view Reels from Explore. Apply 5x Rule. Log hook/views/topic/format.</td></tr>
+          <tr><td>🧩 Identify Patterns</td><td>30 min</td><td>Which hook structures repeat? Which topics are overrepresented? Which formats dominate?</td></tr>
+          <tr><td>✍️ Write Scripts</td><td>1.5 hours</td><td>Write 15–30 scripts using proven hook structures + your original expertise. Apply Broad→Narrow→Niche arc. Hemingway check.</td></tr>
+          <tr><td>🎥 Film</td><td>1 hour</td><td>Batch film in one session. 5 talking-head first, then alternate formats. iPhone + ring light + consistent background.</td></tr>
+        </tbody>
+      </table>
+      <div class="insight">
+        <div class="insight-icon">🏆</div>
+        <div class="insight-text"><strong>Total: ~4 hours → 15–30 pieces of content → 1 full month of posts.</strong> The bottleneck is never filming. It's research and scripting done right.</div>
+      </div>
+    </section>
+
+    <!-- S14: 7-Day Plan -->
+    <section class="section" id="s14">
+      <div class="section-header">
+        <div class="section-icon">🗓️</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 14</div>
+          <h2 class="section-title">7-Day Cold Start Action Plan</h2>
+        </div>
+      </div>
+      <div class="day-grid">
+        <div class="day-card">
+          <div class="day-label">Days 1–2</div>
+          <div class="day-title">🔬 Research</div>
+          <ul class="day-items">
+            <li>Set up Sort Feed extension</li>
+            <li>Extract 100+ million-view Reels in your niche</li>
+            <li>Apply 5x Rule to every video</li>
+            <li>Log hook / views / topic / format</li>
+            <li>Identify top 5 performing hooks to model</li>
+          </ul>
+        </div>
+        <div class="day-card">
+          <div class="day-label">Day 3</div>
+          <div class="day-title">✍️ Script</div>
+          <ul class="day-items">
+            <li>Write 15–30 scripts using proven structures</li>
+            <li>Apply Broad → Narrow → Niche arc</li>
+            <li>Run each through Hemingway</li>
+            <li>Write captions + keyword for each</li>
+          </ul>
+        </div>
+        <div class="day-card">
+          <div class="day-label">Day 4</div>
+          <div class="day-title">🎥 Film</div>
+          <ul class="day-items">
+            <li>Film 5 talking-head versions</li>
+            <li>Film 5 alternate format versions</li>
+            <li>Consistent background &gt; perfect setup</li>
+            <li>Batch everything in one session</li>
+          </ul>
+        </div>
+        <div class="day-card highlight">
+          <div class="day-label">Day 5</div>
+          <div class="day-title">⚡ ManyChat Live</div>
+          <ul class="day-items">
+            <li>Set up ManyChat account</li>
+            <li>Configure first keyword (AUDIT/FREE)</li>
+            <li>Write auto-DM sequence (1–2 msgs)</li>
+            <li>Build proof landing page or Linktree</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout lime">🚀 <strong>Days 6–7: Post and measure.</strong> Post first 1–2 Reels. Post 3–5 Story frames daily. Measure after 48 hours — which hook got closest to 5x views? Double down on that topic and format in the next batch.</div>
+    </section>
+
+    <!-- S15: Mistakes -->
+    <section class="section" id="s15">
+      <div class="section-header">
+        <div class="section-icon">⛔</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 15</div>
+          <h2 class="section-title">Common Mistakes to Avoid</h2>
+        </div>
+      </div>
+      <div class="mistake-list">
+        <div class="mistake-row">
+          <div class="mistake-cell bad"><div class="mistake-label bad-label">❌ Mistake</div>Buying followers</div>
+          <div class="mistake-cell why"><div class="mistake-label">Why it fails</div>Corrupts algorithmic distribution. May require full account restart.</div>
+          <div class="mistake-cell fix"><div class="mistake-label fix-label">✅ Fix</div>Organic only. Always. No shortcuts.</div>
+        </div>
+        <div class="mistake-row">
+          <div class="mistake-cell bad"><div class="mistake-label bad-label">❌ Mistake</div>Niching hook like an ad</div>
+          <div class="mistake-cell why"><div class="mistake-label">Why it fails</div>Shrinks audience before value is delivered — the hook filters before the content hooks.</div>
+          <div class="mistake-cell fix"><div class="mistake-label fix-label">✅ Fix</div>Broad opener → narrow value → niche CTA</div>
+        </div>
+        <div class="mistake-row">
+          <div class="mistake-cell bad"><div class="mistake-label bad-label">❌ Mistake</div>Copying competitor value</div>
+          <div class="mistake-cell why"><div class="mistake-label">Why it fails</div>Same thing said by two people = both are diluted. No differentiation.</div>
+          <div class="mistake-cell fix"><div class="mistake-label fix-label">✅ Fix</div>Steal format + hook structure. Add original expertise only.</div>
+        </div>
+        <div class="mistake-row">
+          <div class="mistake-cell bad"><div class="mistake-label bad-label">❌ Mistake</div>AI writes final script</div>
+          <div class="mistake-cell why"><div class="mistake-label">Why it fails</div>Generic language, loses authentic voice — viewer senses it immediately.</div>
+          <div class="mistake-cell fix"><div class="mistake-label fix-label">✅ Fix</div>AI for research + structure. Human refinement for voice.</div>
+        </div>
+        <div class="mistake-row">
+          <div class="mistake-cell bad"><div class="mistake-label bad-label">❌ Mistake</div>Posting without a CTA</div>
+          <div class="mistake-cell why"><div class="mistake-label">Why it fails</div>Views don't become leads without a capture mechanism. Audience grows, revenue doesn't.</div>
+          <div class="mistake-cell fix"><div class="mistake-label fix-label">✅ Fix</div>Every Reel has comment keyword. Every Story has link.</div>
+        </div>
+        <div class="mistake-row">
+          <div class="mistake-cell bad"><div class="mistake-label bad-label">❌ Mistake</div>Skipping Stories</div>
+          <div class="mistake-cell why"><div class="mistake-label">Why it fails</div>Reels build audience. Stories convert it. No Stories = no pipeline from warm followers.</div>
+          <div class="mistake-cell fix"><div class="mistake-label fix-label">✅ Fix</div>Daily Stories non-negotiable once Reels are live.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S16: Template -->
+    <section class="section" id="s16">
+      <div class="section-header">
+        <div class="section-icon">📦</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 16</div>
+          <h2 class="section-title">Content Template — What Ava's Gumroad Product Includes</h2>
+        </div>
+      </div>
+      <div class="metric-row" style="grid-template-columns: repeat(3,1fr);">
+        <div class="metric-card"><div class="metric-val">100</div><div class="metric-name">Viral hooks</div></div>
+        <div class="metric-card"><div class="metric-val">7</div><div class="metric-name">Script structures</div></div>
+        <div class="metric-card"><div class="metric-val">39</div><div class="metric-name">CTAs</div></div>
+      </div>
+      <div class="callout">Use Ava's template as a starting reference for script writing — not as copy-paste content. The hook structures and script arcs are the value. The specific words must be Gary's own voice.</div>
+    </section>
+
+    <!-- S17: Benchmarks -->
+    <section class="section" id="s17">
+      <div class="section-header">
+        <div class="section-icon">📊</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 17</div>
+          <h2 class="section-title">Key Metrics &amp; Benchmarks</h2>
+        </div>
+      </div>
+      <table class="styled-table">
+        <thead><tr><th>Metric</th><th>Benchmark</th></tr></thead>
+        <tbody>
+          <tr><td>📏 Outlier threshold</td><td>5× follower count in views</td></tr>
+          <tr><td>🎬 Monthly Reels posted</td><td>15–30</td></tr>
+          <tr><td>⏱️ Client filming time</td><td>~4 hrs/month</td></tr>
+          <tr><td>📲 Stories per day</td><td>3–5 frames</td></tr>
+          <tr><td>👆 Story click rate (at scale)</td><td>~500 clicks/day</td></tr>
+          <tr><td>🚀 Time from sign-on to first post</td><td>3 weeks</td></tr>
+          <tr><td>🔥 Single viral Reel result</td><td>7.9M views → 13,000 leads → ~$2M ARR</td></tr>
+          <tr><td>💰 Revenue at 350–400 clients</td><td>~$700k/month</td></tr>
+          <tr><td>👥 Team size post-viral</td><td>100+ employees</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- S18: Meta Strategy -->
+    <section class="section" id="s18">
+      <div class="section-header">
+        <div class="section-icon">🎯</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 18</div>
+          <h2 class="section-title">The "Ava As Proof" Model — The Meta-Strategy</h2>
+        </div>
+      </div>
+      <p>The most important thing to understand about PBL: <strong>Ava's content strategy IS her sales strategy.</strong> She teaches content strategy. Her account is proof she knows it. When she goes viral, she doesn't just get followers — she gets clients who want that exact result for themselves.</p>
+      <div class="meta-banner">
+        <div>
+          <div class="meta-col-title">Ava's Model</div>
+          <div class="meta-col-text">Teaches content strategy → her own account demonstrates mastery → viral reel = proof of service quality → viewers become clients. The product and the marketing are the same thing.</div>
+        </div>
+        <div>
+          <div class="meta-col-title">Applied to Gary / Phase 3 Ecom</div>
+          <div class="meta-col-text">Gary teaches ecom growth. His own brand growth <strong>IS proof he understands growth systems</strong>. Every tactic that gets traction is a live demonstration of the Phase 3 methodology. The personal brand is not separate from Phase 3 Ecom — <strong>it IS Phase 3 Ecom's primary marketing channel.</strong></div>
+        </div>
+      </div>
+      <div class="callout lime">🔑 <strong>Key implication:</strong> Gary doesn't need a portfolio of client results to start. His own account growing IS the result. Build the brand first. The case studies follow.</div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<div style="background:var(--navy);">
+  <div class="footer">
+    <div class="footer-brand">Phase 3 Ecom</div>
+    <div>Research Intelligence · Personal Brand Launch Program Breakdown · 14/05/2026</div>
+    <div>Source: pblaunch.com / @personalbrandlaunch</div>
+  </div>
+</div>
+
+</body>
+</html>
