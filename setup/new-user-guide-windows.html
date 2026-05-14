@@ -494,6 +494,7 @@
     <a href="#section-03" class="nav-toc-item">🔌 Connect</a>
     <a href="#section-04" class="nav-toc-item">🔑 Credentials</a>
     <a href="#section-05" class="nav-toc-item">🚀 First Session</a>
+    <a href="#section-sm" class="nav-toc-item">🧠 Session Rules</a>
     <a href="#section-06" class="nav-toc-item">📖 Reference</a>
   </div>
 </nav>
@@ -784,6 +785,137 @@ claude</pre></div>
   </div>
 
   <div class="section-end-spacer"></div>
+</div>
+
+<!-- SECTION SM — SESSION MANAGEMENT -->
+<div id="section-sm" class="page-wrap" style="margin-top:64px;">
+
+  <h2 class="section-heading">🧠 Session Management</h2>
+
+  <div class="step-card">
+    <div class="step-card-header">
+      <div class="step-emoji">📊</div>
+      <div class="step-header-text">
+        <div class="step-label">Step 11</div>
+        <div class="step-title">Install ccstatusline</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <p>ccstatusline adds a live status bar to your Claude Code sessions showing context %, model, session cost, git branch, and more. The single most useful tool for context awareness — install before starting serious client work.</p>
+      <p><strong>Run once in Windows Terminal or PowerShell (outside Claude Code):</strong></p>
+      <div class="code-label">PowerShell / Windows Terminal</div>
+      <div class="code-block"><pre>npx ccstatusline@latest</pre></div>
+      <p>A menu appears. Use arrow keys to select items. Press Enter to save. Config writes automatically to your Claude Code settings. Next time you start <code>claude</code>, the status bar appears.</p>
+      <p><strong>Reconfigure anytime</strong> — run the same command again, pick different items, restart Claude.</p>
+
+      <div class="subsection-title">What it shows</div>
+      <ul class="step-list" style="margin-bottom:24px;">
+        <li><span class="step-list-num">→</span><span><strong>Context %</strong> — live percentage of your context window used. The number you watch for the 50% rule.</span></li>
+        <li><span class="step-list-num">→</span><span><strong>Model</strong> — which Claude model is active (Opus / Sonnet / Haiku). Prevents doing serious work on a smaller model by accident.</span></li>
+        <li><span class="step-list-num">→</span><span><strong>Session cost</strong> — running token cost of the current session.</span></li>
+        <li><span class="step-list-num">→</span><span><strong>Git branch</strong> — the branch Claude is working in. Prevents commits to the wrong branch.</span></li>
+        <li><span class="step-list-num">→</span><span><strong>Session time</strong> — how long this session has been active.</span></li>
+      </ul>
+
+      <div class="subsection-title">Recommended config for marketers</div>
+      <p><strong>Minimum (start here):</strong> Context %, Model, Session Cost — covers the 50% rule, model check, and bill awareness.</p>
+      <p><strong>Add if needed:</strong> Git branch (if you push to GitHub often), Session time (if you lose track of how long you've been in a session).</p>
+      <div class="note-box">💡 <strong>Don't overload the bar</strong> — every extra item takes space from the important ones. Start with 3–4 items.</div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-card-header">
+      <div class="step-emoji">⚡</div>
+      <div class="step-header-text">
+        <div class="step-label">The Most Important Rule</div>
+        <div class="step-title">The 50% Rule</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <p>Claude's context window fills as a session progresses. At 50% full, quality starts degrading — Claude forgets instructions, hallucinates details, repeats itself. The 50% rule is the discipline that prevents this.</p>
+
+      <div class="subsection-title">Why it degrades</div>
+      <table class="ref-table" style="margin-bottom:24px;">
+        <thead><tr><th>Context Used</th><th>Quality</th></tr></thead>
+        <tbody>
+          <tr><td>0–30%</td><td>Fresh, sharp, best-quality work</td></tr>
+          <tr><td>30–50%</td><td>Still functional, starting to lose edge</td></tr>
+          <tr><td>50–70%</td><td>Noticeable degradation: forgetting, repeating, small mistakes</td></tr>
+          <tr><td>70–90%</td><td>Significant degradation: wrong answers, missed context, made-up details</td></tr>
+          <tr><td>90%+</td><td>Unreliable — often worse than useless</td></tr>
+        </tbody>
+      </table>
+      <p>50% is where the curve bends. Push past it = more errors, more re-work, slower overall. Wrapping at 50% takes 2–3 minutes. Fixing mistakes from a full context takes far longer.</p>
+
+      <div class="subsection-title">The /wrapup + restart workflow</div>
+      <ul class="step-list" style="margin-bottom:16px;">
+        <li><span class="step-list-num">1</span><span>When context hits 50%, ask Claude: <em>"Summarise what we accomplished and what's pending"</em></span></li>
+        <li><span class="step-list-num">2</span><span>Run <code>/wrapup</code> — saves to memory, commits, pushes</span></li>
+        <li><span class="step-list-num">3</span><span>Close the terminal tab</span></li>
+        <li><span class="step-list-num">4</span><span>Open a new Warp tab in the same folder → <code>claude</code> → <code>/startup</code></span></li>
+        <li><span class="step-list-num">5</span><span>Claude reads the saved memory. Continue from ~15–25% context.</span></li>
+      </ul>
+
+      <div class="subsection-title">If you're mid-flow at 50%</div>
+      <p>Do it anyway. Before running <code>/wrapup</code>, ask for a verbose summary first:</p>
+      <div class="code-block"><pre>Before we /wrapup — I'm mid-flow on [task]. Write a very detailed
+summary of what we've done, the next specific steps, and any
+decisions made that might get lost. Then /wrapup with that summary.</pre></div>
+      <p>Next session's <code>/startup</code> loads this summary. Ramp-up becomes 30 seconds instead of 5 minutes.</p>
+
+      <div class="warn-box">⚠️ <strong>Never use /compact.</strong> It compresses context but loses the useful details while keeping confusing fragments. Always /wrapup + fresh session instead — same time, clean start.</div>
+
+      <div class="subsection-title">Symptoms of a full context</div>
+      <ul class="step-list" style="margin-bottom:0;">
+        <li><span class="step-list-num">!</span><span>Claude re-creates something you already built</span></li>
+        <li><span class="step-list-num">!</span><span>Claude asks about a preference you already set</span></li>
+        <li><span class="step-list-num">!</span><span>Outputs get more generic and vague</span></li>
+        <li><span class="step-list-num">!</span><span>Claude gets confused about which project you're in</span></li>
+        <li><span class="step-list-num">!</span><span>Responses start taking longer</span></li>
+      </ul>
+      <p style="margin-top:12px;">Any of these = probably over 50%. Run <code>/wrapup</code> immediately.</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-card-header">
+      <div class="step-emoji">📋</div>
+      <div class="step-header-text">
+        <div class="step-label">Non-Negotiable</div>
+        <div class="step-title">Session Rules</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <p>These rules apply to every session, every project, every team member. No exceptions.</p>
+
+      <div class="subsection-title">Session Management</div>
+      <ul class="step-list" style="margin-bottom:24px;">
+        <li><span class="step-list-num">✓</span><span><strong>Always run /startup</strong> at the start of every session — loads memory, clients, rules, last session context.</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Always run /wrapup</strong> before closing — saves summary, updates pending items, records new rules.</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Wrap at 50% context</strong> — check ccstatusline. When context hits 50%, stop, /wrapup, fresh session.</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>One project per session</strong> — don't context-switch between clients mid-session. Finish one, /wrapup, then start the next.</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Never use /compact</strong> — always /wrapup + fresh session instead.</span></li>
+      </ul>
+
+      <div class="subsection-title">Git & Code</div>
+      <ul class="step-list" style="margin-bottom:24px;">
+        <li><span class="step-list-num">✓</span><span><strong>Never push directly to main</strong> — always use a branch and PR.</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Never commit .env files</strong> — these contain live API keys. The .gitignore blocks them; never override it.</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Commit frequently</strong> — after each meaningful change, not in bulk at the end.</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Commit message format</strong> — action prefix + why: <code>Add:</code> <code>Fix:</code> <code>Update:</code> <code>Remove:</code></span></li>
+      </ul>
+
+      <div class="subsection-title">Client Work</div>
+      <ul class="step-list" style="margin-bottom:0;">
+        <li><span class="step-list-num">✓</span><span><strong>Never publish campaigns, ads, or flows</strong> without explicit approval from Will.</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Ask before destructive operations</strong> — deleting branches, dropping data, force-resetting.</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Never fabricate metrics</strong> — use clearly marked placeholders if data is unavailable.</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Australian English</strong> — spelling, date formats (DD/MM), currency (AUD) in all client deliverables.</span></li>
+      </ul>
+    </div>
+  </div>
+
 </div>
 
 <!-- SECTION 06 — REFERENCE -->
