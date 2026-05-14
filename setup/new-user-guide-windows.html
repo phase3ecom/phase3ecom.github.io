@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>New User Setup Guide — Phase 3 Ecom Claude Workspace</title>
+<title>New User Setup Guide (Windows 11) — Phase 3 Ecom Claude Workspace</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -62,7 +62,22 @@
     font-family: 'Cabin', sans-serif;
     font-size: 0.9rem;
     color: var(--muted);
-    margin-bottom: 32px;
+    margin-bottom: 12px;
+  }
+
+  .win-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #0078d4;
+    color: #fff;
+    font-family: 'Cabin', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 24px;
   }
 
   .header-rule {
@@ -266,7 +281,7 @@
     border-radius: 3px;
   }
 
-  /* ── NOTE / WARNING ── */
+  /* ── NOTE / WARNING / WINDOWS ── */
   .note-box {
     border-left: 3px solid var(--lime);
     background: #f8fbee;
@@ -290,6 +305,19 @@
   }
 
   .warn-box strong { color: #bf360c; }
+
+  .win-box {
+    border-left: 3px solid #0078d4;
+    background: #f0f6ff;
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.88rem;
+    color: #444;
+    margin: 12px 0 16px;
+    line-height: 1.6;
+  }
+
+  .win-box strong { color: #0078d4; }
 
   /* ── PRIORITY LIST (MCPs) ── */
   .priority-list {
@@ -365,6 +393,29 @@
   .ref-table tr:last-child td { border-bottom: none; }
   .ref-table tr:hover td { background: #f8fbee; }
 
+  /* ── PATH TABLE ── */
+  .path-table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; }
+  .path-table th {
+    background: var(--off-white);
+    color: var(--dark);
+    font-family: 'Cabin', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--lime);
+  }
+  .path-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 0.88rem;
+    color: var(--dark);
+    vertical-align: top;
+    font-family: 'Cabin', sans-serif;
+  }
+  .path-table td:first-child { font-weight: 600; color: #555; white-space: nowrap; }
+  .path-table tr:last-child td { border-bottom: none; }
+
   /* ── TROUBLE CARDS ── */
   .trouble-card {
     background: var(--card-bg);
@@ -430,7 +481,8 @@
 <header class="page-header">
   <div class="brand-label">Phase 3 Ecom</div>
   <h1 class="page-title">New User Setup Guide</h1>
-  <p class="page-subtitle">macOS &nbsp;·&nbsp; 30–60 min &nbsp;·&nbsp; will@phase3ecom.com</p>
+  <p class="page-subtitle">Windows 11 &nbsp;·&nbsp; 45–75 min &nbsp;·&nbsp; will@phase3ecom.com</p>
+  <div class="win-badge">🪟 Windows 11 Edition</div>
   <div class="header-rule"></div>
 </header>
 
@@ -451,14 +503,17 @@
   <h2 class="section-heading">📋 01 — Prerequisites</h2>
 
   <div class="prereq-card">
-    <p>Before you start, confirm you have all four of these. Get the accounts from Will before running any steps.</p>
+    <p>Confirm all five before starting. Get accounts from Will before running any steps.</p>
     <ul class="step-list">
-      <li><span class="step-list-num">1</span><span><strong>macOS</strong> — this guide is macOS only</span></li>
+      <li><span class="step-list-num">1</span><span><strong>Windows 11</strong> (64-bit)</span></li>
       <li><span class="step-list-num">2</span><span><strong>Phase 3 Ecom Google Workspace account</strong> — get invite from Will</span></li>
       <li><span class="step-list-num">3</span><span><strong>Claude AI team account invite</strong> — get from Will</span></li>
-      <li><span class="step-list-num">4</span><span><strong>Admin rights on your machine</strong> — needed for npm install and file permissions</span></li>
+      <li><span class="step-list-num">4</span><span><strong>Admin rights on machine</strong> — needed for installs and file permissions</span></li>
+      <li><span class="step-list-num">5</span><span><strong>Git for Windows</strong> — needed to run the setup script. Download free from <strong>git-scm.com</strong> if not already installed</span></li>
     </ul>
   </div>
+
+  <div class="win-box"><strong>🪟 Windows:</strong> All file paths in this guide use Windows format. When running commands in Git Bash (step 5), use forward slashes. When running in PowerShell or Windows Terminal, use backslashes or the <code>$env:USERPROFILE</code> variable.</div>
 
   <div class="section-end-spacer"></div>
 </div>
@@ -477,12 +532,17 @@
       </div>
     </div>
     <div class="step-body">
-      <p>Warp is the terminal Claude Code runs inside. Download from <strong>warp.dev</strong>, install, and open. Sign-in is optional.</p>
+      <p>Warp is the terminal Claude Code runs inside. Download the Windows installer from <strong>warp.dev</strong>, install, and open. Sign-in is optional.</p>
+
       <p><strong>Apply the Phase 3 Ecom theme:</strong></p>
-      <div class="code-block"><pre>mkdir -p ~/.warp/themes
-cp "setup/warp-theme/Phase 3 Ecom.yaml" ~/.warp/themes/
-cp "setup/warp-theme/Phase 3 Ecom.jpg" ~/.warp/themes/</pre></div>
-      <p>Then in Warp: <strong>Settings → Appearance → Theme → Custom → Phase 3 Ecom</strong></p>
+      <ul class="step-list">
+        <li><span class="step-list-num">1</span><span>Open File Explorer and navigate to (create the folder if it doesn't exist):<br><code>%APPDATA%\Warp\data\themes\</code></span></li>
+        <li><span class="step-list-num">2</span><span>Copy both files from the shared drive into that folder:<br><code>setup\warp-theme\Phase 3 Ecom.yaml</code><br><code>setup\warp-theme\Phase 3 Ecom.jpg</code></span></li>
+        <li><span class="step-list-num">3</span><span>Open the copied <code>Phase 3 Ecom.yaml</code> in Notepad and replace the <code>path:</code> line with your actual path:<br><code>path: C:\Users\[your-username]\AppData\Roaming\Warp\data\themes\Phase 3 Ecom.jpg</code></span></li>
+        <li><span class="step-list-num">4</span><span>In Warp: <strong>Settings → Appearance → Theme → Custom → Phase 3 Ecom</strong></span></li>
+      </ul>
+
+      <div class="win-box"><strong>🪟 Can't find %APPDATA%?</strong> Press <code>Win + R</code>, type <code>%APPDATA%</code>, press Enter. Navigate to <code>Warp\data\themes\</code> from there.</div>
     </div>
   </div>
 
@@ -499,9 +559,23 @@ cp "setup/warp-theme/Phase 3 Ecom.jpg" ~/.warp/themes/</pre></div>
       <p>Download from <strong>google.com/drive/download</strong>. Install and sign in with your Phase 3 Ecom Google Workspace account.</p>
       <ul class="step-list">
         <li><span class="step-list-num">1</span><span>In Google Drive settings → enable <strong>Shared drives</strong></span></li>
-        <li><span class="step-list-num">2</span><span>Confirm this path is accessible in Finder:</span></li>
+        <li><span class="step-list-num">2</span><span>Google Drive mounts as a drive letter (e.g. <code>G:\</code>) — confirm in File Explorer</span></li>
+        <li><span class="step-list-num">3</span><span>Confirm this path is accessible:</span></li>
       </ul>
-      <div class="code-block"><pre>~/Library/CloudStorage/GoogleDrive-[your-email]/Shared drives/Phase 3 Ecom/</pre></div>
+      <div class="code-block"><pre>G:\Shared drives\Phase 3 Ecom\1. Phase 3 Ecom Admin\CLAUDE CODE\</pre></div>
+
+      <div class="win-box"><strong>🪟 Drive letter may vary.</strong> Google Drive for Desktop can mount to any available letter. Check <strong>This PC</strong> in File Explorer to see which letter it used, then substitute throughout this guide.</div>
+
+      <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:16px;">
+        <table class="path-table">
+          <thead><tr><th>Location</th><th>Windows Path</th></tr></thead>
+          <tbody>
+            <tr><td>CLAUDE CODE root</td><td><code>G:\Shared drives\Phase 3 Ecom\1. Phase 3 Ecom Admin\CLAUDE CODE\</code></td></tr>
+            <tr><td>Client folder</td><td><code>G:\Shared drives\Phase 3 Ecom\1. Phase 3 Ecom Admin\CLAUDE CODE\Clients\[Client Name]\</code></td></tr>
+            <tr><td>Memory folder</td><td><code>G:\Shared drives\Phase 3 Ecom\1. Phase 3 Ecom Admin\CLAUDE CODE\memory\</code></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -511,13 +585,16 @@ cp "setup/warp-theme/Phase 3 Ecom.jpg" ~/.warp/themes/</pre></div>
       <div class="step-emoji">⚙️</div>
       <div class="step-header-text">
         <div class="step-label">Step 03</div>
-        <div class="step-title">Install Node.js</div>
+        <div class="step-title">Install Node.js (18+)</div>
       </div>
     </div>
     <div class="step-body">
-      <p>Claude Code requires Node.js 18+. Download the LTS version from <strong>nodejs.org</strong>, install, then verify:</p>
+      <p>Claude Code requires Node.js 18+. Download the Windows LTS installer from <strong>nodejs.org</strong> and install. Accept defaults including "Add to PATH".</p>
+      <p>Verify in Windows Terminal or PowerShell:</p>
+      <div class="code-label">PowerShell / Windows Terminal</div>
       <div class="code-block"><pre>node --version   <span class="comment"># should be 18+</span>
 npm --version</pre></div>
+      <div class="note-box"><strong>💡 Note:</strong> If <code>node</code> is not found after install, restart Windows Terminal or log out and back in to refresh the PATH.</div>
     </div>
   </div>
 
@@ -531,35 +608,41 @@ npm --version</pre></div>
       </div>
     </div>
     <div class="step-body">
-      <div class="code-block"><pre>npm install -g @anthropic-ai/claude-code</pre></div>
-      <p>Verify the install:</p>
-      <div class="code-block"><pre>claude --version</pre></div>
-      <p>Then sign in to your Claude AI account:</p>
+      <p>Open Windows Terminal or PowerShell <strong>as Administrator</strong> (right-click → Run as administrator):</p>
+      <div class="code-label">PowerShell (Admin)</div>
+      <div class="code-block"><pre>npm install -g @anthropic-ai/claude-code
+claude --version</pre></div>
+      <p>Sign in to your Claude AI account:</p>
       <div class="code-block"><pre>claude</pre></div>
       <p>Follow the browser auth prompt. Use your Phase 3 Ecom workspace account.</p>
+      <div class="note-box"><strong>💡 Note:</strong> After installing globally, you can run <code>claude</code> from any terminal including Warp.</div>
     </div>
   </div>
 
-  <!-- Step 5 — Setup Script -->
+  <!-- Step 5 — Git Bash + Setup Script -->
   <div class="step-card">
     <div class="step-card-header">
       <div class="step-emoji">🔧</div>
       <div class="step-header-text">
         <div class="step-label">Step 05</div>
-        <div class="step-title">Run the Phase 3 Ecom Setup Script</div>
+        <div class="step-title">Run the Phase 3 Ecom Setup Script (Git Bash)</div>
       </div>
     </div>
     <div class="step-body">
-      <p>This installs hooks (caveman mode, sound notifications), skills, and Claude Code settings.</p>
-      <div class="code-block"><pre>cd "/Users/[your-username]/Library/CloudStorage/GoogleDrive-[your-email]/Shared drives/Phase 3 Ecom/1. Phase 3 Ecom Admin/CLAUDE CODE"
+      <p>The setup script is a bash file — it requires <strong>Git Bash</strong> (included with Git for Windows from <strong>git-scm.com</strong>).</p>
+      <p>Open <strong>Git Bash</strong> (search Start menu for "Git Bash"), then run:</p>
+      <div class="code-label">Git Bash</div>
+      <div class="code-block"><pre>cd "/g/Shared drives/Phase 3 Ecom/1. Phase 3 Ecom Admin/CLAUDE CODE"
 bash setup/install.sh</pre></div>
-      <div class="note-box"><strong>💡 Note:</strong> Replace <code>[your-username]</code> and <code>[your-email]</code> with your actual values.</div>
+      <div class="win-box"><strong>🪟 Drive letter in Git Bash:</strong> Git Bash maps <code>G:\</code> as <code>/g/</code>. If your Google Drive mounted to a different letter (e.g. <code>H:\</code>), use <code>/h/</code> instead.</div>
       <p>The script installs:</p>
       <ul class="step-list">
-        <li><span class="step-list-num">✓</span><span><strong>Hooks</strong> — caveman mode + session end sound</span></li>
-        <li><span class="step-list-num">✓</span><span><strong>Skills</strong> — <code>/startup</code>, <code>/wrapup</code>, <code>/client-onboard</code> and 8 others</span></li>
-        <li><span class="step-list-num">✓</span><span><strong><code>~/.claude/settings.json</code></strong> — hooks, status line, plugin config</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Hooks</strong> — caveman mode + session end sound (to <code>%USERPROFILE%\.claude\hooks\</code>)</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Skills</strong> — <code>/startup</code>, <code>/wrapup</code>, <code>/client-onboard</code> + 8 others</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Warp theme</strong> — copies to <code>%APPDATA%\Warp\data\themes\</code> with correct path</span></li>
+        <li><span class="step-list-num">✓</span><span><strong><code>settings.json</code></strong> — to <code>%USERPROFILE%\.claude\settings.json</code></span></li>
       </ul>
+      <div class="note-box"><strong>💡 Note:</strong> If settings.json already exists, the script will prompt you to merge manually. It prints the key fields to add.</div>
     </div>
   </div>
 
@@ -573,13 +656,15 @@ bash setup/install.sh</pre></div>
       </div>
     </div>
     <div class="step-body">
-      <p>Open Claude Code from the CLAUDE CODE folder:</p>
-      <div class="code-block"><pre>cd "/Users/[your-username]/Library/CloudStorage/GoogleDrive-[your-email]/Shared drives/Phase 3 Ecom/1. Phase 3 Ecom Admin/CLAUDE CODE"
+      <p>Open Warp and navigate to the CLAUDE CODE folder, then launch Claude Code:</p>
+      <div class="code-label">Warp Terminal</div>
+      <div class="code-block"><pre>cd "G:\Shared drives\Phase 3 Ecom\1. Phase 3 Ecom Admin\CLAUDE CODE"
 claude</pre></div>
       <p>Inside Claude Code, run these slash commands <strong>one at a time</strong>. Wait for each to complete before running the next:</p>
       <div class="code-block"><pre>/install superpowers@claude-plugins-official
 /install caveman@caveman
 /install warp@claude-code-warp</pre></div>
+      <div class="win-box"><strong>🪟 Tip:</strong> Warp on Windows supports the same slash commands as macOS — no difference in usage once Claude Code is running.</div>
     </div>
   </div>
 
@@ -599,10 +684,10 @@ claude</pre></div>
       </div>
     </div>
     <div class="step-body">
-      <p>MCPs give Claude direct access to Shopify, Google Drive, Klaviyo, and other tools. Each MCP is connected per user in your own claude.ai account — they are not shared automatically.</p>
+      <p>MCPs give Claude direct access to Shopify, Google Drive, Klaviyo, etc. Each MCP connects per user in your own claude.ai account — not shared.</p>
       <ul class="step-list">
         <li><span class="step-list-num">1</span><span>Go to <strong>claude.ai → Settings → Integrations</strong></span></li>
-        <li><span class="step-list-num">2</span><span>Add each MCP from the list in <code>setup/MCP_SETUP.md</code></span></li>
+        <li><span class="step-list-num">2</span><span>Add each MCP from the list in <code>setup\MCP_SETUP.md</code></span></li>
       </ul>
 
       <span class="subsection-title">Priority Order</span>
@@ -636,9 +721,9 @@ claude</pre></div>
     <div class="step-body">
       <p>Each client folder has a <code>.env</code> file containing API keys for that client's accounts (Shopify, Klaviyo, Google Ads, Meta, etc.).</p>
       <ul class="step-list">
-        <li><span class="step-list-num">1</span><span>Ask Will for credentials for the clients you'll be working on</span></li>
-        <li><span class="step-list-num">2</span><span>Place the <code>.env</code> file in the relevant <code>Clients/[Client Name]/</code> folder</span></li>
-        <li><span class="step-list-num">3</span><span>See <code>setup/ENV_TEMPLATE.md</code> for the full list of required keys</span></li>
+        <li><span class="step-list-num">1</span><span>Ask Will for credentials for the clients you'll work on</span></li>
+        <li><span class="step-list-num">2</span><span>Place the <code>.env</code> file in the relevant client folder:<br><code>G:\Shared drives\Phase 3 Ecom\...\CLAUDE CODE\Clients\[Client Name]\</code></span></li>
+        <li><span class="step-list-num">3</span><span>See <code>setup\ENV_TEMPLATE.md</code> for the full list of required keys</span></li>
       </ul>
       <div class="warn-box"><strong>⚠️ Warning: Never commit <code>.env</code> files to git.</strong> These contain live API keys. The <code>.gitignore</code> in each client folder blocks them — do not override.</div>
     </div>
@@ -661,19 +746,21 @@ claude</pre></div>
       </div>
     </div>
     <div class="step-body">
-      <p>Always open Claude Code from the correct folder. For general admin work, use the CLAUDE CODE root. For client-specific work, open from the client's folder.</p>
+      <p>Open Warp and navigate to the correct folder. For general admin work use the CLAUDE CODE root; for client work use the client folder.</p>
 
       <span class="subsection-title">General / Admin Work</span>
-      <div class="code-block"><pre>cd "/Users/[your-username]/Library/CloudStorage/GoogleDrive-[your-email]/Shared drives/Phase 3 Ecom/1. Phase 3 Ecom Admin/CLAUDE CODE"
+      <div class="code-label">Warp Terminal</div>
+      <div class="code-block"><pre>cd "G:\Shared drives\Phase 3 Ecom\1. Phase 3 Ecom Admin\CLAUDE CODE"
 claude</pre></div>
 
       <span class="subsection-title">Client Work</span>
-      <div class="code-block"><pre>cd "/Users/[your-username]/Library/CloudStorage/GoogleDrive-[your-email]/Shared drives/Phase 3 Ecom/1. Phase 3 Ecom Admin/CLAUDE CODE/Clients/[Client Name]"
+      <div class="code-label">Warp Terminal</div>
+      <div class="code-block"><pre>cd "G:\Shared drives\Phase 3 Ecom\1. Phase 3 Ecom Admin\CLAUDE CODE\Clients\[Client Name]"
 claude</pre></div>
 
-      <p>Once inside Claude Code, <strong>always run this first</strong>:</p>
+      <p>Once inside Claude Code, <strong>always run this first:</strong></p>
       <div class="code-block"><pre>/startup</pre></div>
-      <p>This loads all shared memory — clients, rules, last session, brand guidelines. Running it ensures you (and Claude) start every session with full context about the project.</p>
+      <p>Loads all shared memory — clients, rules, last session, brand guidelines.</p>
     </div>
   </div>
 
@@ -689,8 +776,10 @@ claude</pre></div>
     <div class="step-body">
       <p>Before closing, always run:</p>
       <div class="code-block"><pre>/wrapup</pre></div>
-      <p>This saves a session summary, updates pending items, and records any new rules. The memory is written to <code>memory/sessions/</code> on Google Drive so the whole team can access it in future sessions.</p>
-      <div class="note-box"><strong>💡 Note:</strong> Skipping <code>/wrapup</code> loses the session context. The next session will start without knowing what was done or decided.</div>
+      <p>Saves session summary, updates pending items, records new rules to Google Drive so the whole team has context in future sessions.</p>
+      <div class="note-box"><strong>💡 Note:</strong> Skipping <code>/wrapup</code> loses the session context. The next session starts without knowing what was done or decided.</div>
+
+      <p style="margin-top:16px;">Full guide (macOS version for reference): <a href="https://phase3ecom.github.io/setup/new-user-guide.html" style="color:#3a6b00;font-weight:600;">phase3ecom.github.io/setup/new-user-guide.html</a></p>
     </div>
   </div>
 
@@ -701,9 +790,25 @@ claude</pre></div>
 <div id="section-06" class="page-wrap">
   <h2 class="section-heading">📖 06 — Reference</h2>
 
-  <span class="subsection-title" style="margin-top:0;">Quick Reference</span>
+  <span class="subsection-title" style="margin-top:0;">🪟 Key Windows Paths</span>
 
-  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06);overflow:hidden;margin-bottom:32px;">
+  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:32px;">
+    <table class="path-table">
+      <thead><tr><th>Item</th><th>Windows Path</th></tr></thead>
+      <tbody>
+        <tr><td>Claude config</td><td><code>C:\Users\[username]\.claude\</code></td></tr>
+        <tr><td>Claude skills</td><td><code>C:\Users\[username]\.claude\skills\</code></td></tr>
+        <tr><td>Claude settings</td><td><code>C:\Users\[username]\.claude\settings.json</code></td></tr>
+        <tr><td>Warp themes</td><td><code>C:\Users\[username]\AppData\Roaming\Warp\data\themes\</code></td></tr>
+        <tr><td>CLAUDE CODE root</td><td><code>G:\Shared drives\Phase 3 Ecom\1. Phase 3 Ecom Admin\CLAUDE CODE\</code></td></tr>
+        <tr><td>Memory folder</td><td><code>G:\Shared drives\Phase 3 Ecom\1. Phase 3 Ecom Admin\CLAUDE CODE\memory\</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <span class="subsection-title">Quick Reference</span>
+
+  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:32px;">
     <table class="ref-table">
       <thead>
         <tr>
@@ -727,30 +832,34 @@ claude</pre></div>
   <span class="subsection-title">🛠️ Troubleshooting</span>
 
   <div class="trouble-card">
+    <div class="trouble-q"><code>claude</code> not found after install</div>
+    <div class="trouble-a">Restart Windows Terminal or Warp to refresh PATH. If still missing, check <code>npm config get prefix</code> — the bin folder shown must be on your PATH. Add it via <strong>System Properties → Environment Variables → Path</strong>.</div>
+  </div>
+
+  <div class="trouble-card">
+    <div class="trouble-q">Setup script fails in Git Bash</div>
+    <div class="trouble-a">Confirm Git Bash can see the Google Drive path. Run <code>ls /g/</code> — if empty, your drive letter may be different. Check File Explorer → This PC to confirm the correct letter, then substitute in all commands.</div>
+  </div>
+
+  <div class="trouble-card">
     <div class="trouble-q"><code>/startup</code> can't find memory</div>
-    <div class="trouble-a">Memory lives at <code>memory/</code> in the CLAUDE CODE root. From a client folder it's at <code>../../memory/</code>. If startup fails, check you opened Claude Code from inside the Google Drive path.</div>
+    <div class="trouble-a">Memory lives at <code>memory\</code> in the CLAUDE CODE root on Google Drive. Open Claude Code from the correct folder — the CWD determines where memory is found. From a client folder it looks two levels up (<code>..\..\memory\</code>).</div>
   </div>
 
   <div class="trouble-card">
     <div class="trouble-q">MCP not working</div>
-    <div class="trouble-a">Each MCP is connected per user in your own claude.ai account — they're not inherited from other users. Reconnect at <strong>claude.ai → Settings → Integrations</strong>.</div>
+    <div class="trouble-a">Each MCP connects per user in your own claude.ai account — not inherited. Reconnect at <strong>claude.ai → Settings → Integrations</strong>.</div>
   </div>
 
   <div class="trouble-card">
     <div class="trouble-q">Hooks not firing (no caveman mode, no sound)</div>
-    <div class="trouble-a">Re-run <code>bash setup/install.sh</code>. Check that <code>~/.claude/settings.json</code> exists and has a <code>hooks</code> section. The hooks must be installed to the user's home directory — not just the Drive folder.</div>
+    <div class="trouble-a">Re-run <code>bash setup/install.sh</code> in Git Bash. Check that <code>%USERPROFILE%\.claude\settings.json</code> exists and contains a <code>hooks</code> section. Node.js must be on PATH for hooks to execute.</div>
   </div>
 
   <div class="trouble-card">
-    <div class="trouble-q">Plugin not found after <code>/install</code></div>
-    <div class="trouble-a">Make sure you're running Claude Code from the correct folder. Run <code>/install [plugin]</code> again if needed. Plugin installs are per-session on first run.</div>
+    <div class="trouble-q">Warp theme not appearing</div>
+    <div class="trouble-a">Confirm the <code>.yaml</code> and <code>.jpg</code> are both in <code>%APPDATA%\Warp\data\themes\</code>. Open the YAML in Notepad and verify the <code>path:</code> line points to your actual username (not <code>[your-username]</code>). Restart Warp after copying.</div>
   </div>
-
-  <div class="trouble-card">
-    <div class="trouble-q">Google Drive path is wrong</div>
-    <div class="trouble-a">The path varies by your Google account email address. Run this to find your exact path:</div>
-  </div>
-  <div class="code-block" style="margin-bottom:40px;"><pre>ls ~/Library/CloudStorage/</pre></div>
 
   <div class="section-end-spacer"></div>
 </div>
@@ -758,7 +867,7 @@ claude</pre></div>
 <!-- FOOTER -->
 <footer class="doc-footer">
   <div class="footer-rule"></div>
-  <div class="footer-text">PHASE 3 ECOM &nbsp;·&nbsp; Internal Team Document &nbsp;·&nbsp; will@phase3ecom.com</div>
+  <div class="footer-text">PHASE 3 ECOM &nbsp;·&nbsp; Internal Team Document &nbsp;·&nbsp; Windows 11 Edition &nbsp;·&nbsp; will@phase3ecom.com</div>
 </footer>
 
 </body>
