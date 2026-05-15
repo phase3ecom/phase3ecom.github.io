@@ -638,12 +638,13 @@ bash setup/install.sh</pre></div>
       <div class="win-box"><strong>🪟 Drive letter in Git Bash:</strong> Git Bash maps <code>G:\</code> as <code>/g/</code>. If your Google Drive mounted to a different letter (e.g. <code>H:\</code>), use <code>/h/</code> instead.</div>
       <p>The script installs:</p>
       <ul class="step-list">
-        <li><span class="step-list-num">✓</span><span><strong>Hooks</strong> — caveman mode + session end sound (to <code>%USERPROFILE%\.claude\hooks\</code>)</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Hooks</strong> — caveman mode + completion sound hook (to <code>%USERPROFILE%\.claude\hooks\</code>)</span></li>
         <li><span class="step-list-num">✓</span><span><strong>Skills</strong> — <code>/startup</code>, <code>/wrapup</code>, <code>/client-onboard</code> + 8 others</span></li>
         <li><span class="step-list-num">✓</span><span><strong>Warp theme</strong> — copies to <code>%APPDATA%\Warp\data\themes\</code> with correct path</span></li>
         <li><span class="step-list-num">✓</span><span><strong><code>settings.json</code></strong> — to <code>%USERPROFILE%\.claude\settings.json</code></span></li>
       </ul>
       <div class="note-box"><strong>💡 Note:</strong> If settings.json already exists, the script will prompt you to merge manually. It prints the key fields to add.</div>
+      <div class="win-box"><strong>🔕 Sound notification — Windows note:</strong> The completion sound hook uses <code>afplay</code>, a macOS-only command. On Windows it will silently fail — no error, just no audio. Windows users rely on visual cues: the ccstatusline stops updating and the terminal returns to the prompt when Claude is waiting for input.</div>
     </div>
   </div>
 

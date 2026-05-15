@@ -557,10 +557,11 @@ bash setup/install.sh</pre></div>
       <div class="note-box"><strong>💡 Note:</strong> Replace <code>[your-username]</code> and <code>[your-email]</code> with your actual values.</div>
       <p>The script installs:</p>
       <ul class="step-list">
-        <li><span class="step-list-num">✓</span><span><strong>Hooks</strong> — caveman mode + session end sound</span></li>
+        <li><span class="step-list-num">✓</span><span><strong>Hooks</strong> — caveman mode + completion sound (plays when Claude finishes a response and waits for your input)</span></li>
         <li><span class="step-list-num">✓</span><span><strong>Skills</strong> — <code>/startup</code>, <code>/wrapup</code>, <code>/client-onboard</code> and 8 others</span></li>
         <li><span class="step-list-num">✓</span><span><strong><code>~/.claude/settings.json</code></strong> — hooks, status line, plugin config</span></li>
       </ul>
+      <div class="note-box"><strong>🔔 Completion sound:</strong> Claude Code plays a chime via the <code>Stop</code> hook whenever it finishes a response and is waiting for your next prompt. The sound file (<code>dragon-studio-new-notification-3-398649.mp3</code>) is installed to <code>~/.claude/sounds/</code> and played using macOS's built-in <code>afplay</code> command. No extra software needed.</div>
     </div>
   </div>
 
