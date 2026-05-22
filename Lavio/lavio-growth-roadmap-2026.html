@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAVIO Growth Roadmap 2026 — Phase 3 Ecom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --lime: #a3d01d;
+    --dark: #100828;
+    --rose: #EABECC;
+    --blush: #FFF2F6;
+    --white: #ffffff;
+    --bg: #f7f5f2;
+    --border: #e8e5e0;
+    --text: #1a1a1a;
+    --muted: #666;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Cabin', sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.65; }
+
+  /* ── COVER ── */
+  .cover {
+    width: 100%; min-height: 100vh; background: var(--dark);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; padding: 64px 40px;
+  }
+  .cover::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(163,208,29,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-top { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--lime), transparent); }
+  .cover-corner { position: absolute; font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--lime); font-weight: 900; opacity: 0.6; }
+  .cover-corner.tl { top: 28px; left: 32px; }
+  .cover-corner.tr { top: 28px; right: 32px; }
+  .cover-inner { text-align: center; max-width: 800px; width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
+  .cover-logo { margin-bottom: 40px; }
+  .cover-logo img { width: 140px; filter: brightness(0) invert(1); opacity: 0.9; }
+  .cover-eyebrow { font-family: 'Orbitron', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.4em; color: var(--rose); text-transform: uppercase; margin-bottom: 24px; }
+  .cover-line { width: 64px; height: 2px; background: var(--lime); margin: 0 auto 28px; }
+  .cover-line.bot { margin: 28px auto 0; }
+  .cover-title { font-family: 'Orbitron', sans-serif; font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 20px; letter-spacing: 0.01em; }
+  .cover-sub { font-size: 0.9rem; color: rgba(255,255,255,0.45); letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Cabin', sans-serif; font-weight: 600; }
+  .cover-meta { display: flex; gap: 40px; margin-top: 52px; flex-wrap: wrap; justify-content: center; }
+  .cover-meta-item { text-align: center; }
+  .cover-meta-lbl { font-family: 'Orbitron', sans-serif; font-size: 0.52rem; letter-spacing: 0.22em; color: rgba(255,255,255,0.28); text-transform: uppercase; margin-bottom: 5px; }
+  .cover-meta-val { font-size: 0.88rem; color: rgba(255,255,255,0.75); font-weight: 500; }
+  .cover-meta-div { width: 1px; background: rgba(163,208,29,0.2); align-self: stretch; }
+  .cover-scroll { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); color: var(--rose); font-size: 1.2rem; opacity: 0.5; }
+
+  /* ── NAV ── */
+  .nav { background: var(--white); border-bottom: 2px solid var(--lime); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 12px rgba(0,0,0,0.07); overflow-x: auto; }
+  .nav-inner { max-width: 1060px; margin: 0 auto; padding: 0 32px; display: flex; }
+  .nav-item { font-family: 'Orbitron', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; color: var(--dark); text-decoration: none; padding: 16px 24px 16px 0; display: flex; align-items: center; gap: 7px; transition: color 0.2s; white-space: nowrap; }
+  .nav-item:hover { color: var(--lime); }
+  .nav-num { color: var(--lime); font-weight: 900; }
+
+  /* ── LAYOUT ── */
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 32px; }
+  .section { padding: 80px 0 0; }
+  .section-end { height: 48px; }
+
+  /* ── SECTION HEADERS (minimalist) ── */
+  .s-header { margin-bottom: 52px; }
+  .s-label { font-family: 'Orbitron', sans-serif; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.35em; color: var(--lime); text-transform: uppercase; margin-bottom: 10px; }
+  .s-title { font-family: 'Orbitron', sans-serif; font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 900; color: var(--dark); letter-spacing: 0.04em; padding-bottom: 14px; border-bottom: 2px solid var(--lime); display: inline-block; }
+
+  .sub-header { margin: 52px 0 28px; }
+  .sub-label { font-family: 'Orbitron', sans-serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.28em; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+  .sub-title { font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--dark); letter-spacing: 0.1em; text-transform: uppercase; border-left: 3px solid var(--lime); padding-left: 12px; }
+
+  /* ── CALLOUTS ── */
+  .callout { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--lime); padding: 28px 32px; border-radius: 0 4px 4px 0; margin-bottom: 40px; }
+  .callout p { font-size: 1rem; color: #2a2a2a; line-height: 1.8; }
+  .callout-rose { background: var(--blush); border: 1px solid var(--rose); border-left: 4px solid var(--rose); padding: 24px 28px; border-radius: 0 4px 4px 0; margin-bottom: 36px; }
+  .callout-rose p { font-size: 0.95rem; color: #3a2a2a; line-height: 1.75; }
+
+  /* ── PILLS / BADGES ── */
+  .pill { display: inline-flex; align-items: center; padding: 3px 11px; border-radius: 100px; font-family: 'Cabin', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap; }
+  .pill-lime     { background: var(--lime); color: var(--dark); }
+  .pill-dark     { background: var(--dark); color: #fff; }
+  .pill-red      { background: #c62828; color: #fff; }
+  .pill-orange   { background: #e65100; color: #fff; }
+  .pill-blue     { background: #1565c0; color: #fff; }
+  .pill-grey     { background: #e0e0e0; color: #444; }
+  .pill-rose     { background: var(--rose); color: #2a1a1a; }
+  .pill-green    { background: #2e7d32; color: #fff; }
+
+  /* ── TABLES ── */
+  .tbl { width: 100%; border-collapse: collapse; font-size: 0.91rem; background: var(--white); border-radius: 4px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 36px; }
+  .tbl th { background: var(--dark); color: var(--lime); font-family: 'Orbitron', sans-serif; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 14px 20px; text-align: left; }
+  .tbl td { padding: 13px 20px; border-bottom: 1px solid #f0ede8; color: var(--text); vertical-align: top; line-height: 1.55; }
+  .tbl tr:last-child td { border-bottom: none; }
+  .tbl tr:hover td { background: #fafff0; }
+  .tbl tr.hl td { background: #f8fbee; }
+
+  /* ── PRODUCT STRIP ── */
+  .product-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 52px; }
+  .p-tile { border-radius: 6px; overflow: hidden; border: 1px solid var(--border); background: var(--blush); }
+  .p-tile img { width: 100%; height: 180px; object-fit: cover; display: block; }
+  .p-tile-lbl { padding: 10px 14px; font-family: 'Orbitron', sans-serif; font-size: 0.56rem; font-weight: 700; letter-spacing: 0.14em; color: var(--dark); text-transform: uppercase; text-align: center; border-top: 1px solid var(--rose); }
+
+  /* ── IMAGE BLOCKS ── */
+  .img-wide { width: 100%; border-radius: 6px; overflow: hidden; margin-bottom: 40px; border: 1px solid var(--border); }
+  .img-wide img { width: 100%; height: 320px; object-fit: cover; display: block; }
+  .img-wide-caption { background: var(--dark); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .img-wide-caption span { font-family: 'Orbitron', sans-serif; font-size: 0.58rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+
+  .img-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 40px; }
+  .img-2col img { width: 100%; height: 220px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); display: block; }
+
+  /* ── RFM VISUAL ── */
+  .rfm-formula { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 48px; background: var(--dark); border-radius: 6px; padding: 40px 32px; }
+  .rfm-box { flex: 1; text-align: center; padding: 0 20px; }
+  .rfm-box:not(:last-child) { border-right: 1px solid rgba(163,208,29,0.15); }
+  .rfm-letter { font-family: 'Orbitron', sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--lime); line-height: 1; margin-bottom: 8px; }
+  .rfm-word { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; color: #fff; text-transform: uppercase; margin-bottom: 12px; }
+  .rfm-q { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; font-style: italic; }
+  .rfm-op { font-family: 'Orbitron', sans-serif; font-size: 2rem; font-weight: 900; color: rgba(163,208,29,0.4); padding: 0 8px; flex-shrink: 0; }
+
+  /* ── FLOW CARDS ── */
+  .flow-card { background: var(--white); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 20px; overflow: hidden; }
+  .flow-head { padding: 16px 24px; background: var(--dark); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .flow-name { font-family: 'Orbitron', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--lime); letter-spacing: 0.1em; }
+  .flow-steps-row { display: flex; padding: 20px 20px; gap: 0; overflow-x: auto; }
+  .fstep { display: flex; flex-direction: column; align-items: center; min-width: 110px; flex: 1; position: relative; padding: 0 6px; }
+  .fstep:not(:last-child)::after { content: '→'; position: absolute; right: -8px; top: 14px; font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--rose); font-weight: 900; }
+  .fstep-day { font-family: 'Orbitron', sans-serif; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.2em; color: var(--lime); margin-bottom: 5px; }
+  .fstep-title { font-size: 0.78rem; font-weight: 700; color: var(--dark); text-align: center; line-height: 1.3; margin-bottom: 3px; }
+  .fstep-note { font-size: 0.68rem; color: var(--muted); text-align: center; line-height: 1.4; }
+
+  /* ── CALENDAR ── */
+  .cal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+  .cal-card { background: var(--white); border-radius: 4px; border: 1px solid var(--border); overflow: hidden; }
+  .cal-head { padding: 10px 20px; font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 900; color: #fff; letter-spacing: 0.1em; }
+  .cal-head.jun { background: #1a237e; }
+  .cal-head.jul { background: #004d40; }
+  .cal-head.aug { background: #4a148c; }
+  .cal-list { list-style: none; padding: 10px 0; }
+  .cal-list li { padding: 8px 18px; border-bottom: 1px solid #f5f2ef; font-size: 0.8rem; color: #333; display: flex; align-items: flex-start; gap: 8px; line-height: 1.45; }
+  .cal-list li:last-child { border-bottom: none; }
+  .cal-dt { font-family: 'Orbitron', sans-serif; font-size: 0.52rem; font-weight: 700; color: #bbb; flex-shrink: 0; min-width: 34px; margin-top: 2px; }
+
+  /* ── STEPS LIST ── */
+  .steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+  .step { display: flex; gap: 18px; background: var(--white); padding: 18px 22px; border-radius: 4px; border: 1px solid var(--border); }
+  .step-num { font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 900; color: var(--lime); flex-shrink: 0; min-width: 28px; }
+  .step-title { font-family: 'Cabin', sans-serif; font-weight: 700; color: var(--dark); margin-bottom: 3px; font-size: 0.95rem; }
+  .step-body { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── CORE QUOTE ── */
+  .core-quote { text-align: center; padding: 52px 40px; margin-bottom: 48px; background: var(--dark); border-radius: 6px; position: relative; overflow: hidden; }
+  .core-quote::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--rose); }
+  .core-quote-lbl { font-family: 'Orbitron', sans-serif; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.3em; color: rgba(234,190,204,0.5); text-transform: uppercase; margin-bottom: 16px; }
+  .core-quote-text { font-family: 'Orbitron', sans-serif; font-size: clamp(1rem, 2.2vw, 1.6rem); font-weight: 900; color: #fff; letter-spacing: 0.02em; line-height: 1.4; }
+
+  /* ── PILLARS ── */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 48px; }
+  .pillar { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--lime); border-radius: 0 0 4px 4px; padding: 24px 22px; }
+  .pillar-num { font-family: 'Orbitron', sans-serif; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.25em; color: var(--lime); margin-bottom: 8px; }
+  .pillar-title { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; font-weight: 700; color: var(--dark); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; line-height: 1.4; }
+  .pillar-body { font-size: 0.86rem; color: #444; line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  .footer { background: var(--dark); margin-top: 80px; padding: 44px 32px; text-align: center; }
+  .footer-rule { height: 1px; background: var(--rose); opacity: 0.25; margin-bottom: 28px; }
+  .footer-logo img { width: 88px; opacity: 0.5; margin-bottom: 14px; }
+  .footer-brand { font-family: 'Orbitron', sans-serif; font-size: 0.8rem; font-weight: 900; color: var(--lime); letter-spacing: 0.22em; margin-bottom: 8px; }
+  .footer-meta { font-size: 0.78rem; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; }
+
+  @media (max-width: 760px) {
+    .pillars, .product-strip, .cal-grid, .img-2col { grid-template-columns: 1fr 1fr; }
+    .product-strip { grid-template-columns: repeat(2, 1fr); }
+    .rfm-formula { flex-direction: column; gap: 24px; }
+    .rfm-box { border-right: none !important; border-bottom: 1px solid rgba(163,208,29,0.15); padding: 0 0 20px; }
+    .rfm-op { display: none; }
+    .flow-steps-row { flex-direction: column; gap: 12px; }
+    .fstep::after { display: none; }
+    .nav-item { font-size: 0.55rem; padding: 14px 14px 14px 0; }
+    .cover-meta-div { display: none; }
+    .cover-meta { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ╔══ COVER ══╗ -->
+<div class="cover">
+  <div class="cover-top"></div>
+  <span class="cover-corner tl">[</span>
+  <span class="cover-corner tr">]</span>
+  <div class="cover-inner">
+    <div class="cover-logo">
+      <img src="https://d3k81ch9hvuctc.cloudfront.net/company/RKU7Vv/images/f0132c41-3a47-444a-90bf-2345b7d566a0.png" alt="LAVIO">
+    </div>
+    <div class="cover-eyebrow">Phase 3 Ecom &nbsp;·&nbsp; Prepared for Sandy</div>
+    <div class="cover-line"></div>
+    <h1 class="cover-title">Growth Roadmap</h1>
+    <p class="cover-sub">May to August 2026</p>
+    <div class="cover-line bot"></div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-lbl">Prepared By</div>
+        <div class="cover-meta-val">Phase 3 Ecom</div>
+      </div>
+      <div class="cover-meta-div"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-lbl">Date</div>
+        <div class="cover-meta-val">22/05/2026</div>
+      </div>
+      <div class="cover-meta-div"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-lbl">Status</div>
+        <div class="cover-meta-val">In Progress</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-scroll">&#9660;</div>
+</div>
+
+<!-- ╔══ NAV ══╗ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#s01" class="nav-item"><span class="nav-num">01</span> Strategy</a>
+    <a href="#s02" class="nav-item"><span class="nav-num">02</span> What is RFM?</a>
+    <a href="#s03" class="nav-item"><span class="nav-num">03</span> Email Program</a>
+    <a href="#s04" class="nav-item"><span class="nav-num">04</span> Paid Media</a>
+    <a href="#s05" class="nav-item"><span class="nav-num">05</span> August+</a>
+  </div>
+</nav>
+
+
+<!-- ╔══ 01 STRATEGY ══╗ -->
+<div id="s01" class="section">
+  <div class="wrap">
+
+    <div class="s-header">
+      <div class="s-label">01 &nbsp;/&nbsp; Strategy</div>
+      <div class="s-title">✨ The Big Picture</div>
+    </div>
+
+    <div class="core-quote">
+      <div class="core-quote-lbl">LAVIO's Position</div>
+      <div class="core-quote-text">"Salon-quality lashes, without the salon. For the<br>woman who deserves to look this good every single day."</div>
+    </div>
+
+    <div class="callout-rose">
+      <p>Nobody in Australia owns the emotional "quit the salon" story. Competitors own the functional side. But the woman who's tired of $140 infills, thinning natural lashes, and booking her life around appointments? She's ready to switch. She just needs someone to make it feel easy. That's the gap LAVIO fills, and it's what every email and ad we build is rooted in.</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">ENGINE 01</div>
+        <div class="pillar-title">📧 Email: Retention + LTV</div>
+        <div class="pillar-body">Email costs nothing to send and compounds over time. Automated flows run in the background 24/7. Broadcasts keep LAVIO visible every week. Together they drive repeat purchase without needing more ad spend.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">ENGINE 02</div>
+        <div class="pillar-title">📱 Paid: Acquisition</div>
+        <div class="pillar-body">Meta and Google bring in people who've never heard of LAVIO. Creative refresh each month keeps ad costs down as the algorithm finds new audiences with fresh content.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">ENGINE 03</div>
+        <div class="pillar-title">🏪 Site: Convert Traffic</div>
+        <div class="pillar-body">More traffic only helps if the site converts it. Better product pages, social proof, and a friction-free checkout improve results from every dollar already being spent on ads.</div>
+      </div>
+    </div>
+
+    <!-- PRODUCT STRIP -->
+    <div class="product-strip">
+      <div class="p-tile">
+        <img src="https://cdn.shopify.com/s/files/1/2595/2658/files/CLASSIC01.jpg?v=1752155128" alt="Classic Press-On Lashes" loading="lazy">
+        <div class="p-tile-lbl">Press-On Lashes</div>
+      </div>
+      <div class="p-tile">
+        <img src="https://cdn.shopify.com/s/files/1/2595/2658/files/ANIME_274bb64c-12c6-42fc-b140-df86740c5ed2.jpg?v=1752156747" alt="Anime Press-On" loading="lazy">
+        <div class="p-tile-lbl">Press-On: Anime</div>
+      </div>
+      <div class="p-tile">
+        <img src="https://cdn.shopify.com/s/files/1/2595/2658/files/02.jpg?v=1755483655" alt="Classic Cluster Lashes" loading="lazy">
+        <div class="p-tile-lbl">DIY Clusters</div>
+      </div>
+      <div class="p-tile">
+        <img src="https://cdn.shopify.com/s/files/1/2595/2658/files/LAVIO_BONDSEAL_SUNLITSOCIAL_748b0a68-1965-4add-bc1a-94daad48b2e2.jpg?v=1759930594" alt="Lash Bond and Seal" loading="lazy">
+        <div class="p-tile-lbl">Bond &amp; Seal</div>
+      </div>
+    </div>
+
+    <div class="section-end"></div>
+  </div>
+</div>
+
+
+<!-- ╔══ 02 WHAT IS RFM ══╗ -->
+<div id="s02" class="section">
+  <div class="wrap">
+
+    <div class="s-header">
+      <div class="s-label">02 &nbsp;/&nbsp; Strategy</div>
+      <div class="s-title">📊 What is RFM?</div>
+    </div>
+
+    <div class="callout">
+      <p>RFM stands for Recency, Frequency, and Monetary value. It's a method of scoring every customer on your email list based on how they've actually behaved — not just whether they're subscribed. Instead of sending every customer the same email, RFM lets us send the right email to the right person at the right moment. The result: higher open rates, more revenue per send, and fewer people unsubscribing because they're getting irrelevant content.</p>
+    </div>
+
+    <!-- RFM FORMULA VISUAL -->
+    <div class="rfm-formula">
+      <div class="rfm-box">
+        <div class="rfm-letter">R</div>
+        <div class="rfm-word">Recency</div>
+        <div class="rfm-q">When did they last buy?<br><br>A customer who bought 2 weeks ago is far more likely to open an email than one who bought 8 months ago.</div>
+      </div>
+      <div class="rfm-op">×</div>
+      <div class="rfm-box">
+        <div class="rfm-letter">F</div>
+        <div class="rfm-word">Frequency</div>
+        <div class="rfm-q">How many times have they bought?<br><br>A 3x buyer behaves completely differently to a 1x buyer — they need different messaging.</div>
+      </div>
+      <div class="rfm-op">×</div>
+      <div class="rfm-box">
+        <div class="rfm-letter">M</div>
+        <div class="rfm-word">Monetary</div>
+        <div class="rfm-q">How much have they spent?<br><br>High-value customers deserve recognition. A $300 LTV customer shouldn't get the same email as a $30 one.</div>
+      </div>
+    </div>
+
+    <!-- WHAT THIS MEANS FOR LAVIO -->
+    <div class="sub-header">
+      <div class="sub-label">Applied to LAVIO</div>
+      <div class="sub-title">What We Do With It 🎯</div>
+    </div>
+
+    <table class="tbl">
+      <thead>
+        <tr><th>Customer Segment</th><th>Who They Are</th><th>The Flow We Build For Them</th></tr>
+      </thead>
+      <tbody>
+        <tr class="hl">
+          <td><strong>💎 Champions</strong></td>
+          <td>Bought recently, multiple times, good spend. Your best customers.</td>
+          <td><span class="pill pill-lime">VIP Retention Flow</span> — Early access, appreciation, no discounts needed.</td>
+        </tr>
+        <tr>
+          <td><strong>🔁 Loyals</strong></td>
+          <td>Buy regularly but not recently in the top tier. Solid base.</td>
+          <td><span class="pill pill-green">Post-Purchase Ladder</span> — Cross-sell, restock prompts, product education.</td>
+        </tr>
+        <tr>
+          <td><strong>✨ New Customers</strong></td>
+          <td>Just bought for the first time. High potential, need nurturing.</td>
+          <td><span class="pill pill-blue">Post-Purchase</span> + <span class="pill pill-blue">Welcome</span> — Build confidence, drive the second purchase.</td>
+        </tr>
+        <tr>
+          <td><strong>⚠️ At Risk</strong></td>
+          <td>Used to buy but haven't in 60+ days. Starting to drift.</td>
+          <td><span class="pill pill-orange">Win-Back Flow</span> — Soft check-in at Day 60, social proof at Day 90.</td>
+        </tr>
+        <tr>
+          <td><strong>🛒 Fence-Sitters</strong></td>
+          <td>On the list but never purchased. Interested but not converted.</td>
+          <td><span class="pill pill-rose">First-Timer Flow</span> — Address the fear barrier, end with a nudge.</td>
+        </tr>
+        <tr>
+          <td><strong>📭 Lapsed</strong></td>
+          <td>Haven't bought or engaged in 120+ days.</td>
+          <td><span class="pill pill-orange">Win-Back</span> with discount, then <span class="pill pill-grey">Sunset</span> if no response.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- CUSTOMER LIFECYCLE DIAGRAM -->
+    <div class="sub-header">
+      <div class="sub-label">Customer Lifecycle</div>
+      <div class="sub-title">🔄 How Flows Move Customers Up the Ladder</div>
+    </div>
+
+    <div class="callout" style="margin-bottom:28px;">
+      <p>Every flow we build targets a specific RFM transition. The goal is always to move a customer to a higher-value segment, or rescue them before they lapse. No single email goes to everyone. Each one is triggered by behaviour: a purchase, a gap in purchases, browsing without buying, or silence for 60+ days.</p>
+    </div>
+
+    <div style="background:white;border:1px solid #e8e5e0;border-radius:6px;padding:24px 20px 16px;margin-bottom:40px;overflow:hidden;">
+      <svg viewBox="0 0 820 268" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;" aria-label="RFM Customer Segment Journey Map">
+        <defs>
+          <marker id="ml" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#a3d01d"/></marker>
+          <marker id="mo" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#e65100"/></marker>
+          <marker id="mr" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#c62828"/></marker>
+          <marker id="mp" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#EABECC"/></marker>
+          <marker id="mg" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#aaa"/></marker>
+        </defs>
+
+        <!-- PATH LABELS -->
+        <text x="14" y="14" font-family="Orbitron,sans-serif" font-size="7" fill="#a3d01d" letter-spacing="2.5" font-weight="700">GROWTH PATH</text>
+        <text x="806" y="163" text-anchor="end" font-family="Orbitron,sans-serif" font-size="7" fill="#c62828" letter-spacing="2.5" font-weight="700">RECOVERY PATH</text>
+
+        <!-- TOP ROW: NODES -->
+
+        <!-- New Sub -->
+        <rect x="10" y="22" width="118" height="68" rx="4" fill="white" stroke="#e8e5e0" stroke-width="1"/>
+        <rect x="10" y="22" width="118" height="3" rx="1" fill="#a3d01d"/>
+        <text x="69" y="50" text-anchor="middle" font-size="15">👋</text>
+        <text x="69" y="67" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#100828" font-weight="700" letter-spacing="1">NEW SUB</text>
+        <text x="69" y="82" text-anchor="middle" font-size="8" fill="#999">First-Timer Flow</text>
+
+        <!-- Arrow: New Sub to New Customer -->
+        <line x1="128" y1="56" x2="151" y2="56" stroke="#a3d01d" stroke-width="1.5" marker-end="url(#ml)"/>
+        <text x="139" y="50" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="5.5" fill="#a3d01d" letter-spacing="0.8">WELCOME</text>
+
+        <!-- New Customer -->
+        <rect x="153" y="22" width="122" height="68" rx="4" fill="white" stroke="#e8e5e0" stroke-width="1"/>
+        <rect x="153" y="22" width="122" height="3" rx="1" fill="#a3d01d"/>
+        <text x="214" y="50" text-anchor="middle" font-size="15">✨</text>
+        <text x="214" y="67" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="6.5" fill="#100828" font-weight="700" letter-spacing="0.8">NEW CUSTOMER</text>
+        <text x="214" y="82" text-anchor="middle" font-size="8" fill="#999">1 order</text>
+
+        <!-- Arrow: New Customer to Loyal -->
+        <line x1="275" y1="56" x2="316" y2="56" stroke="#a3d01d" stroke-width="1.5" marker-end="url(#ml)"/>
+        <text x="296" y="50" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="5.5" fill="#a3d01d" letter-spacing="0.6">POST-PURCHASE</text>
+
+        <!-- Loyal (hub) -->
+        <rect x="318" y="16" width="148" height="80" rx="4" fill="#f8fbee" stroke="#a3d01d" stroke-width="2"/>
+        <rect x="318" y="16" width="148" height="4" rx="1" fill="#a3d01d"/>
+        <text x="392" y="44" text-anchor="middle" font-size="15">🔁</text>
+        <text x="392" y="63" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="8" fill="#100828" font-weight="700" letter-spacing="1">LOYAL</text>
+        <text x="392" y="77" text-anchor="middle" font-size="8" fill="#666">Post-Purchase Ladder</text>
+        <text x="392" y="90" text-anchor="middle" font-size="8" fill="#888">2+ orders</text>
+
+        <!-- Arrow: Loyal to Champion -->
+        <line x1="466" y1="56" x2="607" y2="56" stroke="#a3d01d" stroke-width="1.5" marker-end="url(#ml)"/>
+        <text x="536" y="50" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="5.5" fill="#a3d01d" letter-spacing="0.8">VIP FLOW</text>
+
+        <!-- Champion -->
+        <rect x="609" y="22" width="120" height="68" rx="4" fill="white" stroke="#e8e5e0" stroke-width="1"/>
+        <rect x="609" y="22" width="120" height="3" rx="1" fill="#a3d01d"/>
+        <text x="669" y="50" text-anchor="middle" font-size="15">💎</text>
+        <text x="669" y="67" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="8" fill="#100828" font-weight="700" letter-spacing="1">CHAMPION</text>
+        <text x="669" y="82" text-anchor="middle" font-size="8" fill="#999">VIP Retention</text>
+
+        <!-- DRIFT: Loyal down to At Risk -->
+        <path d="M 392 96 L 392 110 L 262 110 L 262 170" stroke="#e65100" stroke-width="1.5" stroke-dasharray="4,3" fill="none" marker-end="url(#mo)"/>
+        <text x="336" y="106" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="6" fill="#e65100" letter-spacing="0.8">60D NO PURCHASE</text>
+
+        <!-- BOTTOM ROW: NODES -->
+
+        <!-- At Risk -->
+        <rect x="192" y="170" width="140" height="66" rx="4" fill="#fff8f5" stroke="#e65100" stroke-width="1.5"/>
+        <rect x="192" y="170" width="140" height="3" rx="1" fill="#e65100"/>
+        <text x="262" y="198" text-anchor="middle" font-size="15">⚠️</text>
+        <text x="262" y="215" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#100828" font-weight="700" letter-spacing="1">AT RISK</text>
+        <text x="262" y="229" text-anchor="middle" font-size="8" fill="#e65100">Day 60 check-in</text>
+
+        <!-- Arrow: At Risk to Lapsed -->
+        <line x1="332" y1="203" x2="361" y2="203" stroke="#c62828" stroke-width="1.5" marker-end="url(#mr)"/>
+        <text x="347" y="197" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="5.5" fill="#c62828" letter-spacing="0.6">NO RESPONSE</text>
+
+        <!-- Lapsed -->
+        <rect x="363" y="170" width="140" height="66" rx="4" fill="#fff5f5" stroke="#c62828" stroke-width="1.5"/>
+        <rect x="363" y="170" width="140" height="3" rx="1" fill="#c62828"/>
+        <text x="433" y="198" text-anchor="middle" font-size="15">📭</text>
+        <text x="433" y="215" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#100828" font-weight="700" letter-spacing="1">LAPSED</text>
+        <text x="433" y="229" text-anchor="middle" font-size="8" fill="#c62828">120+ days inactive</text>
+
+        <!-- Arrow: Lapsed to Sunset -->
+        <line x1="503" y1="203" x2="532" y2="203" stroke="#aaa" stroke-width="1.5" marker-end="url(#mg)"/>
+        <text x="517" y="197" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="5.5" fill="#aaa" letter-spacing="0.6">NO RESPONSE</text>
+
+        <!-- Sunset -->
+        <rect x="534" y="170" width="120" height="66" rx="4" fill="#f5f5f5" stroke="#ccc" stroke-width="1"/>
+        <rect x="534" y="170" width="120" height="3" rx="1" fill="#aaa"/>
+        <text x="594" y="198" text-anchor="middle" font-size="15">🌅</text>
+        <text x="594" y="215" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#888" font-weight="700" letter-spacing="1">SUNSET</text>
+        <text x="594" y="229" text-anchor="middle" font-size="8" fill="#aaa">List cleaned</text>
+
+        <!-- WIN-BACK ARCS (dashed rose) -->
+
+        <!-- At Risk back to Loyal (wide left arc) -->
+        <path d="M 192 200 C 80 158, 170 32, 318 30" stroke="#EABECC" stroke-width="2" stroke-dasharray="5,3" fill="none" marker-end="url(#mp)"/>
+        <text x="110" y="118" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#EABECC" font-weight="700" letter-spacing="0.5">WIN-BACK</text>
+        <text x="110" y="130" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#EABECC" font-weight="700" letter-spacing="0.5">FLOW ↑</text>
+
+        <!-- Lapsed back to Loyal (short upward arc) -->
+        <path d="M 433 170 C 433 118, 415 98, 392 96" stroke="#EABECC" stroke-width="2" stroke-dasharray="5,3" fill="none" marker-end="url(#mp)"/>
+        <text x="466" y="128" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#EABECC" font-weight="700" letter-spacing="0.5">15% OFF ↑</text>
+
+      </svg>
+    </div>
+
+    <div class="callout" style="margin-bottom:40px;">
+      <p>The growth path (top row) is where we want every customer to end up. Welcome and post-purchase flows do the heavy lifting early. The recovery path (bottom row) catches customers who go quiet. The win-back flow activates automatically at Day 60 with a soft check-in, escalates to social proof at Day 90, offers 15% off at Day 120, and sunset removes non-responders at Day 150 to keep the list healthy.</p>
+    </div>
+
+    <div class="img-2col">
+      <img src="https://cdn.shopify.com/s/files/1/2595/2658/files/03.jpg?v=1755483658" alt="Wispy Cluster Lashes" loading="lazy">
+      <img src="https://cdn.shopify.com/s/files/1/2595/2658/files/VOLUME01_0e240129-f02a-463a-b3f0-ce5d820f2889.jpg?v=1752157204" alt="Volume Press-On Lashes" loading="lazy">
+    </div>
+
+    <div class="section-end"></div>
+  </div>
+</div>
+
+
+<!-- ╔══ 03 EMAIL PROGRAM ══╗ -->
+<div id="s03" class="section">
+  <div class="wrap">
+
+    <div class="s-header">
+      <div class="s-label">03 &nbsp;/&nbsp; Email</div>
+      <div class="s-title">📧 Email Program</div>
+    </div>
+
+    <div class="callout">
+      <p>The email program has two parts: automated flows that run 24/7 in the background, and a broadcast calendar of 2 emails per week from June through August. Abandon cart, post-purchase, and welcome flows already exist in Klaviyo — we're refreshing their copy and design. The win-back flow is newly built and ready to wire up. All sends require Sandy's approval before they go out.</p>
+    </div>
+
+    <!-- ── FLOWS ── -->
+    <div class="sub-header">
+      <div class="sub-label">Automated Flows</div>
+      <div class="sub-title">🔁 What Runs in the Background</div>
+    </div>
+
+    <table class="tbl" style="margin-bottom:28px;">
+      <thead><tr><th>Flow</th><th>What it does</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td><strong>⚡ Abandoned Checkout</strong></td><td>3 emails to people who reached checkout but didn't complete. Highest-converting flow in e-commerce.</td><td><span class="pill pill-orange">Refresh in Progress</span></td></tr>
+        <tr><td><strong>🛒 Post-Purchase Ladder</strong></td><td>Starts Day 3 after every order. Tutorial, cross-sell, re-order prompt. Turns first-time buyers into regulars.</td><td><span class="pill pill-orange">Refresh in Progress</span></td></tr>
+        <tr><td><strong>👋 Welcome Series</strong></td><td>3 emails in the first 7 days for new subscribers. Sets tone, introduces the range, drives first purchase.</td><td><span class="pill pill-orange">Refresh in Progress</span></td></tr>
+        <tr class="hl"><td><strong>💌 Win-Back Flow</strong></td><td>4 emails across 150 days for lapsed customers. Day 60 check-in → Day 90 reviews → Day 120 discount → Day 150 sunset.</td><td><span class="pill pill-orange">In Progress</span></td></tr>
+        <tr><td><strong>🔍 Browse Abandonment</strong></td><td>1-2 emails when someone views a product but doesn't add to cart. Shows the product they looked at.</td><td><span class="pill pill-grey">To Build — July</span></td></tr>
+        <tr><td><strong>😰 First-Timer Confidence</strong></td><td>Targets subscribers who've never purchased. Addresses the "I'm bad at lashes" fear. Ends with a small discount.</td><td><span class="pill pill-grey">To Build — July</span></td></tr>
+        <tr><td><strong>💎 VIP Retention</strong></td><td>For customers with 2+ orders. Early access, appreciation tone, no discounts needed.</td><td><span class="pill pill-grey">To Build — August</span></td></tr>
+      </tbody>
+    </table>
+
+    <!-- WIN-BACK FLOW DIAGRAM -->
+    <div class="flow-card">
+      <div class="flow-head">
+        <div class="flow-name">Win-Back Flow</div>
+        <span class="pill pill-orange" style="margin-left:auto;">In Progress</span>
+      </div>
+      <div class="flow-steps-row">
+        <div class="fstep">
+          <div class="fstep-day">Day 60</div>
+          <div class="fstep-title">💌 We miss you</div>
+          <div class="fstep-note">Soft check-in. Warmth only. No discount.</div>
+        </div>
+        <div class="fstep">
+          <div class="fstep-day">Day 90</div>
+          <div class="fstep-title">⭐ 1,114 reviews</div>
+          <div class="fstep-note">Social proof only. Let the reviews talk.</div>
+        </div>
+        <div class="fstep">
+          <div class="fstep-day">Day 120</div>
+          <div class="fstep-title">🎁 15% off</div>
+          <div class="fstep-note">COMEBACK15. 7-day expiry. Final nudge.</div>
+        </div>
+        <div class="fstep">
+          <div class="fstep-day">Day 150</div>
+          <div class="fstep-title">👋 Stay or go?</div>
+          <div class="fstep-note">Re-permission. Suppresses non-engagers cleanly.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISCOUNT CODES ALERT -->
+    <div class="callout-rose" style="margin-top:8px;">
+      <p>⚠️ Two discount codes need to be created in Shopify before these flows and campaigns can go live: <strong>EOFY25</strong> (25% off, expires 30/06) for the June EOFY emails, and <strong>COMEBACK15</strong> (15% off, rolling 7-day expiry) for the win-back flow.</p>
+    </div>
+
+    <!-- ── BROADCAST CALENDAR ── -->
+    <div class="sub-header">
+      <div class="sub-label">Broadcast Calendar</div>
+      <div class="sub-title">📅 June to August — 26 Emails</div>
+    </div>
+
+    <div class="img-wide">
+      <img src="https://cdn.shopify.com/s/files/1/2595/2658/files/public_images_2Flavio-official.myshopify.com_2F1762305612_98fcdcee-e447-442f-aaaa-22d25f5e0cd2.webp?v=1762306396" alt="LAVIO DIY Starter Kit" loading="lazy">
+      <div class="img-wide-caption">
+        <span>DIY Cluster Lash Starter Kit</span>
+        <span>June to August 2026 Campaign</span>
+      </div>
+    </div>
+
+    <div class="cal-grid">
+      <div class="cal-card">
+        <div class="cal-head jun">June &nbsp;<span style="opacity:.55;font-size:.6rem;font-weight:400;">9 emails</span></div>
+        <ul class="cal-list">
+          <li><span class="cal-dt">02/06</span>She was spending $2,760/yr on extensions</li>
+          <li><span class="cal-dt">05/06</span>1,114 women switched. Here's what they said.</li>
+          <li><span class="cal-dt">09/06</span>If you've always been "bad at lashes"...</li>
+          <li><span class="cal-dt">12/06</span>30 seconds. Both eyes. Done.</li>
+          <li><span class="cal-dt">16/06</span>Which lash is right for you?</li>
+          <li><span class="cal-dt">19/06</span>Your winter morning just got easier</li>
+          <li><span class="cal-dt">23/06</span>⭐ EOFY — 25% off everything, starts now</li>
+          <li><span class="cal-dt">26/06</span>⭐ EOFY — 4 days left</li>
+          <li><span class="cal-dt">30/06</span>⭐ EOFY — Tonight only, ends midnight</li>
+        </ul>
+      </div>
+      <div class="cal-card">
+        <div class="cal-head jul">July &nbsp;<span style="opacity:.55;font-size:.6rem;font-weight:400;">8 emails</span></div>
+        <ul class="cal-list">
+          <li><span class="cal-dt">03/07</span>She quit her salon two years ago. No regrets.</li>
+          <li><span class="cal-dt">07/07</span>Your natural lashes will thank you</li>
+          <li><span class="cal-dt">10/07</span>Which Lavio lash lasts 25 uses?</li>
+          <li><span class="cal-dt">14/07</span>Getting ready with kids around 👩‍👧</li>
+          <li><span class="cal-dt">17/07</span>Lashes that last through anything</li>
+          <li><span class="cal-dt">21/07</span>The lashes that got all the compliments</li>
+          <li><span class="cal-dt">24/07</span>Real women. Real lashes. No filter.</li>
+          <li><span class="cal-dt">28/07</span>Haven't found your perfect lash yet?</li>
+        </ul>
+      </div>
+      <div class="cal-card">
+        <div class="cal-head aug">August &nbsp;<span style="opacity:.55;font-size:.6rem;font-weight:400;">9 emails</span></div>
+        <ul class="cal-list">
+          <li><span class="cal-dt">31/07</span>The lash for sensitive eyes</li>
+          <li><span class="cal-dt">04/08</span>The look that lasts all week without the salon</li>
+          <li><span class="cal-dt">07/08</span>From Monday meeting to Saturday night</li>
+          <li><span class="cal-dt">11/08</span>For the woman who's been "meaning to try"</li>
+          <li><span class="cal-dt">14/08</span>"I can't believe I waited this long."</li>
+          <li><span class="cal-dt">18/08</span>August picks — what's selling this week</li>
+          <li><span class="cal-dt">21/08</span>Before &amp; after: your lash transformation</li>
+          <li><span class="cal-dt">25/08</span>The lash that gets the most compliments</li>
+          <li><span class="cal-dt">28/08</span>Weekend plans? Lashes already sorted.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-end"></div>
+  </div>
+</div>
+
+
+<!-- ╔══ 04 PAID MEDIA ══╗ -->
+<div id="s04" class="section">
+  <div class="wrap">
+
+    <div class="s-header">
+      <div class="s-label">04 &nbsp;/&nbsp; Paid Media</div>
+      <div class="s-title">📱 Meta + Google</div>
+    </div>
+
+    <div class="callout">
+      <p>The biggest lever in paid advertising isn't budget — it's creative. Ads fatigue in 4-6 weeks. The same image running month after month drives up costs and kills performance. We refresh the creative every month so we're always testing fresh angles against what's working.</p>
+    </div>
+
+    <div class="sub-header">
+      <div class="sub-label">Monthly Process</div>
+      <div class="sub-title">🔄 How Each Month Works</div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">📊 Review performance</div>
+          <div class="step-body">Identify which creatives are fatiguing — declining CTR, rising CPM, frequency above 3x. Pull top performers to build on. Flag what to retire.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">✏️ Brief new concepts</div>
+          <div class="step-body">3-5 new ad concepts based on what's working and which angles haven't been tested. Hooks always come from real customer language, not marketing speak.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">🎬 Produce assets</div>
+          <div class="step-body">2-3 short videos (15-30 sec) plus 2-3 statics. All sized for Meta (1x1, 4x5, 9x16) and Google responsive display. Using LAVIO's own product photography plus UGC where available.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">🚀 Upload + test</div>
+          <div class="step-body">New creative added alongside existing campaigns — no rebuilds needed. Meta's algorithm allocates budget automatically to the best performers.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <div class="step-title">🗑️ Retire what's not working</div>
+          <div class="step-body">Lean ad sets (fewer creatives per set) learn faster and spend more efficiently. Remove anything that hasn't found traction after 2+ weeks of data.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-header">
+      <div class="sub-label">Creative Angles</div>
+      <div class="sub-title">🎯 Planned Concepts by Month</div>
+    </div>
+
+    <table class="tbl">
+      <thead><tr><th>Month</th><th>Hero Angle</th><th>Key Concepts</th></tr></thead>
+      <tbody>
+        <tr class="hl">
+          <td><strong>June</strong></td>
+          <td>The Cost Story</td>
+          <td>
+            "POV: you just cancelled your extension appointment forever." Cost overlay. Application demo.<br>
+            "$140 infill. $140 infill. Or: Lavio clusters, $49, lasts 7 days." Brutal maths, no music.<br>
+            UGC-style: "I've been doing lashes wrong my whole life." Beginner tutorial, casual tone.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>July</strong></td>
+          <td>Real Life</td>
+          <td>
+            Morning chaos, kids everywhere, 30 seconds, lashes on, out the door. Mum audience.<br>
+            "She's been wearing the same lashes since Monday." Day 1 to Day 7 durability proof.<br>
+            5-card carousel of real customer reviews.
+          </td>
+        </tr>
+        <tr class="hl">
+          <td><strong>August</strong></td>
+          <td>Professional + Sensitive</td>
+          <td>
+            "From Monday 9am to Saturday night — same lashes." Office to evening transformation.<br>
+            Sensitive eyes segment: "Salon glue gave me a reaction. Then I found these." High-intent, underserved.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="img-2col">
+      <img src="https://cdn.shopify.com/s/files/1/2595/2658/files/01.jpg?v=1755483676" alt="Volume Cluster Lashes" loading="lazy">
+      <img src="https://cdn.shopify.com/s/files/1/2595/2658/files/WETLASH.jpg?v=1752156783" alt="Wet Lash Press-On" loading="lazy">
+    </div>
+
+    <div class="section-end"></div>
+  </div>
+</div>
+
+
+<!-- ╔══ 05 AUGUST+ ══╗ -->
+<div id="s05" class="section">
+  <div class="wrap">
+
+    <div class="s-header">
+      <div class="s-label">05 &nbsp;/&nbsp; What's Next</div>
+      <div class="s-title">🗓️ August and Beyond</div>
+    </div>
+
+    <div class="callout">
+      <p>Once the email program is running and paid media is refreshed, these are the next initiatives queued up. Each one is scoped to slot in as bandwidth opens.</p>
+    </div>
+
+    <table class="tbl">
+      <thead><tr><th>Initiative</th><th>What it does</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr class="hl">
+          <td><strong>🧠 Lash Quiz</strong></td>
+          <td>Solves decision anxiety for fence-sitters. Captures email, auto-segments by product preference.</td>
+          <td><span class="pill pill-orange">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>📸 UGC Programme</strong></td>
+          <td>10% off next order for a photo or TikTok. Goal: 20+ pieces/month, no paid production.</td>
+          <td><span class="pill pill-orange">High</span></td>
+        </tr>
+        <tr class="hl">
+          <td><strong>🛍️ Product Page CRO</strong></td>
+          <td>Better review placement, benefit bullets, short FAQ. More of the traffic we're paying for actually converts.</td>
+          <td><span class="pill pill-orange">High</span></td>
+        </tr>
+        <tr>
+          <td><strong>💍 Occasion Sequences</strong></td>
+          <td>Wedding, formal, NYE. No competitor runs these. Build September, launch for Oct-Dec season.</td>
+          <td><span class="pill pill-blue">Medium</span></td>
+        </tr>
+        <tr class="hl">
+          <td><strong>🎅 Christmas Campaign</strong></td>
+          <td>LAVIO's best gifting moment. Full campaign across email, Meta, Google. Brief October, launch November.</td>
+          <td><span class="pill pill-blue">Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong>👥 Micro-Influencer Seeding</strong></td>
+          <td>AU beauty micro-influencers (5k-50k). Generates authentic content that doubles as ad creative.</td>
+          <td><span class="pill pill-grey">Later</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-end"></div>
+  </div>
+</div>
+
+
+<!-- ╔══ FOOTER ══╗ -->
+<div class="footer">
+  <div class="footer-rule"></div>
+  <div class="footer-logo">
+    <img src="https://d3k81ch9hvuctc.cloudfront.net/company/RKU7Vv/images/f0132c41-3a47-444a-90bf-2345b7d566a0.png" alt="LAVIO">
+  </div>
+  <div class="footer-brand">PHASE 3 ECOM</div>
+  <div class="footer-meta">Prepared for Sandy Evey &nbsp;·&nbsp; 22/05/2026 &nbsp;·&nbsp; Confidential</div>
+</div>
+
+</body>
+</html>
