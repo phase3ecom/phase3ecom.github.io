@@ -1156,7 +1156,7 @@ body {
           <h2 class="section-title">Install Git for Windows</h2>
         </div>
       </div>
-      <p>Git for Windows provides <strong>Git Bash</strong> — the shell used to run the setup script and all terminal commands in this guide. Install this before Warp.</p>
+      <p>Git for Windows provides <strong>Git Bash</strong> — the Unix shell that Warp uses underneath. You won't open Git Bash directly. After configuring Warp in Section 03, all terminal commands run inside Warp. Install Git first so Warp has a shell to use.</p>
 
       <div class="callout orange">
         <strong>Neither Claude Code nor Warp can install Git for you.</strong> This must be done manually first.
@@ -1177,12 +1177,12 @@ body {
       </ol>
 
       <h3>Verify</h3>
-      <p>Open <strong>Git Bash</strong> (search Start menu for "Git Bash") and run:</p>
+      <p>Open <strong>PowerShell</strong> (Start menu → search "powershell") and run:</p>
       <div class="code-block">git --version</div>
-      <p>Should output something like <code>git version 2.x.x.windows.x</code>. If it does, Git Bash is ready.</p>
+      <p>Should output something like <code>git version 2.x.x.windows.x</code>. After configuring Warp in Section 03, all commands run inside Warp — PowerShell is only used here for this one check.</p>
 
       <div class="callout lime">
-        <strong>Git Bash vs PowerShell vs CMD:</strong> All terminal commands in this guide use Git Bash syntax (forward slashes, Unix paths). Don't use PowerShell or CMD for setup steps unless stated.
+        <strong>One terminal only:</strong> After Section 03, Warp is the only terminal you'll use. Git Bash is the shell running inside Warp — you never open it separately. All commands in this guide are typed into Warp.
       </div>
     </section>
 
@@ -1204,6 +1204,16 @@ body {
         <li>Launch Warp from the Start menu or desktop shortcut</li>
         <li>Sign in to Warp or skip (optional — sign-in not required)</li>
       </ol>
+      <h3>Configure Warp to use Git Bash</h3>
+      <p>Warp needs to use Git Bash as its shell so all commands work correctly.</p>
+      <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
+        <li>Open Warp → click the <strong>gear icon (Settings)</strong> top right</li>
+        <li>Go to <strong>Features → Sessions</strong></li>
+        <li>Under <strong>Default shell</strong>, click the dropdown → select <strong>Git Bash</strong><br>
+            If it doesn't appear, click <strong>Browse</strong> and navigate to <code>C:\Program Files\Git\bin\bash.exe</code></li>
+        <li>Close Settings → fully close and reopen Warp</li>
+      </ol>
+      <div class="callout lime"><strong>After this step, Warp runs Git Bash.</strong> All commands in the rest of this guide are typed into Warp. Never open Git Bash separately.</div>
       <h3>Apply the Phase 3 Ecom theme</h3>
       <p>The setup script in Section 07 copies the theme files automatically. Once you've run it, enable the theme in Warp: <strong>Settings → Appearance → Theme → Custom → select Phase 3 Ecom</strong></p>
     </section>
@@ -1258,10 +1268,23 @@ body {
           <h2 class="section-title">Install Node.js (18+)</h2>
         </div>
       </div>
-      <p>Claude Code requires Node.js 18+. Download from <strong>nodejs.org</strong> → LTS version → Windows Installer (.msi).</p>
-      <p>Open Git Bash and verify:</p>
+      <p>Claude Code requires Node.js 18+. Choose one of the options below.</p>
+      <h3>Option A — winget (Windows 11 built-in, recommended)</h3>
+      <p>Open Warp and run:</p>
+      <div class="code-block">winget install OpenJS.NodeJS.LTS</div>
+      <p>Node.js installs automatically. Close and reopen Warp when it finishes.</p>
+      <h3>Option B — manual installer</h3>
+      <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
+        <li>Go to <strong>nodejs.org</strong> → click the <strong>LTS</strong> button</li>
+        <li>Download the <strong>Windows Installer (.msi)</strong></li>
+        <li>Run the installer → click through all defaults → <strong>Finish</strong></li>
+        <li>Close and reopen Warp after install completes</li>
+      </ol>
+      <h3>Verify in Warp</h3>
+      <p>Open Warp and run both commands. Both should return a version number.</p>
       <div class="code-block">node --version   # should be 18+
 npm --version</div>
+      <div class="callout lime">If <code>node --version</code> says "command not found", close Warp completely and reopen — the installer updates PATH but Warp needs to reload it.</div>
     </section>
 
     <!-- S05: Install Claude Code -->
@@ -1273,7 +1296,7 @@ npm --version</div>
           <h2 class="section-title">Install Claude Code</h2>
         </div>
       </div>
-      <p>Open Git Bash:</p>
+      <p>Open Warp:</p>
       <div class="code-block">npm install -g @anthropic-ai/claude-code
 claude --version
 claude</div>
@@ -1289,11 +1312,10 @@ claude</div>
           <h2 class="section-title">Run Setup Script</h2>
         </div>
       </div>
-      <p>The setup script requires Git Bash (included with Git for Windows from <strong>git-scm.com</strong>).</p>
-      <p>Open Git Bash (search Start menu for "Git Bash"):</p>
+      <p>Open Warp:</p>
       <div class="code-block">cd "/g/Shared drives/Phase 3 Ecom/CLAUDE CODE"
 bash setup/install.sh</div>
-      <p>Git Bash maps G:\ as /g/. If your Google Drive mounted to a different letter (e.g. H:\), use /h/ instead.</p>
+      <p>Warp (with Git Bash) maps Windows drive letters to Unix paths: G:\ = /g/, H:\ = /h/, etc. If your Google Drive mounted to a different letter, replace /g/ with the correct letter.</p>
 
       <h3>What this installs</h3>
       <ul class="checklist">
@@ -1329,7 +1351,7 @@ bash setup/install.sh</div>
           <h2 class="section-title">Install Plugins</h2>
         </div>
       </div>
-      <p>Open Warp and navigate to the CLAUDE CODE folder. In Git Bash format or Warp terminal:</p>
+      <p>Open Warp and navigate to the CLAUDE CODE folder:</p>
       <div class="code-block">cd "/g/Shared drives/Phase 3 Ecom/CLAUDE CODE"
 claude</div>
       <p>Inside Claude Code, run these slash commands one at a time (wait for each to complete):</p>
@@ -1363,7 +1385,7 @@ claude</div>
         </tbody>
       </table>
       <h3>If nothing appears in the status bar</h3>
-      <p>Open Git Bash and run this once, then restart Claude Code:</p>
+      <p>In Warp, run this once, then restart Claude Code:</p>
       <div class="code-block">npx ccstatusline@latest</div>
       <div class="callout dark"><strong>The critical rule:</strong> when Ctx Used hits ~50%, wrap the session (<code>/ADMN-wrapup-v1</code>) and start fresh. Quality degrades significantly past that point. See Section 13 for the full 50% Rule.</div>
     </section>
@@ -1423,11 +1445,11 @@ claude</div>
         </div>
       </div>
 
-      <h3>General / admin work (Git Bash)</h3>
+      <h3>General / admin work</h3>
       <div class="code-block">cd "/g/Shared drives/Phase 3 Ecom/CLAUDE CODE"
 claude</div>
 
-      <h3>Client-specific work (Git Bash)</h3>
+      <h3>Client-specific work</h3>
       <div class="code-block">cd "/g/Shared drives/Phase 3 Ecom/CLAUDE CODE/Clients/[Client Name]"
 claude</div>
 
@@ -1551,7 +1573,7 @@ claude</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-q">Hooks not firing (no caveman mode)</div>
-          <div class="trouble-a">Re-run <code style="font-family:'DM Mono',monospace;">bash setup/install.sh</code> in Git Bash. Check <code style="font-family:'DM Mono',monospace;">%USERPROFILE%\.claude\settings.json</code> exists and has a hooks section.</div>
+          <div class="trouble-a">Re-run <code style="font-family:'DM Mono',monospace;">bash setup/install.sh</code> in Warp. Check <code style="font-family:'DM Mono',monospace;">%USERPROFILE%\.claude\settings.json</code> exists and has a hooks section.</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-q">Plugin not found</div>
@@ -1559,11 +1581,11 @@ claude</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-q">Google Drive path wrong</div>
-          <div class="trouble-a">Check <strong>File Explorer → This PC</strong> to find your Drive letter. Use that letter in all paths above (e.g. /h/ instead of /g/ in Git Bash).</div>
+          <div class="trouble-a">Check <strong>File Explorer → This PC</strong> to find your Drive letter. Use that letter in all paths above (e.g. /h/ instead of /g/ in Warp).</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-q">Sound not working</div>
-          <div class="trouble-a">Re-run <code style="font-family:'DM Mono',monospace;">bash setup/install.sh</code> — it copies both <code style="font-family:'DM Mono',monospace;">play-sound.sh</code> and the <code style="font-family:'DM Mono',monospace;">.wav</code> file to <code style="font-family:'DM Mono',monospace;">%USERPROFILE%\.claude\</code>. If sound still fails, open Git Bash and test directly: <code style="font-family:'DM Mono',monospace;">bash ~/.claude/hooks/play-sound.sh</code>. Ensure your Windows volume is not muted.</div>
+          <div class="trouble-a">Re-run <code style="font-family:'DM Mono',monospace;">bash setup/install.sh</code> in Warp — it copies both <code style="font-family:'DM Mono',monospace;">play-sound.sh</code> and the <code style="font-family:'DM Mono',monospace;">.wav</code> file to <code style="font-family:'DM Mono',monospace;">%USERPROFILE%\.claude\</code>. If sound still fails, in Warp run: <code style="font-family:'DM Mono',monospace;">bash ~/.claude/hooks/play-sound.sh</code>. Ensure your Windows volume is not muted.</div>
         </div>
       </div>
     </section>
@@ -1576,7 +1598,7 @@ claude</div>
   <div class="footer">
     <div class="footer-brand">Phase 3 Ecom</div>
     <div>New User Setup · Claude Workspace · Windows 11</div>
-    <div>18/05/2026</div>
+    <div>25/05/2026</div>
   </div>
 </div>
 
