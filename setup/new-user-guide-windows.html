@@ -1017,6 +1017,27 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 .section { animation: fadeUp 0.4s ease both; }
+
+/* ─── SCREENSHOT ──────────────────────────────────────── */
+.screenshot-block {
+  margin: 20px 0;
+  border: 1px solid var(--grey-200);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(16,8,40,0.06);
+}
+.screenshot-block img {
+  width: 100%;
+  display: block;
+}
+.screenshot-caption {
+  background: var(--grey-100);
+  padding: 8px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--grey-400);
+  letter-spacing: 0.05em;
+}
 </style>
 </head>
 <body>
@@ -1167,6 +1188,14 @@ body {
       <p>Open <strong>PowerShell</strong> (search Start menu → type "powershell") and run:</p>
       <div class="code-block">winget install Git.Git</div>
       <p>Follow the prompts. Git installs automatically. No browser required.</p>
+      <div class="screenshot-block">
+        <img src="screenshots/s02-powershell-open.png" alt="PowerShell open, ready to run winget command">
+        <div class="screenshot-caption">PowerShell open — paste the command and press Enter</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="screenshots/s02-winget-git.png" alt="winget installing Git for Windows in PowerShell">
+        <div class="screenshot-caption">winget install Git.Git running — wait for "Successfully installed" before continuing</div>
+      </div>
 
       <h3>Option B — manual download</h3>
       <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
@@ -1184,6 +1213,10 @@ body {
 
       <div class="callout lime">
         <strong>One terminal only:</strong> After Section 03, Warp is the only terminal you'll use. Git Bash is the shell running inside Warp — you never open it separately. All commands in this guide are typed into Warp.
+      </div>
+      <div class="screenshot-block">
+        <img src="screenshots/s02-guide-page.png" alt="Windows new user guide open in browser at Section 02">
+        <div class="screenshot-caption">What you should see in your browser — guide open at S02</div>
       </div>
     </section>
 
@@ -1205,6 +1238,30 @@ body {
         <li>Launch Warp from the Start menu or desktop shortcut</li>
         <li>Sign in to Warp or skip (optional — sign-in not required)</li>
       </ol>
+      <div class="screenshot-block">
+        <img src="screenshots/s03-warp-homepage.png" alt="warp.dev homepage">
+        <div class="screenshot-caption">warp.dev — click "Download for Windows"</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="screenshots/s03-warp-download.png" alt="Warp download page — Your download will start automatically">
+        <div class="screenshot-caption">Warp download page — download starts automatically</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="screenshots/s03-warp-confirmation.png" alt="You're about to get Warp download confirmation dialog">
+        <div class="screenshot-caption">"You're about to get Warp" — confirm the download</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="screenshots/s03-warp-welcome.png" alt="Welcome to Warp first launch splash screen">
+        <div class="screenshot-caption">"Welcome to Warp" — first launch splash screen</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="screenshots/s03-warp-onboarding.png" alt="What brings you to Warp onboarding screen with Open Warp dialog">
+        <div class="screenshot-caption">"What brings you to Warp?" onboarding + "Open Warp?" browser dialog</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="screenshots/s03-warp-signup.png" alt="Warp sign-up page">
+        <div class="screenshot-caption">Warp sign-up — sign in or skip (optional)</div>
+      </div>
       <h3>Configure Warp to use Git Bash</h3>
       <p>Warp needs to use Git Bash as its shell so all commands work correctly.</p>
       <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
@@ -1240,6 +1297,10 @@ body {
       <p>Open File Explorer and confirm this path exists:</p>
       <div class="code-block">G:\Shared drives\Phase 3 Ecom\</div>
       <div class="callout">If your Drive mounted to a different letter (e.g. H:), use that letter instead throughout this guide. Check <strong>File Explorer → This PC</strong> to find it.</div>
+      <div class="screenshot-block">
+        <img src="screenshots/s04-file-explorer-drive.png" alt="File Explorer showing This PC with Google Shared Drives mounted as G:">
+        <div class="screenshot-caption">File Explorer → This PC — Google Shared Drives mounted (usually G:)</div>
+      </div>
       <h3>Make files available locally</h3>
       <p>By default, Google Drive streams files from the cloud. Make the workspace folder available locally so Claude Code can read files reliably — including offline.</p>
       <p><strong>Option A — Mirror all files</strong> (recommended if disk space allows):</p>
@@ -1270,6 +1331,10 @@ body {
         </div>
       </div>
       <p>Claude Code requires Node.js 18+. Choose one of the options below.</p>
+      <div class="screenshot-block">
+        <img src="screenshots/s05-warp-nodejs.png" alt="Warp terminal open with Node.js section of guide visible">
+        <div class="screenshot-caption">Warp open at S05 — run the install command in this window</div>
+      </div>
       <h3>Option A — winget (Windows 11 built-in, recommended)</h3>
       <p>Open Warp and run:</p>
       <div class="code-block">winget install OpenJS.NodeJS.LTS</div>
@@ -1309,6 +1374,10 @@ npm --version</div>
       <h3>Run in PowerShell</h3>
       <p>Open <strong>PowerShell</strong> (Start menu → search "powershell") and run:</p>
       <div class="code-block">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</div>
+      <div class="screenshot-block">
+        <img src="screenshots/s05b-ps1-error-fix.png" alt="PowerShell showing .ps1 cannot be loaded error, then Set-ExecutionPolicy fix running">
+        <div class="screenshot-caption">The .ps1 error you'll see without this fix, then Set-ExecutionPolicy resolving it</div>
+      </div>
       <p>Type <strong>Y</strong> and press Enter when prompted. This only affects your user account — no admin rights required.</p>
       <h3>Verify</h3>
       <div class="code-block">Get-ExecutionPolicy -Scope CurrentUser</div>
@@ -1329,6 +1398,14 @@ npm --version</div>
 claude --version
 claude</div>
       <p>Follow the browser auth prompt. Use your Phase 3 Ecom workspace account.</p>
+      <div class="screenshot-block">
+        <img src="screenshots/s06-claude-oauth.png" alt="Claude OAuth flow loading in browser">
+        <div class="screenshot-caption">Claude OAuth — sign in with your Phase 3 Ecom account</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="screenshots/s06-setup-done.png" alt="Build something great — You're all set up for Claude Code">
+        <div class="screenshot-caption">"Build something great" — setup complete, Claude Code ready</div>
+      </div>
     </section>
 
     <!-- S06: Setup Script -->
@@ -1343,6 +1420,14 @@ claude</div>
       <p>Open Warp:</p>
       <div class="code-block">cd "/g/Shared drives/Phase 3 Ecom/CLAUDE CODE"
 bash setup/install.sh</div>
+      <div class="screenshot-block">
+        <img src="screenshots/s07-file-explorer-warp.png" alt="File Explorer showing Phase 3 Ecom Drive with Warp launching">
+        <div class="screenshot-caption">File Explorer in Phase 3 Ecom Drive — Warp opening alongside</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="screenshots/s07-warp-folder.png" alt="Warp terminal in CLAUDE CODE folder ready to run setup script">
+        <div class="screenshot-caption">Warp in the CLAUDE CODE folder — run bash setup/install.sh</div>
+      </div>
       <p>Warp (with Git Bash) maps Windows drive letters to Unix paths: G:\ = /g/, H:\ = /h/, etc. If your Google Drive mounted to a different letter, replace /g/ with the correct letter.</p>
 
       <h3>What this installs</h3>
@@ -1386,6 +1471,14 @@ claude</div>
       <div class="code-block">/install superpowers@claude-plugins-official
 /install caveman@caveman
 /install warp@claude-code-warp</div>
+      <div class="screenshot-block">
+        <img src="screenshots/s08-plugins-section.png" alt="Guide showing Install Plugins section">
+        <div class="screenshot-caption">Guide open at S08 — run each /install command and wait for confirmation</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="screenshots/s08-warp-purple-theme.png" alt="Warp terminal in Phase 3 Ecom purple theme at CLAUDE CODE path">
+        <div class="screenshot-caption">Warp with Phase 3 Ecom theme active — plugins installed successfully</div>
+      </div>
     </section>
 
     <!-- S08: ccstatusline -->
@@ -1402,6 +1495,10 @@ claude</div>
       <h3>Verify it's working</h3>
       <p>Start a Claude Code session, then look at the bottom of the Warp window. You should see:</p>
       <div class="code-block">Model: Sonnet 4.6  |  Ctx: 138.4k  |  Ctx Used: 69.0%</div>
+      <div class="screenshot-block">
+        <img src="screenshots/s09-statusline-section.png" alt="Guide showing ccstatusline section with status bar example">
+        <div class="screenshot-caption">ccstatusline visible in Warp status bar — model, context size, and usage %</div>
+      </div>
       <p>This displays on the dark navy background of the Phase 3 Ecom Warp theme installed in Section 03. No additional colour configuration needed — colours are set by the theme.</p>
       <h3>What each metric means</h3>
       <table class="styled-table" style="width:100%;margin:16px 0;">
