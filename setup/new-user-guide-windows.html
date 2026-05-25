@@ -1067,7 +1067,6 @@ body {
       <li><a href="#s05b"><span class="s-num">5b</span><span class="s-emoji">🛡️</span> PowerShell Policy</a></li>
       <li><a href="#s06"><span class="s-num">06</span><span class="s-emoji">🤖</span> Install Claude Code</a></li>
       <li><a href="#s07"><span class="s-num">07</span><span class="s-emoji">⚙️</span> Setup Script</a></li>
-      <li><a href="#s08"><span class="s-num">08</span><span class="s-emoji">🔌</span> Install Plugins</a></li>
       <li><a href="#s09"><span class="s-num">09</span><span class="s-emoji">📊</span> ccstatusline</a></li>
       <li><a href="#s10"><span class="s-num">10</span><span class="s-emoji">🔗</span> Connect MCPs</a></li>
       <li><a href="#s11"><span class="s-num">11</span><span class="s-emoji">🔑</span> Get .env</a></li>
@@ -1168,8 +1167,6 @@ body {
       <p>Open <strong>PowerShell</strong> (search Start menu → type "powershell") and run:</p>
       <div class="code-block">winget install Git.Git</div>
       <p>Follow the prompts. Git installs automatically. No browser required.</p>
-</div>
-</div>
 
       <h3>Option B — manual download</h3>
       <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
@@ -1188,7 +1185,6 @@ body {
       <div class="callout lime">
         <strong>One terminal only:</strong> After Section 03, Warp is the only terminal you'll use. Git Bash is the shell running inside Warp — you never open it separately. All commands in this guide are typed into Warp.
       </div>
-</div>
     </section>
 
     <!-- S03: Warp -->
@@ -1209,12 +1205,6 @@ body {
         <li>Launch Warp from the Start menu or desktop shortcut</li>
         <li>Sign in to Warp or skip (optional — sign-in not required)</li>
       </ol>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
       <h3>Configure Warp to use Git Bash</h3>
       <p>Warp needs to use Git Bash as its shell so all commands work correctly.</p>
       <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
@@ -1250,7 +1240,6 @@ body {
       <p>Open File Explorer and confirm this path exists:</p>
       <div class="code-block">G:\Shared drives\Phase 3 Ecom\</div>
       <div class="callout">If your Drive mounted to a different letter (e.g. H:), use that letter instead throughout this guide. Check <strong>File Explorer → This PC</strong> to find it.</div>
-</div>
       <h3>Make files available locally</h3>
       <p>By default, Google Drive streams files from the cloud. Make the workspace folder available locally so Claude Code can read files reliably — including offline.</p>
       <p><strong>Option A — Mirror all files</strong> (recommended if disk space allows):</p>
@@ -1281,7 +1270,6 @@ body {
         </div>
       </div>
       <p>Claude Code requires Node.js 18+. Choose one of the options below.</p>
-</div>
       <h3>Option A — winget (Windows 11 built-in, recommended)</h3>
       <p>Open Warp and run:</p>
       <div class="code-block">winget install OpenJS.NodeJS.LTS</div>
@@ -1321,7 +1309,6 @@ npm --version</div>
       <h3>Run in PowerShell</h3>
       <p>Open <strong>PowerShell</strong> (Start menu → search "powershell") and run:</p>
       <div class="code-block">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</div>
-</div>
       <p>Type <strong>Y</strong> and press Enter when prompted. This only affects your user account — no admin rights required.</p>
       <h3>Verify</h3>
       <div class="code-block">Get-ExecutionPolicy -Scope CurrentUser</div>
@@ -1342,8 +1329,6 @@ npm --version</div>
 claude --version
 claude</div>
       <p>Follow the browser auth prompt. Use your Phase 3 Ecom workspace account.</p>
-</div>
-</div>
     </section>
 
     <!-- S06: Setup Script -->
@@ -1358,8 +1343,6 @@ claude</div>
       <p>Open Warp:</p>
       <div class="code-block">cd "/g/Shared drives/Phase 3 Ecom/CLAUDE CODE"
 bash setup/install.sh</div>
-</div>
-</div>
       <p>Warp (with Git Bash) maps Windows drive letters to Unix paths: G:\ = /g/, H:\ = /h/, etc. If your Google Drive mounted to a different letter, replace /g/ with the correct letter.</p>
 
       <h3>What this installs</h3>
@@ -1387,25 +1370,6 @@ bash setup/install.sh</div>
       <p><strong>To submit a skill for P3E use:</strong> Create a task in ClickUp → P3E Admin → <strong>Skill Submissions</strong> list. Attach the <code>SKILL.md</code> file. Will reviews and publishes — your next session start picks it up automatically.</p>
     </section>
 
-    <!-- S07: Plugins -->
-    <section class="section" id="s08">
-      <div class="section-header">
-        <div class="section-icon">🔌</div>
-        <div class="section-title-group">
-          <div class="section-num">Section 08</div>
-          <h2 class="section-title">Install Plugins</h2>
-        </div>
-      </div>
-      <p>Open Warp and navigate to the CLAUDE CODE folder:</p>
-      <div class="code-block">cd "/g/Shared drives/Phase 3 Ecom/CLAUDE CODE"
-claude</div>
-      <p>Inside Claude Code, run these slash commands one at a time (wait for each to complete):</p>
-      <div class="code-block">/install superpowers@claude-plugins-official
-/install caveman@caveman
-/install warp@claude-code-warp</div>
-</div>
-</div>
-    </section>
 
     <!-- S08: ccstatusline -->
     <section class="section" id="s09">
@@ -1421,7 +1385,6 @@ claude</div>
       <h3>Verify it's working</h3>
       <p>Start a Claude Code session, then look at the bottom of the Warp window. You should see:</p>
       <div class="code-block">Model: Sonnet 4.6  |  Ctx: 138.4k  |  Ctx Used: 69.0%</div>
-</div>
       <p>This displays on the dark navy background of the Phase 3 Ecom Warp theme installed in Section 03. No additional colour configuration needed — colours are set by the theme.</p>
       <h3>What each metric means</h3>
       <table class="styled-table" style="width:100%;margin:16px 0;">
