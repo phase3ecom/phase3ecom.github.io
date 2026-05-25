@@ -1063,6 +1063,7 @@ body {
       <li><a href="#s03"><span class="s-num">03</span><span class="s-emoji">💻</span> Install Warp</a></li>
       <li><a href="#s04"><span class="s-num">04</span><span class="s-emoji">☁️</span> Install Google Drive</a></li>
       <li><a href="#s05"><span class="s-num">05</span><span class="s-emoji">⬢</span> Install Node.js</a></li>
+      <li><a href="#s05b"><span class="s-num">5b</span><span class="s-emoji">🛡️</span> PowerShell Policy</a></li>
       <li><a href="#s06"><span class="s-num">06</span><span class="s-emoji">🤖</span> Install Claude Code</a></li>
       <li><a href="#s07"><span class="s-num">07</span><span class="s-emoji">⚙️</span> Setup Script</a></li>
       <li><a href="#s08"><span class="s-num">08</span><span class="s-emoji">🔌</span> Install Plugins</a></li>
@@ -1285,6 +1286,28 @@ body {
       <div class="code-block">node --version   # should be 18+
 npm --version</div>
       <div class="callout lime">If <code>node --version</code> says "command not found", close Warp completely and reopen — the installer updates PATH but Warp needs to reload it.</div>
+    </section>
+
+    <!-- S05b: PowerShell Execution Policy -->
+    <section class="section" id="s05b">
+      <div class="section-header">
+        <div class="section-icon">🛡️</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 05b</div>
+          <h2 class="section-title">Configure PowerShell Execution Policy</h2>
+        </div>
+      </div>
+      <p>Windows blocks npm-installed tools (including Claude Code) from running by default. You need to allow scripts once before continuing.</p>
+      <div class="callout orange">
+        <strong>Why this matters:</strong> npm installs tools as <code>.ps1</code> scripts. PowerShell's default policy (<code>Restricted</code>) blocks them — so running <code>claude</code> after install will fail with a "cannot be loaded" error unless you do this step first.
+      </div>
+      <h3>Run in PowerShell</h3>
+      <p>Open <strong>PowerShell</strong> (Start menu → search "powershell") and run:</p>
+      <div class="code-block">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</div>
+      <p>Type <strong>Y</strong> and press Enter when prompted. This only affects your user account — no admin rights required.</p>
+      <h3>Verify</h3>
+      <div class="code-block">Get-ExecutionPolicy -Scope CurrentUser</div>
+      <p>Should output <code>RemoteSigned</code>. Close PowerShell — all remaining steps use Warp.</p>
     </section>
 
     <!-- S05: Install Claude Code -->
