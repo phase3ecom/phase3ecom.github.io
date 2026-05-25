@@ -1286,6 +1286,11 @@ body {
       <div class="code-block">node --version   # should be 18+
 npm --version</div>
       <div class="callout lime">If <code>node --version</code> says "command not found", close Warp completely and reopen — the installer updates PATH but Warp needs to reload it.</div>
+      <h3>Also install jq</h3>
+      <p>The Warp plugin requires <code>jq</code> (a JSON tool). Install it now:</p>
+      <div class="code-block">winget install jqlang.jq</div>
+      <p>Close and reopen Warp when done. Verify with:</p>
+      <div class="code-block">jq --version</div>
     </section>
 
     <!-- S05b: PowerShell Execution Policy -->
