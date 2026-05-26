@@ -113,6 +113,20 @@ body { font-family: 'Cabin', sans-serif; background: var(--canvas); color: var(-
 .callout-green { border-left: 3px solid var(--lime); padding: 18px 22px; border-radius: 0 8px 8px 0; margin: 16px 0; background: #f4fae8; font-size: 0.9rem; color: var(--grey-700); line-height: 1.6; }
 .callout-green strong { color: var(--navy); }
 
+/* BENCHMARK */
+.big-stat-bench { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: rgba(163,208,29,0.55); margin-top: 5px; letter-spacing: 0.03em; }
+.bench-box { background: var(--navy); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 22px 26px; margin: 20px 0 0; }
+.bench-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; }
+.bench-title { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.35); letter-spacing: 0.12em; text-transform: uppercase; }
+.bench-source { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: rgba(255,255,255,0.2); }
+.bench-row { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+.bench-row:last-child { margin-bottom: 0; }
+.bench-who { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: rgba(255,255,255,0.45); width: 130px; flex-shrink: 0; }
+.bench-bar-wrap { flex: 1; background: rgba(255,255,255,0.05); border-radius: 4px; height: 30px; overflow: hidden; }
+.bench-bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding: 0 12px; font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 700; white-space: nowrap; min-width: 48px; }
+.bench-bar-fill.you { background: var(--lime); color: var(--navy); }
+.bench-bar-fill.avg { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.5); }
+
 /* ACTIONS */
 .actions-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--grey-200); border-radius: 8px; overflow: hidden; }
 .action-item { display: grid; grid-template-columns: 60px 1fr auto; gap: 0; border-bottom: 1px solid var(--grey-200); align-items: stretch; }
@@ -192,16 +206,19 @@ footer { background: var(--navy); padding: 36px 48px; }
         <div class="big-stat-num">27.3x</div>
         <div class="big-stat-label">Google ROAS</div>
         <div class="big-stat-sub">$185,609 conv value</div>
+        <div class="big-stat-bench">Industry avg: 3.68x</div>
       </div>
       <div class="big-stat">
         <div class="big-stat-num">16.1x</div>
         <div class="big-stat-label">Meta ROAS</div>
         <div class="big-stat-sub">$70,298 purchase revenue</div>
+        <div class="big-stat-bench">Industry avg: 2.19x</div>
       </div>
       <div class="big-stat">
         <div class="big-stat-num">36.8x</div>
         <div class="big-stat-label">Blended ROAS</div>
         <div class="big-stat-sub">Both channels combined</div>
+        <div class="big-stat-bench">Industry avg: ~3.5x blended</div>
       </div>
     </div>
   </div>
@@ -211,7 +228,7 @@ footer { background: var(--navy); padding: 36px 48px; }
 <div id="google" class="slide">
   <div class="wrap">
     <div class="slide-eyebrow">02 &mdash; Google Ads</div>
-    <div class="slide-title">Paid search is the strongest channel.</div>
+    <div class="slide-title">Paid search at 7.4× the industry average.</div>
     <div class="slide-sub">$185,609 in conversion value on $6,804 spend over 6 months. CPC held below $0.60 throughout.</div>
 
     <div class="channel-grid">
@@ -250,6 +267,21 @@ footer { background: var(--navy); padding: 36px 48px; }
     <div class="callout-green">
       <strong>All three active campaigns are profitable.</strong> PMax Shopping at 28.4x, Search at 26.5x, Multi-touch at 26.8x. The account is well-structured and running efficiently — no immediate changes needed on the paid search side.
     </div>
+
+    <div class="bench-box">
+      <div class="bench-head">
+        <span class="bench-title">ROAS vs Industry</span>
+        <span class="bench-source">Source: upcounting.com / WordStream 2025 — 18,000+ brands</span>
+      </div>
+      <div class="bench-row">
+        <span class="bench-who">Skippy (you)</span>
+        <div class="bench-bar-wrap"><div class="bench-bar-fill you" style="width:100%">27.3x</div></div>
+      </div>
+      <div class="bench-row">
+        <span class="bench-who">Ecom average</span>
+        <div class="bench-bar-wrap"><div class="bench-bar-fill avg" style="width:13.5%">3.68x</div></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -257,7 +289,7 @@ footer { background: var(--navy); padding: 36px 48px; }
 <div id="meta" class="slide alt">
   <div class="wrap">
     <div class="slide-eyebrow">03 &mdash; Meta Ads</div>
-    <div class="slide-title">Strong ROAS — but audience fatigue is rising.</div>
+    <div class="slide-title">Meta ROAS at 7.3× the industry average — but audience fatigue is rising.</div>
     <div class="slide-sub">$70,298 in purchase revenue on $4,373 spend. Two campaigns with very different performance profiles.</div>
 
     <div class="compare-grid">
@@ -280,6 +312,25 @@ footer { background: var(--navy); padding: 36px 48px; }
           <div><div class="cn-num">$113</div><div class="cn-label">CPA</div></div>
         </div>
         <div class="compare-note">CPA is <strong>2.7× higher than c2.</strong> Video creative campaign taking majority of budget but underperforming. Creative refresh is the priority action here.</div>
+      </div>
+    </div>
+
+    <div class="bench-box">
+      <div class="bench-head">
+        <span class="bench-title">ROAS vs Industry</span>
+        <span class="bench-source">Source: Trendtrack / inbeat.co 2025</span>
+      </div>
+      <div class="bench-row">
+        <span class="bench-who">Skippy (you)</span>
+        <div class="bench-bar-wrap"><div class="bench-bar-fill you" style="width:100%">16.1x</div></div>
+      </div>
+      <div class="bench-row">
+        <span class="bench-who">Retargeting avg</span>
+        <div class="bench-bar-wrap"><div class="bench-bar-fill avg" style="width:22.4%">3.61x</div></div>
+      </div>
+      <div class="bench-row">
+        <span class="bench-who">Ecom average</span>
+        <div class="bench-bar-wrap"><div class="bench-bar-fill avg" style="width:13.6%">2.19x</div></div>
       </div>
     </div>
 
