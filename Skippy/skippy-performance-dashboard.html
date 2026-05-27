@@ -212,7 +212,7 @@ footer { background: var(--navy); padding: 36px 48px; }
 
     <div class="chart-wrap">
       <div class="chart-title">Monthly Gross Revenue (AUD)</div>
-      <canvas id="revenueChart" height="120"></canvas>
+      <canvas id="revenueChart" height="200"></canvas>
     </div>
 
     <div class="summary-grid" style="margin-top:24px;">
@@ -280,7 +280,7 @@ footer { background: var(--navy); padding: 36px 48px; }
 
     <div class="chart-wrap">
       <div class="chart-title" id="growthChartTitle">Revenue Growth % vs Same Month Prior Year</div>
-      <canvas id="growthChart" height="120"></canvas>
+      <canvas id="growthChart" height="200"></canvas>
     </div>
   </div>
 </div>
@@ -407,6 +407,7 @@ let revenueChart = new Chart(document.getElementById("revenueChart"), {
   },
   options: {
     responsive: true,
+    aspectRatio: 1.2,
     plugins: {
       legend: { display: false },
       tooltip: {
@@ -689,6 +690,7 @@ let growthChart = new Chart(document.getElementById("growthChart"), {
   },
   options: {
     responsive: true,
+    aspectRatio: 1.2,
     plugins: {
       legend: { display: false },
       tooltip: {
