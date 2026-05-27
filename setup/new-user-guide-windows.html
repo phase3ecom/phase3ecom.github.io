@@ -1018,6 +1018,10 @@ body {
 }
 .section { animation: fadeUp 0.4s ease both; }
 
+.guide-media { margin: 24px 0; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.10); border: 1px solid var(--grey-200, #e5e7eb); }
+.guide-media img { display: block; width: 100%; height: auto; }
+.guide-media video { display: block; width: 100%; height: auto; background: #000; }
+
 </style>
 </head>
 <body>
@@ -1176,6 +1180,12 @@ body {
       <div class="callout lime">
         <strong>One terminal only:</strong> After Section 03, Warp is the only terminal you'll use. Git Bash is the shell running inside Warp — you never open it separately. All commands in this guide are typed into Warp.
       </div>
+      <div class="guide-media">
+        <video controls>
+          <source src="media/section-02.mov" type="video/quicktime">
+          <source src="media/section-02.mov" type="video/mp4">
+        </video>
+      </div>
     </section>
 
     <!-- S03: Warp -->
@@ -1196,6 +1206,9 @@ body {
         <li>Launch Warp from the Start menu or desktop shortcut</li>
         <li>Sign in to Warp or skip (optional — sign-in not required)</li>
       </ol>
+      <div class="guide-media">
+        <img src="media/section-03.png" alt="Warp download page">
+      </div>
       <h3>Configure Warp to use Git Bash</h3>
       <p>Warp needs to use Git Bash as its shell so all commands work correctly.</p>
       <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
@@ -1305,6 +1318,9 @@ npm --version</div>
 claude --version
 claude</div>
       <p>Follow the browser auth prompt. Use your Phase 3 Ecom workspace account.</p>
+      <div class="guide-media">
+        <img src="media/section-06.png" alt="Claude Code running in Warp">
+      </div>
     </section>
 
     <!-- S06: Setup Script -->
