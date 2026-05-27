@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claude Workspace Setup — Windows 11 — Phase 3 Ecom</title>
+<title>Claude Workspace Setup — macOS — Phase 3 Ecom</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Cabin:ital,wght@0,400;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -354,12 +354,6 @@ body {
   color: rgba(255,255,255,0.75);
 }
 .callout.dark strong { color: var(--lime); }
-.callout.orange {
-  background: #fff4e5;
-  border-left-color: #f59e0b;
-  color: var(--grey-700);
-}
-.callout.orange strong { color: #92400e; }
 
 /* ─── INSIGHT BOX ─────────────────────────────────────── */
 .insight {
@@ -897,105 +891,6 @@ body {
   letter-spacing: 0.3em;
 }
 
-/* ─── CODE BLOCK ──────────────────────────────────────── */
-.code-block {
-  background: var(--navy);
-  color: var(--lime);
-  font-family: 'DM Mono', monospace;
-  padding: 16px 20px;
-  border-radius: 8px;
-  font-size: 0.82rem;
-  overflow-x: auto;
-  white-space: pre;
-  margin: 16px 0;
-  line-height: 1.6;
-}
-
-/* ─── CHECKLIST ───────────────────────────────────────── */
-.checklist {
-  list-style: none;
-  margin: 16px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.checklist li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.9rem;
-  color: var(--grey-700);
-  padding: 10px 16px;
-  background: var(--white);
-  border: 1px solid var(--grey-200);
-  border-radius: 6px;
-}
-.checklist li::before {
-  content: '☐';
-  color: var(--lime);
-  font-size: 1rem;
-  flex-shrink: 0;
-  line-height: 1.3;
-}
-.section:nth-child(even) .checklist li { background: var(--grey-100); }
-
-/* ─── RULE GROUPS ─────────────────────────────────────── */
-.rule-group {
-  margin: 20px 0;
-}
-.rule-group-title {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--grey-400);
-  margin-bottom: 10px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--grey-200);
-}
-.rule-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.rule-list li {
-  font-size: 0.88rem;
-  color: var(--grey-700);
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-  line-height: 1.5;
-}
-
-/* ─── TROUBLESHOOT LIST ───────────────────────────────── */
-.trouble-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 20px 0;
-}
-.trouble-item {
-  border: 1px solid var(--grey-200);
-  border-radius: 8px;
-  overflow: hidden;
-}
-.trouble-q {
-  background: var(--navy);
-  color: var(--lime);
-  font-family: 'DM Mono', monospace;
-  font-size: 0.78rem;
-  padding: 12px 18px;
-  font-weight: 500;
-}
-.trouble-a {
-  padding: 14px 18px;
-  font-size: 0.88rem;
-  color: var(--grey-700);
-  background: var(--white);
-  line-height: 1.6;
-}
-
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 960px) {
   .main-wrap { grid-template-columns: 1fr; }
@@ -1018,10 +913,107 @@ body {
 }
 .section { animation: fadeUp 0.4s ease both; }
 
-.guide-media { margin: 24px 0; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.10); border: 1px solid var(--grey-200, #e5e7eb); }
+/* ─── CALLOUT ORANGE ──────────────────────────────────── */
+.callout.orange {
+  background: #fff4e5;
+  border-left-color: #f59e0b;
+  color: var(--grey-700);
+}
+.callout.orange strong { color: #92400e; }
+
+/* ─── GUIDE MEDIA ─────────────────────────────────────── */
+.guide-media { margin: 24px 0; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.10); border: 1px solid var(--grey-200); }
 .guide-media img { display: block; width: 100%; height: auto; }
 .guide-media video { display: block; width: 100%; height: auto; background: #000; }
 
+/* ─── CODE BLOCK ──────────────────────────────────────── */
+.code-block {
+  background: var(--navy);
+  color: var(--lime);
+  font-family: 'DM Mono', monospace;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  overflow-x: auto;
+  white-space: pre;
+  margin: 16px 0;
+  line-height: 1.6;
+}
+
+/* ─── CHECKLIST ───────────────────────────────────────── */
+.check-list {
+  list-style: none;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--grey-700);
+  padding: 10px 16px;
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-radius: 6px;
+}
+.check-list li::before {
+  content: '✓';
+  color: var(--lime);
+  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ─── SESSION RULES GRID ──────────────────────────────── */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 24px 0;
+}
+.rules-group {
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-top: 3px solid var(--lime);
+  border-radius: 0 0 8px 8px;
+  padding: 20px;
+}
+.rules-group-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--grey-400);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.rules-group ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.rules-group ul li {
+  font-size: 0.8rem;
+  color: var(--grey-700);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+.rules-group ul li::before {
+  content: '✅';
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  margin-top: 2px;
+}
+
+@media (max-width: 960px) {
+  .rules-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -1033,10 +1025,10 @@ body {
     <li><a href="#why">Why</a></li>
     <li><a href="#s01">Prerequisites</a></li>
     <li><a href="#s02">Steps 1–12</a></li>
-    <li><a href="#quickref">Quick Reference</a></li>
-    <li><a href="#troubleshoot">Troubleshooting</a></li>
+    <li><a href="#quick-ref">Quick Reference</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
   </ul>
-  <div class="nav-tag">Windows 11</div>
+  <div class="nav-tag">macOS</div>
 </nav>
 
 <!-- TITLE BLOCK -->
@@ -1044,13 +1036,13 @@ body {
   <div class="title-block">
     <div>
       <div class="title-eyebrow">New User Setup</div>
-      <h1 class="title-main">Claude Workspace Setup<br>Windows 11</h1>
-      <p class="title-sub">Complete setup from scratch. Follow in order. Windows 11 only.</p>
+      <h1 class="title-main">Claude Workspace Setup — macOS</h1>
+      <p class="title-sub">Complete setup from scratch. Follow in order. macOS only.</p>
     </div>
     <div class="title-meta">
       <div class="title-source-label">Platform</div>
-      <div class="title-source-tag">Windows 11</div>
-      <div class="title-date">18 May 2026</div>
+      <div class="title-source-tag">macOS</div>
+      <div class="title-date">18/05/2026</div>
     </div>
   </div>
 </div>
@@ -1064,26 +1056,25 @@ body {
     <ul class="sidebar-nav">
       <li><a href="#why"><span class="s-emoji">🧠</span> Why Claude Code</a></li>
       <li><a href="#s01"><span class="s-num">01</span><span class="s-emoji">✅</span> Prerequisites</a></li>
-      <li><a href="#s02"><span class="s-num">02</span><span class="s-emoji">🔧</span> Install Git</a></li>
-      <li><a href="#s03"><span class="s-num">03</span><span class="s-emoji">💻</span> Install Warp</a></li>
-      <li><a href="#s04"><span class="s-num">04</span><span class="s-emoji">☁️</span> Install Google Drive</a></li>
-      <li><a href="#s05"><span class="s-num">05</span><span class="s-emoji">⬢</span> Install Node.js</a></li>
-      <li><a href="#s05b"><span class="s-num">5b</span><span class="s-emoji">🛡️</span> PowerShell Policy</a></li>
-      <li><a href="#s06"><span class="s-num">06</span><span class="s-emoji">🤖</span> Install Claude Code</a></li>
-      <li><a href="#s07"><span class="s-num">07</span><span class="s-emoji">⚙️</span> Setup Script</a></li>
+      <li><a href="#s02"><span class="s-num">02</span><span class="s-emoji">💻</span> Install Warp</a></li>
+      <li><a href="#s03"><span class="s-num">03</span><span class="s-emoji">☁️</span> Install Google Drive</a></li>
+      <li><a href="#s04"><span class="s-num">04</span><span class="s-emoji">⬢</span> Install Node.js</a></li>
+      <li><a href="#s05"><span class="s-num">05</span><span class="s-emoji">🤖</span> Install Claude Code</a></li>
+      <li><a href="#s06"><span class="s-num">06</span><span class="s-emoji">⚙️</span> Setup Script</a></li>
+      <li><a href="#s07"><span class="s-num">07</span><span class="s-emoji">🔌</span> Install Plugins</a></li>
       <li><a href="#s08"><span class="s-num">08</span><span class="s-emoji">📊</span> ccstatusline</a></li>
       <li><a href="#s09"><span class="s-num">09</span><span class="s-emoji">🔗</span> Connect MCPs</a></li>
       <li><a href="#s10"><span class="s-num">10</span><span class="s-emoji">🔑</span> Get .env</a></li>
       <li><a href="#s11"><span class="s-num">11</span><span class="s-emoji">🚀</span> First Session</a></li>
       <li><a href="#s12"><span class="s-num">12</span><span class="s-emoji">⚠️</span> The 50% Rule</a></li>
-      <li><a href="#quickref"><span class="s-emoji">⚡</span> Quick Reference</a></li>
+      <li><a href="#quick-ref"><span class="s-emoji">⚡</span> Quick Reference</a></li>
     </ul>
   </aside>
 
   <!-- CONTENT -->
   <main class="content">
 
-    <!-- WHY CLAUDE CODE -->
+    <!-- WHY -->
     <section class="section" id="why">
       <div class="section-header">
         <div class="section-icon">🧠</div>
@@ -1095,28 +1086,35 @@ body {
       <p>You've probably used Claude through the browser at claude.ai. Claude Code is different — and for team work, it's the right tool.</p>
 
       <div class="callout dark">
-        <p style="margin-bottom:12px;"><strong>claude.ai (web/app)</strong> — each conversation starts blank. No memory of previous sessions. No shared context with teammates. Good for one-off questions.</p>
-        <p style="margin-bottom:0;"><strong>Claude Code (CLI)</strong> — runs in your terminal, reads files from your machine, and loads shared context automatically at the start of every session.</p>
+        <strong>claude.ai (web/app)</strong> — each conversation starts blank. No memory of previous sessions. No shared context with teammates. Good for one-off questions.<br><br>
+        <strong>Claude Code (CLI)</strong> — runs in your terminal, reads files from your machine, and loads shared context automatically at the start of every session.
       </div>
 
       <h3>How the memory system works</h3>
-      <p><strong style="color:var(--navy);">CLAUDE.md</strong> — project-level instructions that load at session start without any prompt. Tells Claude who we are, what stack we use, how to write commit messages, what safety rules to follow. Every team member gets identical baseline behaviour.</p>
-      <p><strong style="color:var(--navy);">memory/</strong> — a folder on Google Drive containing:</p>
-      <ul class="checklist">
-        <li><strong>rules.md</strong> — rules and patterns learned across all client work</li>
-        <li><strong>projects.md</strong> — all active clients: status, pending items, key asset IDs, what's blocked and why</li>
-        <li><strong>sessions/</strong> — a file per working session recording what was done, what decisions were made, what's still pending</li>
-      </ul>
+
+      <div class="insight">
+        <div class="insight-icon">📄</div>
+        <div class="insight-text"><strong>CLAUDE.md</strong> — project-level instructions that load at session start without any prompt. Tells Claude who we are, what stack we use, how to write commit messages, what safety rules to follow. Every team member gets identical baseline behaviour.</div>
+      </div>
+
+      <div class="insight">
+        <div class="insight-icon">📁</div>
+        <div class="insight-text"><strong>memory/</strong> — a folder on Google Drive containing:<br><br>
+          <strong>rules.md</strong> — rules and patterns learned across all client work<br>
+          <strong>projects.md</strong> — all active clients: status, pending items, key asset IDs, what's blocked and why<br>
+          <strong>sessions/</strong> — a file per working session recording what was done, what decisions were made, what's still pending
+        </div>
+      </div>
 
       <h3>Why this matters for client work</h3>
+
       <div class="callout lime">
-        <p style="margin-bottom:10px;">When two people work on the same client:</p>
-        <ul style="list-style:none; display:flex; flex-direction:column; gap:6px;">
-          <li>· Person A finishes an email flow, runs <strong>/ADMN-wrapup-v2</strong>, records "waiting on Steven to confirm free freight offer before activating"</li>
-          <li>· Person B opens Claude Code two days later, runs <strong>/ADMN-startup-v2</strong>, and immediately sees that pending item — no Slack thread needed</li>
-        </ul>
+        When two people work on the same client:<br><br>
+        Person A finishes an email flow, runs <strong>/ADMN-wrapup-v2</strong>, records "waiting on Steven to confirm free freight offer before activating"<br><br>
+        Person B opens Claude Code two days later, runs <strong>/ADMN-startup-v2</strong>, and immediately sees that pending item — no Slack thread needed.
       </div>
-      <p><strong style="color:var(--navy);">The bottom line:</strong> claude.ai conversations are ephemeral and isolated. This setup is persistent and shared.</p>
+
+      <p><strong>The bottom line:</strong> claude.ai conversations are ephemeral and isolated. This setup is persistent and shared. For client work with multiple people across multiple sessions, that difference matters every day.</p>
     </section>
 
     <!-- S01: Prerequisites -->
@@ -1128,237 +1126,178 @@ body {
           <h2 class="section-title">Prerequisites</h2>
         </div>
       </div>
-      <p>Before starting, confirm all items below are in place.</p>
-
-      <h3>Minimum specs</h3>
-      <table class="styled-table" style="margin-bottom:24px;">
-        <thead><tr><th>Component</th><th>Minimum</th><th>Recommended</th></tr></thead>
-        <tbody>
-          <tr><td>OS</td><td>Windows 11 64-bit (build 22000+)</td><td>Windows 11 latest updates</td></tr>
-          <tr><td>RAM</td><td>4 GB</td><td>8 GB+</td></tr>
-          <tr><td>CPU</td><td>Intel Core i5 / AMD Ryzen 5 (2018+)</td><td>Intel Core i7 / Ryzen 7 or newer</td></tr>
-          <tr><td>GPU</td><td>DirectX 11 capable (required by Warp)</td><td>Any dedicated or integrated GPU 2018+</td></tr>
-          <tr><td>Disk</td><td>5 GB free</td><td>20 GB+ (if mirroring Google Drive locally)</td></tr>
-          <tr><td>Internet</td><td>Required</td><td>Broadband — Claude API + Drive sync</td></tr>
-        </tbody>
-      </table>
-
-      <h3>Accounts and software</h3>
-      <ul class="checklist">
-        <li>Windows 11 (64-bit) — confirm specs above are met</li>
-        <li>Phase 3 Ecom Google Workspace account</li>
-        <li>Claude AI team account invite</li>
+      <p>Before starting, confirm all four are in place. Get accounts from Will before running any steps.</p>
+      <ul class="check-list">
+        <li>macOS machine</li>
+        <li>Phase 3 Ecom Google Workspace account (invite from Will)</li>
+        <li>Claude AI team account invite (from Will)</li>
         <li>Admin rights on machine</li>
       </ul>
+      <p style="margin-top: 20px;">Contact: <strong>will@phase3ecom.com</strong></p>
     </section>
 
-    <!-- S02: Install Git for Windows -->
+    <!-- S02: Install Warp -->
     <section class="section" id="s02">
-      <div class="section-header">
-        <div class="section-icon">🔧</div>
-        <div class="section-title-group">
-          <div class="section-num">Section 02</div>
-          <h2 class="section-title">Install Git for Windows</h2>
-        </div>
-      </div>
-      <p>Git for Windows provides <strong>Git Bash</strong> — the Unix shell that Warp uses underneath. You won't open Git Bash directly. After configuring Warp in Section 03, all terminal commands run inside Warp. Install Git first so Warp has a shell to use.</p>
-
-      <div class="callout orange">
-        <strong>Neither Claude Code nor Warp can install Git for you.</strong> This must be done manually first.
-      </div>
-
-      <h3>Install via winget (recommended)</h3>
-      <p>Open <strong>PowerShell</strong> (search Start menu → type "powershell") and run:</p>
-      <div class="code-block">winget install Git.Git</div>
-      <p>Follow the prompts. Git installs automatically. No browser required.</p>
-
-      <h3>Verify</h3>
-      <p>Open <strong>PowerShell</strong> (Start menu → search "powershell") and run:</p>
-      <div class="code-block">git --version</div>
-      <p>Should output something like <code>git version 2.x.x.windows.x</code>. After configuring Warp in Section 03, all commands run inside Warp — PowerShell is only used here for this one check.</p>
-
-      <div class="callout lime">
-        <strong>One terminal only:</strong> After Section 03, Warp is the only terminal you'll use. Git Bash is the shell running inside Warp — you never open it separately. All commands in this guide are typed into Warp.
-      </div>
-      <div class="guide-media">
-        <img src="media/section-02.png" alt="Git installer running via winget in PowerShell">
-      </div>
-    </section>
-
-    <!-- S03: Warp -->
-    <section class="section" id="s03">
       <div class="section-header">
         <div class="section-icon">💻</div>
         <div class="section-title-group">
-          <div class="section-num">Section 03</div>
+          <div class="section-num">Section 02</div>
           <h2 class="section-title">Install Warp</h2>
         </div>
       </div>
       <p>Warp is the terminal Claude Code runs inside.</p>
       <h3>Download and install</h3>
       <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
-        <li>Go to <strong>warp.dev</strong> → click <strong>Download for Windows</strong></li>
-        <li>Run the downloaded installer (.exe)</li>
-        <li>Follow the installation wizard → <strong>Next → Install → Finish</strong></li>
-        <li>Launch Warp from the Start menu or desktop shortcut</li>
+        <li>Go to <strong>warp.dev</strong> → click <strong>Download for macOS</strong></li>
+        <li>Open the downloaded <code>.dmg</code> file</li>
+        <li>Drag the Warp icon into the <strong>Applications</strong> folder</li>
+        <li>Open Warp from Applications, or press <strong>Cmd+Space</strong>, type "Warp", press Enter</li>
+        <li>If macOS shows "Warp was downloaded from the internet" → click <strong>Open</strong></li>
         <li>Sign in to Warp or skip (optional — sign-in not required)</li>
       </ol>
-      <div class="guide-media">
-        <img src="media/section-03.png" alt="Warp download page">
-      </div>
-      <h3>Configure Warp to use Git Bash</h3>
-      <p>Warp needs to use Git Bash as its shell so all commands work correctly.</p>
-      <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
-        <li>Open Warp → click the <strong>gear icon (Settings)</strong> top right</li>
-        <li>Go to <strong>Features → Sessions</strong></li>
-        <li>Under <strong>Default shell</strong>, click the dropdown → select <strong>Git Bash</strong><br>
-            If it doesn't appear, click <strong>Browse</strong> and navigate to <code>C:\Program Files\Git\bin\bash.exe</code></li>
-        <li>Close Settings → fully close and reopen Warp</li>
-      </ol>
-      <div class="callout lime"><strong>After this step, Warp runs Git Bash.</strong> All commands in the rest of this guide are typed into Warp. Never open Git Bash separately.</div>
       <h3>Apply the Phase 3 Ecom theme</h3>
-      <p>The setup script in Section 07 copies the theme files automatically. Once you've run it, enable the theme in Warp: <strong>Settings → Appearance → Theme → Custom → select Phase 3 Ecom</strong></p>
+      <p>Run these commands in Warp:</p>
+      <div class="code-block">mkdir -p ~/.warp/themes
+cp "setup/warp-theme/Phase 3 Ecom.yaml" ~/.warp/themes/
+cp "setup/warp-theme/Phase 3 Ecom.jpg" ~/.warp/themes/</div>
+      <p>Then in Warp: <strong>Settings → Appearance → Theme → Custom → select Phase 3 Ecom</strong></p>
     </section>
 
     <!-- S03: Google Drive -->
-    <section class="section" id="s04">
+    <section class="section" id="s03">
       <div class="section-header">
         <div class="section-icon">☁️</div>
         <div class="section-title-group">
-          <div class="section-num">Section 04</div>
+          <div class="section-num">Section 03</div>
           <h2 class="section-title">Install Google Drive for Desktop</h2>
         </div>
       </div>
       <h3>Download and install</h3>
       <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
         <li>Go to <strong>google.com/drive/download</strong> → click <strong>Download Drive for desktop</strong></li>
-        <li>Run the downloaded <code>GoogleDriveSetup.exe</code> installer</li>
-        <li>Follow the prompts → sign in with your <strong>Phase 3 Ecom Google Workspace account</strong></li>
-        <li>When prompted, enable <strong>Shared drives</strong></li>
-        <li>Google Drive mounts as a virtual drive — usually <strong>G:</strong></li>
+        <li>Open the downloaded installer and follow the prompts</li>
+        <li>Google Drive launches automatically — sign in with your <strong>Phase 3 Ecom Google Workspace account</strong></li>
+        <li>When prompted, enable both <strong>Google Drive</strong> and <strong>Shared drives</strong></li>
+        <li>Click <strong>Open Google Drive</strong> when setup is complete</li>
       </ol>
       <h3>Confirm the path is accessible</h3>
-      <p>Open File Explorer and confirm this path exists:</p>
-      <div class="code-block">G:\Shared drives\Phase 3 Ecom\</div>
-      <div class="callout">If your Drive mounted to a different letter (e.g. H:), use that letter instead throughout this guide. Check <strong>File Explorer → This PC</strong> to find it.</div>
+      <p>Open Finder and confirm this path exists:</p>
+      <div class="code-block">~/Library/CloudStorage/GoogleDrive-[your-email]/Shared drives/Phase 3 Ecom/</div>
       <h3>Make files available locally</h3>
       <p>By default, Google Drive streams files from the cloud. Make the workspace folder available locally so Claude Code can read files reliably — including offline.</p>
-      <p>Make the CLAUDE CODE folder available offline:</p>
+      <p><strong>Option A — Mirror all files</strong> (recommended if disk space allows):</p>
       <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
-        <li>Open File Explorer → navigate to <code>G:\Shared drives\Phase 3 Ecom</code></li>
+        <li>Click the Google Drive icon in the <strong>menu bar</strong> (top right)</li>
+        <li>Click the <strong>gear icon → Preferences</strong></li>
+        <li>Select the <strong>Google Drive</strong> tab</li>
+        <li>Switch from <strong>Stream files</strong> to <strong>Mirror files</strong></li>
+        <li>Click <strong>Save</strong> and restart Google Drive when prompted</li>
+      </ol>
+      <p><strong>Option B — Make the folder available offline</strong> (lower disk usage):</p>
+      <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
+        <li>Open Finder → navigate to <code>~/Library/CloudStorage/GoogleDrive-[your-email]/Shared drives/Phase 3 Ecom</code></li>
         <li>Right-click the <strong>CLAUDE CODE</strong> folder</li>
         <li>Select <strong>Make available offline</strong></li>
-        <li>Watch the system tray for sync progress — wait for it to complete</li>
+        <li>Wait for the sync badge to show a green checkmark</li>
       </ol>
       <div class="callout lime">Once files are local, Claude Code reads and writes without depending on internet speed for every file access.</div>
     </section>
 
     <!-- S04: Node.js -->
-    <section class="section" id="s05">
+    <section class="section" id="s04">
       <div class="section-header">
         <div class="section-icon">⬢</div>
         <div class="section-title-group">
-          <div class="section-num">Section 05</div>
+          <div class="section-num">Section 04</div>
           <h2 class="section-title">Install Node.js (18+)</h2>
         </div>
       </div>
-      <p>Claude Code requires Node.js 18+.</p>
-      <h3>Install via winget (recommended)</h3>
+      <p>Claude Code requires Node.js 18 or higher. Choose one of the options below — both install the same thing.</p>
+      <h3>Option A — Homebrew (if already installed)</h3>
       <p>Open Warp and run:</p>
-      <div class="code-block">winget install OpenJS.NodeJS.LTS</div>
-      <p>Node.js installs automatically. Close and reopen Warp when it finishes.</p>
+      <div class="code-block">brew install node</div>
+      <p>No Homebrew yet? Get it from <strong>brew.sh</strong> — paste the one-line install command into Warp, then run <code>brew install node</code> once it finishes.</p>
+      <h3>Option B — Direct installer (no Homebrew required)</h3>
+      <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
+        <li>Go to <strong>nodejs.org</strong> → click the <strong>LTS</strong> (Long Term Support) button to download</li>
+        <li>Open the downloaded <code>.pkg</code> file</li>
+        <li>Click through the installer wizard → <strong>Continue → Install → Close</strong></li>
+      </ol>
       <h3>Verify in Warp</h3>
       <p>Open Warp and run both commands. Both should return a version number.</p>
-      <div class="code-block">node --version   # should be 18+
+      <div class="code-block">node --version   # should show v18.0.0 or higher
 npm --version</div>
-      <div class="callout lime">If <code>node --version</code> says "command not found", close Warp completely and reopen — the installer updates PATH but Warp needs to reload it.</div>
-      <h3>Also install jq</h3>
-      <p>The Warp plugin requires <code>jq</code> (a JSON tool). Install it now:</p>
-      <div class="code-block">winget install jqlang.jq</div>
-      <p>Close and reopen Warp when done. Verify with:</p>
-      <div class="code-block">jq --version</div>
+      <div class="callout lime">If <code>node --version</code> says "command not found", close Warp completely and reopen it — the installer updates your PATH but Warp needs to reload.</div>
     </section>
 
-    <!-- S05b: PowerShell Execution Policy -->
-    <section class="section" id="s05b">
-      <div class="section-header">
-        <div class="section-icon">🛡️</div>
-        <div class="section-title-group">
-          <div class="section-num">Section 05b</div>
-          <h2 class="section-title">Configure PowerShell Execution Policy</h2>
-        </div>
-      </div>
-      <p>Windows blocks npm-installed tools (including Claude Code) from running by default. You need to allow scripts once before continuing.</p>
-      <div class="callout orange">
-        <strong>Why this matters:</strong> npm installs tools as <code>.ps1</code> scripts. PowerShell's default policy (<code>Restricted</code>) blocks them — so running <code>claude</code> after install will fail with a "cannot be loaded" error unless you do this step first.
-      </div>
-      <h3>Run in PowerShell</h3>
-      <p>Open <strong>PowerShell</strong> (Start menu → search "powershell") and run:</p>
-      <div class="code-block">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</div>
-      <p>Type <strong>Y</strong> and press Enter when prompted. This only affects your user account — no admin rights required.</p>
-      <h3>Verify</h3>
-      <div class="code-block">Get-ExecutionPolicy -Scope CurrentUser</div>
-      <p>Should output <code>RemoteSigned</code>. Close PowerShell — all remaining steps use Warp.</p>
-    </section>
-
-    <!-- S05: Install Claude Code -->
-    <section class="section" id="s06">
+    <!-- S05: Claude Code -->
+    <section class="section" id="s05">
       <div class="section-header">
         <div class="section-icon">🤖</div>
         <div class="section-title-group">
-          <div class="section-num">Section 06</div>
+          <div class="section-num">Section 05</div>
           <h2 class="section-title">Install Claude Code</h2>
         </div>
       </div>
-      <p>Open Warp:</p>
       <div class="code-block">npm install -g @anthropic-ai/claude-code
 claude --version
 claude</div>
       <p>Follow the browser auth prompt. Use your Phase 3 Ecom workspace account.</p>
-      <div class="guide-media">
-        <img src="media/section-06.png" alt="Claude Code running in Warp">
-      </div>
     </section>
 
     <!-- S06: Setup Script -->
-    <section class="section" id="s07">
+    <section class="section" id="s06">
       <div class="section-header">
         <div class="section-icon">⚙️</div>
         <div class="section-title-group">
-          <div class="section-num">Section 07</div>
+          <div class="section-num">Section 06</div>
           <h2 class="section-title">Run Setup Script</h2>
         </div>
       </div>
-      <p>Open Warp:</p>
-      <div class="code-block">cd "/g/Shared drives/Phase 3 Ecom/CLAUDE CODE"
+      <p>Installs hooks (caveman mode, sound notifications), skills, Claude Code settings, and the Warp theme.</p>
+      <div class="code-block">cd "/Users/[your-username]/Library/CloudStorage/GoogleDrive-[your-email]/Shared drives/Phase 3 Ecom/CLAUDE CODE"
 bash setup/install.sh</div>
-      <p>Warp (with Git Bash) maps Windows drive letters to Unix paths: G:\ = /g/, H:\ = /h/, etc. If your Google Drive mounted to a different letter, replace /g/ with the correct letter.</p>
-
+      <p>Replace <strong>[your-username]</strong> and <strong>[your-email]</strong> with your actual values.</p>
       <h3>What this installs</h3>
-      <ul class="checklist">
-        <li>Hooks — caveman mode + completion sound hook (to %USERPROFILE%\.claude\hooks\)</li>
-        <li>Skills — 11 P3E-approved skills: <code>/ADMN-startup-v2</code>, <code>/ADMN-wrapup-v2</code>, <code>/ADMN-client-onboard-v1</code> + 8 others</li>
-        <li>%USERPROFILE%\.claude\settings.json — hooks, status line, plugin config</li>
+      <ul class="check-list">
+        <li><strong>Hooks</strong> — caveman mode + completion sound (plays when Claude finishes and waits for your input)</li>
+        <li><strong>Skills</strong> — 11 P3E-approved skills: <code>/ADMN-startup-v2</code>, <code>/ADMN-wrapup-v2</code>, <code>/ADMN-client-onboard-v1</code> + 8 others</li>
+        <li><strong>Warp theme</strong> — copied to ~/.warp/themes/ with correct path</li>
+        <li><strong>~/.claude/settings.json</strong> — hooks, status line, plugin config</li>
       </ul>
-      <p>If settings.json already exists, the script prompts you to merge manually.</p>
-
       <div class="callout lime">
-        <strong>Sound notification works on Windows.</strong> The setup script installs a cross-platform <code style="font-family:'DM Mono',monospace; font-size:0.85em;">play-sound.sh</code> hook. On Windows it uses PowerShell's <code style="font-family:'DM Mono',monospace; font-size:0.85em;">SoundPlayer</code> to play the same WAV notification that macOS plays via <code style="font-family:'DM Mono',monospace; font-size:0.85em;">afplay</code>. No extra software needed.
+        <strong>Completion sound:</strong> The Stop hook plays a chime via macOS's built-in <code>afplay</code> command whenever Claude finishes and is waiting for your next prompt. Sound file installed to <strong>~/.claude/sounds/</strong> automatically.
       </div>
-
-      <p>After this step: in Warp → <strong>Settings → Appearance → Theme → Custom → Phase 3 Ecom</strong></p>
+      <p style="margin-top: 16px;">After this step: in Warp → <strong>Settings → Appearance → Theme → Custom → Phase 3 Ecom</strong></p>
       <h3 style="margin-top:24px;">Skills: P3E approved vs local</h3>
       <p>Skills power slash commands like <code>/ADMN-startup-v2</code>. Two tiers:</p>
-      <ul class="checklist">
-        <li><strong>P3E Approved (Drive)</strong> — skills in <code>CLAUDE CODE/Skills/</code> on the Shared Drive. Reviewed by Will, follow <code>CATEGORY-skill-name-vN</code> naming, and sync automatically at every session start.</li>
+      <ul class="check-list">
+        <li><strong>P3E Approved (Drive)</strong> — skills in <code>CLAUDE CODE/Skills/</code> on the Shared Drive. Reviewed by Will, follow <code>CATEGORY-skill-name-vN</code> naming, and sync automatically at every session start via <code>/ADMN-startup-v2</code>.</li>
         <li><strong>Local only</strong> — skills installed via <code>npx skills add</code> or <code>/plugin marketplace add</code>. Personal use only — not P3E standard, not synced to Drive.</li>
       </ul>
-      <div class="callout lime" style="background:#f0fdf4;border-left:4px solid #4ade80;padding:12px 16px;border-radius:6px;margin:16px 0;">
+      <div class="callout lime">
         <strong>Rule:</strong> Never modify a Drive-synced skill locally — the next <code>/ADMN-startup-v2</code> will overwrite it. Skills catalog: <code>Skills/skills-catalog.xlsx</code>
       </div>
       <p><strong>To submit a skill for P3E use:</strong> Create a task in ClickUp → P3E Admin → <strong>Skill Submissions</strong> list. Attach the <code>SKILL.md</code> file. Will reviews and publishes — your next session start picks it up automatically.</p>
     </section>
 
+    <!-- S07: Plugins -->
+    <section class="section" id="s07">
+      <div class="section-header">
+        <div class="section-icon">🔌</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 07</div>
+          <h2 class="section-title">Install Plugins</h2>
+        </div>
+      </div>
+      <p>Open Claude Code from the CLAUDE CODE folder:</p>
+      <div class="code-block">cd "/Users/[your-username]/Library/CloudStorage/GoogleDrive-[your-email]/Shared drives/Phase 3 Ecom/CLAUDE CODE"
+claude</div>
+      <p>Inside Claude Code, run these slash commands one at a time (wait for each to complete):</p>
+      <div class="code-block">/install superpowers@claude-plugins-official
+/install caveman@caveman
+/install warp@claude-code-warp</div>
+    </section>
 
     <!-- S08: ccstatusline -->
     <section class="section" id="s08">
@@ -1370,11 +1309,11 @@ bash setup/install.sh</div>
         </div>
       </div>
       <p>ccstatusline shows live Claude session stats in the Warp status bar at the bottom of your terminal window.</p>
-      <div class="callout lime"><strong>Already installed.</strong> The setup script in Section 07 configured it automatically via <code>settings.json</code>. No manual action needed.</div>
+      <div class="callout lime"><strong>Already installed.</strong> The setup script in Section 06 configured it automatically via <code>settings.json</code>. No manual action needed.</div>
       <h3>Verify it's working</h3>
       <p>Start a Claude Code session, then look at the bottom of the Warp window. You should see:</p>
       <div class="code-block">Model: Sonnet 4.6  |  Ctx: 138.4k  |  Ctx Used: 69.0%</div>
-      <p>This displays on the dark navy background of the Phase 3 Ecom Warp theme installed in Section 03. No additional colour configuration needed — colours are set by the theme.</p>
+      <p>This displays on the dark navy background of the Phase 3 Ecom Warp theme installed in Section 02. No additional colour configuration needed — colours are set by the theme.</p>
       <h3>What each metric means</h3>
       <table class="styled-table" style="width:100%;margin:16px 0;">
         <thead><tr><th>Metric</th><th>What it shows</th></tr></thead>
@@ -1385,7 +1324,7 @@ bash setup/install.sh</div>
         </tbody>
       </table>
       <h3>If nothing appears in the status bar</h3>
-      <p>In Warp, run this once, then restart Claude Code:</p>
+      <p>Run this once, then restart Claude Code:</p>
       <div class="code-block">npx ccstatusline@latest</div>
       <div class="callout dark"><strong>The critical rule:</strong> when Ctx Used hits ~50%, wrap the session (<code>/ADMN-wrapup-v2</code>) and start fresh. Quality degrades significantly past that point. See Section 12 for the full 50% Rule.</div>
     </section>
@@ -1401,18 +1340,15 @@ bash setup/install.sh</div>
       </div>
       <p>MCPs give Claude direct access to Shopify, Google Drive, Klaviyo, etc. Each MCP is connected per user — not shared.</p>
       <p>Go to: <strong>claude.ai → Settings → Integrations</strong></p>
-
       <h3>Priority order</h3>
       <table class="styled-table">
-        <thead>
-          <tr><th>#</th><th>MCP</th><th>Notes</th></tr>
-        </thead>
+        <thead><tr><th>#</th><th>MCP</th><th>Notes</th></tr></thead>
         <tbody>
           <tr><td>1</td><td>Shopify</td><td>Critical for client work</td></tr>
           <tr><td>2</td><td>Google Drive</td><td>Critical for reports and docs</td></tr>
           <tr><td>3</td><td>ClickUp</td><td>Task management</td></tr>
           <tr><td>4</td><td>Gmail</td><td>Client communication</td></tr>
-          <tr><td>5</td><td>Klaviyo</td><td>Email marketing — connects to P3E account only. Use curl for client accounts.</td></tr>
+          <tr><td>5</td><td>Klaviyo</td><td>Connects to P3E account only — use curl for client accounts</td></tr>
           <tr><td>6+</td><td>Others as needed</td><td>See setup/MCP_SETUP.md</td></tr>
         </tbody>
       </table>
@@ -1427,8 +1363,7 @@ bash setup/install.sh</div>
           <h2 class="section-title">Get .env Credentials</h2>
         </div>
       </div>
-      <p>Each client folder needs a .env file with API keys. Ask Will for credentials for the clients you'll be working on. Place the .env file in:</p>
-      <div class="code-block">Clients\[Client Name]\.env</div>
+      <p>Each client folder needs a .env file with API keys. Ask Will for credentials for the clients you'll be working on. Place the .env file in <strong>Clients/[Client Name]/</strong>.</p>
       <p>See <strong>setup/ENV_TEMPLATE.md</strong> for required keys.</p>
       <div class="callout dark">
         <strong>Never commit .env files to git.</strong>
@@ -1444,18 +1379,18 @@ bash setup/install.sh</div>
           <h2 class="section-title">First Session</h2>
         </div>
       </div>
-
-
-      <h3>Client-specific work</h3>
-      <div class="code-block">cd "/g/Shared drives/Phase 3 Ecom/CLAUDE CODE/Clients/[Client Name]"
+      <h3>General / admin work</h3>
+      <div class="code-block">cd "/Users/[your-username]/Library/CloudStorage/GoogleDrive-[your-email]/Shared drives/Phase 3 Ecom/CLAUDE CODE"
 claude</div>
-
+      <h3>Client-specific work</h3>
+      <div class="code-block">cd "/Users/[your-username]/Library/CloudStorage/GoogleDrive-[your-email]/Shared drives/Phase 3 Ecom/CLAUDE CODE/Clients/[Client Name]"
+claude</div>
       <p>Once inside, run:</p>
       <div class="code-block">/ADMN-startup-v2</div>
       <p>This loads all shared memory — clients, rules, last session, brand guidelines. <strong>Always run at the start of every session.</strong></p>
     </section>
 
-    <!-- S12: The 50% Rule -->
+    <!-- S12: 50% Rule -->
     <section class="section" id="s12">
       <div class="section-header">
         <div class="section-icon">⚠️</div>
@@ -1471,9 +1406,7 @@ claude</div>
 
       <h3>Context quality</h3>
       <table class="styled-table">
-        <thead>
-          <tr><th>Context Used</th><th>Quality</th></tr>
-        </thead>
+        <thead><tr><th>Context Used</th><th>Quality</th></tr></thead>
         <tbody>
           <tr><td>0–30%</td><td>Fresh, sharp, best-quality work</td></tr>
           <tr><td>30–50%</td><td>Still functional, starting to lose edge</td></tr>
@@ -1484,62 +1417,61 @@ claude</div>
       </table>
 
       <h3>When you hit 50%</h3>
-      <ul class="checklist">
+      <ul class="check-list">
         <li>Ask Claude: "Summarise what we accomplished and what's pending"</li>
         <li>Run /ADMN-wrapup-v2</li>
         <li>Close terminal tab, open new one, run claude, then /ADMN-startup-v2</li>
         <li>Continue from ~15–25% context</li>
       </ul>
 
-      <div class="callout orange">
+      <div class="callout">
         <strong>Never use /compact.</strong> Always /ADMN-wrapup-v2 + fresh session.
       </div>
 
-      <h3>Session Management</h3>
-      <div class="rule-group">
-        <ul class="rule-list">
-          <li>✅ Always run /ADMN-startup-v2 at the start of every session</li>
-          <li>✅ Always run /ADMN-wrapup-v2 before closing</li>
-          <li>✅ Wrap at 50% context — watch ccstatusline</li>
-          <li>✅ One project per session — no client context-switching</li>
-          <li>✅ Never use /compact</li>
-        </ul>
-      </div>
-
-      <h3>Git &amp; Code</h3>
-      <div class="rule-group">
-        <ul class="rule-list">
-          <li>✅ Never push directly to main — always branch + PR</li>
-          <li>✅ Never commit .env files</li>
-          <li>✅ Commit frequently — after each meaningful change</li>
-          <li>✅ Commit messages: Add: Fix: Update: Remove: prefix + why</li>
-        </ul>
-      </div>
-
-      <h3>Client Work</h3>
-      <div class="rule-group">
-        <ul class="rule-list">
-          <li>✅ Never publish campaigns, ads, or flows without explicit approval from Will</li>
-          <li>✅ Ask before destructive operations (delete branches, drop data, force-reset)</li>
-          <li>✅ Never fabricate metrics — use placeholders if data unavailable</li>
-          <li>✅ Australian English in all client deliverables (spelling, DD/MM dates, AUD)</li>
-        </ul>
+      <h3>Session rules</h3>
+      <div class="rules-grid">
+        <div class="rules-group">
+          <div class="rules-group-title">Session Management</div>
+          <ul>
+            <li>Always run /ADMN-startup-v2 at the start of every session</li>
+            <li>Always run /ADMN-wrapup-v2 before closing</li>
+            <li>Wrap at 50% context — watch ccstatusline</li>
+            <li>One project per session — no client context-switching</li>
+            <li>Never use /compact</li>
+          </ul>
+        </div>
+        <div class="rules-group">
+          <div class="rules-group-title">Git &amp; Code</div>
+          <ul>
+            <li>Never push directly to main — always branch + PR</li>
+            <li>Never commit .env files</li>
+            <li>Commit frequently — after each meaningful change</li>
+            <li>Commit messages: Add: Fix: Update: Remove: prefix + why</li>
+          </ul>
+        </div>
+        <div class="rules-group">
+          <div class="rules-group-title">Client Work</div>
+          <ul>
+            <li>Never publish campaigns, ads, or flows without explicit approval from Will</li>
+            <li>Ask before destructive operations (delete branches, drop data, force-reset)</li>
+            <li>Never fabricate metrics — use placeholders if data unavailable</li>
+            <li>Australian English in all client deliverables (spelling, DD/MM dates, AUD)</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <!-- QUICK REFERENCE -->
-    <section class="section" id="quickref">
+    <!-- Quick Reference -->
+    <section class="section" id="quick-ref">
       <div class="section-header">
         <div class="section-icon">⚡</div>
         <div class="section-title-group">
-          <div class="section-num">Quick Reference</div>
-          <h2 class="section-title">Commands at a Glance</h2>
+          <div class="section-num">Reference</div>
+          <h2 class="section-title">Quick Reference</h2>
         </div>
       </div>
       <table class="styled-table">
-        <thead>
-          <tr><th>Task</th><th>Command</th></tr>
-        </thead>
+        <thead><tr><th>Task</th><th>Command</th></tr></thead>
         <tbody>
           <tr><td>Start session</td><td>/ADMN-startup-v2</td></tr>
           <tr><td>End session</td><td>/ADMN-wrapup-v2</td></tr>
@@ -1550,41 +1482,31 @@ claude</div>
       </table>
     </section>
 
-    <!-- TROUBLESHOOTING -->
-    <section class="section" id="troubleshoot">
+    <!-- Troubleshooting -->
+    <section class="section" id="troubleshooting">
       <div class="section-header">
         <div class="section-icon">🔧</div>
         <div class="section-title-group">
-          <div class="section-num">Troubleshooting</div>
-          <h2 class="section-title">Common Issues</h2>
+          <div class="section-num">Help</div>
+          <h2 class="section-title">Troubleshooting</h2>
         </div>
       </div>
-      <div class="trouble-list">
-        <div class="trouble-item">
-          <div class="trouble-q">/ADMN-startup-v2 can't find memory</div>
-          <div class="trouble-a">Memory lives at <code style="font-family:'DM Mono',monospace;">memory/</code> in the CLAUDE CODE root. From a client folder it's at <code style="font-family:'DM Mono',monospace;">../../memory/</code>. Check you're inside the Google Drive path.</div>
-        </div>
-        <div class="trouble-item">
-          <div class="trouble-q">MCP not working</div>
-          <div class="trouble-a">Each MCP is connected per user in your claude.ai account — not shared. Reconnect at <strong>claude.ai → Settings → Integrations</strong>.</div>
-        </div>
-        <div class="trouble-item">
-          <div class="trouble-q">Hooks not firing (no caveman mode)</div>
-          <div class="trouble-a">Re-run <code style="font-family:'DM Mono',monospace;">bash setup/install.sh</code> in Warp. Check <code style="font-family:'DM Mono',monospace;">%USERPROFILE%\.claude\settings.json</code> exists and has a hooks section.</div>
-        </div>
-        <div class="trouble-item">
-          <div class="trouble-q">Plugin not found</div>
-          <div class="trouble-a">Make sure you're running Claude Code from the correct folder. Run <code style="font-family:'DM Mono',monospace;">/install [plugin]</code> again.</div>
-        </div>
-        <div class="trouble-item">
-          <div class="trouble-q">Google Drive path wrong</div>
-          <div class="trouble-a">Check <strong>File Explorer → This PC</strong> to find your Drive letter. Use that letter in all paths above (e.g. /h/ instead of /g/ in Warp).</div>
-        </div>
-        <div class="trouble-item">
-          <div class="trouble-q">Sound not working</div>
-          <div class="trouble-a">Re-run <code style="font-family:'DM Mono',monospace;">bash setup/install.sh</code> in Warp — it copies both <code style="font-family:'DM Mono',monospace;">play-sound.sh</code> and the <code style="font-family:'DM Mono',monospace;">.wav</code> file to <code style="font-family:'DM Mono',monospace;">%USERPROFILE%\.claude\</code>. If sound still fails, in Warp run: <code style="font-family:'DM Mono',monospace;">bash ~/.claude/hooks/play-sound.sh</code>. Ensure your Windows volume is not muted.</div>
-        </div>
-      </div>
+
+      <h3>/ADMN-startup-v2 can't find memory</h3>
+      <p>Memory lives at <strong>memory/</strong> in the CLAUDE CODE root. From a client folder it's at <strong>../../memory/</strong>. Check you're inside the Google Drive path.</p>
+
+      <h3>MCP not working</h3>
+      <p>Each MCP is connected per user in your claude.ai account — not shared. Reconnect at <strong>claude.ai → Settings → Integrations</strong>.</p>
+
+      <h3>Hooks not firing (no caveman mode, no sound)</h3>
+      <p>Re-run <code>bash setup/install.sh</code>. Check <strong>~/.claude/settings.json</strong> exists and has a hooks section.</p>
+
+      <h3>Plugin not found</h3>
+      <p>Make sure you're running Claude Code from the correct folder. Run <code>/install [plugin]</code> again.</p>
+
+      <h3>Google Drive path wrong</h3>
+      <p>The path varies by your Google account email. Run the following to find your exact path:</p>
+      <div class="code-block">ls ~/Library/CloudStorage/</div>
     </section>
 
   </main>
@@ -1594,8 +1516,8 @@ claude</div>
 <div style="background:var(--navy);">
   <div class="footer">
     <div class="footer-brand">Phase 3 Ecom</div>
-    <div>New User Setup · Claude Workspace · Windows 11</div>
-    <div>25/05/2026</div>
+    <div>New User Setup · Claude Workspace · macOS · 28/05/2026</div>
+    <div>will@phase3ecom.com</div>
   </div>
 </div>
 
