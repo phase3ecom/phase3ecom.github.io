@@ -212,7 +212,7 @@ footer { background: var(--navy); padding: 36px 48px; }
 
     <div class="chart-wrap">
       <div class="chart-title">Monthly Gross Revenue (AUD)</div>
-      <canvas id="revenueChart" height="80"></canvas>
+      <canvas id="revenueChart" height="120"></canvas>
     </div>
 
     <div class="summary-grid" style="margin-top:24px;">
@@ -280,7 +280,7 @@ footer { background: var(--navy); padding: 36px 48px; }
 
     <div class="chart-wrap">
       <div class="chart-title" id="growthChartTitle">Revenue Growth % vs Same Month Prior Year</div>
-      <canvas id="growthChart" height="75"></canvas>
+      <canvas id="growthChart" height="120"></canvas>
     </div>
   </div>
 </div>
@@ -305,10 +305,8 @@ footer { background: var(--navy); padding: 36px 48px; }
             <th onclick="sortTable(6)">AOV</th>
             <th onclick="sortTable(7)">Conv. Rate</th>
             <th onclick="sortTable(8)">Cost/Sale</th>
-            <th onclick="sortTable(9)">Profit</th>
-            <th onclick="sortTable(10)">ROI</th>
-            <th onclick="sortTable(11)">YoY Rev</th>
-            <th onclick="sortTable(12)">YoY Orders</th>
+            <th onclick="sortTable(9)">YoY Rev</th>
+            <th onclick="sortTable(10)">YoY Orders</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
@@ -763,8 +761,6 @@ function renderTable() {
       <td>$${Math.round(d[6]).toLocaleString("en-AU")}</td>
       <td>${d[7].toFixed(2)}%</td>
       <td>$${d[8].toFixed(2)}</td>
-      <td>$${Math.round(d[9]).toLocaleString("en-AU")}</td>
-      <td>${d[10].toFixed(1)}x</td>
       ${fmtYoy(d[11])}
       ${fmtYoy(d[12])}
     `;
@@ -781,9 +777,11 @@ function sortTable(col) {
   if (sortCol === col) { sortAsc = !sortAsc; }
   else { sortCol = col; sortAsc = col === 0; }
 
+  // cols 9,10 in table now map to data indices 11,12 (after removing profit/roi)
+  const dataIdx = col <= 8 ? col : col + 2;
   tableData.sort((a, b) => {
-    let av = col === 0 ? DATA.indexOf(a) : (a[col] ?? -Infinity);
-    let bv = col === 0 ? DATA.indexOf(b) : (b[col] ?? -Infinity);
+    let av = col === 0 ? DATA.indexOf(a) : (a[dataIdx] ?? -Infinity);
+    let bv = col === 0 ? DATA.indexOf(b) : (b[dataIdx] ?? -Infinity);
     return sortAsc ? av - bv : bv - av;
   });
 
