@@ -1231,6 +1231,11 @@ cp "setup/warp-theme/Phase 3 Ecom.jpg" ~/.warp/themes/</div>
       <div class="code-block">node --version   # should show v18.0.0 or higher
 npm --version</div>
       <div class="callout lime">If <code>node --version</code> says "command not found", close Warp completely and reopen it — the installer updates your PATH but Warp needs to reload.</div>
+      <h3>Also install jq</h3>
+      <p>The Warp plugin requires <code>jq</code> (a JSON tool). Install it now:</p>
+      <div class="code-block">brew install jq</div>
+      <p>Verify with:</p>
+      <div class="code-block">jq --version</div>
     </section>
 
     <!-- S05: Claude Code -->
@@ -1509,6 +1514,11 @@ claude</div>
       <h3>Google Drive path wrong</h3>
       <p>The path varies by your Google account email. Run the following to find your exact path:</p>
       <div class="code-block">ls ~/Library/CloudStorage/</div>
+
+      <h3>Stop hook error: jq: command not found</h3>
+      <p>The Warp plugin requires <code>jq</code>. Install it:</p>
+      <div class="code-block">brew install jq</div>
+      <p>Restart Claude Code after installing.</p>
     </section>
 
   </main>
