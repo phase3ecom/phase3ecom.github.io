@@ -1217,6 +1217,9 @@ cp "setup/warp-theme/Phase 3 Ecom.jpg" ~/.warp/themes/</div>
       <p>Open Warp and run:</p>
       <div class="code-block">brew install node</div>
       <p>No Homebrew yet? Get it from <strong>brew.sh</strong> — paste the one-line install command into Warp, then run <code>brew install node</code> once it finishes.</p>
+      <div class="callout">
+        <strong>Password prompt is normal.</strong> Homebrew may ask for your macOS login password to fix directory permissions on first use. Enter your normal Mac login password — this is not a security concern.
+      </div>
       <h3>Option B — Direct installer (no Homebrew required)</h3>
       <ol style="padding-left: 20px; color: var(--grey-700); margin-bottom: 20px;">
         <li>Go to <strong>nodejs.org</strong> → click the <strong>LTS</strong> (Long Term Support) button to download</li>
@@ -1290,13 +1293,12 @@ bash setup/install.sh</div>
           <h2 class="section-title">Install Plugins</h2>
         </div>
       </div>
-      <p>Open Claude Code from the CLAUDE CODE folder:</p>
-      <div class="code-block">cd "/Users/[your-username]/Library/CloudStorage/GoogleDrive-[your-email]/Shared drives/Phase 3 Ecom/CLAUDE CODE"
-claude</div>
-      <p>Inside Claude Code, run these slash commands one at a time (wait for each to complete):</p>
-      <div class="code-block">/install superpowers@claude-plugins-official
-/install caveman@caveman
-/install warp@claude-code-warp</div>
+      <p>Run these commands in Warp (not inside a Claude Code session — just at the terminal prompt):</p>
+      <div class="code-block">claude plugin install superpowers@claude-plugins-official
+claude plugin install caveman@caveman
+claude plugin install warp@claude-code-warp</div>
+      <p>Wait for each to finish before running the next. Restart Claude Code after all three are installed.</p>
+      <div class="callout lime"><strong>Note:</strong> The old <code>/install</code> slash command no longer exists. Use <code>claude plugin install</code> from the terminal instead.</div>
     </section>
 
     <!-- S08: ccstatusline -->
@@ -1502,7 +1504,7 @@ claude</div>
       <p>Re-run <code>bash setup/install.sh</code>. Check <strong>~/.claude/settings.json</strong> exists and has a hooks section.</p>
 
       <h3>Plugin not found</h3>
-      <p>Make sure you're running Claude Code from the correct folder. Run <code>/install [plugin]</code> again.</p>
+      <p>Make sure you're running Claude Code from the correct folder. Reinstall via terminal: <code>claude plugin install [plugin]@[marketplace]</code></p>
 
       <h3>Google Drive path wrong</h3>
       <p>The path varies by your Google account email. Run the following to find your exact path:</p>
