@@ -1098,6 +1098,7 @@ body {
       <li><a href="#s05b"><span class="s-num">5b</span><span class="s-emoji">🛡️</span> PowerShell Policy</a></li>
       <li><a href="#s06"><span class="s-num">06</span><span class="s-emoji">🤖</span> Install Claude Code</a></li>
       <li><a href="#s07"><span class="s-num">07</span><span class="s-emoji">⚙️</span> Setup Script</a></li>
+      <li><a href="#s07b"><span class="s-num">7b</span><span class="s-emoji">🔌</span> Install Plugins</a></li>
       <li><a href="#s08"><span class="s-num">08</span><span class="s-emoji">📊</span> ccstatusline</a></li>
       <li><a href="#s09"><span class="s-num">09</span><span class="s-emoji">🔗</span> Connect MCPs</a></li>
       <li><a href="#s10"><span class="s-num">10</span><span class="s-emoji">🔑</span> Get .env</a></li>
@@ -1139,8 +1140,8 @@ body {
       <div class="callout lime">
         <p style="margin-bottom:10px;">When two people work on the same client:</p>
         <ul style="list-style:none; display:flex; flex-direction:column; gap:6px;">
-          <li>· Person A finishes a deliverable, runs <strong>/ADMN-wrapup-v1</strong>, records what's pending</li>
-          <li>· Person B opens Claude Code two days later, runs <strong>/ADMN-startup-v2</strong>, and immediately sees that pending item — no Slack thread needed</li>
+          <li>· Person A finishes a deliverable, runs <strong>/ADMN-wrapup-v2</strong>, records what's pending</li>
+          <li>· Person B opens Claude Code two days later, runs <strong>/ADMN-startup-v3</strong>, and immediately sees that pending item — no Slack thread needed</li>
         </ul>
       </div>
       <p><strong style="color:var(--blue);">The bottom line:</strong> claude.ai conversations are ephemeral and isolated. This setup is persistent and shared.</p>
@@ -1364,7 +1365,7 @@ bash setup/install.sh</div>
       <h3>What this installs</h3>
       <ul class="checklist">
         <li>Hooks — caveman mode + completion sound hook (to %USERPROFILE%\.claude\hooks\)</li>
-        <li>Skills — 11 SBIM-approved skills (see list below)</li>
+        <li>Skills — all SBIM-approved skills, copied automatically from <code>Skills/</code> on the Drive (the script prints the count; see key skills below)</li>
         <li>%USERPROFILE%\.claude\settings.json — hooks, status line, plugin config</li>
       </ul>
       <p>If settings.json already exists, the script prompts you to merge manually.</p>
@@ -1374,11 +1375,12 @@ bash setup/install.sh</div>
       </div>
 
       <h3 style="margin-top:24px;">SBIM Skills</h3>
-      <p>Skills power slash commands. The 11 SBIM-approved skills installed by the setup script:</p>
+      <p>Skills power slash commands. The setup script installs every SBIM-approved skill automatically. The everyday admin and general-thinking skills:</p>
       <ul class="checklist">
-        <li><code>/ADMN-startup-v2</code> — load project context + memory at session start</li>
-        <li><code>/ADMN-wrapup-v1</code> — end-of-session save: summary, actions, decisions, pending items</li>
-        <li><code>/ADMN-client-onboard-v1</code> — new client setup workflow</li>
+        <li><code>/ADMN-startup-v3</code> — load project context + memory at session start (auto-detects backend, scans Slack)</li>
+        <li><code>/ADMN-wrapup-v2</code> — end-of-session save: summary, actions, decisions, pending items</li>
+        <li><code>/ADMN-client-onboard-v2</code> — new client setup workflow</li>
+        <li><code>/ADMN-email-scan-v1</code> — scan inboxes for client-related email since last session</li>
         <li><code>/ADMN-anti-fabrication-v1</code> — prevent hallucinated metrics and data</li>
         <li><code>/ADMN-skill-creator-v1</code> — create new skills from scratch</li>
         <li><code>/ADMN-claude-md-audit-v1</code> — audit and improve CLAUDE.md files</li>
@@ -1388,11 +1390,29 @@ bash setup/install.sh</div>
         <li><code>/GENL-iterative-depth-v1</code> — deep iterative analysis</li>
         <li><code>/GENL-red-team-v1</code> — challenge plans and assumptions</li>
       </ul>
+      <p style="margin-top:12px;">Specialist skills are installed too and called when the work needs them — Klaviyo email build (<code>/KLAV-email-v1</code> + flow/campaign), website build (<code>/WEB-ecom-cro-v1</code>), content porting and UGC video (<code>/CNTNT-*</code>), AI image/video via Higgsfield, and WP&nbsp;Engine&nbsp;→&nbsp;Pressable migration. The full, current list lives in <code>Skills/skills-catalog.xlsx</code>.</p>
 
       <div class="callout lime" style="background:var(--blue-tint);border-left:4px solid var(--blue);padding:12px 16px;border-radius:6px;margin:16px 0;">
-        <strong>Rule:</strong> Never modify a Drive-synced skill locally — the next <code>/ADMN-startup-v2</code> will overwrite it. Skills catalog: <code>Skills/skills-catalog.xlsx</code>
+        <strong>Rule:</strong> Never modify a Drive-synced skill locally — the next <code>/ADMN-startup-v3</code> will overwrite it. Skills catalog: <code>Skills/skills-catalog.xlsx</code>
       </div>
       <p><strong>To submit a skill for SBIM use:</strong> Create a task in ClickUp → SBIM Admin → <strong>Skill Submissions</strong> list. Attach the <code>SKILL.md</code> file.</p>
+    </section>
+
+    <!-- S07b: Install Plugins -->
+    <section class="section" id="s07b">
+      <div class="section-header">
+        <div class="section-icon">🔌</div>
+        <div class="section-title-group">
+          <div class="section-num">Section 07b</div>
+          <h2 class="section-title">Install Plugins</h2>
+        </div>
+      </div>
+      <p>Three plugins power caveman mode, the superpowers skill library, and Warp integration. Run these in <strong>Warp</strong> (at the terminal prompt — not inside a Claude Code session):</p>
+      <div class="code-block">claude plugin install superpowers@claude-plugins-official
+claude plugin install caveman@caveman
+claude plugin install warp@claude-code-warp</div>
+      <p>Wait for each to finish before running the next. Restart Claude Code after all three are installed.</p>
+      <div class="callout lime"><strong>Note:</strong> The old <code>/install</code> slash command no longer exists in Claude Code 2.x. Use <code>claude plugin install</code> from the terminal instead.</div>
     </section>
 
     <!-- S08: ccstatusline -->
@@ -1421,7 +1441,7 @@ bash setup/install.sh</div>
       <h3>If nothing appears in the status bar</h3>
       <p>In Warp, run this once, then restart Claude Code:</p>
       <div class="code-block">npx ccstatusline@latest</div>
-      <div class="callout dark"><strong>The critical rule:</strong> when Ctx Used hits ~50%, wrap the session (<code>/ADMN-wrapup-v1</code>) and start fresh. Quality degrades significantly past that point. See Section 12 for the full 50% Rule.</div>
+      <div class="callout dark"><strong>The critical rule:</strong> when Ctx Used hits ~50%, wrap the session (<code>/ADMN-wrapup-v2</code>) and start fresh. Quality degrades significantly past that point. See Section 12 for the full 50% Rule.</div>
     </section>
 
     <!-- S09: MCPs -->
@@ -1496,7 +1516,7 @@ bash setup/install.sh</div>
 claude</div>
 
       <p>Once inside, run:</p>
-      <div class="code-block">/ADMN-startup-v2</div>
+      <div class="code-block">/ADMN-startup-v3</div>
       <p>This loads all shared memory — clients, rules, last session, brand guidelines. <strong>Always run at the start of every session.</strong></p>
 
       <div class="callout lime">
@@ -1504,7 +1524,7 @@ claude</div>
         <ul style="list-style:none; display:flex; flex-direction:column; gap:6px;">
           <li>· WordPress site audits and content updates</li>
           <li>· Figma design reviews and asset extraction</li>
-          <li>· Client onboarding via <code>/ADMN-client-onboard-v1</code></li>
+          <li>· Client onboarding via <code>/ADMN-client-onboard-v2</code></li>
           <li>· Brief and strategy documents</li>
         </ul>
       </div>
@@ -1541,20 +1561,20 @@ claude</div>
       <h3>When you hit 50%</h3>
       <ul class="checklist">
         <li>Ask Claude: "Summarise what we accomplished and what's pending"</li>
-        <li>Run /ADMN-wrapup-v1</li>
-        <li>Close terminal tab, open new one, run claude, then /ADMN-startup-v2</li>
+        <li>Run /ADMN-wrapup-v2</li>
+        <li>Close terminal tab, open new one, run claude, then /ADMN-startup-v3</li>
         <li>Continue from ~15–25% context</li>
       </ul>
 
       <div class="callout orange">
-        <strong>Never use /compact.</strong> Always /ADMN-wrapup-v1 + fresh session.
+        <strong>Never use /compact.</strong> Always /ADMN-wrapup-v2 + fresh session.
       </div>
 
       <h3>Session Management</h3>
       <div class="rule-group">
         <ul class="rule-list">
-          <li>✅ Always run /ADMN-startup-v2 at the start of every session</li>
-          <li>✅ Always run /ADMN-wrapup-v1 before closing</li>
+          <li>✅ Always run /ADMN-startup-v3 at the start of every session</li>
+          <li>✅ Always run /ADMN-wrapup-v2 before closing</li>
           <li>✅ Wrap at 50% context — watch ccstatusline</li>
           <li>✅ One project per session — no client context-switching</li>
           <li>✅ Never use /compact</li>
@@ -1596,8 +1616,8 @@ claude</div>
           <tr><th>Task</th><th>Command</th></tr>
         </thead>
         <tbody>
-          <tr><td>Start session</td><td>/ADMN-startup-v2</td></tr>
-          <tr><td>End session</td><td>/ADMN-wrapup-v1</td></tr>
+          <tr><td>Start session</td><td>/ADMN-startup-v3</td></tr>
+          <tr><td>End session</td><td>/ADMN-wrapup-v2</td></tr>
           <tr><td>Caveman mode (terse responses)</td><td>/caveman</td></tr>
           <tr><td>Caveman ultra (max compression)</td><td>/caveman ultra</td></tr>
           <tr><td>Normal responses</td><td>stop caveman</td></tr>
@@ -1616,7 +1636,7 @@ claude</div>
       </div>
       <div class="trouble-list">
         <div class="trouble-item">
-          <div class="trouble-q">/ADMN-startup-v2 can't find memory</div>
+          <div class="trouble-q">/ADMN-startup-v3 can't find memory</div>
           <div class="trouble-a">Memory lives at <code style="font-family:'DM Mono',monospace;">memory/</code> in the CLAUDE CODE root. From a client folder it's at <code style="font-family:'DM Mono',monospace;">../../memory/</code>. Check you're inside the Google Drive path.</div>
         </div>
         <div class="trouble-item">
@@ -1629,7 +1649,7 @@ claude</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-q">Plugin not found</div>
-          <div class="trouble-a">Make sure you're running Claude Code from the correct folder. Run <code style="font-family:'DM Mono',monospace;">/install [plugin]</code> again.</div>
+          <div class="trouble-a">Make sure you're running Claude Code from the correct folder. Reinstall from the Warp terminal: <code style="font-family:'DM Mono',monospace;">claude plugin install [plugin]@[marketplace]</code> (the old <code style="font-family:'DM Mono',monospace;">/install</code> slash command was removed in Claude Code 2.x). See Section 07b.</div>
         </div>
         <div class="trouble-item">
           <div class="trouble-q">Google Drive path wrong</div>
@@ -1650,7 +1670,7 @@ claude</div>
   <div class="footer">
     <div class="footer-brand">SBIM</div>
     <div>New User Setup · Claude Workspace · Windows 11</div>
-    <div>May 2026</div>
+    <div>June 2026</div>
   </div>
 </div>
 
