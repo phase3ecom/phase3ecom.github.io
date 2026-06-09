@@ -1031,7 +1031,6 @@ body {
 <nav class="nav">
   <div class="nav-brand">SBIM</div>
   <ul class="nav-links">
-    <li><a href="#why">Why</a></li>
     <li><a href="#s01">Prerequisites</a></li>
     <li><a href="#s02">Steps 1–12</a></li>
     <li><a href="#quickref">Quick Reference</a></li>
@@ -1089,7 +1088,6 @@ body {
   <aside class="sidebar">
     <div class="sidebar-label">Contents</div>
     <ul class="sidebar-nav">
-      <li><a href="#why"><span class="s-emoji">🧠</span> Why Claude Code</a></li>
       <li><a href="#s01"><span class="s-num">01</span><span class="s-emoji">✅</span> Prerequisites</a></li>
       <li><a href="#s02"><span class="s-num">02</span><span class="s-emoji">🔧</span> Install Git</a></li>
       <li><a href="#s03"><span class="s-num">03</span><span class="s-emoji">💻</span> Install Warp</a></li>
@@ -1110,42 +1108,6 @@ body {
 
   <!-- CONTENT -->
   <main class="content">
-
-    <!-- WHY CLAUDE CODE -->
-    <section class="section" id="why">
-      <div class="section-header">
-        <div class="section-icon">🧠</div>
-        <div class="section-title-group">
-          <div class="section-num">Overview</div>
-          <h2 class="section-title">Why Claude Code (not claude.ai)</h2>
-        </div>
-      </div>
-      <p>You've probably used Claude through the browser at claude.ai. Claude Code is different — and for team work, it's the right tool.</p>
-
-      <div class="callout dark">
-        <p style="margin-bottom:12px;"><strong>claude.ai (web/app)</strong> — each conversation starts blank. No memory of previous sessions. No shared context with teammates. Good for one-off questions.</p>
-        <p style="margin-bottom:0;"><strong>Claude Code (CLI)</strong> — runs in your terminal, reads files from your machine, and loads shared context automatically at the start of every session.</p>
-      </div>
-
-      <h3>How the memory system works</h3>
-      <p><strong style="color:var(--blue);">CLAUDE.md</strong> — project-level instructions that load at session start without any prompt. Tells Claude who we are, what stack we use, how to write commit messages, what safety rules to follow. Every team member gets identical baseline behaviour.</p>
-      <p><strong style="color:var(--blue);">memory/</strong> — a folder on Google Drive containing:</p>
-      <ul class="checklist">
-        <li><strong>rules.md</strong> — rules and patterns learned across all client work</li>
-        <li><strong>projects.md</strong> — all active clients: status, pending items, key asset IDs, what's blocked and why</li>
-        <li><strong>sessions/</strong> — a file per working session recording what was done, what decisions were made, what's still pending</li>
-      </ul>
-
-      <h3>Why this matters for client work</h3>
-      <div class="callout lime">
-        <p style="margin-bottom:10px;">When two people work on the same client:</p>
-        <ul style="list-style:none; display:flex; flex-direction:column; gap:6px;">
-          <li>· Person A finishes a deliverable, runs <strong>/ADMN-wrapup-v2</strong>, records what's pending</li>
-          <li>· Person B opens Claude Code two days later, runs <strong>/ADMN-startup-v3</strong>, and immediately sees that pending item — no Slack thread needed</li>
-        </ul>
-      </div>
-      <p><strong style="color:var(--blue);">The bottom line:</strong> claude.ai conversations are ephemeral and isolated. This setup is persistent and shared.</p>
-    </section>
 
     <!-- S01: Prerequisites -->
     <section class="section" id="s01">
