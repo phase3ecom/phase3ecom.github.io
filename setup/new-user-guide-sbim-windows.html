@@ -1598,6 +1598,10 @@ claude</div>
       </div>
       <div class="trouble-list">
         <div class="trouble-item">
+          <div class="trouble-q">"bash : The term 'bash' is not recognized" (CommandNotFoundException)</div>
+          <div class="trouble-a">You're in <strong>PowerShell</strong>, not Git Bash — PowerShell has no <code style="font-family:'DM Mono',monospace;">bash</code>. Tell-tale: the prompt shows <code style="font-family:'DM Mono',monospace;">G:\Shared drives\…</code> with backslashes; Git Bash shows <code style="font-family:'DM Mono',monospace;">/g/Shared drives/…</code> with forward slashes. Fix: switch Warp's shell to Git Bash (Section 03) → <strong>Settings → Features → Sessions → Default shell → Git Bash</strong>, then fully close and reopen Warp. Quick unblock without switching: <code style="font-family:'DM Mono',monospace;">&amp; "C:\Program Files\Git\bin\bash.exe" setup/install.sh</code></div>
+        </div>
+        <div class="trouble-item">
           <div class="trouble-q">/ADMN-startup-v3 can't find memory</div>
           <div class="trouble-a">Memory lives at <code style="font-family:'DM Mono',monospace;">memory/</code> in the CLAUDE CODE root. From a client folder it's at <code style="font-family:'DM Mono',monospace;">../../memory/</code>. Check you're inside the Google Drive path.</div>
         </div>
