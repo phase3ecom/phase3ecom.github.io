@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FenceStay Progress &amp; Performance · Week 18</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Cabin:ital,wght@0,400;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root{ --navy:#100828; --lime:#a3d01d; --white:#fff; --canvas:#F6F6F2; --grey-200:#E2E1E9; --grey-400:#9896A8; --text:#1C1B28; --text-muted:#6B6A7A; --green:#15803D; --green-light:#F0FDF4; --amber:#B45309; --amber-light:#FFFBEB; --blue:#1E40AF; }
+html{ scroll-behavior:smooth; }
+body{ font-family:'Cabin',sans-serif; background:var(--canvas); color:var(--text); font-size:16px; line-height:1.7; }
+.nav{ position:sticky; top:0; z-index:100; background:var(--navy); border-bottom:2px solid var(--lime); display:flex; align-items:center; justify-content:space-between; padding:0 48px; height:56px; }
+.nav-brand{ font-family:'Orbitron',sans-serif; font-size:0.65rem; font-weight:700; color:var(--lime); letter-spacing:0.3em; text-transform:uppercase; }
+.nav-links{ display:flex; gap:22px; list-style:none; }
+.nav-links a{ font-size:0.78rem; font-weight:600; color:rgba(255,255,255,0.55); text-decoration:none; letter-spacing:0.04em; transition:color .2s; }
+.nav-links a:hover{ color:var(--lime); }
+.nav-tag{ font-family:'DM Mono',monospace; font-size:0.65rem; color:rgba(255,255,255,0.3); }
+.cover-wrap{ background:var(--navy); padding:64px 48px 0; }
+.cover-inner{ max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center; }
+.cover-eyebrow{ font-family:'Orbitron',sans-serif; font-size:0.65rem; font-weight:700; color:var(--lime); letter-spacing:0.35em; text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:12px; }
+.cover-eyebrow::before{ content:''; width:28px; height:2px; background:var(--lime); display:inline-block; }
+.cover-title{ font-size:clamp(2rem,3.5vw,2.8rem); font-weight:700; color:var(--white); line-height:1.1; margin-bottom:12px; }
+.cover-sub{ font-size:1rem; color:rgba(255,255,255,0.5); }
+.cover-tag{ display:inline-block; background:var(--lime); color:var(--navy); font-family:'Orbitron',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; padding:8px 16px; border-radius:4px; margin-bottom:10px; }
+.cover-date{ font-family:'DM Mono',monospace; font-size:0.65rem; color:rgba(255,255,255,0.35); text-align:right; }
+.hero-stats{ max-width:1100px; margin:48px auto 0; display:grid; grid-template-columns:repeat(6,1fr); gap:1px; background:rgba(255,255,255,0.08); border-top:1px solid rgba(255,255,255,0.08); }
+.h-stat{ padding:28px 20px; background:var(--navy); }
+.h-stat-num{ font-family:'Orbitron',sans-serif; font-size:clamp(1.2rem,2vw,1.7rem); font-weight:700; color:var(--lime); line-height:1; margin-bottom:8px; }
+.h-stat-label{ font-size:0.72rem; color:rgba(255,255,255,0.4); letter-spacing:0.06em; font-weight:600; text-transform:uppercase; }
+.h-stat-sub{ font-size:0.65rem; color:rgba(255,255,255,0.25); margin-top:3px; font-family:'DM Mono',monospace; }
+.wrap{ max-width:1100px; margin:0 auto; padding:0 48px; }
+.section{ padding:60px 0; border-bottom:1px solid var(--grey-200); background:var(--white); }
+.section.alt{ background:var(--canvas); }
+.section-eyebrow{ font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--grey-400); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:10px; }
+.section-title{ font-size:clamp(1.4rem,2vw,1.9rem); font-weight:700; color:var(--navy); line-height:1.2; margin-bottom:6px; }
+.section-sub{ font-size:0.9rem; color:var(--text-muted); margin-bottom:32px; max-width:760px; }
+.summary-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px; }
+.summary-card{ background:var(--white); border:1px solid var(--grey-200); border-radius:10px; padding:24px; border-top:3px solid var(--lime); }
+.sc-num{ font-family:'Orbitron',sans-serif; font-size:1.6rem; font-weight:700; color:var(--navy); line-height:1; margin-bottom:6px; }
+.sc-label{ font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--grey-400); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:8px; }
+.sc-sub{ font-size:0.82rem; color:var(--text-muted); }
+.sc-delta{ color:var(--green); font-weight:700; }
+.sc-down{ color:var(--amber); font-weight:700; }
+.chart-wrap{ position:relative; background:var(--white); border:1px solid var(--grey-200); border-radius:10px; padding:28px; margin-bottom:20px; }
+.chart-title{ font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--grey-400); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:20px; }
+canvas{ display:block; width:100% !important; }
+.chart-grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.note{ font-size:0.78rem; color:var(--text-muted); font-style:italic; margin-top:10px; }
+.data-table-wrap{ overflow-x:auto; border:1px solid var(--grey-200); border-radius:10px; margin-top:8px; }
+table{ width:100%; border-collapse:collapse; font-size:0.84rem; }
+thead{ background:var(--navy); color:rgba(255,255,255,0.6); }
+thead th{ padding:14px 16px; text-align:right; font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:500; white-space:nowrap; }
+thead th:first-child{ text-align:left; }
+tbody tr{ border-bottom:1px solid var(--grey-200); }
+tbody tr:last-child{ border-bottom:none; }
+tbody td{ padding:12px 16px; text-align:right; color:var(--text); white-space:nowrap; }
+tbody td:first-child{ text-align:left; font-weight:600; color:var(--navy); }
+.pos{ color:var(--green); font-weight:700; }
+.muted{ color:var(--text-muted); }
+.kpi-on{ color:var(--green); font-weight:700; }
+.kpi-below{ color:var(--amber); font-weight:700; }
+.winlist{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+.winlist li{ display:flex; gap:12px; align-items:flex-start; background:var(--green-light); border-left:3px solid var(--green); border-radius:0 8px 8px 0; padding:14px 18px; font-size:0.92rem; }
+.winlist .tick{ color:var(--green); font-weight:800; }
+.improvelist{ list-style:none; display:flex; flex-direction:column; gap:10px; margin-top:8px; }
+.improvelist li{ display:flex; gap:12px; align-items:flex-start; background:var(--white); border:1px solid var(--grey-200); border-left:3px solid var(--lime); border-radius:0 8px 8px 0; padding:14px 18px; font-size:0.9rem; }
+.improvelist .arw{ color:var(--lime); font-weight:800; }
+.next-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:18px; }
+.next-card{ background:var(--white); border:1px solid var(--grey-200); border-radius:8px; padding:16px 18px; }
+.next-card b{ color:var(--navy); }
+.next-card span{ font-size:0.82rem; color:var(--text-muted); }
+.phase-card{ background:var(--white); border:1px solid var(--grey-200); border-radius:10px; margin-bottom:18px; overflow:hidden; }
+.phase-head{ display:flex; align-items:center; justify-content:space-between; padding:16px 22px; }
+.phase-head.done{ background:#1f5130; }
+.phase-head.live{ background:#2e7d32; }
+.phase-head.now{ background:#B45309; }
+.phase-head.next{ background:#5b6b1f; }
+.phase-title{ font-family:'Orbitron',sans-serif; font-size:0.78rem; font-weight:700; color:#fff; letter-spacing:0.08em; }
+.phase-weeks{ font-family:'DM Mono',monospace; font-size:0.66rem; color:rgba(255,255,255,0.7); }
+.phase-note{ font-size:0.82rem; color:var(--text-muted); padding:12px 22px 0; font-style:italic; }
+.badge{ display:inline-block; font-family:'DM Mono',monospace; font-size:0.58rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:4px 9px; border-radius:4px; white-space:nowrap; }
+.badge-complete{ background:#E7F2EA; color:#1f5130; }
+.badge-live{ background:#2e7d32; color:#fff; }
+.badge-review{ background:#DBEAFE; color:#1E40AF; }
+.badge-ready{ background:#DBEAFE; color:#1E40AF; }
+.badge-prog{ background:#FFF4E0; color:#B45309; }
+.badge-high{ background:#FDE2E2; color:#B91C1C; }
+.badge-med{ background:#FEF3C7; color:#92400E; }
+.badge-low{ background:#EEF1F4; color:#6B7280; }
+.badge-tbc{ background:#EEF1F4; color:#6B7280; }
+footer{ background:var(--navy); padding:36px 48px; }
+.footer-inner{ max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+.footer-brand{ font-family:'Orbitron',sans-serif; font-size:0.65rem; font-weight:700; color:var(--lime); letter-spacing:0.3em; }
+.footer-meta{ font-family:'DM Mono',monospace; font-size:0.62rem; color:rgba(255,255,255,0.3); }
+.sources{ background:var(--canvas); padding:36px 48px; }
+.sources-inner{ max-width:1100px; margin:0 auto; }
+.sources h4{ font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--grey-400); margin-bottom:14px; }
+.sources ol{ font-size:0.74rem; color:var(--text-muted); line-height:1.9; padding-left:18px; }
+.sources code{ font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--navy); }
+@media (max-width:900px){ .cover-inner{ grid-template-columns:1fr; } .hero-stats{ grid-template-columns:repeat(3,1fr); } .chart-grid-2,.summary-grid,.next-grid{ grid-template-columns:1fr; } .wrap,.nav,.sources,footer{ padding-left:24px; padding-right:24px; } .nav-links{ display:none; } }
+@media (max-width:600px){ .hero-stats{ grid-template-columns:repeat(2,1fr); } }
+@media print {
+  *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  @page{ size:1180px 1670px; margin:0; }
+  html,body{ width:1180px; }
+  .nav{ position:static; }
+  .nav-links{ display:flex !important; }
+  .hero-stats{ grid-template-columns:repeat(6,1fr) !important; }
+  .summary-grid{ grid-template-columns:repeat(3,1fr) !important; }
+  .chart-grid-2{ grid-template-columns:1fr 1fr !important; }
+  .next-grid{ grid-template-columns:repeat(2,1fr) !important; }
+  .section,.phase-card,.chart-wrap,.summary-card,.next-card{ break-inside:avoid; page-break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-brand">Phase 3 Ecom</span>
+  <ul class="nav-links">
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#traffic">Traffic</a></li>
+    <li><a href="#sales">Sales</a></li>
+    <li><a href="#kpis">KPIs</a></li>
+    <li><a href="#lp">Landing Pages</a></li>
+    <li><a href="#next">Next Steps</a></li>
+  </ul>
+  <span class="nav-tag">Week 18 · 22 Jun 2026</span>
+</nav>
+
+<div class="cover-wrap">
+  <div class="cover-inner">
+    <div>
+      <div class="cover-eyebrow">FenceStay</div>
+      <div class="cover-title">Progress &amp; Performance Update</div>
+      <div class="cover-sub">Week 18 · Roadmap status plus first 39 days of trading · 14 May to 21 Jun 2026 vs prior 39 days · GA4 · Shopify · Search Console</div>
+    </div>
+    <div>
+      <div class="cover-tag">STEVEN CASAMENTO</div>
+      <div class="cover-date">Prepared by Phase 3 Ecom<br>22/06/2026</div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="h-stat"><div class="h-stat-num">+26.7%</div><div class="h-stat-label">Visitors</div><div class="h-stat-sub">vs prior 39 days</div></div>
+    <div class="h-stat"><div class="h-stat-num">+14.7%</div><div class="h-stat-label">Sessions</div><div class="h-stat-sub">4,751 total</div></div>
+    <div class="h-stat"><div class="h-stat-num">+20.6%</div><div class="h-stat-label">Pages / Visit</div><div class="h-stat-sub">deeper browsing</div></div>
+    <div class="h-stat"><div class="h-stat-num">314</div><div class="h-stat-label">Add-to-Carts</div><div class="h-stat-sub">vs 0 pre-launch</div></div>
+    <div class="h-stat"><div class="h-stat-num">31</div><div class="h-stat-label">Online Orders</div><div class="h-stat-sub">$23.7k collected</div></div>
+    <div class="h-stat"><div class="h-stat-num">$764</div><div class="h-stat-label">Avg Order Value</div><div class="h-stat-sub">paid online</div></div>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<div id="roadmap" class="section">
+  <div class="wrap">
+    <div class="section-eyebrow">01 · Where We're At</div>
+    <h2 class="section-title">Roadmap status: Week 18 of the 12-month program</h2>
+    <p class="section-sub">Foundation and launch are complete. We're in post-launch activation: the site is live and trading, campaigns and email flows are running, and audience landing pages are rolling out. The first full window of real trading data is now in, and it's covered in the rest of this report.</p>
+
+    <div class="phase-card">
+      <div class="phase-head done"><span class="phase-title">STAGE 1 · FOUNDATION</span><span class="phase-weeks">Weeks 1-10 · Complete</span></div>
+      <div class="data-table-wrap" style="border:none;border-radius:0;margin:0;">
+        <table>
+          <tbody>
+            <tr><td>New Shopify store built (Empire theme) plus migration from old site</td><td><span class="badge badge-complete">Complete</span></td></tr>
+            <tr><td>Homepage, product, collection, compliance and education pages</td><td><span class="badge badge-complete">Complete</span></td></tr>
+            <tr><td>Fence Calculator integrated with Add to Cart</td><td><span class="badge badge-complete">Complete</span></td></tr>
+            <tr><td>Brand and marketing strategy, creative audit, navigation redesign</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-head live"><span class="phase-title">STAGE 2 · LAUNCH</span><span class="phase-weeks">Weeks 11-13 · Complete</span></div>
+      <div class="data-table-wrap" style="border:none;border-radius:0;margin:0;">
+        <table>
+          <tbody>
+            <tr><td>New website live and trading (since 14 May)</td><td><span class="badge badge-live">Live</span></td></tr>
+            <tr><td>Google Merchant Centre verified plus advertiser verification</td><td><span class="badge badge-live">Live</span></td></tr>
+            <tr><td>All 5 tracking pixels plus server-side tracking (GA4, Google Ads, GMC, Meta, Klaviyo)</td><td><span class="badge badge-live">Live</span></td></tr>
+            <tr><td>Klaviyo subscription pages</td><td><span class="badge badge-complete">Complete</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-head now"><span class="phase-title">STAGE 3 · POST-LAUNCH ACTIVATION</span><span class="phase-weeks">Weeks 14-18 · In progress</span></div>
+      <div class="phase-note">Where we are right now: the active work in flight.</div>
+      <div class="data-table-wrap" style="border:none;border-radius:0;margin:0;">
+        <table>
+          <thead><tr><th style="width:72%">Activity</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Google Shopping plus Search campaigns running (Search budget raised $15 to $20/day)</td><td><span class="badge badge-live">Live</span></td></tr>
+            <tr><td>Meta retargeting running with new targeting plus tracking</td><td><span class="badge badge-live">Live</span></td></tr>
+            <tr><td>Farmers audience landing page</td><td><span class="badge badge-review">Ready for Review</span></td></tr>
+            <tr><td>DIY and Contractor audience landing pages (real photography)</td><td><span class="badge badge-review">Ready for Review</span></td></tr>
+            <tr><td>Abandoned cart email flow</td><td><span class="badge badge-ready">Built</span></td></tr>
+            <tr><td>Landing page conversion review plus improvements</td><td><span class="badge badge-prog">In Progress</span></td></tr>
+            <tr><td>"Better. Faster. Cheaper." video ad (for Meta)</td><td><span class="badge badge-prog">Draft</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-head next"><span class="phase-title">STAGE 4 · GROWTH ROADMAP</span><span class="phase-weeks">Months 4-12 · Upcoming</span></div>
+      <div class="data-table-wrap" style="border:none;border-radius:0;margin:0;">
+        <table>
+          <thead><tr><th style="width:60%">Activity</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td>Hero campaign plus Founder Generated Content</td><td><span class="badge badge-high">High</span></td></tr>
+            <tr><td>"Shop by Job" navigation plus How It Works landing page</td><td><span class="badge badge-high">High</span></td></tr>
+            <tr><td>SEO content plan, post-purchase and winback email flows</td><td><span class="badge badge-med">Medium</span></td></tr>
+            <tr><td>Powered post driver, new product launch campaign</td><td><span class="badge badge-tbc">After 9 Jul</span></td></tr>
+            <tr><td>Marketplace testing (eBay AU, Amazon AU) and international research</td><td><span class="badge badge-med">Medium</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRAFFIC -->
+<div id="traffic" class="section alt">
+  <div class="wrap">
+    <div class="section-eyebrow">02 · Traffic &amp; Engagement</div>
+    <h2 class="section-title">More visitors, browsing deeper</h2>
+    <p class="section-sub">Measured over the first 39 days of trading (14 May to 21 Jun) against the equal 39-day period before launch. The new site is pulling more people in and they're viewing more pages per visit. Add-to-cart tracking, impossible on the old site, is now live and feeding the abandoned cart recovery.</p>
+    <div class="summary-grid">
+      <div class="summary-card"><div class="sc-label">Visitors</div><div class="sc-num">3,771</div><div class="sc-sub"><span class="sc-delta">&#9650; +26.7%</span> vs 2,976</div></div>
+      <div class="summary-card"><div class="sc-label">Sessions</div><div class="sc-num">4,751</div><div class="sc-sub"><span class="sc-delta">&#9650; +14.7%</span> vs 4,143</div></div>
+      <div class="summary-card"><div class="sc-label">Pages per visit</div><div class="sc-num">2.58</div><div class="sc-sub"><span class="sc-delta">&#9650; +20.6%</span> vs 2.14</div></div>
+    </div>
+    <div class="chart-grid-2">
+      <div class="chart-wrap"><div class="chart-title">Visitors &amp; sessions · prior 39 days vs since launch</div><canvas id="trafficChart" height="200"></canvas></div>
+      <div class="chart-wrap"><div class="chart-title">Sessions by channel · since launch</div><canvas id="channelChart" height="200"></canvas></div>
+    </div>
+    <p class="note">Honest read: overall engagement rate sits at <strong>33.4%</strong> (vs 42.6% before launch) because paid social is now driving a large volume of lower-intent sessions. The quality channels held up, with <strong>Organic Search engaging at 56.2%</strong>. The priority is improving paid traffic quality and the landing pages it points to.</p>
+  </div>
+</div>
+
+<!-- SEO -->
+<div id="seo" class="section">
+  <div class="wrap">
+    <div class="section-eyebrow">03 · SEO &amp; Organic</div>
+    <h2 class="section-title">Organic is the highest-quality channel, and the biggest revenue driver</h2>
+    <p class="section-sub">The migration preserved FenceStay's rankings, and organic search is now the standout channel: best engagement and the most attributed revenue of any source since launch.</p>
+    <div class="summary-grid">
+      <div class="summary-card"><div class="sc-label">Organic revenue · since launch</div><div class="sc-num">$7,974</div><div class="sc-sub">GA4-attributed · top channel</div></div>
+      <div class="summary-card"><div class="sc-label">Organic engagement rate</div><div class="sc-num">56.2%</div><div class="sc-sub">highest-quality traffic on site</div></div>
+      <div class="summary-card"><div class="sc-label">Search impressions · baseline</div><div class="sc-num">11,094</div><div class="sc-sub">across 1,000 ranking keywords</div></div>
+    </div>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>Keyword</th><th>Google position</th><th>Clicks</th><th>CTR</th></tr></thead>
+        <tbody>
+          <tr><td>fencestay australia</td><td class="pos">#1.0</td><td>42</td><td>63.6%</td></tr>
+          <tr><td>fence stay</td><td class="pos">#1.9</td><td>228</td><td>39.0%</td></tr>
+          <tr><td>fencestay</td><td class="pos">#2.0</td><td>268</td><td>63.1%</td></tr>
+          <tr><td>star picket end assembly</td><td class="pos">#1.4</td><td>9</td><td>32.1%</td></tr>
+          <tr><td>fence end assembly kit</td><td class="pos">#2.7</td><td>8</td><td>21.6%</td></tr>
+          <tr><td>star picket strainer post</td><td class="pos">#4.2</td><td>12</td><td>17.7%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Search Console baseline, 12 Feb to 13 May 2026. Non-brand product terms on page one mean new buyers find FenceStay without paying for the click.</p>
+  </div>
+</div>
+
+<!-- SALES -->
+<div id="sales" class="section alt">
+  <div class="wrap">
+    <div class="section-eyebrow">04 · Sales</div>
+    <h2 class="section-title">A clean trading baseline, with weekly orders climbing</h2>
+    <p class="section-sub">The new store's genuine online sales over the first 39 days. There is no like-for-like prior period, because the old site wasn't taking trackable online orders, so this is the baseline we grow from. Weekly order volume rose steadily through the window.</p>
+    <div class="summary-grid">
+      <div class="summary-card"><div class="sc-label">New online orders</div><div class="sc-num">31</div><div class="sc-sub">14 May to 21 Jun · all paid</div></div>
+      <div class="summary-card"><div class="sc-label">Online revenue</div><div class="sc-num">$23,679</div><div class="sc-sub">collected · Shopify Payments</div></div>
+      <div class="summary-card"><div class="sc-label">Average order value</div><div class="sc-num">$764</div><div class="sc-sub">across paid online orders</div></div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">New online orders per week since launch</div>
+      <canvas id="ordersChart" height="120"></canvas>
+      <p class="note">Genuine online orders only. The 69 migrated historical orders (imported on launch day) are excluded. For context, the old WooCommerce site averaged about 26 orders and about $30k net per month at a higher AOV near $1,397. The new store is winning a similar order count at a lower AOV, so lifting AOV back up is a core focus (see KPIs below).</p>
+    </div>
+  </div>
+</div>
+
+<!-- KPIS -->
+<div id="kpis" class="section">
+  <div class="wrap">
+    <div class="section-eyebrow">05 · KPIs &amp; Growth Targets</div>
+    <h2 class="section-title">How we're tracking to the growth plan</h2>
+    <p class="section-sub">The targets below were set in the Week 11 growth plan (the path to $100k/month). We compare the April 2026 baseline, the Stage 1 launch-window target, the longer-term goal, and where the new store sits now. Current figures are shown as a monthly run-rate, scaled from the 39-day window, so they compare like-for-like with the monthly baseline.</p>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>Metric</th><th>April 2026 baseline</th><th>Stage 1 target (May to Jul)</th><th>$100k/mo goal</th><th>Now (run-rate)</th><th>Tracking</th></tr></thead>
+        <tbody>
+          <tr><td>Sessions / month</td><td>2,994</td><td>3,200 to 3,800</td><td>4,500</td><td>~3,700</td><td><span class="kpi-on">On track</span></td></tr>
+          <tr><td>Conversion rate</td><td>0.87%</td><td>0.95 to 1.0%</td><td>1.50%</td><td>0.65%</td><td><span class="kpi-below">Below target</span></td></tr>
+          <tr><td>Average order value</td><td>$1,397</td><td>$1,400</td><td>$1,500</td><td>$764</td><td><span class="kpi-below">Below target</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Run-rate basis: 4,751 sessions and 31 online orders over 39 days, scaled to a 30.4-day month (about 3,700 sessions and 24 orders). Conversion rate is online orders divided by sessions.</p>
+    <div class="next-grid" style="margin-top:22px;">
+      <div class="next-card"><b>Traffic is on track</b><br><span>Sessions are inside the Stage 1 target band and up about 24% on the April baseline. The new site is bringing more people in.</span></div>
+      <div class="next-card"><b>Conversion and AOV are the focus</b><br><span>Both sit below target and below the April baseline, mostly because broader paid traffic is converting at a lower rate and order value has dropped since launch. The CRO work, abandoned cart flow, audience landing pages and paid-quality fixes below are aimed squarely at these two levers.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- LANDING PAGES -->
+<div id="lp" class="section alt">
+  <div class="wrap">
+    <div class="section-eyebrow">06 · Landing Pages (for review today)</div>
+    <h2 class="section-title">Audience landing pages: ready for review</h2>
+    <p class="section-sub">Three persona-specific pages built on one shared template, for paid-ad traffic. All three (Farmers, Contractor, and Small Acreage / DIY) are built with dedicated real photography per persona and staged on a draft theme, ready for your review and sign-off today.</p>
+    <ul class="winlist">
+      <li><span class="tick">&#10003;</span><span><b>Three pages built</b> with curated real photos matched to each audience: Farmers, Contractor, and Small Acreage / DIY.</span></li>
+      <li><span class="tick">&#10003;</span><span><b>Staged on a draft theme</b> for sign-off, ready to publish once approved.</span></li>
+    </ul>
+    <div class="subsection" style="margin-top:28px;">
+      <div class="chart-title" style="margin-bottom:12px;">Improvements we're making to lift conversion</div>
+      <ul class="improvelist">
+        <li><span class="arw">&#9656;</span><span><b>One clear primary action per page</b>, sending visitors straight to the right starter kit rather than a general browse page.</span></li>
+        <li><span class="arw">&#9656;</span><span><b>Fence Calculator repositioned as a guided assist</b> that funnels into the right kit, not a step that sends people off the page.</span></li>
+        <li><span class="arw">&#9656;</span><span><b>Trust cues at every call-to-action</b>: Australian made, proven equivalent strength, 30-day returns, and customer reviews placed next to the buy button.</span></li>
+        <li><span class="arw">&#9656;</span><span><b>Conversion tracking on every action before we scale spend</b>, so each dollar's path from ad to page to sale is measured.</span></li>
+        <li><span class="arw">&#9656;</span><span><b>Faster mobile load and a clearer first screen</b>, so the offer and call-to-action are visible without scrolling.</span></li>
+        <li><span class="arw">&#9656;</span><span><b>A "not sure it suits your place?" confidence step</b> that routes hesitant buyers to a quick fit-check rather than off the page.</span></li>
+      </ul>
+    </div>
+    <div class="next-grid">
+      <div class="next-card"><b>To confirm in this meeting</b><br><span>Sign off the three pages to publish, and approve the conversion improvements before we point paid spend at them.</span></div>
+      <div class="next-card"><b>Tracking gate</b><br><span>Landing page conversion events go live before we scale ad spend, so every dollar's path from ad to page to sale is measured.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- NEXT -->
+<div id="next" class="section">
+  <div class="wrap">
+    <div class="section-eyebrow">07 · Next Steps</div>
+    <h2 class="section-title">Where we focus next</h2>
+    <p class="section-sub">Three priorities: recover lost carts, lift conversion and AOV, and improve paid-traffic quality.</p>
+    <div class="next-grid">
+      <div class="next-card"><b>Publish the audience pages</b><br><span>Farmers, Contractor and DIY live, then point matched paid traffic at each.</span></div>
+      <div class="next-card"><b>Abandoned cart recovery</b><br><span>Flow is built, switch it on to recover a slice of the 314 carts started.</span></div>
+      <div class="next-card"><b>CRO and AOV</b><br><span>Product pages, checkout, bundles and upsells to grow conversion rate and rebuild order value toward the old $1,397.</span></div>
+      <div class="next-card"><b>Fix paid attribution and quality</b><br><span>Resolve Meta attribution and tighten targeting so paid traffic converts, not just visits.</span></div>
+      <div class="next-card"><b>"Better. Faster. Cheaper." video ad</b><br><span>New video creative in draft for the Meta push, ready to review and finalise.</span></div>
+      <div class="next-card"><b>Powered post driver launch</b><br><span>High-value product, paid launch from after 9 July.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SOURCES — hidden per request 22/06; retained in source for internal reference.
+<div class="sources">
+  <div class="sources-inner">
+    <h4>Source trace · every figure in this report</h4>
+    <ol>
+      <li>Visitors 3,771 (+26.7%), sessions 4,751 (+14.7%), pages/visit 2.58 (+20.6%), engagement 33.4% vs 42.6%, 314 add-to-carts -> GA4 Data API, property 302758097, 14 May to 21 Jun 2026 vs 5 Apr to 13 May 2026 (equal 39-day windows)</li>
+      <li>Channel sessions, engagement and revenue, organic $7,974 at 56.2% engagement -> GA4 Data API, sessionDefaultChannelGroup, 14 May to 21 Jun 2026 (GA4-attributed)</li>
+      <li>Search impressions 11,094, 1,000 keywords, keyword positions and CTR -> Google Search Console baseline, 12 Feb to 13 May 2026 (reporting/seo_baseline.md)</li>
+      <li>31 new online orders, $23,679 collected, AOV $764, weekly 3/5/8/9/6 -> Shopify Admin API, orders created_at 2026-05-14 to 2026-06-21, online checkouts (sourceName web/draft), PAID. Excludes 69 imported historical orders (sourceName 437349).</li>
+      <li>KPI targets (sessions, conversion rate, AOV) and April 2026 baseline -> FenceStay Week 11 Growth Targets report (path to $100k/month). Now figures are the 39-day window scaled to a monthly run-rate.</li>
+    </ol>
+  </div>
+</div>
+-->
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">PHASE 3 ECOM</span>
+    <span class="footer-meta">Prepared for Steven Casamento · 22/06/2026 · Week 18 · Data: GA4 + Shopify + Search Console</span>
+  </div>
+</footer>
+
+<script>
+const navy="#100828", lime="#a3d01d", grey="#C9C8D4";
+Chart.defaults.font.family="'Cabin', sans-serif";
+Chart.defaults.color="#6B6A7A";
+new Chart(document.getElementById("trafficChart"),{
+  type:"bar",
+  data:{ labels:["Visitors","Sessions"],
+    datasets:[
+      { label:"Prior 39 days", data:[2976,4143], backgroundColor:grey, borderRadius:5 },
+      { label:"Since launch", data:[3771,4751], backgroundColor:lime, borderRadius:5 } ] },
+  options:{ plugins:{ legend:{position:"bottom",labels:{boxWidth:12,font:{size:11}}} },
+    scales:{ y:{ grid:{color:"#EEE"} }, x:{ grid:{display:false} } } }
+});
+new Chart(document.getElementById("channelChart"),{
+  type:"bar", indexAxis:"y",
+  data:{ labels:["Paid Social","Organic Search","Direct","Paid Shopping","Paid Search","Organic Social"],
+    datasets:[{ label:"Sessions", data:[1374,875,735,444,208,161], backgroundColor:[lime,"#2e7d32","#6B6A7A","#9896A8","#C9C8D4","#E2E1E9"], borderRadius:5 }] },
+  options:{ plugins:{ legend:{display:false} },
+    scales:{ x:{ grid:{color:"#EEE"} }, y:{ grid:{display:false} } } }
+});
+new Chart(document.getElementById("ordersChart"),{
+  type:"bar",
+  data:{ labels:["Wk1 · 14-20 May","Wk2 · 21-27 May","Wk3 · 28 May to 3 Jun","Wk4 · 4-10 Jun","Wk5 · 11-17 Jun"],
+    datasets:[{ label:"New online orders", data:[3,5,8,9,6], backgroundColor:lime, borderRadius:6, barThickness:110 }] },
+  options:{ plugins:{ legend:{display:false} },
+    scales:{ y:{ grid:{color:"#EEE"}, ticks:{stepSize:1} }, x:{ grid:{display:false} } } }
+});
+</script>
+</body>
+</html>
