@@ -313,6 +313,59 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
 .faq-item.open{background:linear-gradient(90deg,rgba(163,208,29,.07),transparent);border-left:2px solid var(--lime);padding-left:14px;margin-left:-16px}
 .sec-light,.sec-dark{border-radius:32px 32px 0 0}
 .sec-light+.sec-dark,.sec-dark+.sec-light,.sec-dark+.sec-dark{margin-top:-30px;box-shadow:0 -26px 50px rgba(8,5,20,.5)}
+
+/* stats dark framed cards */
+.stats-sec .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:6px}
+@media(max-width:820px){.stats-sec .kpis{grid-template-columns:1fr 1fr}}
+.stats-sec .kpi{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:12px;padding:28px 20px 22px;text-align:left;box-shadow:var(--rim),var(--e2)}
+.stats-sec .kpi::before,.stats-sec .kpi::after{content:'';position:absolute;width:13px;height:13px;border-color:var(--lime);border-style:solid;opacity:.7}
+.stats-sec .kpi::before{top:10px;left:10px;border-width:1.5px 0 0 1.5px}
+.stats-sec .kpi::after{bottom:10px;right:10px;border-width:0 1.5px 1.5px 0}
+.stats-sec .kpi .n{font-family:var(--display);font-weight:900;font-size:clamp(34px,4vw,52px);color:var(--lime);line-height:1;text-shadow:0 0 26px rgba(163,208,29,.4)}
+.stats-sec .kpi .l{font-size:13px;color:var(--mut);margin-top:8px;max-width:22ch}
+.stats-sec .kpi .spark{margin-top:14px}
+/* bigger logos */
+.lc-track{gap:88px!important}
+.lc-track .lgo{height:36px!important}
+/* pricing: accelerator hero */
+.pgrid{grid-template-columns:1fr 1.14fr!important;align-items:stretch}
+@media(max-width:820px){.pgrid{grid-template-columns:1fr!important}}
+.pkg{display:flex;flex-direction:column}
+.pkg .was{font-family:var(--body);font-weight:400;font-size:15px;color:var(--ink-mut);text-decoration:line-through;margin-right:6px}
+.pkg .u{font-family:var(--body);font-weight:400;font-size:13px;color:var(--ink-mut)}
+.pkg .save{align-self:flex-start;background:rgba(90,68,201,.12);color:#5a44c9;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-top:8px}
+.pkg .grd{margin:8px 0 18px;font-size:13px;color:#5a44c9;font-weight:600}
+.pkg .btn{margin-top:auto}
+.pkg.hero{background:linear-gradient(160deg,#1c0f42,#100828);color:var(--off);border:1px solid rgba(163,208,29,.6);box-shadow:0 30px 70px rgba(163,208,29,.26),0 6px 16px rgba(0,0,0,.45)!important;transform:scale(1.03);z-index:2}
+.pkg.hero h3,.pkg.hero .price{color:var(--off)}
+.pkg.hero .u{color:var(--mut)}
+.pkg.hero .tag{color:var(--lime)}
+.pkg.hero li{color:var(--mut)}
+.pkg.hero li::before{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23A3D01D' opacity='.22'/%3E%3Cpath d='M4.5 8l2.5 2.5 4-4' stroke='%23A3D01D' stroke-width='1.7' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.pkg.hero .plus{font-family:var(--display);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin:14px 0 6px}
+.pkg.hero .grd{color:var(--lime)}
+.pkg.hero .badge{background:var(--lime);color:var(--dark)}
+/* FAQ material cards */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:960px;margin:14px auto 0}
+@media(max-width:720px){.faq-grid{grid-template-columns:1fr}}
+.faq-card{background:#fff;color:var(--ink);border-radius:16px;padding:22px 24px;cursor:pointer;box-shadow:0 2px 6px rgba(16,8,40,.08);transition:box-shadow .3s var(--ease),transform .3s var(--ease),border-color .3s;border-left:3px solid transparent}
+.faq-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(16,8,40,.14)}
+.faq-card.open{transform:translateY(-3px);box-shadow:0 22px 46px rgba(124,98,255,.22);border-left-color:var(--lime)}
+.faq-card .fq{display:flex;justify-content:space-between;gap:12px;font-weight:700;align-items:flex-start;line-height:1.35}
+.faq-card .pl{color:#5a44c9;font-size:1.35rem;line-height:1;transition:transform .25s;flex:none}
+.faq-card.open .pl{transform:rotate(45deg)}
+.faq-card .fa{max-height:0;overflow:hidden;opacity:0;transition:max-height .38s var(--ease),opacity .3s,margin .3s}
+.faq-card.open .fa{max-height:320px;opacity:1;margin-top:14px}
+.faq-card .fa p{font-size:14px;color:var(--ink-mut);line-height:1.55}
+
+/* bento conceptual 3D graphics */
+.cellcv{position:absolute;top:8px;right:8px;width:92px;height:92px;z-index:1;pointer-events:none;opacity:.85}
+.cell.big .cellcv{width:172px;height:172px;top:14px;right:14px;opacity:.92}
+.cell h3,.cell p{position:relative;z-index:2}
+.cell:hover .cellcv{opacity:1}
+.cell:not(.big) .cellcv{width:70px;height:70px;top:12px;right:10px}
+.cell:not(.big) h3,.cell:not(.big) p{max-width:64%}
+.cell.big p{max-width:72%}
 </style>
 
 <div class="plate" aria-hidden="true"></div>
@@ -344,10 +397,10 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
   </div>
 </section>
 
-<section class="sec sec-light">
+<section class="sec sec-dark stats-sec">
   <div class="wrap center">
     <div class="eyebrow reveal">The demand is already there</div>
-    <h2 class="reveal" style="margin:14px auto 10px;max-width:20ch;color:var(--ink)">Your buyers are on the marketplace right now</h2>
+    <h2 class="reveal" style="margin:14px auto 10px;max-width:20ch">Your buyers are on the marketplace right now</h2>
     <p class="lead mut reveal" style="margin:0 auto 8px">They're not browsing Google first. They search, compare and buy in two taps — from someone else.</p>
     <div class="kpis reveal">
       <div class="kpi"><div class="n" data-count="8.8" data-suf="M">0</div><div class="l">Australians shopping on Amazon</div></div>
@@ -389,12 +442,12 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
     <div class="eyebrow center reveal">What you get</div>
     <h2 class="center reveal" style="margin:14px auto 6px;max-width:20ch">The whole marketplace engine, run for you</h2>
     <div class="bento reveal">
-      <div class="cell big"><h3>Account &amp; listings</h3><p>Fully set up, optimised and compliant — brand registry, catalogue, A+ content.</p><span class="k">01</span></div>
-      <div class="cell"><h3>Ranking &amp; PPC</h3><p>Keyword rank + ad spend worked to profit.</p><span class="k">02</span></div>
-      <div class="cell"><h3>Reviews</h3><p>Compliant review growth.</p><span class="k">03</span></div>
-      <div class="cell"><h3>Expansion</h3><p>New marketplaces, one at a time.</p><span class="k">04</span></div>
-      <div class="cell"><h3>Reporting</h3><p>Monthly, against real MER targets.</p><span class="k">05</span></div>
-      <div class="cell big"><h3>Compliance &amp; logistics</h3><p>FBA/FBM, tax, shipping and policy handled so your account stays healthy and shippable.</p><span class="k">06</span></div>
+      <div class="cell big"><canvas class="cellcv" data-viz="cube" aria-hidden="true"></canvas><h3>Account &amp; listings</h3><p>Fully set up, optimised and compliant — brand registry, catalogue, A+ content.</p><span class="k">01</span></div>
+      <div class="cell"><canvas class="cellcv" data-viz="bars" aria-hidden="true"></canvas><h3>Ranking &amp; PPC</h3><p>Keyword rank + ad spend worked to profit.</p><span class="k">02</span></div>
+      <div class="cell"><canvas class="cellcv" data-viz="stars" aria-hidden="true"></canvas><h3>Reviews</h3><p>Compliant review growth.</p><span class="k">03</span></div>
+      <div class="cell"><canvas class="cellcv" data-viz="globe" aria-hidden="true"></canvas><h3>Expansion</h3><p>New marketplaces, one at a time.</p><span class="k">04</span></div>
+      <div class="cell"><canvas class="cellcv" data-viz="report" aria-hidden="true"></canvas><h3>Reporting</h3><p>Monthly, against real MER targets.</p><span class="k">05</span></div>
+      <div class="cell big"><canvas class="cellcv" data-viz="shield" aria-hidden="true"></canvas><h3>Compliance &amp; logistics</h3><p>FBA/FBM, tax, shipping and policy handled so your account stays healthy and shippable.</p><span class="k">06</span></div>
     </div>
   </div>
 </section>
@@ -403,24 +456,29 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
   <div class="wrap center">
     <div class="eyebrow reveal">The offer</div>
     <h2 class="reveal" style="margin:14px auto 6px;max-width:16ch;color:var(--ink)">Two ways to get moving</h2>
+    <p class="lead mut reveal" style="margin:0 auto">A standalone launch, or an ongoing sales-growth service. Both start with getting you listed and live — the difference is what comes after.</p>
   </div>
   <div class="wrap"><div class="pgrid">
     <div class="pkg reveal">
-      <div class="tag">Entry</div><h3>TX Amazon Launch</h3>
-      <div class="price"><span class="ph">Price placeholder</span></div>
-      <p class="mut" style="font-size:14px">Get found on Amazon, properly, fast.</p>
-      <ul><li>Seller account + brand registry setup</li><li>Catalogue build + optimised listings</li><li>Compliance, buy-box &amp; logistics sorted</li><li>First campaigns live to drive rank</li></ul>
-      <a class="btn btn-ghost" href="#audit">Start with a readiness audit</a>
+      <div class="tag">Entry · one-time</div><h3>TX Amazon Launch</h3>
+      <p class="mut" style="font-size:14px;margin:2px 0 0">Listed, compliant and live on Amazon AU — done for you.</p>
+      <div class="price"><span class="was">$6,250</span> $2,500 <span class="u">AUD one-time</span></div>
+      <span class="save">60% off</span>
+      <ul><li>Seller Central account + verification</li><li>Brand trademark application</li><li>Amazon Brand Registry</li><li>Barcodes (GTIN sourcing)</li><li>Technical &amp; safety compliance</li><li>Up to 10 SKUs catalogued &amp; listed</li><li>Attribute mapping</li></ul>
+      <div class="grd">✓ 30-day listing guarantee — live in 30 days or money back</div>
+      <a class="btn btn-ghost" href="#audit">Start with a free audit</a>
     </div>
-    <div class="pkg feat reveal">
-      <span class="badge">Most chosen</span><div class="tag">Growth</div><h3>TX Marketplace Accelerator</h3>
-      <div class="price"><span class="ph">Price placeholder</span></div>
-      <p class="mut" style="font-size:14px">Everything in Launch, then scaled across channels.</p>
-      <ul><li>Everything in TX Amazon Launch</li><li>Ongoing ranking, ads &amp; review growth</li><li>Expansion to eBay, Bunnings, Kogan &amp; more</li><li>Monthly reporting against real MER targets</li></ul>
+    <div class="pkg feat hero reveal">
+      <span class="badge">Most popular</span><div class="tag">Ongoing · we run &amp; grow it</div><h3>TX Marketplace Accelerator</h3>
+      <p style="font-size:14px;margin:2px 0 0;color:rgba(240,237,232,.72)">Launch plus ongoing management, optimisation and expansion.</p>
+      <div class="price">From $1,100 <span class="u">AUD / month · 3-mo min</span></div>
+      <div class="plus">Everything in TX Amazon Launch, plus</div>
+      <ul><li>Listing optimisation &amp; ongoing updates</li><li>Amazon PPC management (ad spend separate)</li><li>A+ Content &amp; Brand Storefront</li><li>FBA management &amp; reimbursement audits</li><li>Weekly account-health monitoring</li><li>Monthly performance reporting</li><li>National expansion (eBay AU, Catch)</li><li>International marketplace expansion</li></ul>
+      <div class="grd">✓ 30-day first-sale guarantee — or money back</div>
       <a class="btn btn-primary" href="#audit">Book a strategy call <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a>
     </div>
   </div>
-  <p class="center mut reveal" style="font-size:12px;margin-top:18px">Pricing shown as placeholders — confirm live figures before publish. No fabricated numbers.</p>
+  <p class="center mut reveal" style="font-size:12px;margin-top:18px">Prices in AUD, GST-exclusive. PPC ad spend billed directly by Amazon. T&amp;Cs apply.</p>
   </div>
 </section>
 
@@ -458,8 +516,8 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
     <h2 class="reveal" style="margin:14px auto 6px;max-width:18ch">Who this is for</h2>
   </div>
   <div class="wrap"><div class="cmp reveal">
-    <div class="col"><h3 class="lime">A fit if you…</h3><ul class="yes"><li>Already sell a proven product on your own store</li><li>Have stock and can fulfil real order volume</li><li>Want marketplaces run properly, not dabbled in</li><li>Think in margins, not just top-line revenue</li></ul></div>
-    <div class="col no"><h3 style="color:var(--coral)">Not a fit if you…</h3><ul class="no"><li>Haven't launched a product yet</li><li>Want overnight results with no ad budget</li><li>Are chasing the cheapest possible setup</li><li>Won't share the data needed to optimise</li></ul></div>
+    <div class="col"><h3 class="lime">A fit if you…</h3><ul class="yes"><li>Already sell a proven product on your own store</li><li>Have stock and can fulfil real order volume</li><li>Want experts to handle the complexity while you run the business</li><li>Are open to a one-time launch fee or a 3-month management commitment</li></ul></div>
+    <div class="col no"><h3 style="color:var(--coral)">Not the right fit if you…</h3><ul class="no"><li>Are brand new to ecommerce — build your store foundation first</li><li>Are a dropshipper or reseller of major brands</li><li>Want overnight results with no ad budget</li><li>Won't share the data needed to optimise</li></ul></div>
   </div></div>
 </section>
 
@@ -468,12 +526,13 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
     <div class="eyebrow reveal">Questions</div>
     <h2 class="reveal" style="margin:14px auto 4px;max-width:18ch;color:var(--ink)">Before you get moving</h2>
   </div>
-  <div class="wrap"><div class="faq reveal">
-    <div class="faq-item"><div class="faq-q">Isn't Amazon just going to undercut my own store? <span class="faq-ic">+</span></div><div class="faq-a"><p>Marketplaces reach buyers who were never going to find your store — they search Amazon first. Done right, it adds a channel rather than cannibalising one, and the brand exposure feeds your direct sales too.</p></div></div>
-    <div class="faq-item"><div class="faq-q">How long until we're live and seeing orders? <span class="faq-ic">+</span></div><div class="faq-a"><p>Launch setup is measured in weeks, not months. Orders follow ranking and reviews, which compound — we tune continuously rather than promising an overnight spike.</p></div></div>
-    <div class="faq-item"><div class="faq-q">We tried a freelancer and it stalled — why is this different? <span class="faq-ic">+</span></div><div class="faq-a"><p>Marketplaces punish half-setups: compliance gaps, thin listings, no ad strategy. We run the whole system — setup, rank, ads, reviews, expansion — as one accountable process with monthly reporting.</p></div></div>
-    <div class="faq-item"><div class="faq-q">What does it cost, and is it worth it for us? <span class="faq-ic">+</span></div><div class="faq-a"><p>Pricing is set per scope on the call. If the audit shows the numbers won't work for your product and margins, we'll tell you — we only take stores we can actually move.</p></div></div>
-    <div class="faq-item"><div class="faq-q">What's the cost of just leaving it another year? <span class="faq-ic">+</span></div><div class="faq-a"><p>Every month off the marketplaces is search demand converting for a competitor and reviews they're banking that you'll later have to catch. The gap compounds against you.</p></div></div>
+  <div class="wrap"><div class="faq-grid reveal">
+    <div class="faq-card"><div class="fq">What's the difference between TX Amazon Launch and TX Marketplace Accelerator?<span class="pl">+</span></div><div class="fa"><p>TX Amazon Launch is one-time setup. TX Marketplace Accelerator includes launch plus ongoing management: listing optimisation, PPC, A+ Content, FBA monitoring, and eBay / Catch expansion.</p></div></div>
+    <div class="faq-card"><div class="fq">I already have an online store. Do I need to change anything?<span class="pl">+</span></div><div class="fa"><p>No. Amazon runs alongside your existing store, not instead of it — it finds buyers who search directly on the platform.</p></div></div>
+    <div class="faq-card"><div class="fq">What if I already have an Amazon seller account?<span class="pl">+</span></div><div class="fa"><p>We can work with existing accounts. We audit first to identify compliance issues, listing problems or account-health flags before building on top of it.</p></div></div>
+    <div class="faq-card"><div class="fq">How does the 30-day guarantee work?<span class="pl">+</span></div><div class="fa"><p>TX Amazon Launch guarantees products listed and live within 30 days. TX Marketplace Accelerator guarantees a first sale within 30 days of going live, or money back. Both subject to product eligibility; T&amp;Cs apply.</p></div></div>
+    <div class="faq-card"><div class="fq">What products don't work on Amazon AU?<span class="pl">+</span></div><div class="fa"><p>Categories with heavy regulatory requirements, restricted listings, or low AU search volume need a case-by-case assessment — we flag these before starting.</p></div></div>
+    <div class="faq-card"><div class="fq">How much should I budget for Amazon PPC?<span class="pl">+</span></div><div class="fa"><p>For a new seller with 5–10 SKUs, a realistic starting budget is $500–$1,500/month. PPC management is included in Accelerator; the ad spend is your budget, billed directly by Amazon.</p></div></div>
   </div></div>
 </section>
 
@@ -524,22 +583,74 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
     document.querySelectorAll('.tab-btn').forEach(function(x){x.classList.remove('active');});
     document.querySelectorAll('.tab-panel').forEach(function(x){x.classList.remove('active');});
     b.classList.add('active');document.querySelector('.tab-panel[data-panel="'+b.dataset.tab+'"]').classList.add('active');});});
-  document.querySelectorAll('.stepcv').forEach(function(cv){var ctx=cv.getContext('2d'),kind=cv.dataset.step,cw=0;
-    function draw(ms){ if(cv.offsetParent!==null){ var r=cv.getBoundingClientRect(); if(Math.abs(r.width-cw)>1){cw=r.width;cv.width=r.width*DPR;cv.height=r.height*DPR;} var W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
-      if(kind==='launch'){var cx=W/2,cy=H*.58,s=Math.min(W,H)*.26,t=(ms%2600)/2600;
-        for(var i=0;i<2;i++){var p=(t+i*.5)%1;ctx.beginPath();ctx.arc(cx,cy-s/2-8*DPR,(10+p*70)*DPR,0,6.28);ctx.strokeStyle='rgba(163,208,29,'+(1-p)*.6+')';ctx.lineWidth=2*DPR;ctx.stroke();}
-        ctx.fillStyle='rgba(199,154,95,.92)';ctx.fillRect(cx-s/2,cy-s/2,s,s);ctx.strokeStyle='rgba(163,208,29,.9)';ctx.lineWidth=2*DPR;ctx.strokeRect(cx-s/2,cy-s/2,s,s);
-        ctx.fillStyle='rgba(163,208,29,.9)';ctx.fillRect(cx-s/2,cy-6*DPR,s,12*DPR);
-        ctx.beginPath();ctx.arc(cx,cy-s/2-8*DPR,4*DPR,0,6.28);ctx.fillStyle='#b8e820';ctx.fill();}
-      else if(kind==='optimise'){var base=H*.82,gp=(ms/1000)%3/3;
-        for(var i=0;i<4;i++){var bh=(.22+.15*i)*H*(.55+.45*Math.min(1,gp*1.6));ctx.fillStyle='rgba(124,98,255,.5)';ctx.fillRect((.16+i*.18)*W,base-bh,W*.1,bh);}
-        ctx.beginPath();ctx.strokeStyle='rgba(163,208,29,.9)';ctx.lineWidth=2.5*DPR;for(var x=0;x<=W;x+=6*DPR){var y=base-.12*H-(x/W)*.42*H-Math.sin(x/W*3.14)*.05*H;if(x===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.stroke();
-        var dx=gp*W,dy=base-.12*H-gp*.42*H-Math.sin(gp*3.14)*.05*H;ctx.beginPath();ctx.arc(dx,dy,4.5*DPR,0,6.28);ctx.fillStyle='#b8e820';ctx.fill();}
-      else{var cx=W/2,cy=H/2,R=Math.min(W,H)*.3,ph=ms*.0006;
-        for(var i=0;i<30;i++){var a=i/30*6.28+ph;ctx.beginPath();ctx.arc(cx+Math.cos(a)*R,cy+Math.sin(a)*R,1.6*DPR,0,6.28);ctx.fillStyle='rgba(196,181,253,.5)';ctx.fill();}
-        for(var m=0;m<4;m++){var a2=m*1.57+ph*.6,mx=cx+Math.cos(a2)*R,my=cy+Math.sin(a2)*R;ctx.beginPath();ctx.moveTo(cx,cy);ctx.quadraticCurveTo((cx+mx)/2,(cy+my)/2-R*.5,mx,my);ctx.strokeStyle='rgba(163,208,29,.45)';ctx.lineWidth=1.4*DPR;ctx.stroke();ctx.beginPath();ctx.arc(mx,my,3.2*DPR,0,6.28);ctx.fillStyle='#b8e820';ctx.fill();}}
-    } if(!reduce)requestAnimationFrame(draw);}
-    if(reduce){setTimeout(function(){var r=cv.getBoundingClientRect();cv.width=r.width*DPR;cv.height=r.height*DPR;draw(600);},60);}else requestAnimationFrame(draw);});
+  /* ---- shared mini-3D engine (canvas 2D) ---- */
+var TAU=6.2831853, LIME='rgba(163,208,29,', PUR='rgba(124,98,255,';
+function CARDc(a){return 'rgba(199,154,95,'+a+')';}
+function PURc(a){return 'rgba(124,98,255,'+a+')';}
+function R3(x,y,z,ay,ax){var cy=Math.cos(ay),sy=Math.sin(ay),cx=Math.cos(ax),sx=Math.sin(ax);var X=x*cy-z*sy,Z=x*sy+z*cy,Y=y;var Y2=Y*cx-Z*sx;Z=Y*sx+Z*cx;return [X,Y2,Z];}
+function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+function box(ctx,W,H,ay,ax,sc,tx,ty,tz,hx,hy,hz,col,ec){var cx=W/2,cy=H/2;
+  var v=[[-hx,-hy,-hz],[hx,-hy,-hz],[hx,hy,-hz],[-hx,hy,-hz],[-hx,-hy,hz],[hx,-hy,hz],[hx,hy,hz],[-hx,hy,hz]].map(function(a){return R3(a[0]+tx,a[1]+ty,a[2]+tz,ay,ax);});
+  var faces=[[0,1,2,3],[4,5,6,7],[0,1,5,4],[2,3,7,6],[1,2,6,5],[0,3,7,4]];
+  faces.map(function(fc){return {f:fc,z:(v[fc[0]][2]+v[fc[1]][2]+v[fc[2]][2]+v[fc[3]][2])/4};}).sort(function(a,b){return a.z-b.z;}).forEach(function(o){
+    ctx.beginPath();o.f.forEach(function(idx,k){var X=cx+v[idx][0]*sc,Y=cy+v[idx][1]*sc;k?ctx.lineTo(X,Y):ctx.moveTo(X,Y);});ctx.closePath();
+    var lit=(o.z+2)/4;ctx.fillStyle=col(0.22+Math.max(0,Math.min(1,lit))*0.6);ctx.fill();ctx.strokeStyle=ec;ctx.lineWidth=1.2*DPR;ctx.stroke();});}
+function globe(ctx,W,H,ay,ax,sc){var cx=W/2,cy=H/2,a,pt,X,Y;
+  for(var la=-60;la<=60;la+=30){var r=Math.cos(la*Math.PI/180),yy=Math.sin(la*Math.PI/180);ctx.beginPath();
+    for(a=0;a<=TAU+0.1;a+=0.22){pt=R3(Math.cos(a)*r,yy,Math.sin(a)*r,ay,ax);X=cx+pt[0]*sc;Y=cy+pt[1]*sc;a?ctx.lineTo(X,Y):ctx.moveTo(X,Y);}
+    ctx.strokeStyle=PUR+'0.32)';ctx.lineWidth=1*DPR;ctx.stroke();}
+  for(var lo=0;lo<180;lo+=45){ctx.beginPath();
+    for(a=0;a<=TAU+0.1;a+=0.22){pt=R3(Math.cos(a)*Math.cos(lo*Math.PI/180),Math.sin(a),Math.cos(a)*Math.sin(lo*Math.PI/180),ay,ax);X=cx+pt[0]*sc;Y=cy+pt[1]*sc;a?ctx.lineTo(X,Y):ctx.moveTo(X,Y);}
+    ctx.strokeStyle=PUR+'0.24)';ctx.lineWidth=1*DPR;ctx.stroke();}
+  var nodes=[[0.2,0.6,0.4],[-0.6,0.1,0.5],[0.5,-0.3,-0.6],[-0.3,-0.5,0.5],[0.7,0.2,0.2]],hub=R3(0,0.15,1,ay,ax);
+  nodes.forEach(function(n){var m=Math.hypot(n[0],n[1],n[2]),p=R3(n[0]/m,n[1]/m,n[2]/m,ay,ax);
+    ctx.beginPath();ctx.moveTo(cx+hub[0]*sc,cy+hub[1]*sc);ctx.quadraticCurveTo(cx+((hub[0]+p[0])/2)*sc*1.35,cy+((hub[1]+p[1])/2)*sc*1.35,cx+p[0]*sc,cy+p[1]*sc);
+    ctx.strokeStyle=LIME+(p[2]>0?0.75:0.22)+')';ctx.lineWidth=1.3*DPR;ctx.stroke();
+    ctx.beginPath();ctx.arc(cx+p[0]*sc,cy+p[1]*sc,2.6*DPR,0,TAU);ctx.fillStyle='#b8e820';ctx.fill();});
+  ctx.beginPath();ctx.arc(cx+hub[0]*sc,cy+hub[1]*sc,3.6*DPR,0,TAU);ctx.fillStyle='#fff';ctx.fill();}
+function drawStar(ctx,cx,cy,r,al){ctx.beginPath();for(var i=0;i<10;i++){var ang=Math.PI/5*i-Math.PI/2,rr2=i%2?r*0.45:r,X=cx+Math.cos(ang)*rr2,Y=cy+Math.sin(ang)*rr2;i?ctx.lineTo(X,Y):ctx.moveTo(X,Y);}ctx.closePath();ctx.globalAlpha=al;ctx.fillStyle='#b8e820';ctx.fill();ctx.globalAlpha=1;}
+function barsViz(ctx,W,H,ay,ax,sc,ms){for(var i=0;i<5;i++){var hh=0.35+0.55*(0.5+0.5*Math.sin(ms*0.002+i*0.7));box(ctx,W,H,ay,ax,sc*0.72,(i-2)*0.46,1-hh,0,0.16,hh,0.16,PURc,LIME+'0.85)');}}
+function starsViz(ctx,W,H,ay,ax,sc,ms){var cx=W/2,cy=H/2;for(var i=0;i<6;i++){var a=i/6*TAU,p=R3(Math.cos(a),Math.sin(i*1.3)*0.45,Math.sin(a),ay,ax),d=(p[2]+1.3)/2.6;drawStar(ctx,cx+p[0]*sc*1.05,cy+p[1]*sc*1.05,(3.5+d*7)*DPR,0.35+d*0.65);}}
+function reportViz(ctx,W,H,ay,ax,sc){for(var k=0;k<3;k++)box(ctx,W,H,ay,ax,sc,0,(k-1)*0.52,0,0.85,0.05,0.6,function(a){return 'rgba(240,237,232,'+a+')';},LIME+'0.8)');}
+function shieldViz(ctx,W,H,ay,ax,sc){var cx=W/2,cy=H/2,sq=Math.abs(Math.cos(ay))*0.6+0.4;ctx.save();ctx.translate(cx,cy);ctx.scale(sq,1);
+  var w=sc*0.85,h=sc*1.1;ctx.beginPath();ctx.moveTo(0,-h);ctx.lineTo(w,-h*0.55);ctx.lineTo(w,h*0.1);ctx.quadraticCurveTo(w,h*0.75,0,h);ctx.quadraticCurveTo(-w,h*0.75,-w,h*0.1);ctx.lineTo(-w,-h*0.55);ctx.closePath();
+  ctx.fillStyle=PUR+'0.32)';ctx.fill();ctx.strokeStyle=LIME+'0.9)';ctx.lineWidth=1.6*DPR;ctx.stroke();ctx.restore();
+  ctx.beginPath();ctx.moveTo(cx-sc*0.28*sq,cy);ctx.lineTo(cx-sc*0.05*sq,cy+sc*0.26);ctx.lineTo(cx+sc*0.34*sq,cy-sc*0.28);ctx.strokeStyle='#b8e820';ctx.lineWidth=2.4*DPR;ctx.lineCap='round';ctx.stroke();}
+function drawShape(ctx,kind,W,H,ay,ax,ms){var sc=Math.min(W,H)*0.26;
+  if(kind==='cube')box(ctx,W,H,ay,ax,sc,0,0,0,0.92,0.92,0.92,CARDc,LIME+'0.95)');
+  else if(kind==='globe')globe(ctx,W,H,ay,ax,sc);
+  else if(kind==='bars')barsViz(ctx,W,H,ay,ax,sc,ms);
+  else if(kind==='stars')starsViz(ctx,W,H,ay,ax,sc,ms);
+  else if(kind==='report')reportViz(ctx,W,H,ay,ax,sc);
+  else if(kind==='shield')shieldViz(ctx,W,H,ay,ax,sc);}
+
+/* ---- step visuals (upgraded) ---- */
+document.querySelectorAll('.stepcv').forEach(function(cv){var ctx=cv.getContext('2d'),kind=cv.dataset.step,cw=0;
+  function draw(ms){ if(cv.offsetParent!==null){ var r=cv.getBoundingClientRect(); if(Math.abs(r.width-cw)>1){cw=r.width;cv.width=r.width*DPR;cv.height=r.height*DPR;} var W=cv.width,H=cv.height; ctx.clearRect(0,0,W,H);
+    if(kind==='launch'){var ay=ms*0.0005,ax=-0.5,cx=W/2,cy=H/2,sc=Math.min(W,H)*0.3,g,a1,a2,b1,b2;
+      ctx.strokeStyle=PUR+'0.16)';ctx.lineWidth=1*DPR;
+      for(g=-3;g<=3;g++){a1=R3(g*0.5,1.15,-2,ay,ax);a2=R3(g*0.5,1.15,2,ay,ax);ctx.beginPath();ctx.moveTo(cx+a1[0]*sc,cy+a1[1]*sc);ctx.lineTo(cx+a2[0]*sc,cy+a2[1]*sc);ctx.stroke();
+        b1=R3(-2,1.15,g*0.5,ay,ax);b2=R3(2,1.15,g*0.5,ay,ax);ctx.beginPath();ctx.moveTo(cx+b1[0]*sc,cy+b1[1]*sc);ctx.lineTo(cx+b2[0]*sc,cy+b2[1]*sc);ctx.stroke();}
+      var t=(ms%2600)/2600;for(var i=0;i<2;i++){var pp=(t+i*0.5)%1;ctx.beginPath();ctx.arc(cx,cy-sc*0.15,(10+pp*85)*DPR,0,TAU);ctx.strokeStyle=LIME+((1-pp)*0.5)+')';ctx.lineWidth=2*DPR;ctx.stroke();}
+      var fy=Math.sin(ms*0.002)*0.12;box(ctx,W,H,ay,ax,sc,0,-0.15+fy,0,0.68,0.68,0.68,CARDc,LIME+'0.95)');}
+    else if(kind==='optimise'){var base=H*0.8,ph=(ms/900)%1,i,x,y;
+      ctx.strokeStyle='rgba(255,255,255,0.06)';ctx.lineWidth=1*DPR;
+      for(i=0;i<4;i++){var yy=base-i*(H*0.16);ctx.beginPath();ctx.moveTo(W*0.1,yy);ctx.lineTo(W*0.9,yy);ctx.stroke();}
+      for(i=0;i<5;i++){var bh=(0.25+0.13*i)*H*(0.6+0.4*Math.min(1,ph*1.6+i*0.1)),bx=(0.14+i*0.16)*W,grd=ctx.createLinearGradient(0,base-bh,0,base);grd.addColorStop(0,PUR+'0.85)');grd.addColorStop(1,PUR+'0.12)');ctx.fillStyle=grd;rr(ctx,bx,base-bh,W*0.09,bh,4*DPR);ctx.fill();}
+      ctx.beginPath();for(x=0;x<=W;x+=6*DPR){y=base-H*0.12-(x/W)*H*0.42-Math.sin(x/W*3.14)*H*0.05;x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.strokeStyle=LIME+'0.95)';ctx.lineWidth=2.6*DPR;ctx.stroke();
+      var dx=ph*W,dy=base-H*0.12-ph*H*0.42-Math.sin(ph*3.14)*H*0.05;ctx.beginPath();ctx.arc(dx,dy,4.5*DPR,0,TAU);ctx.fillStyle='#b8e820';ctx.shadowColor=LIME+'0.9)';ctx.shadowBlur=12*DPR;ctx.fill();ctx.shadowBlur=0;}
+    else {globe(ctx,W,H,ms*0.0004,-0.35,Math.min(W,H)*0.32);}
+  } if(!reduce)requestAnimationFrame(draw);}
+  if(reduce){setTimeout(function(){var r=cv.getBoundingClientRect();cv.width=r.width*DPR;cv.height=r.height*DPR;draw(600);},60);}else requestAnimationFrame(draw);});
+
+/* ---- bento conceptual graphics (auto-rotate + mouse spin) ---- */
+document.querySelectorAll('.cellcv').forEach(function(cv){var ctx=cv.getContext('2d'),kind=cv.dataset.viz,cw=0,ay=0.6,ax=-0.35,tay=null,tax=null,hover=false,cell=cv.closest('.cell');
+  if(cell){cell.addEventListener('pointermove',function(e){var r=cell.getBoundingClientRect();tay=((e.clientX-r.left)/r.width-0.5)*2.2;tax=-0.35+((e.clientY-r.top)/r.height-0.5)*-1.3;hover=true;});
+    cell.addEventListener('pointerleave',function(){hover=false;});}
+  function frame(ms){ if(cv.offsetParent!==null){var r=cv.getBoundingClientRect();if(Math.abs(r.width-cw)>1){cw=r.width;cv.width=r.width*DPR;cv.height=r.height*DPR;}var W=cv.width,H=cv.height;ctx.clearRect(0,0,W,H);
+    if(hover&&tay!=null){ay+=(tay-ay)*0.12;ax+=(tax-ax)*0.12;}else{ay+=0.006;ax+=(-0.35-ax)*0.05;}
+    drawShape(ctx,kind,W,H,ay,ax,ms);} if(!reduce)requestAnimationFrame(frame);}
+  if(reduce){setTimeout(function(){var r=cv.getBoundingClientRect();cv.width=r.width*DPR;cv.height=r.height*DPR;drawShape(ctx,kind,cv.width,cv.height,0.7,-0.35,0);},60);}else requestAnimationFrame(frame);});
 
   /* faq */
   document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open');});});
@@ -683,3 +794,4 @@ if(reduce){ // one static frame
   amzField.instanceMatrix.needsUpdate=true; plnField.instanceMatrix.needsUpdate=true; composer.render();
 } else frame();
 </script>
+<script>document.querySelectorAll(".faq-card").forEach(function(c){c.addEventListener("click",function(){c.classList.toggle("open");});});</script>
